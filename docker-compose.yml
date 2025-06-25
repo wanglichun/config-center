@@ -1,0 +1,106 @@
+version: '3.8'
+
+services:
+  # MySQL数据库
+  mysql:
+    image: mysql:8.0
+    container_name: config-center-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: config_center
+      MYSQL_USER: config_user
+      MYSQL_PASSWORD: config123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./src/main/resources/sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    networks:
+      - config-center-network
+
+  # Redis缓存
+  redis:
+    image: redis:7-alpine
+    container_name: config-center-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - config-center-network
+
+  # ZooKeeper
+  zookeeper:
+    image: zookeeper:3.7
+    container_name: config-center-zookeeper
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888;2181
+    ports:
+      - "2181:2181"
+      - "2888:2888"
+      - "3888:3888"
+    volumes:
+      - zk_data:/data
+      - zk_datalog:/datalog
+    networks:
+      - config-center-network
+
+  # 配置中心应用
+  config-center:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: config-center-app
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/config_center?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+      SPRING_DATASOURCE_USERNAME: config_user
+      SPRING_DATASOURCE_PASSWORD: config123
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+      ZOOKEEPER_CONNECT_STRING: zookeeper:2181
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - redis
+      - zookeeper
+    volumes:
+      - app_logs:/app/logs
+    networks:
+      - config-center-network
+    restart: unless-stopped
+
+  # Nginx反向代理
+  nginx:
+    image: nginx:alpine
+    container_name: config-center-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+      - nginx_logs:/var/log/nginx
+    depends_on:
+      - config-center
+    networks:
+      - config-center-network
+    restart: unless-stopped
+
+# 数据卷
+volumes:
+  mysql_data:
+  redis_data:
+  zk_data:
+  zk_datalog:
+  app_logs:
+  nginx_logs:
+
+# 网络
+networks:
+  config-center-network:
+    driver: bridge 
