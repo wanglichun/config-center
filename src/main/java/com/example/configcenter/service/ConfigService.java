@@ -1,8 +1,9 @@
 package com.example.configcenter.service;
 
-import com.example.configcenter.entity.ConfigItem;
+import com.example.configcenter.common.PageResult;
+import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.entity.ConfigHistory;
-
+import com.example.configcenter.entity.ConfigItem;
 import java.util.List;
 import java.util.Map;
 
@@ -104,6 +105,14 @@ public interface ConfigService {
      * @return 历史记录列表
      */
     List<ConfigHistory> getConfigHistory(Long configId);
+
+    /**
+     * 分页查询配置项
+     *
+     * @param queryDto 查询参数
+     * @return 分页结果
+     */
+    PageResult<ConfigItem> getConfigPage(ConfigQueryDto queryDto);
 
     /**
      * 搜索配置项

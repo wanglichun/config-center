@@ -1091,3 +1091,9 @@ Caused by: java.net.ConnectException: Connection refused
 2025-06-26 17:26:44 [http-nio-9090-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [POST /api/auth/login] with attributes [permitAll]
 2025-06-26 17:26:44 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /api/auth/login
 2025-06-26 17:26:44 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-26 17:54:04 [Curator-Framework-0] INFO  o.a.curator.framework.imps.CuratorFrameworkImpl - backgroundOperationsLoop exiting
+2025-06-26 17:54:04 [main-EventThread] INFO  org.apache.zookeeper.ClientCnxn - EventThread shut down for session: 0x1000421aa4e0005
+2025-06-26 17:54:04 [SpringApplicationShutdownHook] INFO  org.apache.zookeeper.ZooKeeper - Session: 0x1000421aa4e0005 closed
+2025-06-26 17:54:04 [SpringApplicationShutdownHook] INFO  com.example.configcenter.config.ZooKeeperConfig - ZooKeeper客户端已关闭
+2025-06-26 17:54:04 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2025-06-26 17:54:04 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

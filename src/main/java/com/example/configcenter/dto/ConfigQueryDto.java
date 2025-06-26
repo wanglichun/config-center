@@ -2,8 +2,6 @@ package com.example.configcenter.dto;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
-
 /**
  * 配置查询DTO
  *
@@ -14,26 +12,42 @@ import javax.validation.constraints.NotBlank;
 public class ConfigQueryDto {
     
     /**
+     * 页码
+     */
+    private Integer pageNum = 1;
+    
+    /**
+     * 每页大小
+     */
+    private Integer pageSize = 20;
+    
+    /**
      * 应用名称
      */
-    @NotBlank(message = "应用名称不能为空")
     private String appName;
     
     /**
      * 环境
      */
-    @NotBlank(message = "环境不能为空")
     private String environment;
     
     /**
      * 配置组
      */
-    @NotBlank(message = "配置组不能为空")
     private String groupName;
     
     /**
      * 配置键
      */
-    @NotBlank(message = "配置键不能为空")
     private String configKey;
+    
+    /**
+     * 状态
+     */
+    private String status;
+    
+    /**
+     * 关键词搜索
+     */
+    private String keyword;
 } 
