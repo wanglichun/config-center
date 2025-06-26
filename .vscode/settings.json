@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        "src/main/java/org/config/configcenter/service",
+        "src/main/java/com/example/configcenter"
+    ]
+}

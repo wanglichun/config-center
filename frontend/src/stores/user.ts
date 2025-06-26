@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { login, getUserInfo } from '@/api/auth'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { login, getUserInfo as fetchUserInfo } from '@/api/auth'
+import { getToken, setToken, removeToken, getUserInfo as getStoredUserInfo, setUserInfo, removeUserInfo } from '@/utils/auth'
 import type { LoginForm, UserInfo } from '@/types/user'
 
 export const useUserStore = defineStore('user', () => {
   const token = ref<string>(getToken() || '')
-  const userInfo = ref<UserInfo | null>(null)
+  const userInfo = ref<UserInfo | null>(getStoredUserInfo())
   const loading = ref(false)
 
   // 登录
@@ -16,8 +16,9 @@ export const useUserStore = defineStore('user', () => {
       const response = await login(loginForm)
       if (response.success) {
         token.value = response.data.token
+        userInfo.value = response.data.userInfo
         setToken(response.data.token)
-        await getUserInfo()
+        setUserInfo(response.data.userInfo)
         return Promise.resolve(response)
       } else {
         return Promise.reject(new Error(response.message))
@@ -32,7 +33,7 @@ export const useUserStore = defineStore('user', () => {
   // 获取用户信息
   const getUserInfo = async () => {
     try {
-      const response = await getUserInfo()
+      const response = await fetchUserInfo()
       if (response.success) {
         userInfo.value = response.data
         return Promise.resolve(response.data)
@@ -49,17 +50,14 @@ export const useUserStore = defineStore('user', () => {
     token.value = ''
     userInfo.value = null
     removeToken()
+    removeUserInfo()
   }
 
-  // 初始化用户信息
-  const initUserInfo = async () => {
-    if (token.value && !userInfo.value) {
-      try {
-        await getUserInfo()
-      } catch (error) {
-        console.error('初始化用户信息失败:', error)
-        logout()
-      }
+  // 初始化用户信息（从本地存储恢复）
+  const initUserInfo = () => {
+    // 由于登录时已经获取了用户信息，这里只需要在应用启动时检查token
+    if (!token.value) {
+      logout()
     }
   }
 

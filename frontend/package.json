@@ -10,19 +10,19 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "vue": "^3.3.4",
-    "vue-router": "^4.2.4",
-    "pinia": "^2.1.6",
-    "element-plus": "^2.3.8",
     "@element-plus/icons-vue": "^2.1.0",
     "axios": "^1.4.0",
     "dayjs": "^1.11.9",
-    "js-cookie": "^3.0.5",
-    "nprogress": "^0.2.0",
-    "vue-json-viewer": "^3.0.4",
-    "monaco-editor": "^0.41.0",
     "echarts": "^5.4.3",
-    "vue-echarts": "^6.6.1"
+    "element-plus": "^2.3.8",
+    "js-cookie": "^3.0.5",
+    "monaco-editor": "^0.41.0",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.1.6",
+    "vue": "^3.3.4",
+    "vue-echarts": "^6.6.1",
+    "vue-json-viewer": "^3.0.4",
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.3",
@@ -36,6 +36,7 @@
     "eslint": "^8.45.0",
     "eslint-plugin-vue": "^9.15.1",
     "prettier": "^3.0.0",
+    "sass": "^1.89.2",
     "typescript": "^5.1.6",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.1",

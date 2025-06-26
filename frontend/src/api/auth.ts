@@ -12,7 +12,7 @@ export function login(data: LoginForm): Promise<ApiResult<LoginResponse>> {
 /**
  * 用户登出
  */
-export function logout(): Promise<ApiResult<void>> {
+export function logout(): Promise<ApiResult<string>> {
   return request.post('/auth/logout')
 }
 

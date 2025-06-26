@@ -14,8 +14,8 @@ export interface UserInfo {
   role: string
   status: string
   avatar?: string
-  createTime: string
-  updateTime: string
+  createTime?: string
+  updateTime?: string
   lastLoginTime?: string
   lastLoginIp?: string
 }
@@ -23,6 +23,7 @@ export interface UserInfo {
 // 登录响应
 export interface LoginResponse {
   token: string
+  tokenType: string
   userInfo: UserInfo
 }
 

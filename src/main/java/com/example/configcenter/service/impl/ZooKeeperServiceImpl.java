@@ -171,30 +171,30 @@ public class ZooKeeperServiceImpl implements ZooKeeperService {
 
     @Override
     public void watchNode(String path, ConfigChangeListener listener) {
-        try {
-            NodeCache nodeCache = nodeCacheMap.get(path);
-            if (nodeCache == null) {
-                nodeCache = new NodeCache(curatorFramework, path);
-                nodeCacheMap.put(path, nodeCache);
-                
-                nodeCache.getListenable().addListener(() -> {
-                    try {
-                        byte[] data = nodeCache.getCurrentData() != null ? 
-                                     nodeCache.getCurrentData().getData() : null;
-                        String dataStr = data != null ? new String(data) : null;
-                        listener.onConfigChanged(path, dataStr, "NODE_UPDATED");
-                    } catch (Exception e) {
-                        log.error("处理节点变化事件失败: path={}", path, e);
-                    }
-                });
-                
-                nodeCache.start(NodeCache.StartMode.BUILD_INITIAL_CACHE);
-            }
-            
-            log.info("开始监听节点变化: {}", path);
-        } catch (Exception e) {
-            log.error("监听节点失败: path={}", path, e);
-        }
+//        try {
+//            NodeCache nodeCache = nodeCacheMap.get(path);
+//            if (nodeCache == null) {
+//                nodeCache = new NodeCache(curatorFramework, path);
+//                nodeCacheMap.put(path, nodeCache);
+//
+//                nodeCache.getListenable().addListener(() -> {
+//                    try {
+//                        byte[] data = nodeCache.getCurrentData() != null ?
+//                                     nodeCache.getCurrentData().getData() : null;
+//                        String dataStr = data != null ? new String(data) : null;
+//                        listener.onConfigChanged(path, dataStr, "NODE_UPDATED");
+//                    } catch (Exception e) {
+//                        log.error("处理节点变化事件失败: path={}", path, e);
+//                    }
+//                });
+//
+//                nodeCache.start(NodeCache.StartMode.BUILD_INITIAL_CACHE);
+//            }
+//
+//            log.info("开始监听节点变化: {}", path);
+//        } catch (Exception e) {
+//            log.error("监听节点失败: path={}", path, e);
+//        }
     }
 
     @Override

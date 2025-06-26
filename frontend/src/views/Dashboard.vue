@@ -205,6 +205,20 @@ import relativeTime from 'dayjs/plugin/relativeTime'
 import { useUserStore } from '@/stores/user'
 import type { ConfigStats } from '@/types/config'
 import type { ConfigHistory } from '@/types/config'
+// 导入图标
+import {
+  Document,
+  Grid,
+  Platform,
+  Clock,
+  Plus,
+  Search,
+  User,
+  Edit,
+  Delete,
+  Upload,
+  RefreshLeft
+} from '@element-plus/icons-vue'
 
 dayjs.extend(relativeTime)
 dayjs.locale('zh-cn')

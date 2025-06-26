@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import { useUserStore } from '@/stores/user'
+import { ElMessage } from 'element-plus'
 import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -128,15 +130,12 @@ router.beforeEach(async (to, from, next) => {
     return
   }
   
-  // 检查用户信息
+  // 检查用户信息（登录时已经获取了用户信息，这里只需要验证是否存在）
   if (!userStore.userInfo) {
-    try {
-      await userStore.getUserInfo()
-    } catch (error) {
-      userStore.logout()
-      next('/login')
-      return
-    }
+    // 如果没有用户信息，说明token无效，直接跳转到登录页
+    userStore.logout()
+    next('/login')
+    return
   }
   
   // 检查角色权限
