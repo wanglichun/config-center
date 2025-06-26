@@ -2,6 +2,8 @@ package com.example.configcenter.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.example.configcenter.common.PageResult;
+import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.mapper.ConfigItemMapper;
@@ -333,6 +335,11 @@ public class ConfigServiceImpl implements ConfigService {
             log.error("获取配置历史失败: configId={}", configId, e);
             return Collections.emptyList();
         }
+    }
+
+    @Override
+    public PageResult<ConfigItem> getConfigPage(ConfigQueryDto queryDto) {
+        return null;
     }
 
     @Override
