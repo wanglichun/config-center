@@ -30,6 +30,6 @@ public class EnumController {
 
     @GetMapping("get_all_enum")
     public ApiResult<Map<String, List<String>>> getAllEnum() {
-        enumMap.put("", );
+        enumMap.put("", EnvironmentEnum.values().);
     }
 }
