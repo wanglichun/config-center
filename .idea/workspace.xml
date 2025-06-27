@@ -5,34 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/_metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-3P5AY44J.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-3P5AY44J.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-LBMHCNOP.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-LBMHCNOP.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-LBWL3OUR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-LBWL3OUR.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_charts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_checkbox_style_css.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_checkbox_style_css.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_col_style_css.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_col_style_css.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_dropdown_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_dropdown_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_message_style_css.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_message_style_css.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_pagination_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_pagination_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_row_style_css.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_row_style_css.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_select_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_select_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_table-column_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_table-column_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_table_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_table_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/vue-echarts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/vue-echarts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/config-center.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,6 +64,9 @@
     ]
   }
 }]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RunManager" selected="Spring Boot.ConfigCenterApplication (1)">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Config-Center" />
