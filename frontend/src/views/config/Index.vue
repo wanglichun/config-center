@@ -26,6 +26,16 @@
           <el-form-item label="配置组">
             <el-input v-model="searchForm.groupName" placeholder="请输入配置组" clearable />
           </el-form-item>
+          <el-form-item label="关键字">
+            <el-input v-model="searchForm.keyword" placeholder="配置键或值关键字" clearable />
+          </el-form-item>
+          <el-form-item label="状态">
+            <el-select v-model="searchForm.status" placeholder="请选择状态" clearable>
+              <el-option label="已发布" value="PUBLISHED" />
+              <el-option label="草稿" value="DRAFT" />
+              <el-option label="已禁用" value="DISABLED" />
+            </el-select>
+          </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="handleSearch">
               <el-icon><Search /></el-icon>
@@ -36,21 +46,32 @@
         </el-form>
       </div>
 
-      <el-table :data="configList" style="width: 100%">
-        <el-table-column prop="appName" label="应用名称" />
-        <el-table-column prop="environment" label="环境">
+      <el-table :data="configList" v-loading="loading" style="width: 100%">
+        <el-table-column prop="appName" label="应用名称" width="120" />
+        <el-table-column prop="environment" label="环境" width="100">
           <template #default="scope">
             <el-tag :type="getEnvTagType(scope.row.environment)">
               {{ getEnvText(scope.row.environment) }}
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="groupName" label="配置组" />
-        <el-table-column prop="configKey" label="配置键" />
-        <el-table-column prop="configValue" label="配置值" show-overflow-tooltip />
-        <el-table-column prop="description" label="描述" show-overflow-tooltip />
-        <el-table-column prop="updateTime" label="更新时间" />
-        <el-table-column label="操作" width="200">
+        <el-table-column prop="groupName" label="配置组" width="120" />
+        <el-table-column prop="configKey" label="配置键" width="150" />
+        <el-table-column prop="configValue" label="配置值" min-width="200" show-overflow-tooltip />
+        <el-table-column prop="description" label="描述" min-width="150" show-overflow-tooltip />
+        <el-table-column prop="status" label="状态" width="80">
+          <template #default="scope">
+            <el-tag :type="getStatusTagType(scope.row.status)">
+              {{ getStatusText(scope.row.status) }}
+            </el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column prop="updateTime" label="更新时间" width="160">
+          <template #default="scope">
+            {{ formatTime(scope.row.updateTime) }}
+          </template>
+        </el-table-column>
+        <el-table-column label="操作" width="200" fixed="right">
           <template #default="scope">
             <el-button size="small" @click="handleEdit(scope.row)">编辑</el-button>
             <el-button size="small" type="success" @click="handlePublish(scope.row)">发布</el-button>
@@ -91,6 +112,14 @@
         <el-form-item label="配置键" prop="configKey">
           <el-input v-model="configForm.configKey" :disabled="isEdit" />
         </el-form-item>
+        <el-form-item label="数据类型" prop="dataType">
+          <el-select v-model="configForm.dataType" placeholder="请选择数据类型">
+            <el-option label="字符串" value="STRING" />
+            <el-option label="数字" value="NUMBER" />
+            <el-option label="布尔值" value="BOOLEAN" />
+            <el-option label="JSON" value="JSON" />
+          </el-select>
+        </el-form-item>
         <el-form-item label="配置值" prop="configValue">
           <el-input 
             v-model="configForm.configValue" 
@@ -98,6 +127,9 @@
             :rows="4" 
             placeholder="请输入配置值"
           />
+        </el-form-item>
+        <el-form-item label="是否加密">
+          <el-switch v-model="configForm.encrypted" />
         </el-form-item>
         <el-form-item label="描述">
           <el-input v-model="configForm.description" placeholder="请输入配置描述" />
@@ -115,20 +147,29 @@
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus, Search } from '@element-plus/icons-vue'
+import { getConfigPage, createConfig, updateConfig, deleteConfig, publishConfig } from '@/api/config'
+import type { ConfigItem, ConfigQuery, ConfigForm } from '@/types/config'
+import type { PageResult } from '@/types/common'
 
-const searchForm = reactive({
+const searchForm = reactive<ConfigQuery>({
+  pageNum: 1,
+  pageSize: 20,
   appName: '',
   environment: '',
-  groupName: ''
+  groupName: '',
+  keyword: '',
+  status: ''
 })
 
-const configForm = reactive({
+const configForm = reactive<ConfigForm>({
   appName: '',
   environment: '',
   groupName: '',
   configKey: '',
   configValue: '',
-  description: ''
+  dataType: 'STRING',
+  description: '',
+  encrypted: false
 })
 
 const formRules = {
@@ -136,16 +177,18 @@ const formRules = {
   environment: [{ required: true, message: '请选择环境', trigger: 'change' }],
   groupName: [{ required: true, message: '请输入配置组', trigger: 'blur' }],
   configKey: [{ required: true, message: '请输入配置键', trigger: 'blur' }],
-  configValue: [{ required: true, message: '请输入配置值', trigger: 'blur' }]
+  configValue: [{ required: true, message: '请输入配置值', trigger: 'blur' }],
+  dataType: [{ required: true, message: '请选择数据类型', trigger: 'change' }]
 }
 
-const configList = ref([])
+const configList = ref<ConfigItem[]>([])
 const currentPage = ref(1)
 const pageSize = ref(20)
 const total = ref(0)
 const showAddDialog = ref(false)
 const isEdit = ref(false)
 const formRef = ref()
+const loading = ref(false)
 
 const getEnvTagType = (env: string) => {
   switch (env) {
@@ -165,54 +208,149 @@ const getEnvText = (env: string) => {
   }
 }
 
+const getStatusTagType = (status: string) => {
+  switch (status) {
+    case 'PUBLISHED': return 'success'
+    case 'DRAFT': return 'warning'
+    case 'DISABLED': return 'danger'
+    default: return 'info'
+  }
+}
+
+const getStatusText = (status: string) => {
+  switch (status) {
+    case 'PUBLISHED': return '已发布'
+    case 'DRAFT': return '草稿'
+    case 'DISABLED': return '已禁用'
+    default: return status
+  }
+}
+
+const formatTime = (timeStr: string) => {
+  if (!timeStr) return '-'
+  return new Date(timeStr).toLocaleString('zh-CN', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit'
+  })
+}
+
+// 加载配置列表
+const loadConfigList = async () => {
+  try {
+    loading.value = true
+    searchForm.pageNum = currentPage.value
+    searchForm.pageSize = pageSize.value
+    
+    const response = await getConfigPage(searchForm)
+    if (response.success) {
+      const pageResult: PageResult<ConfigItem> = response.data
+      configList.value = pageResult.records
+      total.value = pageResult.total
+    } else {
+      ElMessage.error(response.message || '查询失败')
+    }
+  } catch (error) {
+    console.error('加载配置列表失败:', error)
+    ElMessage.error('查询失败')
+  } finally {
+    loading.value = false
+  }
+}
+
 const handleSearch = () => {
-  // TODO: 实现搜索功能
-  ElMessage.info('搜索功能待实现')
+  currentPage.value = 1
+  loadConfigList()
 }
 
 const handleReset = () => {
   searchForm.appName = ''
   searchForm.environment = ''
   searchForm.groupName = ''
+  searchForm.keyword = ''
+  searchForm.status = ''
+  currentPage.value = 1
+  loadConfigList()
 }
 
-const handleEdit = (row: any) => {
+const handleEdit = (row: ConfigItem) => {
   isEdit.value = true
   Object.assign(configForm, row)
   showAddDialog.value = true
 }
 
-const handlePublish = (row: any) => {
-  ElMessageBox.confirm(`确定要发布配置 ${row.configKey} 吗？`, '提示', {
-    confirmButtonText: '确定',
-    cancelButtonText: '取消',
-    type: 'warning'
-  }).then(() => {
-    // TODO: 实现发布功能
-    ElMessage.success('发布成功')
-  })
-}
+const handlePublish = async (row: ConfigItem) => {
+  try {
+    await ElMessageBox.confirm(`确定要发布配置 ${row.configKey} 吗？`, '提示', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    })
 
-const handleDelete = (row: any) => {
-  ElMessageBox.confirm(`确定要删除配置 ${row.configKey} 吗？`, '提示', {
-    confirmButtonText: '确定',
-    cancelButtonText: '取消',
-    type: 'warning'
-  }).then(() => {
-    // TODO: 实现删除功能
-    ElMessage.success('删除成功')
-  })
-}
-
-const handleSave = () => {
-  formRef.value?.validate((valid: boolean) => {
-    if (valid) {
-      // TODO: 实现保存功能
-      ElMessage.success(isEdit.value ? '更新成功' : '创建成功')
-      showAddDialog.value = false
-      resetForm()
+    const response = await publishConfig(row.id)
+    if (response.success) {
+      ElMessage.success('发布成功')
+      loadConfigList()
+    } else {
+      ElMessage.error(response.message || '发布失败')
     }
-  })
+  } catch (error) {
+    if (error !== 'cancel') {
+      console.error('发布配置失败:', error)
+      ElMessage.error('发布失败')
+    }
+  }
+}
+
+const handleDelete = async (row: ConfigItem) => {
+  try {
+    await ElMessageBox.confirm(`确定要删除配置 ${row.configKey} 吗？`, '警告', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    })
+
+    const response = await deleteConfig(row.id)
+    if (response.success) {
+      ElMessage.success('删除成功')
+      loadConfigList()
+    } else {
+      ElMessage.error(response.message || '删除失败')
+    }
+  } catch (error) {
+    if (error !== 'cancel') {
+      console.error('删除配置失败:', error)
+      ElMessage.error('删除失败')
+    }
+  }
+}
+
+const handleSave = async () => {
+  try {
+    const valid = await formRef.value?.validate()
+    if (valid) {
+      let response
+      if (isEdit.value && configForm.id) {
+        response = await updateConfig(configForm.id, configForm)
+      } else {
+        response = await createConfig(configForm)
+      }
+
+      if (response.success) {
+        ElMessage.success(isEdit.value ? '更新成功' : '创建成功')
+        showAddDialog.value = false
+        resetForm()
+        loadConfigList()
+      } else {
+        ElMessage.error(response.message || '保存失败')
+      }
+    }
+  } catch (error) {
+    console.error('保存配置失败:', error)
+    ElMessage.error('保存失败')
+  }
 }
 
 const resetForm = () => {
@@ -222,23 +360,27 @@ const resetForm = () => {
     groupName: '',
     configKey: '',
     configValue: '',
-    description: ''
+    dataType: 'STRING',
+    description: '',
+    encrypted: false
   })
   isEdit.value = false
+  formRef.value?.clearValidate()
 }
 
 const handleSizeChange = (val: number) => {
   pageSize.value = val
-  // TODO: 重新加载数据
+  currentPage.value = 1
+  loadConfigList()
 }
 
 const handleCurrentChange = (val: number) => {
   currentPage.value = val
-  // TODO: 重新加载数据
+  loadConfigList()
 }
 
 onMounted(() => {
-  // TODO: 加载配置列表
+  loadConfigList()
 })
 </script>
 

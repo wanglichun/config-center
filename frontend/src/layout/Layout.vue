@@ -1,57 +1,56 @@
 <template>
   <div class="layout">
-    <el-container>
-      <!-- 侧边栏 -->
-      <el-aside :width="isCollapse ? '64px' : '240px'" class="sidebar">
-        <div class="logo">
-          <el-icon size="24" color="#409EFF">
-            <Setting />
-          </el-icon>
-          <span v-show="!isCollapse" class="logo-text">配置中心</span>
-        </div>
-        
-        <el-menu
-          :default-active="activeMenu"
-          :collapse="isCollapse"
-          :unique-opened="true"
-          router
-          class="sidebar-menu"
-        >
-          <template v-for="route in menuRoutes" :key="route.path">
+    <!-- 侧边栏 -->
+    <div :class="['sidebar', { 'sidebar-collapse': isCollapse }]">
+      <div class="logo">
+        <el-icon size="24" color="#409EFF">
+          <Setting />
+        </el-icon>
+        <span v-show="!isCollapse" class="logo-text">配置中心</span>
+      </div>
+      
+      <el-menu
+        :default-active="activeMenu"
+        :collapse="isCollapse"
+        :unique-opened="true"
+        router
+        class="sidebar-menu"
+      >
+        <template v-for="route in menuRoutes" :key="route.path">
+          <el-menu-item
+            v-if="!route.children"
+            :index="route.path"
+            :class="{ 'is-active': activeMenu === route.path }"
+          >
+            <el-icon>
+              <component :is="iconMap[route.meta.icon]" />
+            </el-icon>
+            <template #title>{{ route.meta.title }}</template>
+          </el-menu-item>
+          
+          <el-sub-menu v-else :index="route.path">
+            <template #title>
+              <el-icon>
+                <component :is="iconMap[route.meta.icon]" />
+              </el-icon>
+              <span>{{ route.meta.title }}</span>
+            </template>
             <el-menu-item
-              v-if="!route.children"
-              :index="route.path"
-              :class="{ 'is-active': activeMenu === route.path }"
+              v-for="child in route.children"
+              :key="child.path"
+              :index="child.path"
             >
               <el-icon>
-                <component :is="route.meta.icon" />
+                <component :is="iconMap[child.meta.icon]" />
               </el-icon>
-              <template #title>{{ route.meta.title }}</template>
+              <template #title>{{ child.meta.title }}</template>
             </el-menu-item>
-            
-            <el-sub-menu v-else :index="route.path">
-              <template #title>
-                <el-icon>
-                  <component :is="route.meta.icon" />
-                </el-icon>
-                <span>{{ route.meta.title }}</span>
-              </template>
-              <el-menu-item
-                v-for="child in route.children"
-                :key="child.path"
-                :index="child.path"
-              >
-                <el-icon>
-                  <component :is="child.meta.icon" />
-                </el-icon>
-                <template #title>{{ child.meta.title }}</template>
-              </el-menu-item>
-            </el-sub-menu>
-          </template>
-        </el-menu>
-      </el-aside>
-      
-      <el-container>
+          </el-sub-menu>
+        </template>
+      </el-menu>
+    </div>
+
+        <el-container class="main-container" :style="{ marginLeft: isCollapse ? '64px' : '240px' }">
         <!-- 顶部导航 -->
         <el-header class="header">
           <div class="header-left">
@@ -117,7 +116,6 @@
           <router-view />
         </el-main>
       </el-container>
-    </el-container>
   </div>
 </template>
 
@@ -125,6 +123,19 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessageBox, ElMessage } from 'element-plus'
+import { 
+  Setting, 
+  Fold, 
+  Expand, 
+  Sunny, 
+  Moon, 
+  ArrowDown, 
+  User, 
+  SwitchButton,
+  Odometer,
+  Clock,
+  Monitor
+} from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
 import type { BreadcrumbItem } from '@/types/common'
 
@@ -134,6 +145,15 @@ const userStore = useUserStore()
 
 const isCollapse = ref(false)
 const isDark = ref(false)
+
+// 图标映射
+const iconMap: Record<string, any> = {
+  Dashboard: Odometer,
+  Setting,
+  Clock,
+  User,
+  Monitor
+}
 
 // 当前激活的菜单
 const activeMenu = computed(() => route.path)
@@ -219,6 +239,18 @@ watch(
   .sidebar {
     background: #001529;
     transition: width 0.3s;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    
+    &.sidebar-collapse {
+      width: 64px;
+    }
     
     .logo {
       display: flex;
@@ -226,6 +258,7 @@ watch(
       justify-content: center;
       height: 60px;
       background: rgba(255, 255, 255, 0.1);
+      flex-shrink: 0;
       
       .logo-text {
         margin-left: 12px;
@@ -238,6 +271,8 @@ watch(
     .sidebar-menu {
       border: none;
       background: transparent;
+      flex: 1;
+      overflow-y: auto;
       
       :deep(.el-menu-item) {
         color: rgba(255, 255, 255, 0.8);
@@ -262,6 +297,11 @@ watch(
         }
       }
     }
+  }
+  
+  .main-container {
+    transition: margin-left 0.3s;
+    height: 100vh;
   }
   
   .header {
@@ -318,11 +358,11 @@ watch(
 @media (max-width: 768px) {
   .layout {
     .sidebar {
-      position: fixed;
-      left: 0;
-      top: 0;
-      height: 100vh;
       z-index: 1000;
+    }
+    
+    .main-container {
+      margin-left: 0 !important;
     }
     
     .header {
