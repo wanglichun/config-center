@@ -41,7 +41,7 @@ service.interceptors.response.use(
     }
     
     // 检查业务状态码
-    if (data.code === 200) {
+    if (data.code === 0) {
       return data
     } else if (data.code === 401) {
       // 未认证，跳转到登录页

@@ -108,12 +108,28 @@ const handleLogin = async () => {
     await loginFormRef.value.validate()
     loading.value = true
     
-    await userStore.userLogin(loginForm)
+    console.log('开始登录，请求数据:', loginForm)
+    
+    const result = await userStore.userLogin(loginForm)
+    console.log('登录成功，返回数据:', result)
     
     ElMessage.success('登录成功')
-    router.push('/')
-  } catch (error) {
-    console.error('登录失败:', error)
+    
+    // 确保跳转到正确的页面
+    const redirect = router.currentRoute.value.query.redirect as string
+    await router.push(redirect || '/dashboard')
+    
+  } catch (error: any) {
+    console.error('登录失败，错误详情:', error)
+    
+    // 显示具体的错误信息
+    if (error.response?.data?.message) {
+      ElMessage.error(error.response.data.message)
+    } else if (error.message) {
+      ElMessage.error(error.message)
+    } else {
+      ElMessage.error('登录失败，请检查用户名和密码')
+    }
   } finally {
     loading.value = false
   }

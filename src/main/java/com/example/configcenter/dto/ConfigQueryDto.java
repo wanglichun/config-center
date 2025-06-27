@@ -1,5 +1,6 @@
 package com.example.configcenter.dto;
 
+import com.example.configcenter.common.PageBase;
 import lombok.Data;
 
 /**
@@ -9,23 +10,12 @@ import lombok.Data;
  * @version 1.0.0
  */
 @Data
-public class ConfigQueryDto {
-    
-    /**
-     * 页码
-     */
-    private Integer pageNum = 1;
-    
-    /**
-     * 每页大小
-     */
-    private Integer pageSize = 20;
-    
+public class ConfigQueryDto extends PageBase {
     /**
      * 应用名称
      */
     private String appName;
-    
+
     /**
      * 环境
      */
@@ -45,7 +35,7 @@ public class ConfigQueryDto {
      * 状态
      */
     private String status;
-    
+
     /**
      * 关键词搜索
      */

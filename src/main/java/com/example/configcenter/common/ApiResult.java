@@ -45,28 +45,28 @@ public class ApiResult<T> {
         this.code = code;
         this.message = message;
         this.data = data;
-        this.success = code == 200;
+        this.success = code == 0;
     }
 
     /**
      * 成功响应
      */
     public static <T> ApiResult<T> success(T data) {
-        return new ApiResult<>(200, "操作成功", data);
+        return new ApiResult<>(0, "操作成功", data);
     }
 
     /**
      * 成功响应
      */
     public static <T> ApiResult<T> success(String message, T data) {
-        return new ApiResult<>(200, message, data);
+        return new ApiResult<>(0, message, data);
     }
 
     /**
      * 成功响应（无数据）
      */
     public static <T> ApiResult<T> success() {
-        return new ApiResult<>(200, "操作成功", null);
+        return new ApiResult<>(0, "操作成功", null);
     }
 
     /**

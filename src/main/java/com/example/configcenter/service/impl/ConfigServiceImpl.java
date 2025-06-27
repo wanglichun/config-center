@@ -338,20 +338,15 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
     @Override
-    public PageResult<ConfigItem> getConfigPage(ConfigQueryDto queryDto) {
-        return null;
-    }
-
-    @Override
-    public List<ConfigItem> searchConfigs(String keyword, String appName, String environment) {
+    public List<ConfigItem> getConfigPage(ConfigQueryDto queryDto) {
         try {
-            return configItemMapper.search(keyword, appName, environment);
+            return configItemMapper.search(queryDto);
         } catch (Exception e) {
-            log.error("搜索配置失败: keyword={}, appName={}, environment={}", 
-                     keyword, appName, environment, e);
+            log.error(e.getMessage());
             return Collections.emptyList();
         }
     }
+
 
     @Override
     @Transactional

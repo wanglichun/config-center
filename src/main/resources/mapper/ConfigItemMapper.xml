@@ -78,18 +78,20 @@
         SELECT <include refid="Base_Column_List"/>
         FROM config_item
         WHERE del_flag = 0
-        <if test="keyword != null and keyword != ''">
-            AND (config_key LIKE CONCAT('%', #{keyword}, '%')
-                 OR config_value LIKE CONCAT('%', #{keyword}, '%')
-                 OR description LIKE CONCAT('%', #{keyword}, '%'))
+        <if test="configKey != null and configKey != ''">
+            AND config_key = #{configKey}
         </if>
-        <if test="appName != null and appName != ''">
-            AND app_name = #{appName}
+        <if test="groupName != null and groupName != ''">
+            AND group_name = #{groupName}
         </if>
         <if test="environment != null and environment != ''">
             AND environment = #{environment}
         </if>
-        ORDER BY app_name, environment, group_name, config_key
+        <if test="status != null and status != ''">
+            AND status = #{status}
+        </if>
+        ORDER BY update_time DESC
+        LIMIT #{pageNum}, #{pageSize}
     </select>
 
     <!-- 分页查询 -->
@@ -104,7 +106,7 @@
             AND environment = #{environment}
         </if>
         ORDER BY create_time DESC
-        LIMIT #{offset}, #{limit}
+        LIMIT #{pageNum}, #{pageSize}
     </select>
 
     <!-- 统计数量 -->

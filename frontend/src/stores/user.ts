@@ -13,18 +13,29 @@ export const useUserStore = defineStore('user', () => {
   const userLogin = async (loginForm: LoginForm) => {
     loading.value = true
     try {
+      console.log('发送登录请求:', loginForm)
       const response = await login(loginForm)
+      console.log('登录响应:', response)
+      
       if (response.success) {
         token.value = response.data.token
         userInfo.value = response.data.userInfo
         setToken(response.data.token)
         setUserInfo(response.data.userInfo)
+        console.log('登录成功，token已保存:', response.data.token)
         return Promise.resolve(response)
       } else {
+        console.error('登录失败:', response.message)
         return Promise.reject(new Error(response.message))
       }
-    } catch (error) {
-      return Promise.reject(error)
+    } catch (error: any) {
+      console.error('登录请求异常:', error)
+      // 如果是网络错误或其他异常，重新抛出
+      if (error.response) {
+        return Promise.reject(error)
+      } else {
+        return Promise.reject(new Error('网络连接失败，请检查网络'))
+      }
     } finally {
       loading.value = false
     }

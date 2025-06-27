@@ -112,17 +112,7 @@ public interface ConfigService {
      * @param queryDto 查询参数
      * @return 分页结果
      */
-    PageResult<ConfigItem> getConfigPage(ConfigQueryDto queryDto);
-
-    /**
-     * 搜索配置项
-     *
-     * @param keyword 关键词
-     * @param appName 应用名称
-     * @param environment 环境
-     * @return 配置项列表
-     */
-    List<ConfigItem> searchConfigs(String keyword, String appName, String environment);
+    List<ConfigItem> getConfigPage(ConfigQueryDto queryDto);
 
     /**
      * 导入配置

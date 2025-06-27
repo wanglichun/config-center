@@ -1,5 +1,7 @@
 package com.example.configcenter.mapper;
 
+import com.example.configcenter.common.PageResult;
+import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.entity.ConfigItem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -44,9 +46,7 @@ public interface ConfigItemMapper {
     /**
      * 搜索配置项
      */
-    List<ConfigItem> search(@Param("keyword") String keyword,
-                           @Param("appName") String appName,
-                           @Param("environment") String environment);
+    List<ConfigItem> search(ConfigQueryDto queryDto);
 
     /**
      * 分页查询配置项

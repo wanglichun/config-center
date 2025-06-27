@@ -37,8 +37,8 @@ public class ConfigController {
     @GetMapping
     public ApiResult<ConfigItem> getConfig(@Valid ConfigQueryDto queryDto) {
         ConfigItem config = configService.getConfig(
-            queryDto.getAppName(), 
-            queryDto.getEnvironment(), 
+            queryDto.getAppName(),
+            queryDto.getEnvironment(),
             queryDto.getGroupName(), 
             queryDto.getConfigKey()
         );
@@ -72,66 +72,16 @@ public class ConfigController {
      * 分页查询配置
      */
     @GetMapping("/page")
-    public ApiResult<PageResult<ConfigItem>> getConfigPage(
-            @RequestParam(defaultValue = "1") int pageNum,
-            @RequestParam(defaultValue = "20") int pageSize,
-            @RequestParam(required = false) String appName,
-            @RequestParam(required = false) String environment,
-            @RequestParam(required = false) String groupName,
-            @RequestParam(required = false) String configKey,
-            @RequestParam(required = false) String status,
-            @RequestParam(required = false) String keyword) {
+    public ApiResult<PageResult<ConfigItem>> getConfigPage(ConfigQueryDto req) {
         try {
-            // 构建查询参数
-            ConfigQueryDto queryDto = new ConfigQueryDto();
-            queryDto.setPageNum(pageNum);
-            queryDto.setPageSize(pageSize);
-            queryDto.setAppName(appName);
-            queryDto.setEnvironment(environment);
-            queryDto.setGroupName(groupName);
-            queryDto.setConfigKey(configKey);
-            queryDto.setStatus(status);
-            queryDto.setKeyword(keyword);
-            
             // 执行分页查询
-            PageResult<ConfigItem> pageResult = configService.getConfigPage(queryDto);
-            return ApiResult.success(pageResult);
+            List<ConfigItem> pageResult = configService.getConfigPage(req);
+            return ApiResult.success(new PageResult<>(pageResult, 0, req.getPageNum(), req.getPageSize()));
         } catch (Exception e) {
             log.error("分页查询配置失败", e);
             return ApiResult.error("查询失败：" + e.getMessage());
         }
     }
-
-    /**
-     * 创建配置
-     */
-//    @PostMapping
-//    @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
-//    public ApiResult<Boolean> createConfig(@Valid @RequestBody ConfigItemDto configDto,
-//                                          HttpServletRequest request) {
-//        ConfigItem configItem = convertToEntity(configDto);
-//        configItem.setCreateBy(getCurrentUser(request));
-//        configItem.setUpdateBy(getCurrentUser(request));
-//
-//        boolean result = configService.createConfig(configItem);
-//        return result ? ApiResult.success(true) : ApiResult.error("创建配置失败");
-//    }
-
-    /**
-     * 更新配置
-     */
-//    @PutMapping("/{id}")
-//    @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
-//    public ApiResult<Boolean> updateConfig(@PathVariable Long id,
-//                                          @Valid @RequestBody ConfigItemDto configDto,
-//                                          HttpServletRequest request) {
-//        ConfigItem configItem = convertToEntity(configDto);
-//        configItem.setId(id);
-//        configItem.setUpdateBy(getCurrentUser(request));
-//
-//        boolean result = configService.updateConfig(configItem);
-//        return result ? ApiResult.success(true) : ApiResult.error("更新配置失败");
-//    }
 
     /**
      * 删除配置
@@ -189,16 +139,6 @@ public class ConfigController {
         return ApiResult.success(history);
     }
 
-    /**
-     * 搜索配置
-     */
-    @GetMapping("/search")
-    public ApiResult<List<ConfigItem>> searchConfigs(@RequestParam String keyword,
-                                                     @RequestParam(required = false) String appName,
-                                                     @RequestParam(required = false) String environment) {
-        List<ConfigItem> configs = configService.searchConfigs(keyword, appName, environment);
-        return ApiResult.success(configs);
-    }
 
     /**
      * 验证配置格式
