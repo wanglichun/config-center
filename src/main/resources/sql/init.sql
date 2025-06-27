@@ -155,9 +155,9 @@ CREATE TABLE `config_group` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='配置组表';
 
 -- 插入初始数据
--- 默认管理员用户
+-- 默认管理员用户 (密码: admin123)
 INSERT INTO `sys_user` (`username`, `password`, `real_name`, `email`, `role`, `status`, `create_by`, `update_by`) 
-VALUES ('admin', '$2a$10$7JB720yubVSEi/k4sFNr.B2fHlYrm2XZpHLzPo/RbxLy5Hh8JZjiq', '系统管理员', 'admin@example.com', 'ADMIN', 'ACTIVE', 'system', 'system');
+VALUES ('admin', '$2a$10$tU.MGJUIemI7tb4crFnQjuoavxyLY4U57xXH6oIhRztIdliDuRLsq', '系统管理员', 'admin@example.com', 'ADMIN', 'ACTIVE', 'system', 'system');
 
 -- 默认环境
 INSERT INTO `environment_info` (`env_name`, `env_desc`, `env_order`, `color`, `create_by`, `update_by`) VALUES
