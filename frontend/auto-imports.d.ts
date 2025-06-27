@@ -6,7 +6,10 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+<<<<<<< HEAD
   const ElMessage: typeof import('element-plus/es')['ElMessage']
+=======
+>>>>>>> 9e15f533479da8c5d591d9b69a4010f010642a43
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
