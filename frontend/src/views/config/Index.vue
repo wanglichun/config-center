@@ -10,27 +10,24 @@
           </el-button>
         </div>
       </template>
-
+      
       <div class="search-bar">
         <el-form :model="searchForm" inline>
-          <el-form-item label="应用名称">
-            <el-input v-model="searchForm.appName" placeholder="请输入应用名称" clearable />
-          </el-form-item>
           <el-form-item label="环境">
-            <el-select v-model="searchForm.environment" placeholder="请选择环境" clearable>
+            <el-select v-model="searchForm.environment" placeholder="请选择环境" clearable style="width: 160px;">
               <el-option label="开发环境" value="dev" />
               <el-option label="测试环境" value="test" />
               <el-option label="生产环境" value="prod" />
             </el-select>
           </el-form-item>
-          <el-form-item label="配置组">
-            <el-input v-model="searchForm.groupName" placeholder="请输入配置组" clearable />
+          <el-form-item label="配置类别">
+            <el-input v-model="searchForm.groupName" placeholder="请输入配置组" clearable style="width: 180px;" />
           </el-form-item>
-          <el-form-item label="关键字">
-            <el-input v-model="searchForm.keyword" placeholder="配置键或值关键字" clearable />
+          <el-form-item label="配置名称">
+            <el-input v-model="searchForm.keyword" placeholder="配置键或值关键字" clearable style="width: 200px;" />
           </el-form-item>
           <el-form-item label="状态">
-            <el-select v-model="searchForm.status" placeholder="请选择状态" clearable>
+            <el-select v-model="searchForm.status" placeholder="请选择状态" clearable style="width: 140px;">
               <el-option label="已发布" value="PUBLISHED" />
               <el-option label="草稿" value="DRAFT" />
               <el-option label="已禁用" value="DISABLED" />
@@ -47,7 +44,6 @@
       </div>
 
       <el-table :data="configList" v-loading="loading" style="width: 100%">
-        <el-table-column prop="appName" label="应用名称" width="120" />
         <el-table-column prop="environment" label="环境" width="100">
           <template #default="scope">
             <el-tag :type="getEnvTagType(scope.row.environment)">
@@ -55,10 +51,10 @@
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="groupName" label="配置组" width="120" />
-        <el-table-column prop="configKey" label="配置键" width="150" />
-        <el-table-column prop="configValue" label="配置值" min-width="200" show-overflow-tooltip />
-        <el-table-column prop="description" label="描述" min-width="150" show-overflow-tooltip />
+        <el-table-column prop="groupName" label="配置类别" />
+        <el-table-column prop="configKey" label="配置名字" />
+        <el-table-column prop="configValue" label="配置内容" show-overflow-tooltip />
+        <el-table-column prop="description" label="描述" show-overflow-tooltip />
         <el-table-column prop="status" label="状态" width="80">
           <template #default="scope">
             <el-tag :type="getStatusTagType(scope.row.status)">
@@ -66,12 +62,12 @@
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="updateTime" label="更新时间" width="160">
+        <el-table-column prop="updateTime" label="更新时间">
           <template #default="scope">
             {{ formatTime(scope.row.updateTime) }}
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="200" fixed="right">
+        <el-table-column label="操作" width="200">
           <template #default="scope">
             <el-button size="small" @click="handleEdit(scope.row)">编辑</el-button>
             <el-button size="small" type="success" @click="handlePublish(scope.row)">发布</el-button>
@@ -94,26 +90,26 @@
     </el-card>
 
     <!-- 新增/编辑对话框 -->
-    <el-dialog v-model="showAddDialog" :title="isEdit ? '编辑配置' : '新增配置'" width="600px">
+    <el-dialog v-model="showAddDialog" :title="isEdit ? '编辑配置' : '新增配置'" width="700px">
       <el-form :model="configForm" label-width="100px" :rules="formRules" ref="formRef">
         <el-form-item label="应用名称" prop="appName">
-          <el-input v-model="configForm.appName" :disabled="isEdit" />
+          <el-input v-model="configForm.appName" :disabled="isEdit" style="width: 100%;" />
         </el-form-item>
         <el-form-item label="环境" prop="environment">
-          <el-select v-model="configForm.environment" placeholder="请选择环境" :disabled="isEdit">
+          <el-select v-model="configForm.environment" placeholder="请选择环境" :disabled="isEdit" style="width: 100%;">
             <el-option label="开发环境" value="dev" />
             <el-option label="测试环境" value="test" />
             <el-option label="生产环境" value="prod" />
           </el-select>
         </el-form-item>
         <el-form-item label="配置组" prop="groupName">
-          <el-input v-model="configForm.groupName" :disabled="isEdit" />
+          <el-input v-model="configForm.groupName" :disabled="isEdit" style="width: 100%;" />
         </el-form-item>
         <el-form-item label="配置键" prop="configKey">
-          <el-input v-model="configForm.configKey" :disabled="isEdit" />
+          <el-input v-model="configForm.configKey" :disabled="isEdit" style="width: 100%;" />
         </el-form-item>
         <el-form-item label="数据类型" prop="dataType">
-          <el-select v-model="configForm.dataType" placeholder="请选择数据类型">
+          <el-select v-model="configForm.dataType" placeholder="请选择数据类型" style="width: 100%;">
             <el-option label="字符串" value="STRING" />
             <el-option label="数字" value="NUMBER" />
             <el-option label="布尔值" value="BOOLEAN" />
@@ -126,13 +122,14 @@
             type="textarea" 
             :rows="4" 
             placeholder="请输入配置值"
+            style="width: 100%;"
           />
         </el-form-item>
         <el-form-item label="是否加密">
           <el-switch v-model="configForm.encrypted" />
         </el-form-item>
         <el-form-item label="描述">
-          <el-input v-model="configForm.description" placeholder="请输入配置描述" />
+          <el-input v-model="configForm.description" placeholder="请输入配置描述" style="width: 100%;" />
         </el-form-item>
       </el-form>
       <template #footer>
@@ -397,11 +394,80 @@ onMounted(() => {
 
 .search-bar {
   margin-bottom: 20px;
+  
+  .el-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+    
+    .el-form-item {
+      margin-bottom: 0;
+      margin-right: 0;
+      
+      :deep(.el-form-item__label) {
+        font-weight: 500;
+        color: #606266;
+      }
+    }
+  }
 }
 
 .pagination {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+}
+
+// 响应式设计
+@media (max-width: 1400px) {
+  .search-bar .el-form {
+    .el-form-item {
+      flex: 0 0 auto;
+      
+      // 环境下拉框
+      &:nth-child(1) .el-select {
+        width: 140px;
+      }
+      
+      // 配置类别输入框
+      &:nth-child(2) .el-input {
+        width: 160px;
+      }
+      
+      // 配置名称输入框
+      &:nth-child(3) .el-input {
+        width: 180px;
+      }
+      
+      // 状态下拉框
+      &:nth-child(4) .el-select {
+        width: 120px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .search-bar .el-form {
+    flex-direction: column;
+    align-items: stretch;
+    
+    .el-form-item {
+      width: 100%;
+      
+      .el-input,
+      .el-select {
+        width: 100% !important;
+      }
+    }
+    
+    // 按钮组在移动端独占一行
+    .el-form-item:last-child {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+    }
+  }
 }
 </style> 

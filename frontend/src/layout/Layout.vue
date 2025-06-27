@@ -402,8 +402,9 @@ watch(
   
   .main {
     background: #f5f7fa;
-    padding: 20px;
+    padding: 0;
     overflow-y: auto;
+    height: calc(100vh - 60px); // 减去header高度
   }
 }
 

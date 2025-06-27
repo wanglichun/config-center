@@ -14,10 +14,10 @@
       <div class="search-bar">
         <el-form :model="searchForm" inline>
           <el-form-item label="用户名">
-            <el-input v-model="searchForm.username" placeholder="请输入用户名" clearable />
+            <el-input v-model="searchForm.username" placeholder="请输入用户名" clearable style="width: 200px;" />
           </el-form-item>
           <el-form-item label="角色">
-            <el-select v-model="searchForm.role" placeholder="请选择角色" clearable>
+            <el-select v-model="searchForm.role" placeholder="请选择角色" clearable style="width: 160px;">
               <el-option label="管理员" value="ADMIN" />
               <el-option label="开发者" value="DEVELOPER" />
               <el-option label="查看者" value="VIEWER" />
@@ -68,19 +68,19 @@
     </el-card>
 
     <!-- 新增/编辑对话框 -->
-    <el-dialog v-model="showAddDialog" :title="isEdit ? '编辑用户' : '新增用户'" width="500px">
+    <el-dialog v-model="showAddDialog" :title="isEdit ? '编辑用户' : '新增用户'" width="550px">
       <el-form :model="userForm" label-width="80px" :rules="formRules" ref="formRef">
         <el-form-item label="用户名" prop="username">
-          <el-input v-model="userForm.username" :disabled="isEdit" />
+          <el-input v-model="userForm.username" :disabled="isEdit" style="width: 100%;" />
         </el-form-item>
         <el-form-item label="邮箱" prop="email">
-          <el-input v-model="userForm.email" />
+          <el-input v-model="userForm.email" style="width: 100%;" />
         </el-form-item>
         <el-form-item v-if="!isEdit" label="密码" prop="password">
-          <el-input v-model="userForm.password" type="password" />
+          <el-input v-model="userForm.password" type="password" style="width: 100%;" />
         </el-form-item>
         <el-form-item label="角色" prop="role">
-          <el-select v-model="userForm.role" placeholder="请选择角色">
+          <el-select v-model="userForm.role" placeholder="请选择角色" style="width: 100%;">
             <el-option label="管理员" value="ADMIN" />
             <el-option label="开发者" value="DEVELOPER" />
             <el-option label="查看者" value="VIEWER" />
@@ -223,5 +223,46 @@ onMounted(() => {
 
 .search-bar {
   margin-bottom: 20px;
+  
+  .el-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+    
+    .el-form-item {
+      margin-bottom: 0;
+      margin-right: 0;
+      
+      :deep(.el-form-item__label) {
+        font-weight: 500;
+        color: #606266;
+      }
+    }
+  }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .search-bar .el-form {
+    flex-direction: column;
+    align-items: stretch;
+    
+    .el-form-item {
+      width: 100%;
+      
+      .el-input,
+      .el-select {
+        width: 100% !important;
+      }
+    }
+    
+    // 按钮组在移动端独占一行
+    .el-form-item:last-child {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+    }
+  }
 }
 </style> 

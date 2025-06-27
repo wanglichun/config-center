@@ -3478,3 +3478,1216 @@ java.net.ConnectException: Connection refused
 2025-06-27 15:42:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
 2025-06-27 15:42:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
 2025-06-27 15:42:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:42:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:42:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:42:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:42:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:42:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:42:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:42:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:42:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:42:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:42:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:42:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:42:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:42:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:42:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:42:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:42:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:42:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:42:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:42:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:42:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:43:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:43:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:43:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:43:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:43:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:43:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:43:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:43:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:43:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:43:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:43:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:43:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:43:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:43:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:43:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:43:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:43:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:43:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:43:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:43:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:43:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:43:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:43:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:43:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:43:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:43:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:43:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:43:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:43:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:43:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:43:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:43:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:43:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:43:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:43:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:43:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:43:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:43:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:43:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:43:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:44:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:44:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:44:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:44:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:44:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:44:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:44:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:44:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:44:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:44:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:44:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:44:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:44:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:44:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:44:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:44:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:44:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:44:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:44:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:44:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:44:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:44:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:44:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:44:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:44:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:44:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:44:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:44:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:44:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:44:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:44:53 [http-nio-9090-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/config-center] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-27 15:44:53 [http-nio-9090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-27 15:44:53 [http-nio-9090-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-06-27 15:44:53 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:44:53 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:44:53 [http-nio-9090-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:44:53 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:44:53 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:44:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:44:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:44:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:44:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:44:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:44:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:44:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:44:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:44:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:44:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:45:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:45:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:45:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:45:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:45:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:45:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:45:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:45:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:45:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:45:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:45:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:45:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:45:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:45:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:45:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:45:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:45:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:45:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:45:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:45:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:45:35 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:45:35 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:45:35 [http-nio-9090-exec-2] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:45:35 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:45:35 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:45:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:45:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:45:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:45:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:45:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:45:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:45:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:45:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:45:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:45:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:45:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:45:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:45:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:45:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:45:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:45:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:45:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:45:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:45:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:45:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:46:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:46:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:46:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:46:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:46:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:46:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:46:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:46:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:46:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:46:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:46:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:46:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:46:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:46:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:46:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:46:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:46:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:46:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:46:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:46:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:46:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:46:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:46:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:46:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:46:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:46:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:46:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:46:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:46:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:46:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:46:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:46:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:46:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:46:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:46:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:46:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:46:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:46:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:46:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:46:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:46:57 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:46:57 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:46:57 [http-nio-9090-exec-3] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:46:57 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:46:57 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:47:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:47:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:47:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:47:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:47:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:47:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:47:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:47:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:47:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:47:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:47:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:47:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:47:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:47:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:47:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:47:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:47:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:47:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:47:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:47:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:47:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:47:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:47:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:47:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:47:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:47:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:47:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:47:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:47:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:47:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:47:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:47:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:47:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:47:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:47:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:47:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:47:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:47:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:47:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:47:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:48:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:48:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:48:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:48:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:48:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:48:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:48:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:48:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:48:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:48:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:48:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:48:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:48:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:48:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:48:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:48:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:48:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:48:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:48:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:48:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:48:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:48:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:48:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:48:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:48:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:48:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:48:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:48:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:48:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:48:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:48:52 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:48:52 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:48:52 [http-nio-9090-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:48:52 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:48:52 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:48:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:48:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:48:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:48:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:48:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:48:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:48:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:48:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:48:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:48:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:49:03 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:49:03 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:49:03 [http-nio-9090-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:49:03 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:49:03 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:49:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:49:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:49:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:49:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:49:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:49:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:49:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:49:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:49:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:49:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:49:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:49:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:49:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:49:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:49:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:49:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:49:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:49:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:49:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:49:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:49:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:49:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:49:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:49:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:49:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:49:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:49:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:49:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:49:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:49:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:49:52 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:49:52 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:49:52 [http-nio-9090-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:49:52 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:49:52 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:49:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:49:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:49:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:49:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:49:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:49:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:49:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:49:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:49:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:49:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:50:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:50:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:50:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:50:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:50:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:50:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:50:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:50:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:50:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:50:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:50:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:50:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:50:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:50:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:50:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:50:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:50:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:50:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:50:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:50:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:50:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:50:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:50:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:50:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:50:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:50:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:50:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:50:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:50:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:50:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:50:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:50:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:50:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:50:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:50:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:50:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:50:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:50:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:50:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:50:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:51:08 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:51:08 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:51:09 [http-nio-9090-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:51:09 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:51:09 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:51:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:51:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:51:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:51:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:51:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:51:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:51:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:51:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:51:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:51:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:51:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:51:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:51:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:51:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:51:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:51:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:51:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:51:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:51:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:51:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:51:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:51:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:51:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:51:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:51:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:51:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:51:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:51:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:51:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:51:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:51:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:51:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:51:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:51:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:51:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:51:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:51:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:51:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:51:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:51:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:52:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:52:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:52:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:52:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:52:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:52:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:52:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:52:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:52:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:52:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:52:22 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:52:22 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:52:22 [http-nio-9090-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:52:22 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:52:22 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:52:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:52:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:52:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:52:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:52:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:52:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:52:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:52:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:52:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:52:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:52:35 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:52:35 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:52:35 [http-nio-9090-exec-9] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:52:35 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:52:35 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:52:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:52:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:52:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:52:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:52:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:52:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:52:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:52:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:52:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:52:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:52:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:52:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:52:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:52:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:52:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:52:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:52:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:52:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:52:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:52:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:53:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:53:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:53:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:53:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:53:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:53:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:53:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:53:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:53:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:53:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:53:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:53:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:53:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:53:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:53:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:53:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:53:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:53:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:53:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:53:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:53:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:53:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:53:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:53:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:53:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:53:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:53:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:53:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:53:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:53:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:53:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:53:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:53:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:53:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:53:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:53:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:53:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:53:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:53:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:53:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:54:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:54:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:54:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:54:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:54:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:54:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:54:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:54:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:54:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:54:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:54:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:54:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:54:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:54:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:54:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:54:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:54:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:54:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:54:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:54:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:54:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:54:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:54:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:54:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:54:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:54:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:54:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:54:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:54:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:54:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:54:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:54:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:54:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:54:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:54:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:54:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:54:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:54:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:54:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:54:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:55:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:55:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:55:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:55:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:55:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:55:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:55:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:55:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:55:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:55:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:55:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:55:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:55:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:55:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:55:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:55:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:55:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:55:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:55:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:55:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:55:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:55:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:55:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:55:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:55:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:55:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:55:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:55:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:55:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:55:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:55:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:55:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:55:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:55:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:55:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:55:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:55:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:55:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:55:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:55:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:56:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:56:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:56:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:56:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:56:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:56:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:56:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:56:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:56:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:56:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:56:23 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:56:23 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:56:23 [http-nio-9090-exec-10] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:56:23 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:56:23 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:56:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:56:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:56:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:56:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:56:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:56:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:56:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:56:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:56:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:56:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:56:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:56:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:56:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:56:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:56:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:56:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:56:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:56:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:56:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:56:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:56:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:56:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:56:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:56:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:56:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:56:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:56:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:56:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:56:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:56:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:57:07 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:57:07 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:57:07 [http-nio-9090-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:57:07 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:57:07 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:57:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:57:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:57:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:57:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:57:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:57:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:57:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:57:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:57:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:57:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:57:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:57:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:57:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:57:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:57:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:57:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:57:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:57:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:57:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:57:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:57:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:57:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:57:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:57:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:57:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:57:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:57:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:57:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:57:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:57:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:57:48 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:57:48 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:57:48 [http-nio-9090-exec-2] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:57:48 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:57:48 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:57:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:57:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:57:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:57:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:57:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:57:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:57:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:57:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:57:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:57:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:58:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:58:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:58:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:58:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:58:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:58:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:58:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:58:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:58:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:58:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:58:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:58:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:58:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:58:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:58:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:58:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:58:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:58:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:58:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:58:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:58:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:58:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:58:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:58:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:58:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:58:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:58:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:58:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:58:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:58:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:58:42 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:58:42 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:58:42 [http-nio-9090-exec-3] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:58:42 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:58:42 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:58:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:58:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:58:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:58:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:58:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:58:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:58:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:58:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:58:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:58:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:59:06 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:59:06 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:59:06 [http-nio-9090-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:59:06 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:59:06 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:59:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:59:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:59:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:59:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:59:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:59:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:59:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:59:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:59:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:59:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:59:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:59:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:59:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:59:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:59:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:59:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:59:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:59:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:59:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:59:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:59:29 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:59:29 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:59:29 [http-nio-9090-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:59:29 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:59:29 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:59:32 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:59:32 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 15:59:33 [http-nio-9090-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 15:59:33 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 15:59:33 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 15:59:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:59:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:59:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:59:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:59:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:59:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:59:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:59:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:59:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:59:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 15:59:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 15:59:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 15:59:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 15:59:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 15:59:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 15:59:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 15:59:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 15:59:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 15:59:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 15:59:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:00:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:00:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:00:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:00:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:00:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:00:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:00:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:00:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:00:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:00:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:00:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:00:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:00:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:00:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:00:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:00:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:00:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:00:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:00:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:00:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:00:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:00:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:00:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:00:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:00:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:00:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:00:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:00:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:00:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:00:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:00:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:00:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:00:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:00:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:00:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:00:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:00:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:00:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:00:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:00:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:01:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:01:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:01:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:01:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:01:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:01:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:01:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:01:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:01:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:01:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:01:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:01:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:01:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:01:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:01:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:01:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:01:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:01:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:01:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:01:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:01:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:01:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:01:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:01:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:01:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:01:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:01:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:01:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:01:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:01:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:01:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:01:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:01:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:01:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:01:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:01:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:01:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:01:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:01:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:01:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:02:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:02:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:02:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:02:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:02:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:02:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:02:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:02:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:02:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:02:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:02:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:02:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:02:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:02:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:02:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:02:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:02:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:02:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:02:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:02:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:02:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:02:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:02:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:02:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:02:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:02:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:02:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:02:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:02:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:02:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:02:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:02:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:02:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:02:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:02:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:02:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:02:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:02:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:02:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:02:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:03:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:03:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:03:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:03:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:03:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:03:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:03:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:03:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:03:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:03:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:03:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:03:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:03:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:03:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:03:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:03:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:03:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:03:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:03:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:03:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:03:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:03:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:03:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:03:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:03:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:03:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:03:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:03:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:03:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:03:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:03:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:03:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:03:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:03:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:03:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:03:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:03:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:03:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:03:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:03:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:04:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:04:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:04:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:04:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:04:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:04:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:04:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:04:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:04:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:04:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:04:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:04:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:04:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:04:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:04:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:04:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:04:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:04:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:04:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:04:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:04:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:04:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:04:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:04:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:04:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:04:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:04:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:04:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:04:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:04:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:04:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:04:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:04:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:04:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:04:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:04:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:04:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:04:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:04:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:04:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:05:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:05:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:05:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:05:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:05:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:05:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:05:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:05:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:05:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:05:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:05:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:05:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:05:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:05:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:05:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:05:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:05:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:05:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:05:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:05:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:05:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:05:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:05:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:05:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:05:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:05:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:05:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:05:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:05:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:05:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:05:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:05:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:05:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:05:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:05:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:05:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:05:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:05:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:05:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:05:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:06:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:06:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:06:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:06:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:06:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:06:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:06:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:06:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:06:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:06:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:06:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:06:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:06:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:06:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:06:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:06:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:06:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:06:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:06:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:06:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:06:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:06:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:06:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:06:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:06:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:06:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:06:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:06:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:06:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:06:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:06:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:06:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:06:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:06:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:06:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:06:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:06:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:06:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:06:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:06:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:07:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:07:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:07:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:07:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:07:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:07:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:07:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:07:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:07:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:07:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:07:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:07:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:07:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:07:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:07:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:07:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:07:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:07:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:07:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:07:26 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:07:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:07:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:07:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:07:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:07:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:07:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:07:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:07:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:07:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:07:41 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:07:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:07:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:07:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:07:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:07:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:07:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:07:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:07:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:07:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:07:56 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:08:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:08:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:08:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:08:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:08:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:08:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:08:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:08:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:08:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:08:11 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:08:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:08:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:08:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:08:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:08:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:08:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:08:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:08:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:08:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:08:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:08:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:08:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:08:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:08:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:08:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:08:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:08:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:08:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:08:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:08:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:08:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:08:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:08:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:08:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:08:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:08:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:08:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:08:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:08:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:08:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:09:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:09:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:09:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:09:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:09:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:09:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:09:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:09:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:09:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:09:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:09:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:09:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:09:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:09:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:09:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:09:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:09:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:09:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:09:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:09:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:09:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:09:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:09:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:09:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:09:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:09:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:09:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:09:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:09:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:09:42 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:09:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:09:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:09:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:09:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:09:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:09:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:09:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:09:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:09:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:09:57 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:10:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:10:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:10:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:10:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:10:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:10:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:10:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:10:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:10:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:10:12 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:10:18 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 16:10:18 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 16:10:18 [http-nio-9090-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 16:10:18 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 16:10:18 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-06-27 16:10:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 当前配置快照 (共8项):
+2025-06-27 16:10:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.enabled = true
+2025-06-27 16:10:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   cache.timeout = 300
+2025-06-27 16:10:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.password = 123456
+2025-06-27 16:10:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.url = jdbc:mysql://localhost:3306/demo
+2025-06-27 16:10:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   database.username = root
+2025-06-27 16:10:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   dev = 10.53.41.63
+2025-06-27 16:10:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   logging.level = INFO
+2025-06-27 16:10:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo -   server.port = 8080
+2025-06-27 16:10:27 [ForkJoinPool.commonPool-worker-1] INFO  com.example.configcenter.demo.ConfigSubscriberDemo - 📋 配置快照结束
+2025-06-27 16:10:27 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 16:10:27 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-06-27 16:10:27 [http-nio-9090-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=] with attributes [authenticated]
+2025-06-27 16:10:27 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&appName=&environment=&groupName=&keyword=&status=
+2025-06-27 16:10:27 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request

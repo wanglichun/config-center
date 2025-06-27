@@ -8,10 +8,10 @@
       <div class="search-bar">
         <el-form :model="searchForm" inline>
           <el-form-item label="应用名称">
-            <el-input v-model="searchForm.appName" placeholder="请输入应用名称" clearable />
+            <el-input v-model="searchForm.appName" placeholder="请输入应用名称" clearable style="width: 200px;" />
           </el-form-item>
           <el-form-item label="操作类型">
-            <el-select v-model="searchForm.operation" placeholder="请选择操作类型" clearable>
+            <el-select v-model="searchForm.operation" placeholder="请选择操作类型" clearable style="width: 160px;">
               <el-option label="新增" value="CREATE" />
               <el-option label="更新" value="UPDATE" />
               <el-option label="删除" value="DELETE" />
@@ -149,6 +149,23 @@ onMounted(() => {
 
 .search-bar {
   margin-bottom: 20px;
+  
+  .el-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+    
+    .el-form-item {
+      margin-bottom: 0;
+      margin-right: 0;
+      
+      :deep(.el-form-item__label) {
+        font-weight: 500;
+        color: #606266;
+      }
+    }
+  }
 }
 
 .pagination {
@@ -165,5 +182,29 @@ pre {
   border-radius: 4px;
   max-height: 300px;
   overflow-y: auto;
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .search-bar .el-form {
+    flex-direction: column;
+    align-items: stretch;
+    
+    .el-form-item {
+      width: 100%;
+      
+      .el-input,
+      .el-select {
+        width: 100% !important;
+      }
+    }
+    
+    // 按钮组在移动端独占一行
+    .el-form-item:last-child {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+    }
+  }
 }
 </style> 
