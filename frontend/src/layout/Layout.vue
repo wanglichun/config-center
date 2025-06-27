@@ -6,7 +6,7 @@
         <el-icon size="24" color="#409EFF">
           <Setting />
         </el-icon>
-        <span v-show="!isCollapse" class="logo-text">配置中心</span>
+        <span v-show="!isCollapse" class="logo-text">{{ t('app.title') }}</span>
       </div>
       
       <el-menu
@@ -25,7 +25,7 @@
             <el-icon>
               <component :is="iconMap[route.meta.icon]" />
             </el-icon>
-            <template #title>{{ route.meta.title }}</template>
+            <template #title>{{ getMenuTitle(route.meta.title) }}</template>
           </el-menu-item>
           
           <el-sub-menu v-else :index="route.path">
@@ -33,7 +33,7 @@
               <el-icon>
                 <component :is="iconMap[route.meta.icon]" />
               </el-icon>
-              <span>{{ route.meta.title }}</span>
+              <span>{{ getMenuTitle(route.meta.title) }}</span>
             </template>
             <el-menu-item
               v-for="child in route.children"
@@ -43,7 +43,7 @@
               <el-icon>
                 <component :is="iconMap[child.meta.icon]" />
               </el-icon>
-              <template #title>{{ child.meta.title }}</template>
+              <template #title>{{ getMenuTitle(child.meta.title) }}</template>
             </el-menu-item>
           </el-sub-menu>
         </template>
@@ -83,6 +83,23 @@
               </el-icon>
             </el-button>
             
+            <el-dropdown @command="handleLanguageChange">
+              <el-button text>
+                <span>{{ currentLocale === 'zh-CN' ? '中文' : 'English' }}</span>
+                <el-icon><ArrowDown /></el-icon>
+              </el-button>
+              <template #dropdown>
+                <el-dropdown-menu>
+                  <el-dropdown-item command="zh-CN" :class="{ 'is-active': currentLocale === 'zh-CN' }">
+                    中文
+                  </el-dropdown-item>
+                  <el-dropdown-item command="en-US" :class="{ 'is-active': currentLocale === 'en-US' }">
+                    English
+                  </el-dropdown-item>
+                </el-dropdown-menu>
+              </template>
+            </el-dropdown>
+            
             <el-dropdown @command="handleCommand">
               <div class="user-info">
                 <el-avatar :size="32" :src="userStore.userInfo?.avatar">
@@ -95,15 +112,15 @@
                 <el-dropdown-menu>
                   <el-dropdown-item command="profile">
                     <el-icon><User /></el-icon>
-                    个人中心
+                    {{ t('nav.profile') }}
                   </el-dropdown-item>
                   <el-dropdown-item command="settings">
                     <el-icon><Setting /></el-icon>
-                    系统设置
+                    {{ t('nav.settings') }}
                   </el-dropdown-item>
                   <el-dropdown-item divided command="logout">
                     <el-icon><SwitchButton /></el-icon>
-                    退出登录
+                    {{ t('nav.logout') }}
                   </el-dropdown-item>
                 </el-dropdown-menu>
               </template>
@@ -138,13 +155,17 @@ import {
 } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
 import type { BreadcrumbItem } from '@/types/common'
+import { useI18n } from 'vue-i18n'
+import { setLocale, getLocale } from '@/i18n'
 
 const route = useRoute()
 const router = useRouter()
 const userStore = useUserStore()
+const { t } = useI18n()
 
 const isCollapse = ref(false)
 const isDark = ref(false)
+const currentLocale = ref(getLocale())
 
 // 图标映射
 const iconMap: Record<string, any> = {
@@ -196,6 +217,26 @@ const toggleTheme = () => {
   document.documentElement.classList.toggle('dark', isDark.value)
 }
 
+// 处理语言切换
+const handleLanguageChange = (locale: string) => {
+  setLocale(locale)
+  currentLocale.value = locale
+  ElMessage.success(t('common.loading'))
+}
+
+// 获取菜单标题
+const getMenuTitle = (title: string) => {
+  const titleMap: Record<string, string> = {
+    '仪表盘': 'nav.dashboard',
+    '配置管理': 'nav.config',
+    '变更历史': 'nav.history',
+    '用户管理': 'nav.users',
+    '系统监控': 'nav.monitor',
+    '个人中心': 'nav.profile'
+  }
+  return titleMap[title] ? t(titleMap[title]) : title
+}
+
 // 处理用户菜单命令
 const handleCommand = async (command: string) => {
   switch (command) {
@@ -203,19 +244,19 @@ const handleCommand = async (command: string) => {
       router.push('/profile')
       break
     case 'settings':
-      ElMessage.info('功能开发中...')
+      ElMessage.info(t('common.loading'))
       break
     case 'logout':
       try {
-        await ElMessageBox.confirm('确定要退出登录吗？', '提示', {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
+        await ElMessageBox.confirm(t('login.messages.logoutConfirm'), t('common.confirm'), {
+          confirmButtonText: t('common.confirm'),
+          cancelButtonText: t('common.cancel'),
           type: 'warning'
         })
         
         userStore.logout()
         router.push('/login')
-        ElMessage.success('已退出登录')
+        ElMessage.success(t('login.messages.logoutSuccess'))
       } catch (error) {
         // 用户取消
       }
@@ -345,6 +386,17 @@ watch(
           color: #333;
         }
       }
+      
+      .el-dropdown {
+        .el-button {
+          border: none;
+          padding: 8px 12px;
+          
+          &:hover {
+            background: #f5f7fa;
+          }
+        }
+      }
     }
   }
   
@@ -352,6 +404,17 @@ watch(
     background: #f5f7fa;
     padding: 20px;
     overflow-y: auto;
+  }
+}
+
+// 语言选择器样式
+:deep(.el-dropdown-menu__item.is-active) {
+  background: #409EFF;
+  color: white;
+  
+  &:hover {
+    background: #409EFF;
+    color: white;
   }
 }
 

@@ -339,7 +339,6 @@ public class ConfigServiceImpl implements ConfigService {
 
     @Override
     public PageResult<ConfigItem> getConfigPage(ConfigQueryDto queryDto) {
-        configItemMapper.search()
         return null;
     }
 

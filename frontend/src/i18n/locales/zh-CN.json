@@ -1,0 +1,149 @@
+{
+  "app": {
+    "title": "配置中心",
+    "description": "分布式配置管理系统"
+  },
+  "nav": {
+    "dashboard": "仪表盘",
+    "config": "配置管理",
+    "history": "变更历史",
+    "users": "用户管理",
+    "monitor": "系统监控",
+    "profile": "个人中心",
+    "settings": "系统设置",
+    "logout": "退出登录"
+  },
+  "common": {
+    "search": "搜索",
+    "reset": "重置",
+    "add": "新增",
+    "edit": "编辑",
+    "delete": "删除",
+    "save": "保存",
+    "cancel": "取消",
+    "confirm": "确定",
+    "back": "返回",
+    "loading": "加载中...",
+    "submit": "提交",
+    "refresh": "刷新",
+    "export": "导出",
+    "import": "导入",
+    "preview": "预览",
+    "publish": "发布",
+    "rollback": "回滚",
+    "copy": "复制",
+    "download": "下载",
+    "upload": "上传",
+    "close": "关闭"
+  },
+  "config": {
+    "title": "配置管理",
+    "add": "新增配置",
+    "edit": "编辑配置",
+    "appName": "应用名称",
+    "environment": "环境",
+    "groupName": "配置组",
+    "configKey": "配置键",
+    "configValue": "配置值",
+    "dataType": "数据类型",
+    "description": "描述",
+    "status": "状态",
+    "updateTime": "更新时间",
+    "operation": "操作",
+    "keyword": "关键字",
+    "encrypted": "是否加密",
+    "environments": {
+      "dev": "开发环境",
+      "test": "测试环境",
+      "prod": "生产环境"
+    },
+    "dataTypes": {
+      "STRING": "字符串",
+      "NUMBER": "数字",
+      "BOOLEAN": "布尔值",
+      "JSON": "JSON"
+    },
+    "statuses": {
+      "PUBLISHED": "已发布",
+      "DRAFT": "草稿",
+      "DISABLED": "已禁用"
+    },
+    "placeholders": {
+      "appName": "请输入应用名称",
+      "environment": "请选择环境",
+      "groupName": "请输入配置组",
+      "configKey": "请输入配置键",
+      "configValue": "请输入配置值",
+      "keyword": "配置键或值关键字",
+      "description": "请输入配置描述"
+    },
+    "messages": {
+      "publishConfirm": "确定要发布配置 {key} 吗？",
+      "deleteConfirm": "确定要删除配置 {key} 吗？",
+      "publishSuccess": "发布成功",
+      "deleteSuccess": "删除成功",
+      "createSuccess": "创建成功",
+      "updateSuccess": "更新成功",
+      "saveFailed": "保存失败",
+      "publishFailed": "发布失败",
+      "deleteFailed": "删除失败"
+    }
+  },
+  "user": {
+    "title": "用户管理",
+    "add": "新增用户",
+    "username": "用户名",
+    "email": "邮箱",
+    "role": "角色",
+    "status": "状态",
+    "createTime": "创建时间",
+    "operation": "操作"
+  },
+  "dashboard": {
+    "title": "仪表盘",
+    "overview": "系统概览",
+    "totalConfigs": "配置总数",
+    "totalApps": "应用总数",
+    "totalEnvironments": "环境总数",
+    "recentChanges": "近期变更"
+  },
+  "history": {
+    "title": "变更历史",
+    "operator": "操作者",
+    "operationType": "操作类型",
+    "operateTime": "操作时间",
+    "changeReason": "变更原因"
+  },
+  "monitor": {
+    "title": "系统监控",
+    "systemStatus": "系统状态",
+    "cpuUsage": "CPU使用率",
+    "memoryUsage": "内存使用率",
+    "diskUsage": "磁盘使用率",
+    "networkTraffic": "网络流量"
+  },
+  "login": {
+    "title": "登录",
+    "username": "用户名",
+    "password": "密码",
+    "rememberMe": "记住我",
+    "login": "登录",
+    "forgotPassword": "忘记密码？",
+    "placeholders": {
+      "username": "请输入用户名",
+      "password": "请输入密码"
+    },
+    "messages": {
+      "loginSuccess": "登录成功",
+      "loginFailed": "登录失败",
+      "logoutSuccess": "已退出登录",
+      "logoutConfirm": "确定要退出登录吗？"
+    }
+  },
+  "validation": {
+    "required": "此项为必填项",
+    "email": "请输入有效的邮箱地址",
+    "minLength": "长度不能少于 {min} 个字符",
+    "maxLength": "长度不能超过 {max} 个字符"
+  }
+} 

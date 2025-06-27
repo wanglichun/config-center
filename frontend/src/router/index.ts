@@ -115,8 +115,19 @@ router.beforeEach(async (to, from, next) => {
   
   const userStore = useUserStore()
   
-  // 设置页面标题
-  document.title = to.meta.title ? `${to.meta.title} - 配置中心` : '配置中心'
+  // 设置页面标题 - 支持国际化
+  const baseTitle = '配置中心'
+  if (to.meta.title) {
+    document.title = `${to.meta.title} - ${baseTitle}`
+    // 设置favicon（如果需要动态改变的话）
+    const link: HTMLLinkElement = document.querySelector("link[rel*='icon']") || document.createElement('link')
+    link.type = 'image/svg+xml'
+    link.rel = 'icon'
+    link.href = '/favicon.svg'
+    document.getElementsByTagName('head')[0].appendChild(link)
+  } else {
+    document.title = baseTitle
+  }
   
   // 不需要认证的页面
   if (to.meta.noAuth) {

@@ -1,0 +1,40 @@
+{
+  "name": "配置中心管理平台",
+  "short_name": "配置中心",
+  "description": "企业级分布式配置管理中心",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#409EFF",
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity"],
+  "lang": "zh-CN",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "320x568",
+      "type": "image/svg+xml",
+      "platform": "narrow"
+    }
+  ]
+} 
