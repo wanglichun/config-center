@@ -1,17 +1,9 @@
 <template>
-<<<<<<< HEAD
-  <div class="history-container">
-=======
   <div class="history-page">
->>>>>>> 9e15f533479da8c5d591d9b69a4010f010642a43
     <el-card>
       <template #header>
         <span>变更历史</span>
       </template>
-<<<<<<< HEAD
-      <div>变更历史页面 - 开发中...</div>
-    </el-card>
-=======
       
       <div class="search-bar">
         <el-form :model="searchForm" inline>
@@ -83,20 +75,10 @@
         </el-descriptions-item>
       </el-descriptions>
     </el-dialog>
->>>>>>> 9e15f533479da8c5d591d9b69a4010f010642a43
   </div>
 </template>
 
 <script setup lang="ts">
-<<<<<<< HEAD
-// 变更历史页面
-</script>
-
-<style scoped lang="scss">
-.history-container {
-  padding: 20px;
-}
-=======
 import { ref, reactive, onMounted } from 'vue'
 import { Search } from '@element-plus/icons-vue'
 
@@ -184,5 +166,4 @@ pre {
   max-height: 300px;
   overflow-y: auto;
 }
->>>>>>> 9e15f533479da8c5d591d9b69a4010f010642a43
 </style> 

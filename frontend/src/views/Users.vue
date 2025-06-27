@@ -1,13 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div class="users-container">
-    <el-card>
-      <template #header>
-        <span>用户管理</span>
-      </template>
-      <div>用户管理页面 - 开发中...</div>
-    </el-card>
-=======
   <div class="users-page">
     <el-card>
       <template #header>
@@ -101,20 +92,10 @@
         <el-button type="primary" @click="handleSave">保存</el-button>
       </template>
     </el-dialog>
->>>>>>> 9e15f533479da8c5d591d9b69a4010f010642a43
   </div>
 </template>
 
 <script setup lang="ts">
-<<<<<<< HEAD
-// 用户管理页面
-</script>
-
-<style scoped lang="scss">
-.users-container {
-  padding: 20px;
-}
-=======
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus, Search } from '@element-plus/icons-vue'
@@ -204,10 +185,10 @@ const handleDelete = (row: any) => {
 }
 
 const handleSave = () => {
-  formRef.value.validate((valid: boolean) => {
+  formRef.value?.validate((valid: boolean) => {
     if (valid) {
       // TODO: 实现保存功能
-      ElMessage.success('保存成功')
+      ElMessage.success(isEdit.value ? '更新成功' : '创建成功')
       showAddDialog.value = false
       resetForm()
     }
@@ -215,10 +196,12 @@ const handleSave = () => {
 }
 
 const resetForm = () => {
-  userForm.username = ''
-  userForm.email = ''
-  userForm.password = ''
-  userForm.role = ''
+  Object.assign(userForm, {
+    username: '',
+    email: '',
+    password: '',
+    role: ''
+  })
   isEdit.value = false
 }
 
@@ -241,5 +224,4 @@ onMounted(() => {
 .search-bar {
   margin-bottom: 20px;
 }
->>>>>>> 9e15f533479da8c5d591d9b69a4010f010642a43
 </style> 

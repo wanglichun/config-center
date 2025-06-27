@@ -1,13 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div class="monitor-container">
-    <el-card>
-      <template #header>
-        <span>系统监控</span>
-      </template>
-      <div>系统监控页面 - 开发中...</div>
-    </el-card>
-=======
   <div class="monitor-page">
     <!-- 系统概览 -->
     <el-row :gutter="20" class="overview">
@@ -136,20 +127,10 @@
         </el-card>
       </el-col>
     </el-row>
->>>>>>> 9e15f533479da8c5d591d9b69a4010f010642a43
   </div>
 </template>
 
 <script setup lang="ts">
-<<<<<<< HEAD
-// 系统监控页面
-</script>
-
-<style scoped lang="scss">
-.monitor-container {
-  padding: 20px;
-}
-=======
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import { Cpu, Monitor, Setting, User, Refresh } from '@element-plus/icons-vue'
 import * as echarts from 'echarts'
@@ -417,5 +398,4 @@ onUnmounted(() => {
 .log-message {
   flex: 1;
 }
->>>>>>> 9e15f533479da8c5d591d9b69a4010f010642a43
-</style> 
+</style>

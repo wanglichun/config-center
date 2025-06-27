@@ -1,13 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div class="profile-container">
-    <el-card>
-      <template #header>
-        <span>个人中心</span>
-      </template>
-      <div>个人中心页面 - 开发中...</div>
-    </el-card>
-=======
   <div class="profile-page">
     <el-row :gutter="20">
       <el-col :span="8">
@@ -127,20 +118,10 @@
         </el-tabs>
       </el-col>
     </el-row>
->>>>>>> 9e15f533479da8c5d591d9b69a4010f010642a43
   </div>
 </template>
 
 <script setup lang="ts">
-<<<<<<< HEAD
-// 个人中心页面
-</script>
-
-<style scoped lang="scss">
-.profile-container {
-  padding: 20px;
-}
-=======
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
 import { User } from '@element-plus/icons-vue'
@@ -200,33 +181,13 @@ const passwordRules = {
 }
 
 const operationLogs = ref([
-  {
-    operation: '登录系统',
-    target: '配置中心',
-    result: 'SUCCESS',
-    ip: '192.168.1.100',
-    createTime: '2024-01-20 09:30:00'
-  },
-  {
-    operation: '更新配置',
-    target: 'user.service.timeout',
-    result: 'SUCCESS',
-    ip: '192.168.1.100',
-    createTime: '2024-01-20 09:25:00'
-  },
-  {
-    operation: '新增用户',
-    target: 'testuser',
-    result: 'SUCCESS',
-    ip: '192.168.1.100',
-    createTime: '2024-01-20 09:20:00'
-  }
+  { operation: '登录', target: '系统', result: 'SUCCESS', ip: '192.168.1.100', createTime: '2024-01-20 09:30:00' },
+  { operation: '修改配置', target: 'user.timeout', result: 'SUCCESS', ip: '192.168.1.100', createTime: '2024-01-20 09:25:00' }
 ])
 
 const logCurrentPage = ref(1)
 const logPageSize = ref(10)
-const logTotal = ref(50)
-
+const logTotal = ref(2)
 const formRef = ref()
 const passwordFormRef = ref()
 
@@ -249,50 +210,36 @@ const getRoleText = (role: string) => {
 }
 
 const handleAvatarUpload = () => {
-  // TODO: 实现头像上传功能
   ElMessage.info('头像上传功能待实现')
 }
 
 const handleUpdateProfile = () => {
-  formRef.value.validate((valid: boolean) => {
+  formRef.value?.validate((valid: boolean) => {
     if (valid) {
-      // TODO: 实现个人信息更新功能
       ElMessage.success('个人信息更新成功')
     }
   })
 }
 
 const handleChangePassword = () => {
-  passwordFormRef.value.validate((valid: boolean) => {
+  passwordFormRef.value?.validate((valid: boolean) => {
     if (valid) {
-      // TODO: 实现密码修改功能
       ElMessage.success('密码修改成功')
-      // 清空表单
-      passwordForm.oldPassword = ''
-      passwordForm.newPassword = ''
-      passwordForm.confirmPassword = ''
     }
   })
 }
 
 const handleLogSizeChange = (val: number) => {
   logPageSize.value = val
-  // TODO: 重新加载日志数据
 }
 
 const handleLogCurrentChange = (val: number) => {
   logCurrentPage.value = val
-  // TODO: 重新加载日志数据
 }
 
 onMounted(() => {
-  // 初始化表单数据
-  Object.assign(profileForm, {
-    email: userInfo.email,
-    phone: '',
-    realName: '',
-    department: ''
-  })
+  // 初始化用户信息
+  Object.assign(profileForm, userInfo)
 })
 </script>
 
@@ -302,34 +249,26 @@ onMounted(() => {
 }
 
 .profile-info {
-  text-align: center;
-}
-
-.avatar-section {
-  margin-bottom: 30px;
-  
-  .upload-btn {
-    margin-top: 15px;
-  }
-}
-
-.info-section {
-  text-align: left;
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-  
-  label {
-    font-weight: bold;
-    min-width: 80px;
-    color: #606266;
+  .avatar-section {
+    text-align: center;
+    margin-bottom: 20px;
+    
+    .upload-btn {
+      margin-top: 10px;
+    }
   }
   
-  span {
-    color: #303133;
+  .info-section {
+    .info-item {
+      display: flex;
+      margin-bottom: 12px;
+      
+      label {
+        width: 80px;
+        font-weight: 500;
+        color: #666;
+      }
+    }
   }
 }
 
@@ -338,5 +277,4 @@ onMounted(() => {
   display: flex;
   justify-content: center;
 }
->>>>>>> 9e15f533479da8c5d591d9b69a4010f010642a43
 </style> 
