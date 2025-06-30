@@ -10,7 +10,7 @@
             </div>
             <div class="stat-content">
               <div class="stat-value">{{ systemStats.cpuUsage }}%</div>
-              <div class="stat-label">CPU使用率</div>
+              <div class="stat-label">{{ $t('monitor.cpuUsage') }}</div>
             </div>
           </div>
         </el-card>
@@ -23,7 +23,7 @@
             </div>
             <div class="stat-content">
               <div class="stat-value">{{ systemStats.memoryUsage }}%</div>
-              <div class="stat-label">内存使用率</div>
+              <div class="stat-label">{{ $t('monitor.memoryUsage') }}</div>
             </div>
           </div>
         </el-card>
@@ -36,7 +36,7 @@
             </div>
             <div class="stat-content">
               <div class="stat-value">{{ systemStats.configCount }}</div>
-              <div class="stat-label">配置项总数</div>
+              <div class="stat-label">{{ $t('monitor.totalConfigs') }}</div>
             </div>
           </div>
         </el-card>
@@ -49,7 +49,7 @@
             </div>
             <div class="stat-content">
               <div class="stat-value">{{ systemStats.onlineUsers }}</div>
-              <div class="stat-label">在线用户</div>
+              <div class="stat-label">{{ $t('monitor.onlineUsers') }}</div>
             </div>
           </div>
         </el-card>
@@ -61,7 +61,7 @@
       <el-col :span="12">
         <el-card>
           <template #header>
-            <span>系统性能监控</span>
+            <span>{{ $t('monitor.performanceMonitor') }}</span>
           </template>
           <div ref="performanceChart" style="width: 100%; height: 300px;"></div>
         </el-card>
@@ -69,7 +69,7 @@
       <el-col :span="12">
         <el-card>
           <template #header>
-            <span>配置操作统计</span>
+            <span>{{ $t('monitor.operationStats') }}</span>
           </template>
           <div ref="operationChart" style="width: 100%; height: 300px;"></div>
         </el-card>
@@ -81,20 +81,20 @@
       <el-col :span="24">
         <el-card>
           <template #header>
-            <span>服务状态</span>
+            <span>{{ $t('monitor.serviceStatus') }}</span>
           </template>
           <el-table :data="serviceList" style="width: 100%">
-            <el-table-column prop="name" label="服务名称" />
-            <el-table-column prop="status" label="状态">
+            <el-table-column prop="name" :label="$t('monitor.serviceName')" />
+            <el-table-column prop="status" :label="$t('monitor.status')">
               <template #default="scope">
                 <el-tag :type="scope.row.status === 'UP' ? 'success' : 'danger'">
-                  {{ scope.row.status === 'UP' ? '正常' : '异常' }}
+                  {{ scope.row.status === 'UP' ? $t('monitor.normal') : $t('monitor.abnormal') }}
                 </el-tag>
               </template>
             </el-table-column>
-            <el-table-column prop="version" label="版本" />
-            <el-table-column prop="uptime" label="运行时间" />
-            <el-table-column prop="lastCheck" label="最后检查时间" />
+            <el-table-column prop="version" :label="$t('monitor.version')" />
+            <el-table-column prop="uptime" :label="$t('monitor.uptime')" />
+            <el-table-column prop="lastCheck" :label="$t('monitor.lastCheck')" />
           </el-table>
         </el-card>
       </el-col>
@@ -106,10 +106,10 @@
         <el-card>
           <template #header>
             <div class="card-header">
-              <span>系统日志</span>
+              <span>{{ $t('monitor.systemLogs') }}</span>
               <el-button @click="refreshLogs">
                 <el-icon><Refresh /></el-icon>
-                刷新
+                {{ $t('monitor.refresh') }}
               </el-button>
             </div>
           </template>
@@ -133,7 +133,10 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
 import { Cpu, Monitor, Setting, User, Refresh } from '@element-plus/icons-vue'
+import { useI18n } from 'vue-i18n'
 import * as echarts from 'echarts'
+
+const { t } = useI18n()
 
 const systemStats = reactive({
   cpuUsage: 0,
@@ -143,16 +146,16 @@ const systemStats = reactive({
 })
 
 const serviceList = ref([
-  { name: 'MySQL', status: 'UP', version: '8.0.33', uptime: '7天3小时', lastCheck: '2024-01-20 10:30:00' },
-  { name: 'Redis', status: 'UP', version: '7.0.8', uptime: '7天3小时', lastCheck: '2024-01-20 10:30:00' },
-  { name: 'ZooKeeper', status: 'UP', version: '3.8.1', uptime: '7天3小时', lastCheck: '2024-01-20 10:30:00' }
+  { name: 'MySQL', status: 'UP', version: '8.0.33', uptime: t('monitor.days7Hours3'), lastCheck: '2024-01-20 10:30:00' },
+  { name: 'Redis', status: 'UP', version: '7.0.8', uptime: t('monitor.days7Hours3'), lastCheck: '2024-01-20 10:30:00' },
+  { name: 'ZooKeeper', status: 'UP', version: '3.8.1', uptime: t('monitor.days7Hours3'), lastCheck: '2024-01-20 10:30:00' }
 ])
 
 const logList = ref([
-  { id: 1, timestamp: '2024-01-20 10:30:15', level: 'INFO', message: '用户admin登录系统' },
-  { id: 2, timestamp: '2024-01-20 10:29:45', level: 'INFO', message: '配置项user.service.timeout更新成功' },
-  { id: 3, timestamp: '2024-01-20 10:28:30', level: 'WARN', message: 'ZooKeeper连接超时，正在重试...' },
-  { id: 4, timestamp: '2024-01-20 10:27:12', level: 'ERROR', message: '数据库连接池满载，请检查连接泄漏' }
+  { id: 1, timestamp: '2024-01-20 10:30:15', level: 'INFO', message: t('monitor.userLoginLog') },
+  { id: 2, timestamp: '2024-01-20 10:29:45', level: 'INFO', message: t('monitor.configUpdateLog') },
+  { id: 3, timestamp: '2024-01-20 10:28:30', level: 'WARN', message: t('monitor.zkTimeoutLog') },
+  { id: 4, timestamp: '2024-01-20 10:27:12', level: 'ERROR', message: t('monitor.dbConnectionLog') }
 ])
 
 const performanceChart = ref()
@@ -166,13 +169,13 @@ const initPerformanceChart = () => {
   
   const option = {
     title: {
-      text: '系统性能趋势'
+      text: t('monitor.performanceTrend')
     },
     tooltip: {
       trigger: 'axis'
     },
     legend: {
-      data: ['CPU使用率', '内存使用率']
+      data: [t('monitor.cpuUsage'), t('monitor.memoryUsage')]
     },
     xAxis: {
       type: 'category',
@@ -187,13 +190,13 @@ const initPerformanceChart = () => {
     },
     series: [
       {
-        name: 'CPU使用率',
+        name: t('monitor.cpuUsage'),
         type: 'line',
         data: [12, 15, 18, 22, 25, 28],
         smooth: true
       },
       {
-        name: '内存使用率',
+        name: t('monitor.memoryUsage'),
         type: 'line',
         data: [45, 47, 50, 52, 55, 58],
         smooth: true
@@ -209,7 +212,7 @@ const initOperationChart = () => {
   
   const option = {
     title: {
-      text: '操作类型分布',
+      text: t('monitor.operationDistribution'),
       left: 'center'
     },
     tooltip: {
@@ -220,10 +223,10 @@ const initOperationChart = () => {
         type: 'pie',
         radius: '60%',
         data: [
-          { value: 35, name: '查询' },
-          { value: 28, name: '更新' },
-          { value: 20, name: '新增' },
-          { value: 17, name: '删除' }
+          { value: 35, name: t('monitor.query') },
+          { value: 28, name: t('monitor.update') },
+          { value: 20, name: t('monitor.create') },
+          { value: 17, name: t('monitor.delete') }
         ],
         emphasis: {
           itemStyle: {
@@ -249,7 +252,7 @@ const updateSystemStats = () => {
 
 const refreshLogs = () => {
   // TODO: 实现日志刷新功能
-  console.log('刷新日志')
+  console.log(t('monitor.refreshLogs'))
 }
 
 onMounted(() => {

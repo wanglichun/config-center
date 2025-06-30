@@ -2,46 +2,46 @@
   <div class="history-page">
     <el-card>
       <template #header>
-        <span>变更历史</span>
+        <span>{{ $t('history.title') }}</span>
       </template>
       
       <div class="search-bar">
         <el-form :model="searchForm" inline>
-          <el-form-item label="应用名称">
-            <el-input v-model="searchForm.appName" placeholder="请输入应用名称" clearable style="width: 200px;" />
+          <el-form-item :label="$t('config.appName')">
+            <el-input v-model="searchForm.appName" :placeholder="$t('history.enterAppName')" clearable style="width: 200px;" />
           </el-form-item>
-          <el-form-item label="操作类型">
-            <el-select v-model="searchForm.operation" placeholder="请选择操作类型" clearable style="width: 160px;">
-              <el-option label="新增" value="CREATE" />
-              <el-option label="更新" value="UPDATE" />
-              <el-option label="删除" value="DELETE" />
+          <el-form-item :label="$t('history.operationType')">
+            <el-select v-model="searchForm.operation" :placeholder="$t('history.selectOperationType')" clearable style="width: 160px;">
+              <el-option :label="$t('operation.create')" value="CREATE" />
+              <el-option :label="$t('operation.update')" value="UPDATE" />
+              <el-option :label="$t('operation.delete')" value="DELETE" />
             </el-select>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="handleSearch">
               <el-icon><Search /></el-icon>
-              搜索
+              {{ $t('common.search') }}
             </el-button>
-            <el-button @click="handleReset">重置</el-button>
+            <el-button @click="handleReset">{{ $t('common.reset') }}</el-button>
           </el-form-item>
         </el-form>
       </div>
 
       <el-table :data="historyList" style="width: 100%">
-        <el-table-column prop="appName" label="应用名称" />
-        <el-table-column prop="configKey" label="配置键" />
-        <el-table-column prop="operation" label="操作类型">
+        <el-table-column prop="appName" :label="$t('config.appName')" />
+        <el-table-column prop="configKey" :label="$t('config.configKey')" />
+        <el-table-column prop="operation" :label="$t('history.operationType')">
           <template #default="scope">
             <el-tag :type="getOperationTagType(scope.row.operation)">
               {{ getOperationText(scope.row.operation) }}
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="operator" label="操作人" />
-        <el-table-column prop="createTime" label="操作时间" />
-        <el-table-column label="操作" width="120">
+        <el-table-column prop="operator" :label="$t('history.operator')" />
+        <el-table-column prop="createTime" :label="$t('history.operationTime')" />
+        <el-table-column :label="$t('common.actions')" width="120">
           <template #default="scope">
-            <el-button size="small" @click="handleViewDetail(scope.row)">查看详情</el-button>
+            <el-button size="small" @click="handleViewDetail(scope.row)">{{ $t('history.viewDetail') }}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -60,17 +60,17 @@
     </el-card>
 
     <!-- 详情对话框 -->
-    <el-dialog v-model="showDetailDialog" title="变更详情" width="800px">
+    <el-dialog v-model="showDetailDialog" :title="$t('history.changeDetail')" width="800px">
       <el-descriptions :column="2" border>
-        <el-descriptions-item label="应用名称">{{ currentRecord.appName }}</el-descriptions-item>
-        <el-descriptions-item label="配置键">{{ currentRecord.configKey }}</el-descriptions-item>
-        <el-descriptions-item label="操作类型">{{ getOperationText(currentRecord.operation) }}</el-descriptions-item>
-        <el-descriptions-item label="操作人">{{ currentRecord.operator }}</el-descriptions-item>
-        <el-descriptions-item label="操作时间" :span="2">{{ currentRecord.createTime }}</el-descriptions-item>
-        <el-descriptions-item v-if="currentRecord.oldValue" label="变更前" :span="2">
+        <el-descriptions-item :label="$t('config.appName')">{{ currentRecord.appName }}</el-descriptions-item>
+        <el-descriptions-item :label="$t('config.configKey')">{{ currentRecord.configKey }}</el-descriptions-item>
+        <el-descriptions-item :label="$t('history.operationType')">{{ getOperationText(currentRecord.operation) }}</el-descriptions-item>
+        <el-descriptions-item :label="$t('history.operator')">{{ currentRecord.operator }}</el-descriptions-item>
+        <el-descriptions-item :label="$t('history.operationTime')" :span="2">{{ currentRecord.createTime }}</el-descriptions-item>
+        <el-descriptions-item v-if="currentRecord.oldValue" :label="$t('history.beforeChange')" :span="2">
           <pre>{{ currentRecord.oldValue }}</pre>
         </el-descriptions-item>
-        <el-descriptions-item v-if="currentRecord.newValue" label="变更后" :span="2">
+        <el-descriptions-item v-if="currentRecord.newValue" :label="$t('history.afterChange')" :span="2">
           <pre>{{ currentRecord.newValue }}</pre>
         </el-descriptions-item>
       </el-descriptions>
@@ -81,6 +81,9 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue'
 import { Search } from '@element-plus/icons-vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const searchForm = reactive({
   appName: '',
@@ -105,16 +108,16 @@ const getOperationTagType = (operation: string) => {
 
 const getOperationText = (operation: string) => {
   switch (operation) {
-    case 'CREATE': return '新增'
-    case 'UPDATE': return '更新'
-    case 'DELETE': return '删除'
+    case 'CREATE': return t('operation.create')
+    case 'UPDATE': return t('operation.update')
+    case 'DELETE': return t('operation.delete')
     default: return operation
   }
 }
 
 const handleSearch = () => {
   // TODO: 实现搜索功能
-  console.log('搜索历史记录')
+  console.log(t('history.searchHistory'))
 }
 
 const handleReset = () => {

@@ -1,26 +1,26 @@
 <template>
   <div class="layout">
     <!-- 侧边栏 -->
-    <div :class="['sidebar', { 'sidebar-collapse': isCollapse }]">
+    <div class="sidebar">
       <div class="logo">
         <el-icon size="24" color="#409EFF">
           <Setting />
         </el-icon>
-        <span v-show="!isCollapse" class="logo-text">{{ t('app.title') }}</span>
+        <span class="logo-text">{{ t('app.title') }}</span>
       </div>
       
       <el-menu
         :default-active="activeMenu"
-        :collapse="isCollapse"
         :unique-opened="true"
+        :collapse="false"
         router
         class="sidebar-menu"
       >
         <template v-for="route in menuRoutes" :key="route.path">
           <el-menu-item
             v-if="!route.children"
-            :index="route.path"
-            :class="{ 'is-active': activeMenu === route.path }"
+            :index="'/' + route.path"
+            :class="{ 'is-active': activeMenu === '/' + route.path }"
           >
             <el-icon>
               <component :is="iconMap[route.meta.icon]" />
@@ -28,7 +28,7 @@
             <template #title>{{ getMenuTitle(route.meta.title) }}</template>
           </el-menu-item>
           
-          <el-sub-menu v-else :index="route.path">
+          <el-sub-menu v-else :index="'/' + route.path">
             <template #title>
               <el-icon>
                 <component :is="iconMap[route.meta.icon]" />
@@ -38,7 +38,7 @@
             <el-menu-item
               v-for="child in route.children"
               :key="child.path"
-              :index="child.path"
+              :index="'/' + child.path"
             >
               <el-icon>
                 <component :is="iconMap[child.meta.icon]" />
@@ -50,27 +50,17 @@
       </el-menu>
     </div>
 
-        <el-container class="main-container" :style="{ marginLeft: isCollapse ? '64px' : '240px' }">
+        <el-container class="main-container" style="margin-left: 200px;">
         <!-- 顶部导航 -->
         <el-header class="header">
           <div class="header-left">
-            <el-button
-              text
-              @click="toggleSidebar"
-            >
-              <el-icon size="18">
-                <Fold v-if="!isCollapse" />
-                <Expand v-else />
-              </el-icon>
-            </el-button>
-            
             <el-breadcrumb separator="/" class="breadcrumb">
               <el-breadcrumb-item
                 v-for="item in breadcrumbs"
                 :key="item.path"
                 :to="item.path"
               >
-                {{ item.title }}
+                {{ getBreadcrumbTitle(item.title) }}
               </el-breadcrumb-item>
             </el-breadcrumb>
           </div>
@@ -177,30 +167,42 @@ const iconMap: Record<string, any> = {
 }
 
 // 当前激活的菜单
-const activeMenu = computed(() => route.path)
+const activeMenu = computed(() => {
+  console.log('当前路由路径:', route.path)
+  return route.path
+})
 
 // 菜单路由
 const menuRoutes = computed(() => {
-  return router.options.routes
+  const routes = router.options.routes
     .find(r => r.path === '/')
     ?.children?.filter(child => 
       !child.meta?.hidden && 
       (!child.meta?.role || child.meta.role.includes(userStore.userInfo?.role || ''))
     ) || []
+  
+  console.log('菜单路由:', routes.map(r => ({ path: r.path, fullPath: '/' + r.path })))
+  return routes
 })
 
 // 面包屑导航
 const breadcrumbs = computed<BreadcrumbItem[]>(() => {
   const matched = route.matched.filter(item => item.meta?.title)
   const breadcrumbs: BreadcrumbItem[] = []
+  const seenTitles = new Set<string>()
   
   matched.forEach((item, index) => {
     if (index === 0) return // 跳过根路由
     
-    breadcrumbs.push({
-      title: item.meta?.title as string,
-      path: index === matched.length - 1 ? undefined : item.path
-    })
+    const title = item.meta?.title as string
+    // 避免重复标题
+    if (!seenTitles.has(title)) {
+      seenTitles.add(title)
+      breadcrumbs.push({
+        title: title,
+        path: index === matched.length - 1 ? undefined : item.path
+      })
+    }
   })
   
   return breadcrumbs
@@ -233,6 +235,20 @@ const getMenuTitle = (title: string) => {
     '用户管理': 'nav.users',
     '系统监控': 'nav.monitor',
     '个人中心': 'nav.profile'
+  }
+  return titleMap[title] ? t(titleMap[title]) : title
+}
+
+// 获取面包屑标题
+const getBreadcrumbTitle = (title: string) => {
+  const titleMap: Record<string, string> = {
+    '仪表盘': 'nav.dashboard',
+    '配置管理': 'nav.config',
+    '变更历史': 'nav.history',
+    '用户管理': 'nav.users',
+    '系统监控': 'nav.monitor',
+    '个人中心': 'nav.profile',
+    '配置详情': 'config.title'
   }
   return titleMap[title] ? t(titleMap[title]) : title
 }
@@ -279,7 +295,6 @@ watch(
   
   .sidebar {
     background: #001529;
-    transition: width 0.3s;
     height: 100vh;
     position: fixed;
     left: 0;
@@ -287,16 +302,13 @@ watch(
     z-index: 100;
     display: flex;
     flex-direction: column;
-    width: 240px;
-    
-    &.sidebar-collapse {
-      width: 64px;
-    }
+    width: 200px;
     
     .logo {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
+      padding: 0 20px;
       height: 60px;
       background: rgba(255, 255, 255, 0.1);
       flex-shrink: 0;
@@ -314,9 +326,13 @@ watch(
       background: transparent;
       flex: 1;
       overflow-y: auto;
+      width: 100%;
       
       :deep(.el-menu-item) {
         color: rgba(255, 255, 255, 0.8);
+        height: 56px;
+        line-height: 56px;
+        padding: 0 20px;
         
         &:hover {
           background: rgba(255, 255, 255, 0.1);
@@ -327,14 +343,35 @@ watch(
           background: #409EFF;
           color: white;
         }
+        
+        .el-icon {
+          margin-right: 12px;
+          font-size: 18px;
+        }
+        
+        span {
+          font-size: 14px;
+        }
       }
       
       :deep(.el-sub-menu__title) {
         color: rgba(255, 255, 255, 0.8);
+        height: 56px;
+        line-height: 56px;
+        padding: 0 20px;
         
         &:hover {
           background: rgba(255, 255, 255, 0.1);
           color: white;
+        }
+        
+        .el-icon {
+          margin-right: 12px;
+          font-size: 18px;
+        }
+        
+        span {
+          font-size: 14px;
         }
       }
     }

@@ -7,15 +7,15 @@
         </el-icon>
       </div>
       <h1 class="not-found-title">404</h1>
-      <p class="not-found-desc">抱歉，您访问的页面不存在</p>
+      <p class="not-found-desc">{{ $t('notFound.description') }}</p>
       <div class="not-found-actions">
         <el-button type="primary" @click="goHome">
           <el-icon><House /></el-icon>
-          返回首页
+          {{ $t('notFound.backHome') }}
         </el-button>
         <el-button @click="goBack">
           <el-icon><Back /></el-icon>
-          返回上页
+          {{ $t('notFound.goBack') }}
         </el-button>
       </div>
     </div>

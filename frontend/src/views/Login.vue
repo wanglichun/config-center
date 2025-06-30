@@ -7,8 +7,8 @@
             <Setting />
           </el-icon>
         </div>
-        <h2>配置中心管理平台</h2>
-        <p>企业级分布式配置管理系统</p>
+        <h2>{{ $t('login.title') }}</h2>
+        <p>{{ $t('login.subtitle') }}</p>
       </div>
       
       <el-form
@@ -21,7 +21,7 @@
         <el-form-item prop="username">
           <el-input
             v-model="loginForm.username"
-            placeholder="请输入用户名"
+            :placeholder="$t('login.usernamePlaceholder')"
             size="large"
             prefix-icon="User"
             clearable
@@ -32,7 +32,7 @@
           <el-input
             v-model="loginForm.password"
             type="password"
-            placeholder="请输入密码"
+            :placeholder="$t('login.passwordPlaceholder')"
             size="large"
             prefix-icon="Lock"
             show-password
@@ -42,7 +42,7 @@
         
         <el-form-item>
           <el-checkbox v-model="loginForm.remember">
-            记住我
+            {{ $t('login.rememberMe') }}
           </el-checkbox>
         </el-form-item>
         
@@ -54,14 +54,14 @@
             :loading="loading"
             @click="handleLogin"
           >
-            {{ loading ? '登录中...' : '登录' }}
+            {{ loading ? $t('login.loggingIn') : $t('login.login') }}
           </el-button>
         </el-form-item>
       </el-form>
       
       <div class="login-footer">
-        <p>默认账号：admin / admin123</p>
-        <p>© 2024 配置中心管理平台. All rights reserved.</p>
+        <p>{{ $t('login.defaultAccount') }}</p>
+        <p>{{ $t('login.copyright') }}</p>
       </div>
     </div>
   </div>
@@ -73,8 +73,10 @@ import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules } from 'element-plus'
 import { useUserStore } from '@/stores/user'
+import { useI18n } from 'vue-i18n'
 import type { LoginForm } from '@/types/user'
 
+const { t } = useI18n()
 const router = useRouter()
 const userStore = useUserStore()
 
@@ -91,12 +93,12 @@ const loginForm = reactive<LoginForm>({
 // 表单验证规则
 const loginRules: FormRules = {
   username: [
-    { required: true, message: '请输入用户名', trigger: 'blur' },
-    { min: 2, max: 20, message: '用户名长度在 2 到 20 个字符', trigger: 'blur' }
+    { required: true, message: t('login.usernameRequired'), trigger: 'blur' },
+    { min: 2, max: 20, message: t('login.usernameLength'), trigger: 'blur' }
   ],
   password: [
-    { required: true, message: '请输入密码', trigger: 'blur' },
-    { min: 6, max: 20, message: '密码长度在 6 到 20 个字符', trigger: 'blur' }
+    { required: true, message: t('login.passwordRequired'), trigger: 'blur' },
+    { min: 6, max: 20, message: t('login.passwordLength'), trigger: 'blur' }
   ]
 }
 
@@ -108,19 +110,19 @@ const handleLogin = async () => {
     await loginFormRef.value.validate()
     loading.value = true
     
-    console.log('开始登录，请求数据:', loginForm)
+    console.log(t('login.startLogin'), loginForm)
     
     const result = await userStore.userLogin(loginForm)
-    console.log('登录成功，返回数据:', result)
+    console.log(t('login.loginSuccess'), result)
     
-    ElMessage.success('登录成功')
+    ElMessage.success(t('login.loginSuccess'))
     
     // 确保跳转到正确的页面
     const redirect = router.currentRoute.value.query.redirect as string
     await router.push(redirect || '/dashboard')
     
   } catch (error: any) {
-    console.error('登录失败，错误详情:', error)
+    console.error(t('login.loginFailed'), error)
     
     // 显示具体的错误信息
     if (error.response?.data?.message) {
@@ -128,7 +130,7 @@ const handleLogin = async () => {
     } else if (error.message) {
       ElMessage.error(error.message)
     } else {
-      ElMessage.error('登录失败，请检查用户名和密码')
+      ElMessage.error(t('login.loginFailedMessage'))
     }
   } finally {
     loading.value = false
