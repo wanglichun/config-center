@@ -60,6 +60,15 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'gray-release',
+        name: 'GrayRelease',
+        component: () => import('@/views/GrayRelease.vue'),
+        meta: {
+          title: '灰度发布',
+          icon: 'Operation'
+        }
+      },
+      {
         path: 'users',
         name: 'Users',
         component: () => import('@/views/Users.vue'),

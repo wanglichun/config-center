@@ -35,7 +35,9 @@
     "download": "Download",
     "upload": "Upload",
     "close": "Close",
-    "actions": "Actions"
+    "actions": "Actions",
+    "create": "Create",
+    "createTime": "Create Time"
   },
   "config": {
     "title": "Configuration",
@@ -188,6 +190,56 @@
     "uploadTodoMessage": "Avatar upload function to be implemented",
     "updateSuccess": "Personal information updated successfully",
     "passwordChangeSuccess": "Password changed successfully"
+  },
+  "grayRelease": {
+    "title": "Gray Release",
+    "createPlan": "Create Release Plan",
+    "planName": "Plan Name",
+    "planNamePlaceholder": "Enter release plan name",
+    "strategy": "Release Strategy",
+    "percentage": "Release Percentage",
+    "status": "Status",
+    "selectStatus": "Select status",
+    "creator": "Creator",
+    "operation": "Operation",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Resume",
+    "complete": "Complete",
+    "rollback": "Rollback",
+    "cancel": "Cancel",
+    "viewDetails": "View Details",
+    "planDetails": "Plan Details",
+    "configDetails": "Configuration Details",
+    "configKeys": "Configuration Keys",
+    "selectConfigKeys": "Select configuration keys",
+    "ipWhitelist": "IP Whitelist",
+    "canaryInstances": "Canary Instances",
+    "stepPercentage": "Step Percentage",
+    "description": "Description",
+    "descriptionPlaceholder": "Enter release description",
+    "oldValue": "Old Value",
+    "grayValue": "Gray Value",
+    "strategies": {
+      "IP_WHITELIST": "IP Whitelist",
+      "USER_WHITELIST": "User Whitelist",
+      "PERCENTAGE": "Percentage Release",
+      "CANARY": "Canary Release"
+    },
+    "statuses": {
+      "DRAFT": "Draft",
+      "ACTIVE": "Active",
+      "PAUSED": "Paused",
+      "COMPLETED": "Completed",
+      "FAILED": "Failed",
+      "ROLLBACK": "Rollback"
+    },
+    "detailStatuses": {
+      "PENDING": "Pending",
+      "GRAY": "Gray",
+      "PUBLISHED": "Published",
+      "ROLLBACK": "Rollback"
+    }
   },
   "monitor": {
     "cpuUsage": "CPU Usage",

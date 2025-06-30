@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Dashboard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/config-center.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/enums/ConfigStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/enums/ConfigStatusEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/enums/EnumValue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/enums/EnvironmentEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/enums/EnvironmentEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en-US.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en-US.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/zh-CN.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/zh-CN.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/ConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/ConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/BaseEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

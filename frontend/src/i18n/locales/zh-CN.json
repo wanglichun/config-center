@@ -35,7 +35,9 @@
     "download": "下载",
     "upload": "上传",
     "close": "关闭",
-    "actions": "操作"
+    "actions": "操作",
+    "create": "创建",
+    "createTime": "创建时间"
   },
   "config": {
     "title": "配置",
@@ -190,6 +192,56 @@
     "uploadTodoMessage": "头像上传功能待实现",
     "updateSuccess": "个人信息更新成功",
     "passwordChangeSuccess": "密码修改成功"
+  },
+  "grayRelease": {
+    "title": "灰度发布",
+    "createPlan": "创建发布计划",
+    "planName": "计划名称",
+    "planNamePlaceholder": "请输入发布计划名称",
+    "strategy": "发布策略",
+    "percentage": "发布比例",
+    "status": "状态",
+    "selectStatus": "请选择状态",
+    "creator": "创建者",
+    "operation": "操作",
+    "start": "开始",
+    "pause": "暂停",
+    "resume": "恢复",
+    "complete": "完成",
+    "rollback": "回滚",
+    "cancel": "取消",
+    "viewDetails": "查看详情",
+    "planDetails": "计划详情",
+    "configDetails": "配置详情",
+    "configKeys": "配置键",
+    "selectConfigKeys": "请选择配置键",
+    "ipWhitelist": "IP白名单",
+    "canaryInstances": "金丝雀实例",
+    "stepPercentage": "步进比例",
+    "description": "描述",
+    "descriptionPlaceholder": "请输入发布描述",
+    "oldValue": "原值",
+    "grayValue": "灰度值",
+    "strategies": {
+      "IP_WHITELIST": "IP白名单",
+      "USER_WHITELIST": "用户白名单",
+      "PERCENTAGE": "按比例发布",
+      "CANARY": "金丝雀发布"
+    },
+    "statuses": {
+      "DRAFT": "草稿",
+      "ACTIVE": "进行中",
+      "PAUSED": "已暂停",
+      "COMPLETED": "已完成",
+      "FAILED": "失败",
+      "ROLLBACK": "已回滚"
+    },
+    "detailStatuses": {
+      "PENDING": "待发布",
+      "GRAY": "灰度中",
+      "PUBLISHED": "已发布",
+      "ROLLBACK": "已回滚"
+    }
   },
   "monitor": {
     "title": "系统监控",
