@@ -5,7 +5,7 @@ public enum EnvironmentEnum {
     TEST("TEST"),
     LIVE("LIVE");
 
-    private String value
+    private String value;
 
     EnvironmentEnum(String value) {
         this.value = value;
