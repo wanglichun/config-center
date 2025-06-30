@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.configcenter.mapper.GrayReleasePlanMapper">
+
+    <!-- 结果映射 -->
+    <resultMap id="BaseResultMap" type="com.example.configcenter.entity.GrayReleasePlan">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="plan_name" property="planName" jdbcType="VARCHAR"/>
+        <result column="app_name" property="appName" jdbcType="VARCHAR"/>
+        <result column="environment" property="environment" jdbcType="VARCHAR"/>
+        <result column="group_name" property="groupName" jdbcType="VARCHAR"/>
+        <result column="config_keys" property="configKeys" jdbcType="VARCHAR"/>
+        <result column="gray_strategy" property="grayStrategy" jdbcType="VARCHAR"/>
+        <result column="gray_rules" property="grayRules" jdbcType="VARCHAR"/>
+        <result column="rollout_percentage" property="rolloutPercentage" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="start_time" property="startTime" jdbcType="BIGINT"/>
+        <result column="end_time" property="endTime" jdbcType="BIGINT"/>
+        <result column="auto_complete" property="autoComplete" jdbcType="TINYINT"/>
+        <result column="auto_rollback" property="autoRollback" jdbcType="TINYINT"/>
+        <result column="rollback_condition" property="rollbackCondition" jdbcType="VARCHAR"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="creator" property="creator" jdbcType="VARCHAR"/>
+        <result column="approver" property="approver" jdbcType="VARCHAR"/>
+        <result column="approval_time" property="approvalTime" jdbcType="BIGINT"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="create_by" property="createBy" jdbcType="VARCHAR"/>
+        <result column="update_by" property="updateBy" jdbcType="VARCHAR"/>
+        <result column="remark" property="remark" jdbcType="VARCHAR"/>
+        <result column="del_flag" property="delFlag" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <!-- 基础字段 -->
+    <sql id="Base_Column_List">
+        id, plan_name, app_name, environment, group_name, config_keys, gray_strategy,
+        gray_rules, rollout_percentage, status, start_time, end_time, auto_complete,
+        auto_rollback, rollback_condition, description, creator, approver, approval_time,
+        create_time, update_time, create_by, update_by, remark, del_flag
+    </sql>
+
+    <!-- 插入 -->
+    <insert id="insert" parameterType="com.example.configcenter.entity.GrayReleasePlan" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO gray_release_plan (
+            plan_name, app_name, environment, group_name, config_keys, gray_strategy,
+            gray_rules, rollout_percentage, status, auto_complete, auto_rollback,
+            rollback_condition, description, creator, create_by
+        ) VALUES (
+            #{planName}, #{appName}, #{environment}, #{groupName}, #{configKeys}, #{grayStrategy},
+            #{grayRules}, #{rolloutPercentage}, #{status}, #{autoComplete}, #{autoRollback},
+            #{rollbackCondition}, #{description}, #{creator}, #{createBy}
+        )
+    </insert>
+
+    <!-- 根据ID查询 -->
+    <select id="selectById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM gray_release_plan
+        WHERE id = #{id}
+    </select>
+
+    <!-- 更新 -->
+    <update id="updateById" parameterType="com.example.configcenter.entity.GrayReleasePlan">
+        UPDATE gray_release_plan
+        <set>
+            <if test="planName != null">plan_name = #{planName},</if>
+            <if test="appName != null">app_name = #{appName},</if>
+            <if test="environment != null">environment = #{environment},</if>
+            <if test="groupName != null">group_name = #{groupName},</if>
+            <if test="configKeys != null">config_keys = #{configKeys},</if>
+            <if test="grayStrategy != null">gray_strategy = #{grayStrategy},</if>
+            <if test="grayRules != null">gray_rules = #{grayRules},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="totalConfigs != null">total_configs = #{totalConfigs},</if>
+            <if test="grayConfigs != null">gray_configs = #{grayConfigs},</if>
+            <if test="rolloutPercentage != null">rollout_percentage = #{rolloutPercentage},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="startTime != null">start_time = #{startTime},</if>
+            <if test="endTime != null">end_time = #{endTime},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除 -->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM gray_release_plan WHERE id = #{id}
+    </delete>
+
+    <!-- 分页查询 -->
+    <select id="selectByPage" parameterType="com.example.configcenter.dto.GrayReleaseDto$PlanQueryRequest" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM gray_release_plan
+        <where>
+            <if test="appName != null and appName != ''">
+                AND app_name LIKE CONCAT('%', #{appName}, '%')
+            </if>
+            <if test="environment != null and environment != ''">
+                AND environment = #{environment}
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+            <if test="creator != null and creator != ''">
+                AND creator = #{creator}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+        <if test="pageNum != null and pageSize != null">
+            LIMIT #{offset}, #{pageSize}
+        </if>
+    </select>
+
+    <!-- 查询总数 -->
+    <select id="countByPage" parameterType="com.example.configcenter.dto.GrayReleaseDto$PlanQueryRequest" resultType="java.lang.Long">
+        SELECT COUNT(*)
+        FROM gray_release_plan
+        <where>
+            <if test="appName != null and appName != ''">
+                AND app_name LIKE CONCAT('%', #{appName}, '%')
+            </if>
+            <if test="environment != null and environment != ''">
+                AND environment = #{environment}
+            </if>
+            <if test="status != null and status != ''">
+                AND status = #{status}
+            </if>
+            <if test="creator != null and creator != ''">
+                AND creator = #{creator}
+            </if>
+        </where>
+    </select>
+
+    <!-- 根据应用和环境查询 -->
+    <select id="selectByAppAndEnv" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM gray_release_plan
+        WHERE app_name = #{appName} AND environment = #{environment}
+        ORDER BY create_time DESC
+    </select>
+
+    <!-- 根据状态查询 -->
+    <select id="selectByStatus" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM gray_release_plan
+        WHERE status = #{status}
+        ORDER BY create_time DESC
+    </select>
+
+</mapper> 
