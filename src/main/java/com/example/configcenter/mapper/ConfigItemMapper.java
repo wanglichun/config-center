@@ -31,6 +31,13 @@ public interface ConfigItemMapper {
                         @Param("configKey") String configKey);
 
     /**
+     * 根据配置键查询配置项（不指定组名）
+     */
+    ConfigItem findByKeyWithoutGroup(@Param("appName") String appName, 
+                                   @Param("environment") String environment,
+                                   @Param("configKey") String configKey);
+
+    /**
      * 根据应用查询配置项列表
      */
     List<ConfigItem> findByApp(@Param("appName") String appName, 

@@ -1,329 +1,458 @@
 <template>
-  <div class="gray-release-container">
-    <div class="header">
-      <h2>灰度发布管理</h2>
-      <el-button type="primary" @click="showCreateDialog">
-        <el-icon><Plus /></el-icon>
-        创建发布计划
-      </el-button>
-    </div>
+  <div class="gray-release">
+    <el-card>
+      <template #header>
+        <div class="card-header">
+          <span>{{ t('grayRelease.title') }}</span>
+        </div>
+      </template>
 
-    <!-- 查询条件 -->
-    <el-card class="search-card">
-      <el-form :model="queryForm" inline>
-        <el-form-item label="应用名称">
-          <el-input v-model="queryForm.appName" placeholder="请输入应用名称" clearable />
-        </el-form-item>
-        <el-form-item label="环境">
-          <el-select v-model="queryForm.environment" placeholder="请选择环境" clearable>
-            <el-option label="开发环境" value="dev" />
-            <el-option label="测试环境" value="test" />
-            <el-option label="生产环境" value="prod" />
-          </el-select>
-        </el-form-item>
-        <el-form-item label="状态">
-          <el-select v-model="queryForm.status" placeholder="请选择状态" clearable>
-            <el-option label="草稿" value="DRAFT" />
-            <el-option label="进行中" value="ACTIVE" />
-            <el-option label="已暂停" value="PAUSED" />
-            <el-option label="已完成" value="COMPLETED" />
-            <el-option label="已失败" value="FAILED" />
-            <el-option label="已回滚" value="ROLLBACK" />
-          </el-select>
-        </el-form-item>
-        <el-form-item>
-          <el-button type="primary" @click="loadPlans">
-            <el-icon><Search /></el-icon>
-            查询
+      <!-- 发布计划列表 -->
+      <div class="plan-list">
+        <div class="list-header">
+          <el-button type="primary" @click="showCreateDialog = true">
+            <el-icon><Plus /></el-icon>
+            {{ t('grayRelease.createPlan') }}
           </el-button>
-          <el-button @click="resetQuery">重置</el-button>
-        </el-form-item>
-      </el-form>
-    </el-card>
+          <el-button @click="loadPlans">
+            <el-icon><Refresh /></el-icon>
+            {{ t('common.refresh') }}
+          </el-button>
+        </div>
 
-    <!-- 发布计划列表 -->
-    <el-card class="table-card">
-      <el-table :data="plans" v-loading="loading" stripe>
-        <el-table-column prop="planName" label="计划名称" />
-        <el-table-column prop="appName" label="应用名称" />
-        <el-table-column prop="environment" label="环境" />
-        <el-table-column prop="grayStrategy" label="灰度策略">
-          <template #default="{ row }">
-            <el-tag v-if="row.grayStrategy === 'IP_WHITELIST'" type="primary">IP白名单</el-tag>
-            <el-tag v-else-if="row.grayStrategy === 'PERCENTAGE'" type="success">按比例</el-tag>
-            <el-tag v-else-if="row.grayStrategy === 'CANARY'" type="warning">金丝雀</el-tag>
-            <el-tag v-else-if="row.grayStrategy === 'MANUAL_INSTANCES'" type="info">手动选择</el-tag>
-            <el-tag v-else>{{ row.grayStrategy }}</el-tag>
-          </template>
-        </el-table-column>
-        <el-table-column prop="status" label="状态">
-          <template #default="{ row }">
-            <el-tag v-if="row.status === 'DRAFT'" type="info">草稿</el-tag>
-            <el-tag v-else-if="row.status === 'ACTIVE'" type="success">进行中</el-tag>
-            <el-tag v-else-if="row.status === 'PAUSED'" type="warning">已暂停</el-tag>
-            <el-tag v-else-if="row.status === 'COMPLETED'" type="success">已完成</el-tag>
-            <el-tag v-else-if="row.status === 'FAILED'" type="danger">已失败</el-tag>
-            <el-tag v-else-if="row.status === 'ROLLBACK'" type="danger">已回滚</el-tag>
-            <el-tag v-else>{{ row.status }}</el-tag>
-          </template>
-        </el-table-column>
-        <el-table-column prop="rolloutPercentage" label="发布进度">
-          <template #default="{ row }">
-            <el-progress :percentage="row.rolloutPercentage || 0" :status="getProgressStatus(row)" />
-          </template>
-        </el-table-column>
-        <el-table-column prop="createTime" label="创建时间" />
-        <el-table-column label="操作" width="300">
-          <template #default="{ row }">
-            <el-button size="small" @click="viewDetails(row)">详情</el-button>
-            <el-button v-if="row.status === 'DRAFT'" size="small" type="primary" @click="startGrayRelease(row)">
-              开始
-            </el-button>
-            <el-button v-if="row.status === 'ACTIVE'" size="small" type="warning" @click="pauseGrayRelease(row)">
-              暂停
-            </el-button>
-            <el-button v-if="row.status === 'PAUSED'" size="small" type="success" @click="resumeGrayRelease(row)">
-              恢复
-            </el-button>
-            <el-button v-if="['ACTIVE', 'PAUSED'].includes(row.status)" size="small" type="success" @click="completeGrayRelease(row)">
-              完成
-            </el-button>
-            <el-button v-if="['ACTIVE', 'PAUSED'].includes(row.status)" size="small" type="danger" @click="rollbackGrayRelease(row)">
-              回滚
-            </el-button>
-          </template>
-        </el-table-column>
-      </el-table>
-
-      <el-pagination
-        v-model:current-page="pagination.pageNum"
-        v-model:page-size="pagination.pageSize"
-        :total="pagination.total"
-        :page-sizes="[10, 20, 50, 100]"
-        layout="total, sizes, prev, pager, next, jumper"
-        @size-change="loadPlans"
-        @current-change="loadPlans"
-      />
+        <el-table :data="planList" v-loading="loading">
+          <el-table-column prop="planName" :label="t('grayRelease.planName')" />
+          <el-table-column prop="appName" :label="t('config.appName')" />
+          <el-table-column prop="environment" :label="t('config.environment')" />
+          <el-table-column prop="configKey" :label="t('config.configKey')" />
+          <el-table-column prop="strategy" :label="t('grayRelease.strategy')">
+            <template #default="scope">
+              <el-tag>{{ getStrategyLabel(scope.row.strategy) }}</el-tag>
+            </template>
+          </el-table-column>
+          <el-table-column prop="status" :label="t('grayRelease.status')">
+            <template #default="scope">
+              <el-tag :type="getStatusType(scope.row.status)">
+                {{ getStatusLabel(scope.row.status) }}
+              </el-tag>
+            </template>
+          </el-table-column>
+          <el-table-column prop="createTime" :label="t('common.createTime')" />
+          <el-table-column :label="t('common.actions')" width="200">
+            <template #default="scope">
+              <el-button size="small" @click="viewPlan(scope.row)">
+                {{ t('common.view') }}
+              </el-button>
+              <el-button 
+                v-if="scope.row.status === 'DRAFT'" 
+                size="small" 
+                type="primary" 
+                @click="executePlan(scope.row)"
+              >
+                {{ t('grayRelease.execute') }}
+              </el-button>
+              <el-button 
+                v-if="scope.row.status === 'EXECUTING'" 
+                size="small" 
+                type="success" 
+                @click="completePlan(scope.row)"
+              >
+                {{ t('grayRelease.complete') }}
+              </el-button>
+              <el-button 
+                v-if="['EXECUTING', 'COMPLETED'].includes(scope.row.status)" 
+                size="small" 
+                type="warning" 
+                @click="rollbackPlan(scope.row)"
+              >
+                {{ t('grayRelease.rollback') }}
+              </el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+      </div>
     </el-card>
 
     <!-- 创建发布计划对话框 -->
-    <el-dialog v-model="createDialogVisible" title="创建灰度发布计划" width="800px">
+    <el-dialog 
+      v-model="showCreateDialog" 
+      :title="t('grayRelease.createPlan')" 
+      width="800px"
+    >
       <el-form :model="createForm" :rules="createRules" ref="createFormRef" label-width="120px">
-        <el-form-item label="计划名称" prop="planName">
-          <el-input v-model="createForm.planName" placeholder="请输入发布计划名称" />
+        <el-form-item :label="t('grayRelease.planName')" prop="planName">
+          <el-input v-model="createForm.planName" />
         </el-form-item>
         
-        <el-form-item label="应用名称" prop="appName">
-          <el-input v-model="createForm.appName" placeholder="请输入应用名称" @blur="onFormFieldChange" />
+        <el-form-item :label="t('config.appName')" prop="appName">
+          <el-input v-model="createForm.appName" />
         </el-form-item>
         
-        <el-form-item label="环境" prop="environment">
-          <el-select v-model="createForm.environment" placeholder="请选择环境" @change="onFormFieldChange">
-            <el-option label="开发环境" value="dev" />
-            <el-option label="测试环境" value="test" />
-            <el-option label="生产环境" value="prod" />
-          </el-select>
-        </el-form-item>
-        
-        <el-form-item label="配置组" prop="groupName">
-          <el-input v-model="createForm.groupName" placeholder="请输入配置组名称" @blur="onFormFieldChange" />
-        </el-form-item>
-
-        <el-form-item label="配置项" prop="configKeys">
-          <el-select v-model="createForm.configKeys" multiple placeholder="请选择配置项" @focus="loadConfigKeys">
+        <el-form-item :label="t('config.environment')" prop="environment">
+          <el-select v-model="createForm.environment" style="width: 100%">
             <el-option 
-              v-for="configKey in availableConfigKeys" 
-              :key="configKey" 
-              :label="configKey" 
-              :value="configKey" />
+              v-for="env in environments" 
+              :key="env.value" 
+              :label="env.label" 
+              :value="env.value" 
+            />
+          </el-select>
+        </el-form-item>
+        
+        <el-form-item :label="t('config.groupName')" prop="groupName">
+          <el-input v-model="createForm.groupName" />
+        </el-form-item>
+        
+        <el-form-item :label="t('config.configKey')" prop="configKey">
+          <el-input v-model="createForm.configKey" />
+        </el-form-item>
+        
+        <el-form-item :label="t('grayRelease.strategy')" prop="strategy">
+          <el-select v-model="createForm.strategy" @change="onStrategyChange" style="width: 100%">
+            <el-option 
+              v-for="strategy in strategies" 
+              :key="strategy.value" 
+              :label="strategy.label" 
+              :value="strategy.value" 
+            />
           </el-select>
         </el-form-item>
 
-        <el-form-item label="灰度策略" prop="grayStrategy">
-          <el-select v-model="createForm.grayStrategy" placeholder="请选择灰度策略" @change="onStrategyChange">
-            <el-option label="IP白名单" value="IP_WHITELIST" />
-            <el-option label="按比例发布" value="PERCENTAGE" />
-            <el-option label="金丝雀发布" value="CANARY" />
-            <el-option label="手动选择实例" value="MANUAL_INSTANCES" />
-          </el-select>
+        <!-- 实例选择 -->
+        <el-form-item :label="t('grayRelease.instances')" prop="instances">
+          <div class="instance-selection">
+            <div class="instance-header">
+              <el-button size="small" @click="loadInstances">
+                <el-icon><Refresh /></el-icon>
+                {{ t('grayRelease.loadInstances') }}
+              </el-button>
+              <span class="instance-count">
+                {{ t('grayRelease.selectedCount', { count: selectedInstances.length, total: instanceList.length }) }}
+              </span>
+            </div>
+            
+            <div class="instance-list" v-loading="instanceLoading">
+              <el-checkbox-group v-model="selectedInstances">
+                <div class="instance-grid">
+                  <el-checkbox 
+                    v-for="instance in instanceList" 
+                    :key="instance.id" 
+                    :label="instance.id"
+                    class="instance-item"
+                  >
+                    <div class="instance-info">
+                      <div class="instance-ip">{{ instance.ip }}:{{ instance.port }}</div>
+                      <div class="instance-status">
+                        <el-tag size="small" :type="instance.status === 'ONLINE' ? 'success' : 'danger'">
+                          {{ instance.status }}
+                        </el-tag>
+                      </div>
+                    </div>
+                  </el-checkbox>
+                </div>
+              </el-checkbox-group>
+            </div>
+          </div>
         </el-form-item>
 
-        <!-- IP白名单配置 -->
-        <el-form-item v-if="createForm.grayStrategy === 'IP_WHITELIST'" label="IP白名单">
-          <el-input
-            v-model="ipWhitelistText"
-            type="textarea"
-            :rows="3"
-            placeholder="请输入IP地址，每行一个，例如：&#10;192.168.1.100&#10;192.168.1.101"
+        <!-- 策略配置 -->
+        <el-form-item v-if="createForm.strategy === 'PERCENTAGE'" :label="t('grayRelease.percentage')">
+          <el-slider v-model="createForm.percentage" :max="100" show-input />
+        </el-form-item>
+
+        <el-form-item v-if="createForm.strategy === 'IP_WHITELIST'" :label="t('grayRelease.ipWhitelist')">
+          <el-input 
+            v-model="createForm.ipWhitelist" 
+            type="textarea" 
+            :placeholder="t('grayRelease.ipWhitelistPlaceholder')" 
           />
         </el-form-item>
 
-        <!-- 按比例发布配置 -->
-        <el-form-item v-if="createForm.grayStrategy === 'PERCENTAGE'" label="发布比例">
-          <el-slider v-model="createForm.rolloutPercentage" :min="1" :max="100" show-input />
-          <span class="form-tip">{{ createForm.rolloutPercentage }}% 的流量将获取灰度配置</span>
-        </el-form-item>
-
-        <!-- 手动选择实例 -->
-        <el-form-item v-if="createForm.grayStrategy === 'MANUAL_INSTANCES'" label="选择实例">
-          <el-button @click="loadInstances" :loading="instancesLoading">刷新实例列表</el-button>
-          <el-table 
-            :data="availableInstances" 
-            @selection-change="handleInstanceSelection"
-            style="margin-top: 10px;">
-            <el-table-column type="selection" width="55" />
-            <el-table-column prop="instanceId" label="实例ID" />
-            <el-table-column prop="instanceIp" label="IP地址" />
-            <el-table-column prop="instancePort" label="端口" />
-            <el-table-column prop="lastHeartbeat" label="最后心跳" />
-            <el-table-column prop="status" label="状态">
-              <template #default="{ row }">
-                <el-tag :type="row.status === 'ACTIVE' ? 'success' : 'danger'">
-                  {{ row.status === 'ACTIVE' ? '在线' : '离线' }}
-                </el-tag>
-              </template>
-            </el-table-column>
-          </el-table>
-        </el-form-item>
-
-        <el-form-item label="发布描述">
-          <el-input v-model="createForm.description" type="textarea" :rows="3" placeholder="请输入发布描述" />
+        <el-form-item :label="t('grayRelease.description')">
+          <el-input v-model="createForm.description" type="textarea" />
         </el-form-item>
       </el-form>
 
       <template #footer>
-        <el-button @click="createDialogVisible = false">取消</el-button>
-        <el-button type="primary" @click="createPlan" :loading="createLoading">创建</el-button>
+        <el-button @click="showCreateDialog = false">{{ t('common.cancel') }}</el-button>
+        <el-button type="primary" @click="createPlan">{{ t('common.confirm') }}</el-button>
       </template>
     </el-dialog>
 
     <!-- 计划详情对话框 -->
-    <el-dialog v-model="detailDialogVisible" title="发布计划详情" width="1000px">
+    <el-dialog 
+      v-model="showDetailDialog" 
+      :title="t('grayRelease.planDetail')" 
+      width="1000px"
+    >
       <div v-if="currentPlan">
         <el-descriptions :column="2" border>
-          <el-descriptions-item label="计划名称">{{ currentPlan.planName }}</el-descriptions-item>
-          <el-descriptions-item label="应用名称">{{ currentPlan.appName }}</el-descriptions-item>
-          <el-descriptions-item label="环境">{{ currentPlan.environment }}</el-descriptions-item>
-          <el-descriptions-item label="配置组">{{ currentPlan.groupName }}</el-descriptions-item>
-          <el-descriptions-item label="灰度策略">{{ currentPlan.grayStrategy }}</el-descriptions-item>
-          <el-descriptions-item label="状态">{{ currentPlan.status }}</el-descriptions-item>
-          <el-descriptions-item label="创建时间">{{ currentPlan.createTime }}</el-descriptions-item>
-          <el-descriptions-item label="创建者">{{ currentPlan.creator }}</el-descriptions-item>
+          <el-descriptions-item :label="t('grayRelease.planName')">
+            {{ currentPlan.planName }}
+          </el-descriptions-item>
+          <el-descriptions-item :label="t('grayRelease.status')">
+            <el-tag :type="getStatusType(currentPlan.status)">
+              {{ getStatusLabel(currentPlan.status) }}
+            </el-tag>
+          </el-descriptions-item>
+          <el-descriptions-item :label="t('config.appName')">
+            {{ currentPlan.appName }}
+          </el-descriptions-item>
+          <el-descriptions-item :label="t('config.environment')">
+            {{ currentPlan.environment }}
+          </el-descriptions-item>
+          <el-descriptions-item :label="t('config.configKey')">
+            {{ currentPlan.configKey }}
+          </el-descriptions-item>
+          <el-descriptions-item :label="t('grayRelease.strategy')">
+            {{ getStrategyLabel(currentPlan.strategy) }}
+          </el-descriptions-item>
+          <el-descriptions-item :label="t('common.createTime')">
+            {{ currentPlan.createTime }}
+          </el-descriptions-item>
+          <el-descriptions-item :label="t('common.updateTime')">
+            {{ currentPlan.updateTime }}
+          </el-descriptions-item>
         </el-descriptions>
 
-        <h3 style="margin-top: 20px;">配置详情</h3>
-        <el-table :data="planDetails" stripe>
-          <el-table-column prop="configKey" label="配置键" />
-          <el-table-column prop="oldValue" label="原始值" />
-          <el-table-column prop="grayValue" label="灰度值" />
-          <el-table-column prop="status" label="状态">
-            <template #default="{ row }">
-              <el-tag v-if="row.status === 'PENDING'" type="info">待发布</el-tag>
-              <el-tag v-else-if="row.status === 'GRAY'" type="warning">灰度中</el-tag>
-              <el-tag v-else-if="row.status === 'PUBLISHED'" type="success">已发布</el-tag>
-              <el-tag v-else-if="row.status === 'ROLLBACK'" type="danger">已回滚</el-tag>
-              <el-tag v-else>{{ row.status }}</el-tag>
-            </template>
-          </el-table-column>
-        </el-table>
+        <div class="plan-instances" style="margin-top: 20px;">
+          <h4>{{ t('grayRelease.planInstances') }}</h4>
+          <el-table :data="planDetails" size="small">
+            <el-table-column prop="instanceId" :label="t('grayRelease.instanceId')" />
+            <el-table-column prop="instanceIp" :label="t('grayRelease.instanceIp')" />
+            <el-table-column prop="status" :label="t('grayRelease.status')">
+              <template #default="scope">
+                <el-tag size="small" :type="getDetailStatusType(scope.row.status)">
+                  {{ getDetailStatusLabel(scope.row.status) }}
+                </el-tag>
+              </template>
+            </el-table-column>
+            <el-table-column prop="executeTime" :label="t('grayRelease.executeTime')" />
+            <el-table-column prop="errorMessage" :label="t('grayRelease.errorMessage')" />
+          </el-table>
+        </div>
       </div>
     </el-dialog>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
-import { Plus, Search } from '@element-plus/icons-vue'
 import { useRoute } from 'vue-router'
-import { grayReleaseApi, getConfigKeys } from '@/api/config'
+import { ElMessage, ElMessageBox } from 'element-plus'
+import { Plus, Refresh } from '@element-plus/icons-vue'
+import { useI18n } from 'vue-i18n'
+import { grayReleaseApi } from '@/api/config'
 
+const { t } = useI18n()
 const route = useRoute()
 
 // 响应式数据
 const loading = ref(false)
-const createLoading = ref(false)
-const instancesLoading = ref(false)
-const createDialogVisible = ref(false)
-const detailDialogVisible = ref(false)
-const plans = ref([])
-const availableInstances = ref([])
-const availableConfigKeys = ref([])
+const instanceLoading = ref(false)
+const showCreateDialog = ref(false)
+const showDetailDialog = ref(false)
+const createFormRef = ref()
+
+const planList = ref([])
+const instanceList = ref([])
+const selectedInstances = ref([])
 const planDetails = ref([])
 const currentPlan = ref(null)
-const ipWhitelistText = ref('')
 
-// 查询表单
-const queryForm = reactive({
-  appName: '',
-  environment: '',
-  status: ''
-})
-
-// 分页
-const pagination = reactive({
-  pageNum: 1,
-  pageSize: 10,
-  total: 0
-})
-
-// 创建表单
+// 表单数据
 const createForm = reactive({
   planName: '',
   appName: '',
   environment: '',
   groupName: '',
-  configKeys: [],
-  grayStrategy: 'IP_WHITELIST',
-  rolloutPercentage: 10,
+  configKey: '',
+  strategy: 'MANUAL',
+  percentage: 10,
+  ipWhitelist: '',
   description: '',
-  selectedInstances: []
+  instances: []
 })
 
 // 表单验证规则
 const createRules = {
-  planName: [{ required: true, message: '请输入计划名称', trigger: 'blur' }],
-  appName: [{ required: true, message: '请输入应用名称', trigger: 'blur' }],
-  environment: [{ required: true, message: '请选择环境', trigger: 'change' }],
-  groupName: [{ required: true, message: '请输入配置组', trigger: 'blur' }],
-  configKeys: [{ required: true, message: '请选择配置项', trigger: 'change' }],
-  grayStrategy: [{ required: true, message: '请选择灰度策略', trigger: 'change' }]
+  planName: [{ required: true, message: t('grayRelease.planNameRequired'), trigger: 'blur' }],
+  appName: [{ required: true, message: t('config.appNameRequired'), trigger: 'blur' }],
+  environment: [{ required: true, message: t('config.environmentRequired'), trigger: 'change' }],
+  configKey: [{ required: true, message: t('config.configKeyRequired'), trigger: 'blur' }],
+  strategy: [{ required: true, message: t('grayRelease.strategyRequired'), trigger: 'change' }]
 }
 
-const createFormRef = ref()
+// 选项数据
+const environments = [
+  { label: 'DEV', value: 'DEV' },
+  { label: 'TEST', value: 'TEST' },
+  { label: 'STAGING', value: 'STAGING' },
+  { label: 'PROD', value: 'PROD' }
+]
+
+const strategies = [
+  { label: t('grayRelease.strategies.manual'), value: 'MANUAL' },
+  { label: t('grayRelease.strategies.percentage'), value: 'PERCENTAGE' },
+  { label: t('grayRelease.strategies.ipWhitelist'), value: 'IP_WHITELIST' },
+  { label: t('grayRelease.strategies.canary'), value: 'CANARY' }
+]
 
 // 方法
 const loadPlans = async () => {
   loading.value = true
   try {
-    const params = {
-      ...queryForm,
-      pageNum: pagination.pageNum,
-      pageSize: pagination.pageSize
+    const response = await grayReleaseApi.getPlans({})
+    if (response.success) {
+      planList.value = response.data.records || []
     }
-    const response = await grayReleaseApi.queryPlans(params)
-    plans.value = response.data.records
-    pagination.total = response.data.total
   } catch (error) {
-    ElMessage.error('加载发布计划失败')
+    console.error('加载发布计划失败:', error)
+    ElMessage.error(t('grayRelease.loadPlansError'))
   } finally {
     loading.value = false
   }
 }
 
-const resetQuery = () => {
-  Object.assign(queryForm, {
-    appName: '',
-    environment: '',
-    status: ''
-  })
-  pagination.pageNum = 1
-  loadPlans()
+const loadInstances = async () => {
+  if (!createForm.appName || !createForm.environment) {
+    ElMessage.warning(t('grayRelease.selectAppAndEnv'))
+    return
+  }
+
+  instanceLoading.value = true
+  try {
+    const response = await grayReleaseApi.getInstances({
+      appName: createForm.appName,
+      environment: createForm.environment
+    })
+    if (response.success) {
+      instanceList.value = response.data || []
+    }
+  } catch (error) {
+    console.error('加载实例失败:', error)
+    ElMessage.error(t('grayRelease.loadInstancesError'))
+  } finally {
+    instanceLoading.value = false
+  }
 }
 
-const showCreateDialog = () => {
-  createDialogVisible.value = true
-  resetCreateForm()
+const createPlan = async () => {
+  if (!createFormRef.value) return
+  
+  try {
+    await createFormRef.value.validate()
+    
+    if (selectedInstances.value.length === 0) {
+      ElMessage.warning(t('grayRelease.selectInstances'))
+      return
+    }
+
+    const planData = {
+      ...createForm,
+      instances: selectedInstances.value
+    }
+
+    const response = await grayReleaseApi.createPlan(planData)
+    if (response.success) {
+      ElMessage.success(t('grayRelease.createSuccess'))
+      showCreateDialog.value = false
+      resetCreateForm()
+      loadPlans()
+    } else {
+      ElMessage.error(response.message || t('grayRelease.createError'))
+    }
+  } catch (error) {
+    console.error('创建发布计划失败:', error)
+    ElMessage.error(t('grayRelease.createError'))
+  }
+}
+
+const viewPlan = async (plan) => {
+  currentPlan.value = plan
+  showDetailDialog.value = true
+  
+  try {
+    const response = await grayReleaseApi.getPlanDetails(plan.id)
+    if (response.success) {
+      planDetails.value = response.data || []
+    }
+  } catch (error) {
+    console.error('加载计划详情失败:', error)
+  }
+}
+
+const executePlan = async (plan) => {
+  try {
+    await ElMessageBox.confirm(
+      t('grayRelease.executeConfirm', { name: plan.planName }),
+      t('common.confirm'),
+      { type: 'warning' }
+    )
+
+    const response = await grayReleaseApi.executePlan(plan.id)
+    if (response.success) {
+      ElMessage.success(t('grayRelease.executeSuccess'))
+      loadPlans()
+    } else {
+      ElMessage.error(response.message || t('grayRelease.executeError'))
+    }
+  } catch (error) {
+    if (error !== 'cancel') {
+      console.error('执行发布计划失败:', error)
+      ElMessage.error(t('grayRelease.executeError'))
+    }
+  }
+}
+
+const completePlan = async (plan) => {
+  try {
+    await ElMessageBox.confirm(
+      t('grayRelease.completeConfirm', { name: plan.planName }),
+      t('common.confirm'),
+      { type: 'success' }
+    )
+
+    const response = await grayReleaseApi.completePlan(plan.id)
+    if (response.success) {
+      ElMessage.success(t('grayRelease.completeSuccess'))
+      loadPlans()
+    } else {
+      ElMessage.error(response.message || t('grayRelease.completeError'))
+    }
+  } catch (error) {
+    if (error !== 'cancel') {
+      console.error('完成发布计划失败:', error)
+      ElMessage.error(t('grayRelease.completeError'))
+    }
+  }
+}
+
+const rollbackPlan = async (plan) => {
+  try {
+    await ElMessageBox.confirm(
+      t('grayRelease.rollbackConfirm', { name: plan.planName }),
+      t('common.confirm'),
+      { type: 'warning' }
+    )
+
+    const response = await grayReleaseApi.rollbackPlan(plan.id)
+    if (response.success) {
+      ElMessage.success(t('grayRelease.rollbackSuccess'))
+      loadPlans()
+    } else {
+      ElMessage.error(response.message || t('grayRelease.rollbackError'))
+    }
+  } catch (error) {
+    if (error !== 'cancel') {
+      console.error('回滚发布计划失败:', error)
+      ElMessage.error(t('grayRelease.rollbackError'))
+    }
+  }
+}
+
+const onStrategyChange = () => {
+  selectedInstances.value = []
 }
 
 const resetCreateForm = () => {
@@ -332,320 +461,160 @@ const resetCreateForm = () => {
     appName: '',
     environment: '',
     groupName: '',
-    configKeys: [],
-    grayStrategy: 'IP_WHITELIST',
-    rolloutPercentage: 10,
+    configKey: '',
+    strategy: 'MANUAL',
+    percentage: 10,
+    ipWhitelist: '',
     description: '',
-    selectedInstances: []
+    instances: []
   })
-  ipWhitelistText.value = ''
-  availableInstances.value = []
-  availableConfigKeys.value = []
+  selectedInstances.value = []
+  instanceList.value = []
 }
 
-const loadConfigKeys = async () => {
-  if (!createForm.appName || !createForm.environment) {
-    return
+// 状态和策略标签
+const getStatusLabel = (status) => {
+  const labels = {
+    DRAFT: t('grayRelease.statuses.draft'),
+    EXECUTING: t('grayRelease.statuses.executing'),
+    COMPLETED: t('grayRelease.statuses.completed'),
+    FAILED: t('grayRelease.statuses.failed'),
+    CANCELLED: t('grayRelease.statuses.cancelled')
   }
-  
-  try {
-    const response = await getConfigKeys({
-      appName: createForm.appName,
-      environment: createForm.environment,
-      groupName: createForm.groupName
-    })
-    availableConfigKeys.value = response.data
-  } catch (error) {
-    ElMessage.error('加载配置键失败')
+  return labels[status] || status
+}
+
+const getStatusType = (status) => {
+  const types = {
+    DRAFT: 'info',
+    EXECUTING: 'warning',
+    COMPLETED: 'success',
+    FAILED: 'danger',
+    CANCELLED: 'info'
   }
+  return types[status] || 'info'
 }
 
-const loadInstances = async () => {
-  if (!createForm.appName || !createForm.environment) {
-    return
+const getStrategyLabel = (strategy) => {
+  const labels = {
+    MANUAL: t('grayRelease.strategies.manual'),
+    PERCENTAGE: t('grayRelease.strategies.percentage'),
+    IP_WHITELIST: t('grayRelease.strategies.ipWhitelist'),
+    CANARY: t('grayRelease.strategies.canary')
   }
-  
-  instancesLoading.value = true
-  try {
-    const response = await grayReleaseApi.getInstances({
-      appName: createForm.appName,
-      environment: createForm.environment,
-      groupName: createForm.groupName
-    })
-    availableInstances.value = response.data
-  } catch (error) {
-    ElMessage.error('加载实例列表失败')
-  } finally {
-    instancesLoading.value = false
+  return labels[strategy] || strategy
+}
+
+const getDetailStatusLabel = (status) => {
+  const labels = {
+    PENDING: t('grayRelease.detailStatuses.pending'),
+    SUCCESS: t('grayRelease.detailStatuses.success'),
+    FAILED: t('grayRelease.detailStatuses.failed')
   }
+  return labels[status] || status
 }
 
-const onStrategyChange = () => {
-  if (createForm.grayStrategy === 'MANUAL_INSTANCES') {
-    loadInstances()
+const getDetailStatusType = (status) => {
+  const types = {
+    PENDING: 'warning',
+    SUCCESS: 'success',
+    FAILED: 'danger'
   }
+  return types[status] || 'info'
 }
 
-const onFormFieldChange = () => {
-  // 当应用名称、环境或配置组发生变化时，重新加载配置键和实例
-  loadConfigKeys()
-  if (createForm.grayStrategy === 'MANUAL_INSTANCES') {
-    loadInstances()
-  }
-}
-
-const handleInstanceSelection = (selection) => {
-  createForm.selectedInstances = selection
-}
-
-const createPlan = async () => {
-  if (!createFormRef.value) return
-  
-  try {
-    await createFormRef.value.validate()
-    createLoading.value = true
-    
-    const grayRules = buildGrayRules()
-    const planData = {
-      ...createForm,
-      grayRules: JSON.stringify(grayRules),
-      configKeys: JSON.stringify(createForm.configKeys)
-    }
-    
-    let response
-    if (createForm.grayStrategy === 'MANUAL_INSTANCES') {
-      response = await grayReleaseApi.createPlanWithInstances({
-        ...planData,
-        selectedInstances: createForm.selectedInstances
-      })
-    } else {
-      response = await grayReleaseApi.createPlan(planData)
-    }
-    
-    if (response.success) {
-      ElMessage.success('创建发布计划成功')
-      createDialogVisible.value = false
-      loadPlans()
-    } else {
-      ElMessage.error(response.message || '创建发布计划失败')
-    }
-  } catch (error) {
-    console.error('创建发布计划失败:', error)
-    ElMessage.error('创建发布计划失败')
-  } finally {
-    createLoading.value = false
-  }
-}
-
-const buildGrayRules = () => {
-  const rules = {}
-  
-  switch (createForm.grayStrategy) {
-    case 'IP_WHITELIST':
-      rules.ipWhitelist = ipWhitelistText.value.split('\n').filter(ip => ip.trim())
-      break
-    case 'PERCENTAGE':
-      rules.percentage = createForm.rolloutPercentage
-      break
-    case 'CANARY':
-      rules.canaryRules = {
-        initialPercentage: 5,
-        maxPercentage: 50,
-        stepPercentage: 10,
-        stepInterval: 300 // 5分钟
-      }
-      break
-    case 'MANUAL_INSTANCES':
-      rules.selectedInstances = createForm.selectedInstances.map(instance => ({
-        instanceId: instance.instanceId,
-        instanceIp: instance.instanceIp,
-        instancePort: instance.instancePort
-      }))
-      break
-  }
-  
-  return rules
-}
-
-const viewDetails = async (plan) => {
-  currentPlan.value = plan
-  detailDialogVisible.value = true
-  
-  try {
-    const response = await grayReleaseApi.getPlanDetails(plan.id)
-    planDetails.value = response.data
-  } catch (error) {
-    ElMessage.error('加载计划详情失败')
-  }
-}
-
-const startGrayRelease = async (plan) => {
-  try {
-    await ElMessageBox.confirm('确定要开始灰度发布吗？', '确认', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning'
-    })
-    
-    const response = await grayReleaseApi.startGrayRelease(plan.id)
-    if (response.success) {
-      ElMessage.success('灰度发布已开始')
-      loadPlans()
-    } else {
-      ElMessage.error(response.message || '开始灰度发布失败')
-    }
-  } catch (error) {
-    if (error !== 'cancel') {
-      ElMessage.error('开始灰度发布失败')
-    }
-  }
-}
-
-const pauseGrayRelease = async (plan) => {
-  try {
-    await ElMessageBox.confirm('确定要暂停灰度发布吗？', '确认', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning'
-    })
-    
-    const response = await grayReleaseApi.pauseGrayRelease(plan.id)
-    if (response.success) {
-      ElMessage.success('灰度发布已暂停')
-      loadPlans()
-    } else {
-      ElMessage.error(response.message || '暂停灰度发布失败')
-    }
-  } catch (error) {
-    if (error !== 'cancel') {
-      ElMessage.error('暂停灰度发布失败')
-    }
-  }
-}
-
-const resumeGrayRelease = async (plan) => {
-  try {
-    await ElMessageBox.confirm('确定要恢复灰度发布吗？', '确认', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning'
-    })
-    
-    const response = await grayReleaseApi.resumeGrayRelease(plan.id)
-    if (response.success) {
-      ElMessage.success('灰度发布已恢复')
-      loadPlans()
-    } else {
-      ElMessage.error(response.message || '恢复灰度发布失败')
-    }
-  } catch (error) {
-    if (error !== 'cancel') {
-      ElMessage.error('恢复灰度发布失败')
-    }
-  }
-}
-
-const completeGrayRelease = async (plan) => {
-  try {
-    await ElMessageBox.confirm('确定要完成灰度发布吗？这将把灰度配置推送到所有实例。', '确认', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'warning'
-    })
-    
-    const response = await grayReleaseApi.completeGrayRelease(plan.id)
-    if (response.success) {
-      ElMessage.success('灰度发布已完成')
-      loadPlans()
-    } else {
-      ElMessage.error(response.message || '完成灰度发布失败')
-    }
-  } catch (error) {
-    if (error !== 'cancel') {
-      ElMessage.error('完成灰度发布失败')
-    }
-  }
-}
-
-const rollbackGrayRelease = async (plan) => {
-  try {
-    await ElMessageBox.confirm('确定要回滚灰度发布吗？这将恢复原始配置。', '确认', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
-      type: 'danger'
-    })
-    
-    const response = await grayReleaseApi.rollbackGrayRelease(plan.id)
-    if (response.success) {
-      ElMessage.success('灰度发布已回滚')
-      loadPlans()
-    } else {
-      ElMessage.error(response.message || '回滚灰度发布失败')
-    }
-  } catch (error) {
-    if (error !== 'cancel') {
-      ElMessage.error('回滚灰度发布失败')
-    }
-  }
-}
-
-const getProgressStatus = (plan) => {
-  if (plan.status === 'COMPLETED') return 'success'
-  if (plan.status === 'FAILED' || plan.status === 'ROLLBACK') return 'exception'
-  if (plan.status === 'ACTIVE') return 'active'
-  return ''
-}
-
-// 生命周期
+// 初始化
 onMounted(() => {
-  loadPlans()
+  // 从路由参数中获取配置信息
+  const { action, appName, environment, groupName, configKey } = route.query
   
-  // 检查是否从配置页面跳转过来
-  if (route.query.action === 'publish') {
-    // 使用URL参数预填充表单
-    createForm.appName = route.query.appName || ''
-    createForm.environment = route.query.environment || ''
-    createForm.groupName = route.query.groupName || ''
+  if (action === 'publish' && appName && environment && configKey) {
+    // 自动填充表单并显示创建对话框
+    createForm.appName = appName as string
+    createForm.environment = environment as string
+    createForm.groupName = (groupName as string) || ''
+    createForm.configKey = configKey as string
+    createForm.planName = `${appName}-${configKey}-${Date.now()}`
     
-    if (route.query.configKey) {
-      createForm.configKeys = [route.query.configKey]
-    }
+    showCreateDialog.value = true
     
-    // 自动显示创建对话框
-    createDialogVisible.value = true
-    
-    // 如果有应用名称和环境，自动加载配置键和实例列表
-    if (createForm.appName && createForm.environment) {
-      loadConfigKeys()
+    // 自动加载实例
+    setTimeout(() => {
       loadInstances()
-    }
+    }, 500)
   }
+  
+  loadPlans()
 })
 </script>
 
 <style scoped>
-.gray-release-container {
+.gray-release {
   padding: 20px;
 }
 
-.header {
+.card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.list-header {
+  display: flex;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
-.search-card {
-  margin-bottom: 20px;
+.instance-selection {
+  width: 100%;
 }
 
-.table-card {
-  margin-bottom: 20px;
+.instance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.form-tip {
-  color: #909399;
-  font-size: 12px;
-  margin-left: 10px;
+.instance-count {
+  font-size: 14px;
+  color: #666;
+}
+
+.instance-list {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.instance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.instance-item {
+  margin: 0;
+}
+
+.instance-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.instance-ip {
+  font-weight: 500;
+}
+
+.instance-status {
+  display: flex;
+  align-items: center;
+}
+
+.plan-instances {
+  margin-top: 20px;
 }
 </style> 

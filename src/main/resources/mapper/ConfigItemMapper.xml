@@ -52,6 +52,17 @@
           AND del_flag = 0
     </select>
 
+    <!-- 根据配置键查询（不指定组名） -->
+    <select id="findByKeyWithoutGroup" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM config_item
+        WHERE app_name = #{appName}
+          AND environment = #{environment}
+          AND config_key = #{configKey}
+          AND del_flag = 0
+        LIMIT 1
+    </select>
+
     <!-- 根据应用查询 -->
     <select id="findByApp" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>

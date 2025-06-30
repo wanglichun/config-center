@@ -141,7 +141,8 @@ import {
   SwitchButton,
   Odometer,
   Clock,
-  Monitor
+  Monitor,
+  Operation
 } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
 import type { BreadcrumbItem } from '@/types/common'
@@ -163,7 +164,8 @@ const iconMap: Record<string, any> = {
   Setting,
   Clock,
   User,
-  Monitor
+  Monitor,
+  Operation
 }
 
 // 当前激活的菜单
@@ -232,6 +234,7 @@ const getMenuTitle = (title: string) => {
     '仪表盘': 'nav.dashboard',
     '配置管理': 'nav.config',
     '变更历史': 'nav.history',
+    '灰度发布': 'grayRelease.title',
     '用户管理': 'nav.users',
     '系统监控': 'nav.monitor',
     '个人中心': 'nav.profile'
@@ -245,6 +248,7 @@ const getBreadcrumbTitle = (title: string) => {
     '仪表盘': 'nav.dashboard',
     '配置管理': 'nav.config',
     '变更历史': 'nav.history',
+    '灰度发布': 'grayRelease.title',
     '用户管理': 'nav.users',
     '系统监控': 'nav.monitor',
     '个人中心': 'nav.profile',

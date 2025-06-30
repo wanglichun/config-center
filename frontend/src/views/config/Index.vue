@@ -163,6 +163,7 @@ import { ref, reactive, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus, Search } from '@element-plus/icons-vue'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import { getConfigPage, createConfig, updateConfig, deleteConfig, publishConfig } from '@/api/config'
 import { getAllEnum, enumToOptions } from '@/api/enum'
 import type { ConfigItem, ConfigQuery, ConfigForm } from '@/types/config'
@@ -170,6 +171,7 @@ import type { PageResult } from '@/types/common'
 import type { AllEnums } from '@/api/enum'
 
 const { t } = useI18n()
+const router = useRouter()
 
 const searchForm = reactive<ConfigQuery>({
   pageNum: 1,
@@ -347,27 +349,18 @@ const handleEdit = (row: ConfigItem) => {
   showAddDialog.value = true
 }
 
-const handlePublish = async (row: ConfigItem) => {
-  try {
-    await ElMessageBox.confirm(t('config.messages.publishConfirm', { key: row.configKey }), t('common.confirm'), {
-      confirmButtonText: t('common.confirm'),
-      cancelButtonText: t('common.cancel'),
-      type: 'warning'
-    })
-
-    const response = await publishConfig(row.id)
-    if (response.success) {
-      ElMessage.success(t('config.messages.publishSuccess'))
-      loadConfigList()
-    } else {
-      ElMessage.error(response.message || t('config.messages.publishFailed'))
+const handlePublish = (row: ConfigItem) => {
+  // 跳转到灰度发布页面，并传递配置信息
+  router.push({
+    name: 'GrayRelease',
+    query: {
+      action: 'publish',
+      appName: row.appName,
+      environment: row.environment,
+      groupName: row.groupName,
+      configKey: row.configKey
     }
-  } catch (error) {
-    if (error !== 'cancel') {
-      console.error('发布配置失败:', error)
-      ElMessage.error(t('config.messages.publishFailed'))
-    }
-  }
+  })
 }
 
 const handleDelete = async (row: ConfigItem) => {
