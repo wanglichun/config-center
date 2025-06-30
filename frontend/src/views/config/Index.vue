@@ -15,9 +15,7 @@
         <el-form :model="searchForm" inline>
           <el-form-item label="环境">
             <el-select v-model="searchForm.environment" placeholder="请选择环境" clearable style="width: 160px;">
-              <el-option label="开发环境" value="dev" />
-              <el-option label="测试环境" value="test" />
-              <el-option label="生产环境" value="prod" />
+              <el-option v-for="option in environmentOptions" :key="option.value" :label="option.label" :value="option.value" />
             </el-select>
           </el-form-item>
           <el-form-item label="配置类别">
@@ -28,9 +26,7 @@
           </el-form-item>
           <el-form-item label="状态">
             <el-select v-model="searchForm.status" placeholder="请选择状态" clearable style="width: 140px;">
-              <el-option label="已发布" value="PUBLISHED" />
-              <el-option label="草稿" value="DRAFT" />
-              <el-option label="已禁用" value="DISABLED" />
+              <el-option v-for="option in statusOptions" :key="option.value" :label="option.label" :value="option.value" />
             </el-select>
           </el-form-item>
           <el-form-item>
@@ -97,9 +93,7 @@
         </el-form-item>
         <el-form-item label="环境" prop="environment">
           <el-select v-model="configForm.environment" placeholder="请选择环境" :disabled="isEdit" style="width: 100%;">
-            <el-option label="开发环境" value="dev" />
-            <el-option label="测试环境" value="test" />
-            <el-option label="生产环境" value="prod" />
+            <el-option v-for="option in environmentOptions" :key="option.value" :label="option.label" :value="option.value" />
           </el-select>
         </el-form-item>
         <el-form-item label="配置组" prop="groupName">
@@ -145,8 +139,10 @@ import { ref, reactive, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus, Search } from '@element-plus/icons-vue'
 import { getConfigPage, createConfig, updateConfig, deleteConfig, publishConfig } from '@/api/config'
+import { getAllEnum, enumToOptions } from '@/api/enum'
 import type { ConfigItem, ConfigQuery, ConfigForm } from '@/types/config'
 import type { PageResult } from '@/types/common'
+import type { AllEnums } from '@/api/enum'
 
 const searchForm = reactive<ConfigQuery>({
   pageNum: 1,
@@ -187,6 +183,50 @@ const isEdit = ref(false)
 const formRef = ref()
 const loading = ref(false)
 
+// 枚举选项
+const environmentOptions = ref<Array<{value: string, label: string}>>([])
+const statusOptions = ref<Array<{value: string, label: string}>>([])
+const enumsData = ref<AllEnums>()
+
+// 加载枚举数据
+const loadEnums = async () => {
+  try {
+    const response = await getAllEnum()
+    if (response.success) {
+      enumsData.value = response.data
+      environmentOptions.value = enumToOptions(response.data.EnvironmentEnum)
+      statusOptions.value = enumToOptions(response.data.ConfigStatusEnum)
+      console.log('枚举数据加载成功:', response.data)
+    } else {
+      console.error('加载枚举失败:', response.message)
+      // 使用默认值
+      environmentOptions.value = [
+        { value: 'dev', label: '开发环境' },
+        { value: 'test', label: '测试环境' },
+        { value: 'prod', label: '生产环境' }
+      ]
+      statusOptions.value = [
+        { value: 'DRAFT', label: '草稿' },
+        { value: 'PUBLISHED', label: '已发布' },
+        { value: 'DISABLED', label: '已禁用' }
+      ]
+    }
+  } catch (error) {
+    console.error('加载枚举异常:', error)
+    // 使用默认值
+    environmentOptions.value = [
+      { value: 'dev', label: '开发环境' },
+      { value: 'test', label: '测试环境' },
+      { value: 'prod', label: '生产环境' }
+    ]
+    statusOptions.value = [
+      { value: 'DRAFT', label: '草稿' },
+      { value: 'PUBLISHED', label: '已发布' },
+      { value: 'DISABLED', label: '已禁用' }
+    ]
+  }
+}
+
 const getEnvTagType = (env: string) => {
   switch (env) {
     case 'dev': return 'primary'
@@ -197,6 +237,10 @@ const getEnvTagType = (env: string) => {
 }
 
 const getEnvText = (env: string) => {
+  if (enumsData.value?.EnvironmentEnum) {
+    return enumsData.value.EnvironmentEnum[env] || env
+  }
+  // 默认映射
   switch (env) {
     case 'dev': return '开发环境'
     case 'test': return '测试环境'
@@ -215,6 +259,10 @@ const getStatusTagType = (status: string) => {
 }
 
 const getStatusText = (status: string) => {
+  if (enumsData.value?.ConfigStatusEnum) {
+    return enumsData.value.ConfigStatusEnum[status] || status
+  }
+  // 默认映射
   switch (status) {
     case 'PUBLISHED': return '已发布'
     case 'DRAFT': return '草稿'
@@ -377,6 +425,7 @@ const handleCurrentChange = (val: number) => {
 }
 
 onMounted(() => {
+  loadEnums()
   loadConfigList()
 })
 </script>

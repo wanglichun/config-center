@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/config-center.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/ConfigCenterApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/ConfigCenterApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/EnumController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/EnumController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/enums/ConfigStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/enums/ConfigStatusEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/enums/EnvironmentEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/enums/EnvironmentEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/ConfigCenterApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/ConfigCenterApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/EnumController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/EnumController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/enums/ConfigStatusEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/enums/ConfigStatusEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/enums/EnumValue$EnumValuePair.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/enums/EnumValue$EnumValuePair.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/enums/EnumValue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/enums/EnumValue.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/enums/EnvironmentEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/enums/EnvironmentEnum.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

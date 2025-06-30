@@ -1,15 +1,28 @@
 package com.example.configcenter.enums;
 
-public enum ConfigStatusEnum {
+import com.example.configcenter.service.enums.EnumService;
 
-    DRAFT("DRAFT"),
-    OFFLINE("OFFLINE"),
-    ONLINE("ONLINE"),
-    DELETE("DELETE");
+public enum ConfigStatusEnum implements EnumService<String> {
 
-    private String value;
+    DRAFT("DRAFT", "草稿"),
+    PUBLISHED("PUBLISHED", "已发布"),
+    DISABLED("DISABLED", "已禁用");
 
-    ConfigStatusEnum(String value) {
-        this.value = value;
+    private final String code;
+    private final String description;
+
+    ConfigStatusEnum(String code, String description) {
+        this.code = code;
+        this.description = description;
+    }
+
+    @Override
+    public String getCode() {
+        return code;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
     }
 }
