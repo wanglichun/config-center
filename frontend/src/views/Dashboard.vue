@@ -10,7 +10,7 @@
             </div>
             <div class="stat-info">
               <div class="stat-value">{{ stats.totalConfigs }}</div>
-              <div class="stat-label">总配置数</div>
+              <div class="stat-label">{{ $t('dashboard.totalConfigs') }}</div>
             </div>
           </div>
         </el-card>
@@ -24,7 +24,7 @@
             </div>
             <div class="stat-info">
               <div class="stat-value">{{ stats.totalApps }}</div>
-              <div class="stat-label">应用数</div>
+              <div class="stat-label">{{ $t('dashboard.totalApps') }}</div>
             </div>
           </div>
         </el-card>
@@ -38,7 +38,7 @@
             </div>
             <div class="stat-info">
               <div class="stat-value">{{ stats.totalEnvironments }}</div>
-              <div class="stat-label">环境数</div>
+              <div class="stat-label">{{ $t('dashboard.totalEnvironments') }}</div>
             </div>
           </div>
         </el-card>
@@ -52,7 +52,7 @@
             </div>
             <div class="stat-info">
               <div class="stat-value">{{ stats.recentChanges }}</div>
-              <div class="stat-label">今日变更</div>
+              <div class="stat-label">{{ $t('dashboard.recentChanges') }}</div>
             </div>
           </div>
         </el-card>
@@ -65,7 +65,7 @@
         <el-card class="chart-card">
           <template #header>
             <div class="card-header">
-              <span>配置状态分布</span>
+              <span>{{ $t('dashboard.configStatusDistribution') }}</span>
             </div>
           </template>
           <div class="chart-container">
@@ -78,7 +78,7 @@
         <el-card class="chart-card">
           <template #header>
             <div class="card-header">
-              <span>环境配置分布</span>
+              <span>{{ $t('dashboard.envConfigDistribution') }}</span>
             </div>
           </template>
           <div class="chart-container">
@@ -94,16 +94,16 @@
         <el-card class="activity-card">
           <template #header>
             <div class="card-header">
-              <span>最近活动</span>
+              <span>{{ $t('dashboard.recentActivity') }}</span>
               <el-button text @click="$router.push('/history')">
-                查看全部
+                {{ $t('dashboard.viewAll') }}
               </el-button>
             </div>
           </template>
           <div class="activity-list">
             <div v-if="recentActivities.length === 0" class="empty-state">
               <el-icon class="empty-icon"><Document /></el-icon>
-              <div class="empty-text">暂无活动记录</div>
+              <div class="empty-text">{{ $t('dashboard.noActivityRecords') }}</div>
             </div>
             <div
               v-for="activity in recentActivities"
@@ -121,7 +121,7 @@
               </div>
               <div class="activity-content">
                 <div class="activity-title">
-                  {{ getOperationText(activity.operationType) }}配置
+                  {{ getOperationText(activity.operationType) }}{{ $t('config.title') }}
                   <el-tag size="small" class="ml-10">{{ activity.appName }}</el-tag>
                 </div>
                 <div class="activity-desc">
@@ -143,7 +143,7 @@
         <el-card class="quick-actions-card">
           <template #header>
             <div class="card-header">
-              <span>快速操作</span>
+              <span>{{ $t('dashboard.quickActions') }}</span>
             </div>
           </template>
           <div class="quick-actions">
@@ -154,7 +154,7 @@
               @click="$router.push('/config')"
             >
               <el-icon><Plus /></el-icon>
-              新建配置
+              {{ $t('dashboard.newConfig') }}
             </el-button>
             <el-button
               size="large"
@@ -162,7 +162,7 @@
               @click="$router.push('/config')"
             >
               <el-icon><Search /></el-icon>
-              查看配置
+              {{ $t('dashboard.viewConfigs') }}
             </el-button>
             <el-button
               size="large"
@@ -170,7 +170,7 @@
               @click="$router.push('/history')"
             >
               <el-icon><Clock /></el-icon>
-              变更历史
+              {{ $t('dashboard.changeHistory') }}
             </el-button>
             <el-button
               v-if="userStore.userInfo?.role === 'ADMIN'"
@@ -179,7 +179,7 @@
               @click="$router.push('/users')"
             >
               <el-icon><User /></el-icon>
-              用户管理
+              {{ $t('dashboard.userManagement') }}
             </el-button>
           </div>
         </el-card>
@@ -203,6 +203,7 @@ import VChart from 'vue-echarts'
 import dayjs from 'dayjs'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useUserStore } from '@/stores/user'
+import { useI18n } from 'vue-i18n'
 import type { ConfigStats } from '@/types/config'
 import type { ConfigHistory } from '@/types/config'
 // 导入图标
@@ -234,6 +235,7 @@ use([
 ])
 
 const userStore = useUserStore()
+const { t } = useI18n()
 
 // 统计数据
 const stats = ref<ConfigStats>({
@@ -260,13 +262,13 @@ const configStatusOption = ref({
   },
   series: [
     {
-      name: '配置状态',
+      name: t('dashboard.configStatus'),
       type: 'pie',
       radius: '50%',
       data: [
-        { value: 0, name: '已发布' },
-        { value: 0, name: '草稿' },
-        { value: 0, name: '已禁用' }
+        { value: 0, name: t('status.published') },
+        { value: 0, name: t('status.draft') },
+        { value: 0, name: t('status.disabled') }
       ],
       emphasis: {
         itemStyle: {
@@ -309,7 +311,7 @@ const envConfigOption = ref({
   ],
   series: [
     {
-      name: '配置数量',
+      name: t('dashboard.configCount'),
       type: 'bar',
       barWidth: '60%',
       data: [0, 0, 0],
@@ -323,13 +325,13 @@ const envConfigOption = ref({
 // 获取操作文本
 const getOperationText = (type: string) => {
   const map: Record<string, string> = {
-    CREATE: '创建',
-    UPDATE: '更新',
-    DELETE: '删除',
-    PUBLISH: '发布',
-    ROLLBACK: '回滚'
+    CREATE: t('operation.create'),
+    UPDATE: t('operation.update'),
+    DELETE: t('operation.delete'),
+    PUBLISH: t('operation.publish'),
+    ROLLBACK: t('operation.rollback')
   }
-  return map[type] || '操作'
+  return map[type] || t('operation.operation')
 }
 
 // 格式化时间
@@ -352,9 +354,9 @@ const loadStats = async () => {
     
     // 更新图表数据
     configStatusOption.value.series[0].data = [
-      { value: stats.value.publishedConfigs, name: '已发布' },
-      { value: stats.value.draftConfigs, name: '草稿' },
-      { value: stats.value.totalConfigs - stats.value.publishedConfigs - stats.value.draftConfigs, name: '已禁用' }
+      { value: stats.value.publishedConfigs, name: t('status.published') },
+      { value: stats.value.draftConfigs, name: t('status.draft') },
+      { value: stats.value.totalConfigs - stats.value.publishedConfigs - stats.value.draftConfigs, name: t('status.disabled') }
     ]
     
     envConfigOption.value.series[0].data = [65, 48, 43]

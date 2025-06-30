@@ -3,71 +3,79 @@
     <el-card>
       <template #header>
         <div class="card-header">
-          <span>配置管理</span>
+          <span>{{ $t('config.title') }}</span>
           <el-button type="primary" @click="showAddDialog = true">
             <el-icon><Plus /></el-icon>
-            新增配置
+            {{ $t('config.add') }}
           </el-button>
         </div>
       </template>
       
       <div class="search-bar">
         <el-form :model="searchForm" inline>
-          <el-form-item label="环境">
-            <el-select v-model="searchForm.environment" placeholder="请选择环境" clearable style="width: 160px;">
+          <el-form-item :label="$t('config.environment')">
+            <el-select v-model="searchForm.environment" :placeholder="$t('config.placeholders.environment')" clearable style="width: 160px;">
               <el-option v-for="option in environmentOptions" :key="option.value" :label="option.label" :value="option.value" />
             </el-select>
           </el-form-item>
-          <el-form-item label="配置类别">
-            <el-input v-model="searchForm.groupName" placeholder="请输入配置组" clearable style="width: 180px;" />
+          <el-form-item :label="$t('config.groupName')">
+            <el-input v-model="searchForm.groupName" :placeholder="$t('config.placeholders.groupName')" clearable style="width: 180px;" />
           </el-form-item>
-          <el-form-item label="配置名称">
-            <el-input v-model="searchForm.keyword" placeholder="配置键或值关键字" clearable style="width: 200px;" />
+          <el-form-item :label="$t('config.configKey')">
+            <el-input v-model="searchForm.keyword" :placeholder="$t('config.placeholders.keyword')" clearable style="width: 200px;" />
           </el-form-item>
-          <el-form-item label="状态">
-            <el-select v-model="searchForm.status" placeholder="请选择状态" clearable style="width: 140px;">
+          <el-form-item :label="$t('config.status')">
+            <el-select v-model="searchForm.status" :placeholder="$t('common.search')" clearable style="width: 140px;">
               <el-option v-for="option in statusOptions" :key="option.value" :label="option.label" :value="option.value" />
             </el-select>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="handleSearch">
               <el-icon><Search /></el-icon>
-              搜索
+              {{ $t('common.search') }}
             </el-button>
-            <el-button @click="handleReset">重置</el-button>
+            <el-button @click="handleReset">{{ $t('common.reset') }}</el-button>
           </el-form-item>
         </el-form>
       </div>
 
       <el-table :data="configList" v-loading="loading" style="width: 100%">
-        <el-table-column prop="environment" label="环境" width="100">
+        <el-table-column prop="environment" :label="$t('config.environment')" width="100">
           <template #default="scope">
             <el-tag :type="getEnvTagType(scope.row.environment)">
               {{ getEnvText(scope.row.environment) }}
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="groupName" label="配置类别" />
-        <el-table-column prop="configKey" label="配置名字" />
-        <el-table-column prop="configValue" label="配置内容" show-overflow-tooltip />
-        <el-table-column prop="description" label="描述" show-overflow-tooltip />
-        <el-table-column prop="status" label="状态" width="80">
+        <el-table-column prop="groupName" :label="$t('config.groupName')" />
+        <el-table-column prop="configKey" :label="$t('config.configKey')" />
+        <el-table-column prop="configValue" :label="$t('config.configValue')" show-overflow-tooltip />
+        <el-table-column prop="description" :label="$t('config.description')" show-overflow-tooltip />
+        <el-table-column prop="status" :label="$t('config.status')" width="80">
           <template #default="scope">
             <el-tag :type="getStatusTagType(scope.row.status)">
               {{ getStatusText(scope.row.status) }}
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="updateTime" label="更新时间">
+        <el-table-column prop="updateTime" :label="$t('config.updateTime')">
           <template #default="scope">
             {{ formatTime(scope.row.updateTime) }}
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="200">
+        <el-table-column :label="$t('config.operation')" width="180" fixed="right">
           <template #default="scope">
-            <el-button size="small" @click="handleEdit(scope.row)">编辑</el-button>
-            <el-button size="small" type="success" @click="handlePublish(scope.row)">发布</el-button>
-            <el-button size="small" type="danger" @click="handleDelete(scope.row)">删除</el-button>
+            <div class="operation-buttons">
+              <el-button size="small" type="primary" @click="handleEdit(scope.row)">
+                {{ $t('common.edit') }}
+              </el-button>
+              <el-button size="small" type="success" @click="handlePublish(scope.row)">
+                {{ $t('common.publish') }}
+              </el-button>
+              <el-button size="small" type="danger" @click="handleDelete(scope.row)">
+                {{ $t('common.delete') }}
+              </el-button>
+            </div>
           </template>
         </el-table-column>
       </el-table>
@@ -86,49 +94,49 @@
     </el-card>
 
     <!-- 新增/编辑对话框 -->
-    <el-dialog v-model="showAddDialog" :title="isEdit ? '编辑配置' : '新增配置'" width="700px">
+    <el-dialog v-model="showAddDialog" :title="isEdit ? $t('config.edit') : $t('config.add')" width="700px">
       <el-form :model="configForm" label-width="100px" :rules="formRules" ref="formRef">
-        <el-form-item label="应用名称" prop="appName">
+        <el-form-item :label="$t('config.appName')" prop="appName">
           <el-input v-model="configForm.appName" :disabled="isEdit" style="width: 100%;" />
         </el-form-item>
-        <el-form-item label="环境" prop="environment">
-          <el-select v-model="configForm.environment" placeholder="请选择环境" :disabled="isEdit" style="width: 100%;">
+        <el-form-item :label="$t('config.environment')" prop="environment">
+          <el-select v-model="configForm.environment" :placeholder="$t('config.placeholders.environment')" :disabled="isEdit" style="width: 100%;">
             <el-option v-for="option in environmentOptions" :key="option.value" :label="option.label" :value="option.value" />
           </el-select>
         </el-form-item>
-        <el-form-item label="配置组" prop="groupName">
+        <el-form-item :label="$t('config.groupName')" prop="groupName">
           <el-input v-model="configForm.groupName" :disabled="isEdit" style="width: 100%;" />
         </el-form-item>
-        <el-form-item label="配置键" prop="configKey">
+        <el-form-item :label="$t('config.configKey')" prop="configKey">
           <el-input v-model="configForm.configKey" :disabled="isEdit" style="width: 100%;" />
         </el-form-item>
-        <el-form-item label="数据类型" prop="dataType">
-          <el-select v-model="configForm.dataType" placeholder="请选择数据类型" style="width: 100%;">
-            <el-option label="字符串" value="STRING" />
-            <el-option label="数字" value="NUMBER" />
-            <el-option label="布尔值" value="BOOLEAN" />
-            <el-option label="JSON" value="JSON" />
+        <el-form-item :label="$t('config.dataType')" prop="dataType">
+          <el-select v-model="configForm.dataType" :placeholder="$t('config.dataType')" style="width: 100%;">
+            <el-option :label="$t('config.dataTypes.STRING')" value="STRING" />
+            <el-option :label="$t('config.dataTypes.NUMBER')" value="NUMBER" />
+            <el-option :label="$t('config.dataTypes.BOOLEAN')" value="BOOLEAN" />
+            <el-option :label="$t('config.dataTypes.JSON')" value="JSON" />
           </el-select>
         </el-form-item>
-        <el-form-item label="配置值" prop="configValue">
+        <el-form-item :label="$t('config.configValue')" prop="configValue">
           <el-input 
             v-model="configForm.configValue" 
             type="textarea" 
             :rows="4" 
-            placeholder="请输入配置值"
+            :placeholder="$t('config.placeholders.configValue')"
             style="width: 100%;"
           />
         </el-form-item>
-        <el-form-item label="是否加密">
+        <el-form-item :label="$t('config.encrypted')">
           <el-switch v-model="configForm.encrypted" />
         </el-form-item>
-        <el-form-item label="描述">
-          <el-input v-model="configForm.description" placeholder="请输入配置描述" style="width: 100%;" />
+        <el-form-item :label="$t('config.description')">
+          <el-input v-model="configForm.description" :placeholder="$t('config.placeholders.description')" style="width: 100%;" />
         </el-form-item>
       </el-form>
       <template #footer>
-        <el-button @click="showAddDialog = false">取消</el-button>
-        <el-button type="primary" @click="handleSave">保存</el-button>
+        <el-button @click="showAddDialog = false">{{ $t('common.cancel') }}</el-button>
+        <el-button type="primary" @click="handleSave">{{ $t('common.save') }}</el-button>
       </template>
     </el-dialog>
   </div>
@@ -138,11 +146,14 @@
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus, Search } from '@element-plus/icons-vue'
+import { useI18n } from 'vue-i18n'
 import { getConfigPage, createConfig, updateConfig, deleteConfig, publishConfig } from '@/api/config'
 import { getAllEnum, enumToOptions } from '@/api/enum'
 import type { ConfigItem, ConfigQuery, ConfigForm } from '@/types/config'
 import type { PageResult } from '@/types/common'
 import type { AllEnums } from '@/api/enum'
+
+const { t } = useI18n()
 
 const searchForm = reactive<ConfigQuery>({
   pageNum: 1,
@@ -166,12 +177,12 @@ const configForm = reactive<ConfigForm>({
 })
 
 const formRules = {
-  appName: [{ required: true, message: '请输入应用名称', trigger: 'blur' }],
-  environment: [{ required: true, message: '请选择环境', trigger: 'change' }],
-  groupName: [{ required: true, message: '请输入配置组', trigger: 'blur' }],
-  configKey: [{ required: true, message: '请输入配置键', trigger: 'blur' }],
-  configValue: [{ required: true, message: '请输入配置值', trigger: 'blur' }],
-  dataType: [{ required: true, message: '请选择数据类型', trigger: 'change' }]
+  appName: [{ required: true, message: t('config.placeholders.appName'), trigger: 'blur' }],
+  environment: [{ required: true, message: t('config.placeholders.environment'), trigger: 'change' }],
+  groupName: [{ required: true, message: t('config.placeholders.groupName'), trigger: 'blur' }],
+  configKey: [{ required: true, message: t('config.placeholders.configKey'), trigger: 'blur' }],
+  configValue: [{ required: true, message: t('config.placeholders.configValue'), trigger: 'blur' }],
+  dataType: [{ required: true, message: t('config.dataType'), trigger: 'change' }]
 }
 
 const configList = ref<ConfigItem[]>([])
@@ -201,28 +212,28 @@ const loadEnums = async () => {
       console.error('加载枚举失败:', response.message)
       // 使用默认值
       environmentOptions.value = [
-        { value: 'dev', label: '开发环境' },
-        { value: 'test', label: '测试环境' },
-        { value: 'prod', label: '生产环境' }
+        { value: 'dev', label: t('config.environments.dev') },
+        { value: 'test', label: t('config.environments.test') },
+        { value: 'prod', label: t('config.environments.prod') }
       ]
       statusOptions.value = [
-        { value: 'DRAFT', label: '草稿' },
-        { value: 'PUBLISHED', label: '已发布' },
-        { value: 'DISABLED', label: '已禁用' }
+        { value: 'DRAFT', label: t('config.statuses.DRAFT') },
+        { value: 'PUBLISHED', label: t('config.statuses.PUBLISHED') },
+        { value: 'DISABLED', label: t('config.statuses.DISABLED') }
       ]
     }
   } catch (error) {
     console.error('加载枚举异常:', error)
     // 使用默认值
     environmentOptions.value = [
-      { value: 'dev', label: '开发环境' },
-      { value: 'test', label: '测试环境' },
-      { value: 'prod', label: '生产环境' }
+      { value: 'dev', label: t('config.environments.dev') },
+      { value: 'test', label: t('config.environments.test') },
+      { value: 'prod', label: t('config.environments.prod') }
     ]
     statusOptions.value = [
-      { value: 'DRAFT', label: '草稿' },
-      { value: 'PUBLISHED', label: '已发布' },
-      { value: 'DISABLED', label: '已禁用' }
+      { value: 'DRAFT', label: t('config.statuses.DRAFT') },
+      { value: 'PUBLISHED', label: t('config.statuses.PUBLISHED') },
+      { value: 'DISABLED', label: t('config.statuses.DISABLED') }
     ]
   }
 }
@@ -240,13 +251,8 @@ const getEnvText = (env: string) => {
   if (enumsData.value?.EnvironmentEnum) {
     return enumsData.value.EnvironmentEnum[env] || env
   }
-  // 默认映射
-  switch (env) {
-    case 'dev': return '开发环境'
-    case 'test': return '测试环境'
-    case 'prod': return '生产环境'
-    default: return env
-  }
+  // 使用国际化文本
+  return t(`config.environments.${env}`) || env
 }
 
 const getStatusTagType = (status: string) => {
@@ -262,13 +268,8 @@ const getStatusText = (status: string) => {
   if (enumsData.value?.ConfigStatusEnum) {
     return enumsData.value.ConfigStatusEnum[status] || status
   }
-  // 默认映射
-  switch (status) {
-    case 'PUBLISHED': return '已发布'
-    case 'DRAFT': return '草稿'
-    case 'DISABLED': return '已禁用'
-    default: return status
-  }
+  // 使用国际化文本
+  return t(`config.statuses.${status}`) || status
 }
 
 const formatTime = (timeStr: string) => {
@@ -295,11 +296,11 @@ const loadConfigList = async () => {
       configList.value = pageResult.records
       total.value = pageResult.total
     } else {
-      ElMessage.error(response.message || '查询失败')
+      ElMessage.error(response.message || t('common.loading') + ' failed')
     }
   } catch (error) {
     console.error('加载配置列表失败:', error)
-    ElMessage.error('查询失败')
+    ElMessage.error(t('common.loading') + ' failed')
   } finally {
     loading.value = false
   }
@@ -311,11 +312,15 @@ const handleSearch = () => {
 }
 
 const handleReset = () => {
-  searchForm.appName = ''
-  searchForm.environment = ''
-  searchForm.groupName = ''
-  searchForm.keyword = ''
-  searchForm.status = ''
+  Object.assign(searchForm, {
+    pageNum: 1,
+    pageSize: 20,
+    appName: '',
+    environment: '',
+    groupName: '',
+    keyword: '',
+    status: ''
+  })
   currentPage.value = 1
   loadConfigList()
 }
@@ -328,46 +333,46 @@ const handleEdit = (row: ConfigItem) => {
 
 const handlePublish = async (row: ConfigItem) => {
   try {
-    await ElMessageBox.confirm(`确定要发布配置 ${row.configKey} 吗？`, '提示', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
+    await ElMessageBox.confirm(t('config.messages.publishConfirm', { key: row.configKey }), t('common.confirm'), {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel'),
       type: 'warning'
     })
 
     const response = await publishConfig(row.id)
     if (response.success) {
-      ElMessage.success('发布成功')
+      ElMessage.success(t('config.messages.publishSuccess'))
       loadConfigList()
     } else {
-      ElMessage.error(response.message || '发布失败')
+      ElMessage.error(response.message || t('config.messages.publishFailed'))
     }
   } catch (error) {
     if (error !== 'cancel') {
       console.error('发布配置失败:', error)
-      ElMessage.error('发布失败')
+      ElMessage.error(t('config.messages.publishFailed'))
     }
   }
 }
 
 const handleDelete = async (row: ConfigItem) => {
   try {
-    await ElMessageBox.confirm(`确定要删除配置 ${row.configKey} 吗？`, '警告', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
+    await ElMessageBox.confirm(t('config.messages.deleteConfirm', { key: row.configKey }), t('common.confirm'), {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel'),
       type: 'warning'
     })
 
     const response = await deleteConfig(row.id)
     if (response.success) {
-      ElMessage.success('删除成功')
+      ElMessage.success(t('config.messages.deleteSuccess'))
       loadConfigList()
     } else {
-      ElMessage.error(response.message || '删除失败')
+      ElMessage.error(response.message || t('config.messages.deleteFailed'))
     }
   } catch (error) {
     if (error !== 'cancel') {
       console.error('删除配置失败:', error)
-      ElMessage.error('删除失败')
+      ElMessage.error(t('config.messages.deleteFailed'))
     }
   }
 }
@@ -384,17 +389,17 @@ const handleSave = async () => {
       }
 
       if (response.success) {
-        ElMessage.success(isEdit.value ? '更新成功' : '创建成功')
+        ElMessage.success(isEdit.value ? t('config.messages.updateSuccess') : t('config.messages.createSuccess'))
         showAddDialog.value = false
         resetForm()
         loadConfigList()
       } else {
-        ElMessage.error(response.message || '保存失败')
+        ElMessage.error(response.message || t('config.messages.saveFailed'))
       }
     }
   } catch (error) {
     console.error('保存配置失败:', error)
-    ElMessage.error('保存失败')
+    ElMessage.error(t('config.messages.saveFailed'))
   }
 }
 
@@ -468,6 +473,60 @@ onMounted(() => {
   justify-content: center;
 }
 
+.operation-buttons {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  
+  .el-button {
+    margin: 0;
+    min-width: 48px;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    
+    &.el-button--small {
+      height: 26px;
+      line-height: 1;
+    }
+    
+    // 编辑按钮样式
+    &.el-button--primary {
+      background-color: #409eff;
+      border-color: #409eff;
+      
+      &:hover {
+        background-color: #66b1ff;
+        border-color: #66b1ff;
+      }
+    }
+    
+    // 发布按钮样式
+    &.el-button--success {
+      background-color: #67c23a;
+      border-color: #67c23a;
+      
+      &:hover {
+        background-color: #85ce61;
+        border-color: #85ce61;
+      }
+    }
+    
+    // 删除按钮样式
+    &.el-button--danger {
+      background-color: #f56c6c;
+      border-color: #f56c6c;
+      
+      &:hover {
+        background-color: #f78989;
+        border-color: #f78989;
+      }
+    }
+  }
+}
+
 // 响应式设计
 @media (max-width: 1400px) {
   .search-bar .el-form {
@@ -516,6 +575,17 @@ onMounted(() => {
       display: flex;
       justify-content: center;
       margin-top: 16px;
+    }
+  }
+  
+  // 移动端操作按钮优化
+  .operation-buttons {
+    flex-direction: column;
+    gap: 4px;
+    
+    .el-button {
+      width: 100%;
+      min-width: auto;
     }
   }
 }

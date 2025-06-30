@@ -4,9 +4,9 @@ import com.example.configcenter.service.enums.EnumService;
 
 public enum EnvironmentEnum implements EnumService<String> {
 
-    DEV("dev", "开发环境"),
-    TEST("test", "测试环境"),
-    PROD("prod", "生产环境");
+    DEV("DEV", "DEV"),
+    TEST("TEST", "TEST"),
+    LIVE("LIVE", "LIVE");
 
     private final String code;
     private final String description;

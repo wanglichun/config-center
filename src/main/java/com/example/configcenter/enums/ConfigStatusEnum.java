@@ -4,9 +4,9 @@ import com.example.configcenter.service.enums.EnumService;
 
 public enum ConfigStatusEnum implements EnumService<String> {
 
-    DRAFT("DRAFT", "草稿"),
-    PUBLISHED("PUBLISHED", "已发布"),
-    DISABLED("DISABLED", "已禁用");
+    DRAFT("DRAFT", "DRAFT"),
+    PUBLISHED("PUBLISHED", "PUBLISHED"),
+    DISABLED("DISABLED", "DISABLED");
 
     private final String code;
     private final String description;
