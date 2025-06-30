@@ -11,6 +11,7 @@ import com.example.configcenter.mapper.ConfigItemMapper;
 import com.example.configcenter.mapper.GrayReleaseDetailMapper;
 import com.example.configcenter.mapper.GrayReleasePlanMapper;
 import com.example.configcenter.service.GrayReleaseService;
+import com.example.configcenter.service.ZooKeeperService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -40,6 +41,9 @@ public class GrayReleaseServiceImpl implements GrayReleaseService {
     
     @Autowired
     private ConfigItemMapper configItemMapper;
+    
+    @Autowired
+    private ZooKeeperService zooKeeperService;
     
     private final ObjectMapper objectMapper = new ObjectMapper();
     
@@ -189,6 +193,9 @@ public class GrayReleaseServiceImpl implements GrayReleaseService {
             grayReleaseDetailMapper.updateStatusByPlanId(planId, 
                 GrayReleaseEnum.DetailStatus.GRAY.getCode(), operator);
             
+            // 推送灰度配置到ZooKeeper（新增功能）
+            pushGrayConfigToZooKeeper(planId);
+            
             log.info("开始灰度发布成功，计划ID: {}, 操作者: {}", planId, operator);
             
         } catch (Exception e) {
@@ -300,6 +307,9 @@ public class GrayReleaseServiceImpl implements GrayReleaseService {
             // 更新详情状态
             grayReleaseDetailMapper.updateStatusByPlanId(planId, 
                 GrayReleaseEnum.DetailStatus.ROLLBACK.getCode(), operator);
+            
+            // 清理ZooKeeper中的灰度配置（新增功能）
+            clearGrayConfigFromZooKeeper(planId);
             
             log.info("回滚灰度发布成功，计划ID: {}, 操作者: {}", planId, operator);
             
@@ -519,5 +529,162 @@ public class GrayReleaseServiceImpl implements GrayReleaseService {
         GrayReleaseDto.DetailResponse response = new GrayReleaseDto.DetailResponse();
         BeanUtils.copyProperties(detail, response);
         return response;
+    }
+    
+    /**
+     * 推送灰度配置到ZooKeeper
+     */
+    private void pushGrayConfigToZooKeeper(Long planId) {
+        try {
+            GrayReleasePlan plan = grayReleasePlanMapper.selectById(planId);
+            if (plan == null) {
+                log.warn("灰度发布计划不存在，无法推送配置，planId: {}", planId);
+                return;
+            }
+            
+            List<GrayReleaseDetail> details = grayReleaseDetailMapper.selectByPlanId(planId);
+            if (details.isEmpty()) {
+                log.warn("灰度发布计划没有配置项，无法推送配置，planId: {}", planId);
+                return;
+            }
+            
+            String strategy = plan.getGrayStrategy();
+            log.info("开始推送灰度配置，计划ID: {}, 策略: {}", planId, strategy);
+            
+            switch (strategy) {
+                case "IP_WHITELIST":
+                    pushIpWhitelistConfig(plan, details);
+                    break;
+                case "PERCENTAGE":
+                    pushPercentageConfig(plan, details);
+                    break;
+                case "CANARY":
+                    pushCanaryConfig(plan, details);
+                    break;
+                default:
+                    log.warn("不支持的灰度策略: {}", strategy);
+            }
+            
+            log.info("推送灰度配置成功，计划ID: {}", planId);
+            
+        } catch (Exception e) {
+            log.error("推送灰度配置失败，计划ID: {}", planId, e);
+            // 不抛出异常，避免影响主流程
+        }
+    }
+    
+    /**
+     * IP白名单配置推送
+     */
+    @SuppressWarnings("unchecked")
+    private void pushIpWhitelistConfig(GrayReleasePlan plan, List<GrayReleaseDetail> details) {
+        try {
+            Map<String, Object> grayRules = objectMapper.readValue(plan.getGrayRules(), 
+                new TypeReference<Map<String, Object>>() {});
+            List<String> ipWhitelist = (List<String>) grayRules.get("ipWhitelist");
+            
+            if (ipWhitelist == null || ipWhitelist.isEmpty()) {
+                log.warn("IP白名单为空，无法推送配置");
+                return;
+            }
+            
+            for (GrayReleaseDetail detail : details) {
+                // 为白名单IP创建特殊的ZK节点
+                for (String ip : ipWhitelist) {
+                    String grayPath = String.format("/config-center/%s/%s/gray/ip-whitelist/%s/%s",
+                        plan.getAppName(), plan.getEnvironment(), ip, detail.getConfigKey());
+                    zooKeeperService.publishConfig(grayPath, detail.getGrayValue());
+                    log.info("推送IP白名单配置成功，IP: {}, 配置: {}={}", ip, detail.getConfigKey(), detail.getGrayValue());
+                }
+            }
+            
+        } catch (Exception e) {
+            log.error("推送IP白名单配置失败", e);
+        }
+    }
+    
+    /**
+     * 按比例配置推送
+     */
+    private void pushPercentageConfig(GrayReleasePlan plan, List<GrayReleaseDetail> details) {
+        try {
+            for (GrayReleaseDetail detail : details) {
+                String percentagePath = String.format("/config-center/%s/%s/gray/percentage/%s",
+                    plan.getAppName(), plan.getEnvironment(), detail.getConfigKey());
+                
+                // 存储灰度配置和比例信息
+                Map<String, Object> configData = new HashMap<>();
+                configData.put("grayValue", detail.getGrayValue());
+                configData.put("percentage", plan.getRolloutPercentage());
+                configData.put("strategy", "PERCENTAGE");
+                
+                String configJson = objectMapper.writeValueAsString(configData);
+                zooKeeperService.publishConfig(percentagePath, configJson);
+                log.info("推送按比例配置成功，配置: {}={}, 比例: {}%", 
+                    detail.getConfigKey(), detail.getGrayValue(), plan.getRolloutPercentage());
+            }
+            
+        } catch (Exception e) {
+            log.error("推送按比例配置失败", e);
+        }
+    }
+    
+    /**
+     * 金丝雀配置推送
+     */
+    @SuppressWarnings("unchecked")
+    private void pushCanaryConfig(GrayReleasePlan plan, List<GrayReleaseDetail> details) {
+        try {
+            Map<String, Object> grayRules = objectMapper.readValue(plan.getGrayRules(), 
+                new TypeReference<Map<String, Object>>() {});
+            Map<String, Object> canaryRules = (Map<String, Object>) grayRules.get("canary");
+            List<String> canaryInstances = (List<String>) canaryRules.get("canaryInstances");
+            
+            if (canaryInstances == null || canaryInstances.isEmpty()) {
+                log.warn("金丝雀实例列表为空，无法推送配置");
+                return;
+            }
+            
+            for (GrayReleaseDetail detail : details) {
+                // 为金丝雀实例创建特殊节点
+                for (String instanceIp : canaryInstances) {
+                    String canaryPath = String.format("/config-center/%s/%s/gray/canary/instances/%s/%s",
+                        plan.getAppName(), plan.getEnvironment(), instanceIp, detail.getConfigKey());
+                    zooKeeperService.publishConfig(canaryPath, detail.getGrayValue());
+                    log.info("推送金丝雀配置成功，实例: {}, 配置: {}={}", 
+                        instanceIp, detail.getConfigKey(), detail.getGrayValue());
+                }
+            }
+            
+        } catch (Exception e) {
+            log.error("推送金丝雀配置失败", e);
+        }
+    }
+    
+    /**
+     * 清理ZooKeeper中的灰度配置
+     */
+    private void clearGrayConfigFromZooKeeper(Long planId) {
+        try {
+            GrayReleasePlan plan = grayReleasePlanMapper.selectById(planId);
+            if (plan == null) {
+                log.warn("灰度发布计划不存在，无法清理配置，planId: {}", planId);
+                return;
+            }
+            
+            // 清理灰度配置根目录
+            String grayBasePath = String.format("/config-center/%s/%s/gray", 
+                plan.getAppName(), plan.getEnvironment());
+            
+            try {
+                zooKeeperService.deleteConfig(grayBasePath);
+                log.info("清理灰度配置成功，路径: {}", grayBasePath);
+            } catch (Exception e) {
+                log.warn("清理灰度配置失败，路径: {}, 错误: {}", grayBasePath, e.getMessage());
+            }
+            
+        } catch (Exception e) {
+            log.error("清理灰度配置失败，计划ID: {}", planId, e);
+        }
     }
 } 
