@@ -350,17 +350,32 @@ const handleEdit = (row: ConfigItem) => {
 }
 
 const handlePublish = (row: ConfigItem) => {
-  // 跳转到灰度发布页面，并传递配置信息
-  router.push({
-    name: 'GrayRelease',
-    query: {
-      action: 'publish',
-      appName: row.appName,
-      environment: row.environment,
-      groupName: row.groupName,
-      configKey: row.configKey
-    }
-  })
+  console.log('点击发布按钮，配置信息:', row)
+  
+  try {
+    // 先尝试简单路径跳转
+    console.log('尝试跳转到 /gray-release')
+    
+    router.push('/gray-release').then(() => {
+      console.log('路由跳转成功')
+      ElMessage.success('跳转到灰度发布页面')
+    }).catch((error) => {
+      console.error('路由跳转失败:', error)
+      ElMessage.error('跳转到灰度发布页面失败: ' + error.message)
+      
+      // 如果路径跳转失败，尝试使用路由名称
+      console.log('尝试使用路由名称跳转')
+      return router.push({ name: 'GrayRelease' })
+    }).then(() => {
+      console.log('使用路由名称跳转成功')
+    }).catch((error2) => {
+      console.error('使用路由名称跳转也失败:', error2)
+      ElMessage.error('路由跳转完全失败')
+    })
+  } catch (error) {
+    console.error('发布按钮处理异常:', error)
+    ElMessage.error('操作失败，请稍后重试')
+  }
 }
 
 const handleDelete = async (row: ConfigItem) => {

@@ -483,4 +483,26 @@ public class GrayReleaseServiceImpl implements GrayReleaseService {
         
         return response;
     }
+    
+    @Override
+    public List<String> getInstances(String appName, String environment, String groupName, String configKey) {
+        try {
+            // 这里返回模拟的实例列表
+            // 在实际环境中，这应该从服务注册中心或配置管理系统获取
+            List<String> instances = new ArrayList<>();
+            instances.add("192.168.1.10:8080");
+            instances.add("192.168.1.11:8080");
+            instances.add("192.168.1.12:8080");
+            instances.add("192.168.1.13:8080");
+            instances.add("192.168.1.14:8080");
+            
+            log.info("获取实例列表成功，appName: {}, environment: {}, 实例数量: {}", 
+                    appName, environment, instances.size());
+            return instances;
+            
+        } catch (Exception e) {
+            log.error("获取实例列表失败，appName: {}, environment: {}", appName, environment, e);
+            throw new RuntimeException("获取实例列表失败: " + e.getMessage());
+        }
+    }
 } 

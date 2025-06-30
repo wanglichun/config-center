@@ -86,4 +86,74 @@ export function getConfigHistory(id: number): Promise<ApiResult<any[]>> {
  */
 export function validateConfig(configValue: string, dataType: string): Promise<ApiResult<boolean>> {
   return request.post('/config/validate', { configValue, dataType })
+}
+
+/**
+ * 获取配置键列表
+ */
+export function getConfigKeys(params: {
+  appName: string
+  environment: string
+  groupName?: string
+}): Promise<ApiResult<string[]>> {
+  return request.get('/config/keys', params)
+}
+
+/**
+ * 灰度发布相关API
+ */
+export const grayReleaseApi = {
+  /**
+   * 获取灰度发布计划列表
+   */
+  getPlans(params: any): Promise<ApiResult<any>> {
+    return request.get('/gray-release/plan/page', params)
+  },
+
+  /**
+   * 获取实例列表
+   */
+  getInstances(params: {
+    appName: string
+    environment: string
+    groupName?: string
+    configKey?: string
+  }): Promise<ApiResult<any[]>> {
+    return request.get('/gray-release/instances', params)
+  },
+
+  /**
+   * 创建灰度发布计划
+   */
+  createPlan(data: any): Promise<ApiResult<any>> {
+    return request.post('/gray-release/plan', data)
+  },
+
+  /**
+   * 获取计划详情
+   */
+  getPlanDetails(planId: number): Promise<ApiResult<any>> {
+    return request.get(`/gray-release/plan/${planId}`)
+  },
+
+  /**
+   * 执行灰度发布计划
+   */
+  executePlan(planId: number): Promise<ApiResult<boolean>> {
+    return request.post(`/gray-release/plan/${planId}/start`)
+  },
+
+  /**
+   * 完成灰度发布计划
+   */
+  completePlan(planId: number): Promise<ApiResult<boolean>> {
+    return request.post(`/gray-release/plan/${planId}/complete`)
+  },
+
+  /**
+   * 回滚灰度发布计划
+   */
+  rollbackPlan(planId: number): Promise<ApiResult<boolean>> {
+    return request.post(`/gray-release/plan/${planId}/rollback`)
+  }
 } 

@@ -204,6 +204,23 @@ public class GrayReleaseController {
     }
     
     /**
+     * 获取实例列表
+     */
+    @GetMapping("/instances")
+    public ApiResult<List<String>> getInstances(@RequestParam String appName,
+                                               @RequestParam String environment,
+                                               @RequestParam(required = false) String groupName,
+                                               @RequestParam(required = false) String configKey) {
+        try {
+            List<String> instances = grayReleaseService.getInstances(appName, environment, groupName, configKey);
+            return ApiResult.success(instances);
+        } catch (Exception e) {
+            log.error("获取实例列表失败，appName: {}, environment: {}", appName, environment, e);
+            return ApiResult.error("获取实例列表失败: " + e.getMessage());
+        }
+    }
+    
+    /**
      * 获取客户端IP
      */
     private String getClientIp(HttpServletRequest request) {

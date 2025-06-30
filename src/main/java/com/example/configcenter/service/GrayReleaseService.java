@@ -77,4 +77,9 @@ public interface GrayReleaseService {
      * 自动检查并处理灰度发布
      */
     void autoProcessGrayRelease();
+    
+    /**
+     * 获取实例列表
+     */
+    List<String> getInstances(String appName, String environment, String groupName, String configKey);
 } 
