@@ -94,49 +94,65 @@
     </el-card>
 
     <!-- 新增/编辑对话框 -->
-    <el-dialog v-model="showAddDialog" :title="isEdit ? $t('config.edit') : $t('config.add')" width="700px">
-      <el-form :model="configForm" label-width="100px" :rules="formRules" ref="formRef">
-        <el-form-item :label="$t('config.appName')" prop="appName">
-          <el-input v-model="configForm.appName" :disabled="isEdit" style="width: 100%;" />
-        </el-form-item>
-        <el-form-item :label="$t('config.environment')" prop="environment">
-          <el-select v-model="configForm.environment" :placeholder="$t('config.placeholders.environment')" :disabled="isEdit" style="width: 100%;">
-            <el-option v-for="option in environmentOptions" :key="option.value" :label="option.label" :value="option.value" />
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="$t('config.groupName')" prop="groupName">
-          <el-input v-model="configForm.groupName" :disabled="isEdit" style="width: 100%;" />
-        </el-form-item>
-        <el-form-item :label="$t('config.configKey')" prop="configKey">
-          <el-input v-model="configForm.configKey" :disabled="isEdit" style="width: 100%;" />
-        </el-form-item>
-        <el-form-item :label="$t('config.dataType')" prop="dataType">
-          <el-select v-model="configForm.dataType" :placeholder="$t('config.dataType')" style="width: 100%;">
-            <el-option :label="$t('config.dataTypes.STRING')" value="STRING" />
-            <el-option :label="$t('config.dataTypes.NUMBER')" value="NUMBER" />
-            <el-option :label="$t('config.dataTypes.BOOLEAN')" value="BOOLEAN" />
-            <el-option :label="$t('config.dataTypes.JSON')" value="JSON" />
-          </el-select>
-        </el-form-item>
-        <el-form-item :label="$t('config.configValue')" prop="configValue">
-          <el-input 
-            v-model="configForm.configValue" 
-            type="textarea" 
-            :rows="4" 
-            :placeholder="$t('config.placeholders.configValue')"
-            style="width: 100%;"
-          />
-        </el-form-item>
-        <el-form-item :label="$t('config.encrypted')">
-          <el-switch v-model="configForm.encrypted" />
-        </el-form-item>
-        <el-form-item :label="$t('config.description')">
-          <el-input v-model="configForm.description" :placeholder="$t('config.placeholders.description')" style="width: 100%;" />
-        </el-form-item>
+    <el-dialog v-model="showAddDialog" :title="isEdit ? $t('config.edit') : $t('config.add')" width="800px" class="config-dialog">
+      <el-form :model="configForm" label-width="120px" :rules="formRules" ref="formRef" class="dialog-form">
+        <div class="form-grid">
+          <div class="form-column">
+            <el-form-item :label="$t('config.appName')" prop="appName">
+              <el-input v-model="configForm.appName" :disabled="isEdit" :placeholder="$t('config.placeholders.appName')" />
+            </el-form-item>
+            <el-form-item :label="$t('config.environment')" prop="environment">
+              <el-select v-model="configForm.environment" :placeholder="$t('config.placeholders.environment')" :disabled="isEdit">
+                <el-option v-for="option in environmentOptions" :key="option.value" :label="option.label" :value="option.value" />
+              </el-select>
+            </el-form-item>
+            <el-form-item :label="$t('config.groupName')" prop="groupName">
+              <el-input v-model="configForm.groupName" :disabled="isEdit" :placeholder="$t('config.placeholders.groupName')" />
+            </el-form-item>
+          </div>
+          <div class="form-column">
+            <el-form-item :label="$t('config.configKey')" prop="configKey">
+              <el-input v-model="configForm.configKey" :disabled="isEdit" :placeholder="$t('config.placeholders.configKey')" />
+            </el-form-item>
+            <el-form-item :label="$t('config.dataType')" prop="dataType">
+              <el-select v-model="configForm.dataType" :placeholder="$t('config.dataType')">
+                <el-option :label="$t('config.dataTypes.STRING')" value="STRING" />
+                <el-option :label="$t('config.dataTypes.NUMBER')" value="NUMBER" />
+                <el-option :label="$t('config.dataTypes.BOOLEAN')" value="BOOLEAN" />
+                <el-option :label="$t('config.dataTypes.JSON')" value="JSON" />
+              </el-select>
+            </el-form-item>
+            <el-form-item :label="$t('config.encrypted')">
+              <el-switch v-model="configForm.encrypted" />
+            </el-form-item>
+          </div>
+        </div>
+        <div class="form-full-width">
+          <el-form-item :label="$t('config.configValue')" prop="configValue">
+            <el-input 
+              v-model="configForm.configValue" 
+              type="textarea" 
+              :rows="4" 
+              :placeholder="$t('config.placeholders.configValue')"
+              show-word-limit
+              maxlength="2000"
+            />
+          </el-form-item>
+          <el-form-item :label="$t('config.description')">
+            <el-input 
+              v-model="configForm.description" 
+              :placeholder="$t('config.placeholders.description')"
+              show-word-limit
+              maxlength="200"
+            />
+          </el-form-item>
+        </div>
       </el-form>
       <template #footer>
-        <el-button @click="showAddDialog = false">{{ $t('common.cancel') }}</el-button>
-        <el-button type="primary" @click="handleSave">{{ $t('common.save') }}</el-button>
+        <div class="dialog-footer">
+          <el-button @click="showAddDialog = false">{{ $t('common.cancel') }}</el-button>
+          <el-button type="primary" @click="handleSave">{{ $t('common.save') }}</el-button>
+        </div>
       </template>
     </el-dialog>
   </div>
@@ -527,6 +543,152 @@ onMounted(() => {
   }
 }
 
+// 对话框样式
+.config-dialog {
+  :deep(.el-dialog) {
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  :deep(.el-dialog__header) {
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    
+    .el-dialog__title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #303133;
+    }
+  }
+  
+  :deep(.el-dialog__body) {
+    padding: 24px;
+  }
+  
+  .dialog-form {
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+      
+      .form-column {
+        .el-form-item {
+          margin-bottom: 20px;
+          
+          :deep(.el-form-item__label) {
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+          }
+          
+          :deep(.el-input),
+          :deep(.el-select) {
+            width: 100%;
+          }
+          
+          :deep(.el-input__wrapper) {
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            
+            &:hover {
+              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+            
+            &.is-focus {
+              box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.2);
+            }
+          }
+          
+          :deep(.el-switch) {
+            --el-switch-on-color: #409eff;
+            --el-switch-off-color: #dcdfe6;
+          }
+        }
+      }
+    }
+    
+    .form-full-width {
+      .el-form-item {
+        margin-bottom: 20px;
+        
+        :deep(.el-form-item__label) {
+          font-weight: 600;
+          color: #495057;
+          margin-bottom: 8px;
+        }
+        
+        :deep(.el-textarea) {
+          .el-textarea__inner {
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            
+            &:hover {
+              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            }
+            
+            &:focus {
+              box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.2);
+            }
+          }
+        }
+        
+        :deep(.el-input__wrapper) {
+          border-radius: 6px;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          }
+          
+          &.is-focus {
+            box-shadow: 0 0 0 2px rgba(64, 158, 255, 0.2);
+          }
+        }
+      }
+    }
+  }
+  
+  .dialog-footer {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 0 0;
+    border-top: 1px solid #f0f0f0;
+    
+    .el-button {
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      
+      &.el-button--primary {
+        background: linear-gradient(135deg, #409eff, #66b1ff);
+        border: none;
+        
+        &:hover {
+          background: linear-gradient(135deg, #66b1ff, #409eff);
+          transform: translateY(-1px);
+          box-shadow: 0 4px 12px rgba(64, 158, 255, 0.3);
+        }
+      }
+      
+      &:not(.el-button--primary) {
+        background: #ffffff;
+        border: 1px solid #dcdfe6;
+        color: #606266;
+        
+        &:hover {
+          background: #f5f7fa;
+          border-color: #c0c4cc;
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+}
+
 // 响应式设计
 @media (max-width: 1400px) {
   .search-bar .el-form {
@@ -586,6 +748,21 @@ onMounted(() => {
     .el-button {
       width: 100%;
       min-width: auto;
+    }
+  }
+  
+  // 移动端对话框优化
+  .config-dialog {
+    :deep(.el-dialog) {
+      width: 95% !important;
+      margin: 5vh auto;
+    }
+    
+    .dialog-form {
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
     }
   }
 }
