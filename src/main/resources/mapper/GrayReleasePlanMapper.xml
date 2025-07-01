@@ -88,45 +88,42 @@
     </delete>
 
     <!-- 分页查询 -->
-    <select id="selectByPage" parameterType="com.example.configcenter.dto.GrayReleaseDto$PlanQueryRequest" resultMap="BaseResultMap">
+    <select id="selectByPage" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM gray_release_plan
         <where>
-            <if test="appName != null and appName != ''">
-                AND app_name LIKE CONCAT('%', #{appName}, '%')
+            <if test="query.appName != null and query.appName != ''">
+                AND app_name LIKE CONCAT('%', #{query.appName}, '%')
             </if>
-            <if test="environment != null and environment != ''">
-                AND environment = #{environment}
+            <if test="query.environment != null and query.environment != ''">
+                AND environment = #{query.environment}
             </if>
-            <if test="status != null and status != ''">
-                AND status = #{status}
+            <if test="query.status != null and query.status != ''">
+                AND status = #{query.status}
             </if>
-            <if test="creator != null and creator != ''">
-                AND creator = #{creator}
+            <if test="query.creator != null and query.creator != ''">
+                AND creator = #{query.creator}
             </if>
         </where>
         ORDER BY create_time DESC
-        <if test="pageNum != null and pageSize != null">
-            LIMIT #{pageNum}, #{pageSize}
-        </if>
     </select>
 
     <!-- 查询总数 -->
-    <select id="countByPage" parameterType="com.example.configcenter.dto.GrayReleaseDto$PlanQueryRequest" resultType="java.lang.Long">
+    <select id="countByQuery" resultType="java.lang.Integer">
         SELECT COUNT(*)
         FROM gray_release_plan
         <where>
-            <if test="appName != null and appName != ''">
-                AND app_name LIKE CONCAT('%', #{appName}, '%')
+            <if test="query.appName != null and query.appName != ''">
+                AND app_name LIKE CONCAT('%', #{query.appName}, '%')
             </if>
-            <if test="environment != null and environment != ''">
-                AND environment = #{environment}
+            <if test="query.environment != null and query.environment != ''">
+                AND environment = #{query.environment}
             </if>
-            <if test="status != null and status != ''">
-                AND status = #{status}
+            <if test="query.status != null and query.status != ''">
+                AND status = #{query.status}
             </if>
-            <if test="creator != null and creator != ''">
-                AND creator = #{creator}
+            <if test="query.creator != null and query.creator != ''">
+                AND creator = #{query.creator}
             </if>
         </where>
     </select>
@@ -146,5 +143,23 @@
         WHERE status = #{status}
         ORDER BY create_time DESC
     </select>
+
+    <!-- 查询活跃的灰度发布计划 -->
+    <select id="selectActiveByConfig" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM gray_release_plan
+        WHERE app_name = #{appName} 
+          AND environment = #{environment}
+          AND status IN ('EXECUTING', 'PAUSED')
+          AND (config_keys LIKE CONCAT('%', #{configKey}, '%') OR config_keys = #{configKey})
+        ORDER BY create_time DESC
+    </select>
+
+    <!-- 更新状态 -->
+    <update id="updateStatus">
+        UPDATE gray_release_plan
+        SET status = #{status}, update_by = #{updateBy}, update_time = NOW()
+        WHERE id = #{id}
+    </update>
 
 </mapper> 
