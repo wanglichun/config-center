@@ -107,7 +107,7 @@
         </where>
         ORDER BY create_time DESC
         <if test="pageNum != null and pageSize != null">
-            LIMIT #{offset}, #{pageSize}
+            LIMIT #{pageNum}, #{pageSize}
         </if>
     </select>
 

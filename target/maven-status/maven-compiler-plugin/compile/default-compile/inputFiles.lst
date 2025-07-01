@@ -5,6 +5,7 @@
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/service/impl/ZooKeeperServiceImpl.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/service/ConfigService.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/dto/ConfigItemDto.java
+/Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/service/MachineGroupService.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/common/PageBase.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/service/ConfigPushService.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/controller/ConfigController.java
@@ -43,9 +44,11 @@
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/dto/LoginRequest.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/exception/BusinessException.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/service/enums/EnumService.java
+/Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/controller/MachineGroupController.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/config/ZooKeeperConfig.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/dto/LoginResponse.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/service/ZooKeeperService.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/security/JwtTokenProvider.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/controller/AuthController.java
 /Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/config/SecurityConfig.java
+/Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter/service/impl/MachineGroupServiceImpl.java

@@ -36,9 +36,7 @@ public interface GrayReleasePlanMapper {
     /**
      * 分页查询灰度发布计划
      */
-    List<GrayReleasePlan> selectByPage(@Param("query") GrayReleaseDto.PlanQueryRequest query,
-                                       @Param("offset") int offset,
-                                       @Param("limit") int limit);
+    List<GrayReleasePlan> selectByPage(@Param("query") GrayReleaseDto.PlanQueryRequest query);
     
     /**
      * 查询总数

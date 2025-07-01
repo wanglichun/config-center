@@ -156,4 +156,87 @@ export const grayReleaseApi = {
   rollbackPlan(planId: number): Promise<ApiResult<boolean>> {
     return request.post(`/gray-release/plan/${planId}/rollback`)
   }
+}
+
+/**
+ * 机器分组相关API
+ */
+export const machineGroupApi = {
+  /**
+   * 获取应用的所有分组
+   */
+  getGroups(params: {
+    appName: string
+    environment: string
+  }): Promise<ApiResult<string[]>> {
+    return request.get('/machine-groups/groups', params)
+  },
+
+  /**
+   * 获取指定分组的机器列表
+   */
+  getMachinesByGroup(params: {
+    appName: string
+    environment: string
+    groupName: string
+  }): Promise<ApiResult<any[]>> {
+    return request.get('/machine-groups/machines', params)
+  },
+
+  /**
+   * 获取应用的所有机器（按分组组织）
+   */
+  getAllMachinesByGroups(params: {
+    appName: string
+    environment: string
+  }): Promise<ApiResult<Record<string, any[]>>> {
+    return request.get('/machine-groups/all-machines', params)
+  },
+
+  /**
+   * 创建机器分组
+   */
+  createGroup(params: {
+    appName: string
+    environment: string
+    groupName: string
+    description?: string
+  }): Promise<ApiResult<void>> {
+    return request.post('/machine-groups/groups?' + new URLSearchParams(params as any).toString())
+  },
+
+  /**
+   * 删除机器分组
+   */
+  deleteGroup(params: {
+    appName: string
+    environment: string
+    groupName: string
+  }): Promise<ApiResult<void>> {
+    return request.delete('/machine-groups/groups?' + new URLSearchParams(params).toString())
+  },
+
+  /**
+   * 注册机器到分组
+   */
+  registerMachine(params: {
+    appName: string
+    environment: string
+    groupName: string
+    instanceId: string
+  }, instanceInfo: any): Promise<ApiResult<void>> {
+    return request.post('/machine-groups/machines?' + new URLSearchParams(params).toString(), instanceInfo)
+  },
+
+  /**
+   * 从分组中移除机器
+   */
+  unregisterMachine(params: {
+    appName: string
+    environment: string
+    groupName: string
+    instanceId: string
+  }): Promise<ApiResult<void>> {
+    return request.delete('/machine-groups/machines?' + new URLSearchParams(params).toString())
+  }
 } 

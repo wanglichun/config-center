@@ -11,6 +11,7 @@ import com.example.configcenter.mapper.GrayReleaseDetailMapper;
 import com.example.configcenter.mapper.ConfigItemMapper;
 import com.example.configcenter.service.GrayReleaseService;
 import com.example.configcenter.service.ConfigPushService;
+import com.example.configcenter.service.MachineGroupService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +43,9 @@ public class GrayReleaseServiceImpl implements GrayReleaseService {
     
     @Autowired
     private ConfigPushService configPushService;
+    
+    @Autowired
+    private MachineGroupService machineGroupService;
     
     private final ObjectMapper objectMapper = new ObjectMapper();
     
@@ -111,7 +115,7 @@ public class GrayReleaseServiceImpl implements GrayReleaseService {
             int offset = (request.getPageNum() - 1) * request.getPageSize();
             int limit = request.getPageSize();
             
-            List<GrayReleasePlan> plans = grayReleasePlanMapper.selectByPage(request, offset, limit);
+            List<GrayReleasePlan> plans = grayReleasePlanMapper.selectByPage(request);
             int total = grayReleasePlanMapper.countByQuery(request);
             
             List<GrayReleaseDto.PlanResponse> responses = plans.stream()
@@ -487,21 +491,54 @@ public class GrayReleaseServiceImpl implements GrayReleaseService {
     @Override
     public List<String> getInstances(String appName, String environment, String groupName, String configKey) {
         try {
-            // 这里返回模拟的实例列表
-            // 在实际环境中，这应该从服务注册中心或配置管理系统获取
             List<String> instances = new ArrayList<>();
-            instances.add("192.168.1.10:8080");
-            instances.add("192.168.1.11:8080");
-            instances.add("192.168.1.12:8080");
-            instances.add("192.168.1.13:8080");
-            instances.add("192.168.1.14:8080");
             
-            log.info("获取实例列表成功，appName: {}, environment: {}, 实例数量: {}", 
-                    appName, environment, instances.size());
+            if (groupName != null && !groupName.isEmpty()) {
+                // 获取指定分组的机器
+                List<Map<String, Object>> machines = machineGroupService.getMachinesByGroup(appName, environment, groupName);
+                for (Map<String, Object> machine : machines) {
+                    String instanceId = (String) machine.get("instanceId");
+                    String ip = (String) machine.get("ip");
+                    String port = (String) machine.get("port");
+                    if (ip != null && port != null) {
+                        instances.add(ip + ":" + port);
+                    } else if (instanceId != null) {
+                        instances.add(instanceId);
+                    }
+                }
+            } else {
+                // 获取应用所有分组的机器
+                Map<String, List<Map<String, Object>>> allMachines = machineGroupService.getAllMachinesByGroups(appName, environment);
+                for (List<Map<String, Object>> groupMachines : allMachines.values()) {
+                    for (Map<String, Object> machine : groupMachines) {
+                        String instanceId = (String) machine.get("instanceId");
+                        String ip = (String) machine.get("ip");
+                        String port = (String) machine.get("port");
+                        if (ip != null && port != null) {
+                            instances.add(ip + ":" + port);
+                        } else if (instanceId != null) {
+                            instances.add(instanceId);
+                        }
+                    }
+                }
+            }
+            
+            // 如果没有找到机器，返回模拟数据用于演示
+            if (instances.isEmpty()) {
+                instances.add("192.168.1.10:8080");
+                instances.add("192.168.1.11:8080");
+                instances.add("192.168.1.12:8080");
+                instances.add("192.168.1.13:8080");
+                instances.add("192.168.1.14:8080");
+                log.info("未找到注册的机器，返回模拟数据用于演示");
+            }
+            
+            log.info("获取实例列表成功，appName: {}, environment: {}, groupName: {}, 实例数量: {}", 
+                    appName, environment, groupName, instances.size());
             return instances;
             
         } catch (Exception e) {
-            log.error("获取实例列表失败，appName: {}, environment: {}", appName, environment, e);
+            log.error("获取实例列表失败，appName: {}, environment: {}, groupName: {}", appName, environment, groupName, e);
             throw new RuntimeException("获取实例列表失败: " + e.getMessage());
         }
     }
