@@ -5,8 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/demo/ConfigSubscriberDemo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CONFIG-PUBLISH-FLOW.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GRAY-RELEASE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LAYERED-RELEASE-DESIGN.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MACHINE-CONFIG-SUBSCRIPTION.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PUSH-MODEL-DESIGN.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QUICK-START.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README-ZooKeeper-Cluster.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/check-zk-config.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose-zk-cluster.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log.2025-06-26.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log.2025-06-27.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log.2025-06-28.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log.2025-06-29.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log.2025-06-30.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log.2025-07-01.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log.2025-07-02.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log.2025-07-03.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log.2025-07-04.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/demo/ConfigSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/demo/ConfigSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-zk-cluster.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/demo/ConfigSubscriber.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/demo/ConfigSubscriber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-config-push.sh" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +159,7 @@
       <updated>1750760922738</updated>
       <workItem from="1750760924420" duration="86000" />
       <workItem from="1750761022757" duration="11985000" />
-      <workItem from="1752722035022" duration="11837000" />
+      <workItem from="1752722035022" duration="14748000" />
     </task>
     <servers />
   </component>
@@ -152,33 +176,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java</url>
-          <line>122</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java</url>
-          <line>137</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java</url>
-          <line>152</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java</url>
-          <line>157</line>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java</url>
-          <line>160</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java</url>
           <line>162</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java</url>
+          <line>239</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

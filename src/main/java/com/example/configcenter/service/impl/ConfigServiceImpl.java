@@ -111,7 +111,7 @@ public class ConfigServiceImpl implements ConfigService {
             configItem.setUpdateTime(LocalDateTime.now());
             
             // 生成ZK路径
-            String zkPath = buildZkPath(configItem.getAppName(), configItem.getEnvironment(), 
+            String zkPath = buildZkPath(configItem.getEnvironment(),
                                       configItem.getGroupName(), configItem.getConfigKey());
             configItem.setZkPath(zkPath);
             
@@ -429,8 +429,8 @@ public class ConfigServiceImpl implements ConfigService {
     /**
      * 构建ZooKeeper路径
      */
-    private String buildZkPath(String appName, String environment, String groupName, String configKey) {
-        return String.format("/configs/%s/%s/%s/%s", appName, environment, groupName, configKey);
+    private String buildZkPath(String environment, String groupName, String configKey) {
+        return String.format("/configs/%s/%s/%s", environment, groupName, configKey);
     }
 
     /**

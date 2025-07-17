@@ -27,7 +27,7 @@ public class ConfigSubscriber {
 
     private static final Logger logger = LoggerFactory.getLogger(ConfigSubscriber.class);
     
-    private static final String ZK_CONNECTION_STRING = "localhost:2181,localhost:2182,localhost:2183";
+    private static final String ZK_CONNECTION_STRING = "localhost:2181";
     private static final String CONFIG_ROOT_PATH = "/config-center";
     private static final String APP_NAME = "demo-app";
     private static final String ENVIRONMENT = "dev";
