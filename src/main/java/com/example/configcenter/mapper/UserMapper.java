@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 用户Mapper接口
@@ -83,4 +84,34 @@ public interface UserMapper {
      * 检查邮箱是否存在
      */
     boolean existsByEmail(@Param("email") String email);
+
+    /**
+     * 根据角色统计用户数量
+     */
+    int countByRole(@Param("role") String role);
+
+    /**
+     * 根据状态统计用户数量
+     */
+    int countByStatus(@Param("status") String status);
+
+    /**
+     * 获取用户统计信息
+     */
+    Map<String, Long> getUserStatistics();
+
+    /**
+     * 检查是否为最后一个管理员
+     */
+    boolean isLastAdmin(@Param("excludeId") Long excludeId);
+
+    /**
+     * 根据部门查询用户列表
+     */
+    List<User> findByDepartment(@Param("department") String department);
+
+    /**
+     * 批量更新用户状态
+     */
+    int batchUpdateStatus(@Param("ids") List<Long> ids, @Param("status") String status);
 } 

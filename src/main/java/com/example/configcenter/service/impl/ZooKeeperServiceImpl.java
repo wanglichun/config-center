@@ -1,12 +1,13 @@
 package com.example.configcenter.service.impl;
 
 import com.example.configcenter.service.ZooKeeperService;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.NodeCache;
 import org.apache.curator.framework.recipes.cache.PathChildrenCache;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.data.Stat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +20,10 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author ConfigCenter Team
  * @version 1.0.0
  */
-@Slf4j
 @Service
 public class ZooKeeperServiceImpl implements ZooKeeperService {
+
+    private static final Logger log = LoggerFactory.getLogger(ZooKeeperServiceImpl.class);
 
     @Autowired
     private CuratorFramework curatorFramework;

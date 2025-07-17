@@ -149,4 +149,62 @@
         WHERE email = #{email}
     </select>
 
+    <!-- 根据角色统计用户数量 -->
+    <select id="countByRole" parameterType="java.lang.String" resultType="int">
+        SELECT COUNT(*)
+        FROM sys_user
+        WHERE role = #{role} AND del_flag = 0
+    </select>
+
+    <!-- 根据状态统计用户数量 -->
+    <select id="countByStatus" parameterType="java.lang.String" resultType="int">
+        SELECT COUNT(*)
+        FROM sys_user
+        WHERE status = #{status} AND del_flag = 0
+    </select>
+
+    <!-- 获取用户统计信息 -->
+    <select id="getUserStatistics" resultType="map">
+        SELECT 
+            COUNT(*) as totalUsers,
+            SUM(CASE WHEN status = 'ACTIVE' THEN 1 ELSE 0 END) as activeUsers,
+            SUM(CASE WHEN status = 'INACTIVE' THEN 1 ELSE 0 END) as inactiveUsers,
+            SUM(CASE WHEN status = 'LOCKED' THEN 1 ELSE 0 END) as lockedUsers,
+            SUM(CASE WHEN role = 'ADMIN' THEN 1 ELSE 0 END) as adminUsers,
+            SUM(CASE WHEN role = 'DEVELOPER' THEN 1 ELSE 0 END) as developerUsers,
+            SUM(CASE WHEN role = 'VIEWER' THEN 1 ELSE 0 END) as viewerUsers
+        FROM sys_user
+        WHERE del_flag = 0
+    </select>
+
+    <!-- 检查是否为最后一个管理员 -->
+    <select id="isLastAdmin" resultType="boolean">
+        SELECT COUNT(*) = 1
+        FROM sys_user
+        WHERE role = 'ADMIN' 
+        AND status = 'ACTIVE' 
+        AND del_flag = 0
+        <if test="excludeId != null">
+            AND id != #{excludeId}
+        </if>
+    </select>
+
+    <!-- 根据部门查询用户列表 -->
+    <select id="findByDepartment" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM sys_user
+        WHERE department = #{department} AND del_flag = 0
+        ORDER BY create_time DESC
+    </select>
+
+    <!-- 批量更新用户状态 -->
+    <update id="batchUpdateStatus">
+        UPDATE sys_user
+        SET status = #{status}, update_time = NOW()
+        WHERE id IN
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
 </mapper> 

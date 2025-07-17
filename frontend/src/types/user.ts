@@ -11,9 +11,12 @@ export interface UserInfo {
   username: string
   realName: string
   email: string
+  phone?: string
+  department?: string
   role: string
   status: string
   avatar?: string
+  remark?: string
   createTime?: string
   updateTime?: string
   lastLoginTime?: string
