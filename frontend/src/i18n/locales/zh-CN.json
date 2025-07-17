@@ -90,6 +90,13 @@
       "saveFailed": "保存失败",
       "publishFailed": "发布失败",
       "deleteFailed": "删除失败"
+    },
+    "publish": {
+      "title": "发布配置",
+      "directPublish": "直接发布",
+      "grayPublish": "灰度发布",
+      "grayPublishRedirect": "跳转到灰度发布页面",
+      "grayPublishRedirectFailed": "跳转到灰度发布页面失败"
     }
   },
   "dashboard": {

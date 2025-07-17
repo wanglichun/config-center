@@ -90,6 +90,13 @@
       "saveFailed": "Save failed",
       "publishFailed": "Publish failed",
       "deleteFailed": "Delete failed"
+    },
+    "publish": {
+      "title": "Publish Configuration",
+      "directPublish": "Direct Publish",
+      "grayPublish": "Gray Publish",
+      "grayPublishRedirect": "Redirecting to gray release page",
+      "grayPublishRedirectFailed": "Failed to redirect to gray release page"
     }
   },
   "dashboard": {

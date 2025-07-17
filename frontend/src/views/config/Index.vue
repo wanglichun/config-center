@@ -349,32 +349,58 @@ const handleEdit = (row: ConfigItem) => {
   showAddDialog.value = true
 }
 
-const handlePublish = (row: ConfigItem) => {
+const handlePublish = async (row: ConfigItem) => {
   console.log('点击发布按钮，配置信息:', row)
   
   try {
-    // 先尝试简单路径跳转
-    console.log('尝试跳转到 /gray-release')
+    // 确认发布操作
+    await ElMessageBox.confirm(
+      t('config.messages.publishConfirm', { key: row.configKey }), 
+      t('config.publish.title', { defaultValue: '发布配置' }), 
+      {
+        confirmButtonText: t('config.publish.directPublish', { defaultValue: '直接发布' }),
+        cancelButtonText: t('config.publish.grayPublish', { defaultValue: '灰度发布' }),
+        type: 'info',
+        distinguishCancelAndClose: true
+      }
+    )
     
-    router.push('/gray-release').then(() => {
-      console.log('路由跳转成功')
-      ElMessage.success('跳转到灰度发布页面')
-    }).catch((error) => {
-      console.error('路由跳转失败:', error)
-      ElMessage.error('跳转到灰度发布页面失败: ' + error.message)
-      
-      // 如果路径跳转失败，尝试使用路由名称
-      console.log('尝试使用路由名称跳转')
-      return router.push({ name: 'GrayRelease' })
-    }).then(() => {
-      console.log('使用路由名称跳转成功')
-    }).catch((error2) => {
-      console.error('使用路由名称跳转也失败:', error2)
-      ElMessage.error('路由跳转完全失败')
-    })
+    // 直接发布
+    console.log('执行直接发布...')
+    const response = await publishConfig(row.id)
+    
+    if (response.success) {
+      ElMessage.success(t('config.messages.publishSuccess'))
+      // 刷新配置列表
+      loadConfigList()
+    } else {
+      ElMessage.error(response.message || t('config.messages.publishFailed'))
+    }
+    
   } catch (error) {
-    console.error('发布按钮处理异常:', error)
-    ElMessage.error('操作失败，请稍后重试')
+    if (error === 'cancel') {
+      // 用户选择灰度发布，跳转到灰度发布页面
+      console.log('用户选择灰度发布，跳转到灰度发布页面')
+      try {
+        await router.push({
+          name: 'GrayRelease',
+          query: {
+            action: 'publish',
+            appName: row.appName,
+            environment: row.environment,
+            groupName: row.groupName,
+            configKey: row.configKey
+          }
+        })
+        ElMessage.info(t('config.publish.grayPublishRedirect', { defaultValue: '跳转到灰度发布页面' }))
+      } catch (routerError) {
+        console.error('跳转到灰度发布页面失败:', routerError)
+        ElMessage.error(t('config.publish.grayPublishRedirectFailed', { defaultValue: '跳转到灰度发布页面失败' }))
+      }
+    } else {
+      console.error('发布配置失败:', error)
+      ElMessage.error(t('config.messages.publishFailed'))
+    }
   }
 }
 
