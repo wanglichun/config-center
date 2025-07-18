@@ -9,6 +9,7 @@ import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.mapper.ConfigItemMapper;
 import com.example.configcenter.mapper.ConfigHistoryMapper;
 import com.example.configcenter.service.ConfigService;
+import com.example.configcenter.service.MachineConfigSubscriptionService;
 import com.example.configcenter.service.ZooKeeperService;
 import com.example.configcenter.utils.EncryptUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -41,6 +42,9 @@ public class ConfigServiceImpl implements ConfigService {
 
     @Autowired
     private ZooKeeperService zooKeeperService;
+
+    @Autowired
+    private MachineConfigSubscriptionService machineConfigSubscriptionService;
 
     @Override
     @Cacheable(value = "config", key = "#appName + ':' + #environment + ':' + #groupName + ':' + #configKey")
@@ -251,7 +255,12 @@ public class ConfigServiceImpl implements ConfigService {
                 recordHistory(configItem, "PUBLISH", null, configValue, 
                             "发布配置", publisher);
                 
-                log.info("配置发布成功: {}", configItem.getConfigKey());
+                // 通知订阅的机器配置变更
+                int notifiedCount = machineConfigSubscriptionService.notifyConfigChange(
+                    configItem.getAppName(), configItem.getEnvironment(), 
+                    configItem.getGroupName(), configItem.getConfigKey(), configValue);
+                
+                log.info("配置发布成功: {}, 通知机器数: {}", configItem.getConfigKey(), notifiedCount);
                 return true;
             }
             

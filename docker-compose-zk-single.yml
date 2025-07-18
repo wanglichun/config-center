@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  # 单机ZooKeeper
+  zookeeper:
+    image: zookeeper:3.7
+    container_name: config-center-zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOO_MY_ID: 1
+      ZOO_SERVERS: server.1=0.0.0.0:2888:3888;2181
+    volumes:
+      - zk_data:/data
+      - zk_datalog:/datalog
+    networks:
+      - zk-network
+
+volumes:
+  zk_data:
+  zk_datalog:
+
+networks:
+  zk-network:
+    driver: bridge 
