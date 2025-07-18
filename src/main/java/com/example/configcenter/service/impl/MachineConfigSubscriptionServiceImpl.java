@@ -264,7 +264,7 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
      * 构建通知路径
      */
     private String buildNotificationPath(String appName, String environment, String groupName, String configKey, String instanceId) {
-        return String.format("/config-center/notifications/%s/%s/%s/%s/%s", appName, environment, groupName, configKey, instanceId);
+        return String.format("/notifications/%s/%s/%s/%s/%s", appName, environment, groupName, configKey, instanceId);
     }
 
     /**
