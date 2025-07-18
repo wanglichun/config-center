@@ -76,7 +76,9 @@ public class ConfigController {
         try {
             // 执行分页查询
             List<ConfigItem> pageResult = configService.getConfigPage(req);
-            return ApiResult.success(new PageResult<>(pageResult, 0, req.getPageNum(), req.getPageSize()));
+            // 获取总记录数
+            long total = configService.getConfigCount(req);
+            return ApiResult.success(new PageResult<>(pageResult, total, req.getPageNum(), req.getPageSize()));
         } catch (Exception e) {
             log.error("分页查询配置失败", e);
             return ApiResult.error("查询失败：" + e.getMessage());

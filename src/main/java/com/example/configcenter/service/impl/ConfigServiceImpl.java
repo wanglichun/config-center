@@ -243,6 +243,7 @@ public class ConfigServiceImpl implements ConfigService {
                 // 更新发布信息
                 configItem.setLastPublishTime(System.currentTimeMillis());
                 configItem.setPublisher(publisher);
+                configItem.setStatus("PUBLISHED");
                 configItem.setUpdateTime(LocalDateTime.now());
                 configItemMapper.update(configItem);
                 
@@ -340,10 +341,23 @@ public class ConfigServiceImpl implements ConfigService {
     @Override
     public List<ConfigItem> getConfigPage(ConfigQueryDto queryDto) {
         try {
+            // 将页码转换为偏移量 (pageNum从1开始，需要转换为从0开始的偏移量)
+            int offset = (queryDto.getPageNum() - 1) * queryDto.getPageSize();
+            queryDto.setPageNum(offset);
             return configItemMapper.search(queryDto);
         } catch (Exception e) {
             log.error(e.getMessage());
             return Collections.emptyList();
+        }
+    }
+
+    @Override
+    public long getConfigCount(ConfigQueryDto queryDto) {
+        try {
+            return configItemMapper.countByQuery(queryDto);
+        } catch (Exception e) {
+            log.error("获取配置总数失败", e);
+            return 0;
         }
     }
 

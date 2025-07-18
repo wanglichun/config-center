@@ -56,6 +56,11 @@ public interface ConfigItemMapper {
     List<ConfigItem> search(ConfigQueryDto queryDto);
 
     /**
+     * 统计配置项总数
+     */
+    long countByQuery(ConfigQueryDto queryDto);
+
+    /**
      * 分页查询配置项
      */
     List<ConfigItem> findByPage(@Param("offset") int offset,

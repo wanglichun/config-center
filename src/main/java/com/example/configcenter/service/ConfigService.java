@@ -115,6 +115,14 @@ public interface ConfigService {
     List<ConfigItem> getConfigPage(ConfigQueryDto queryDto);
 
     /**
+     * 获取配置项总数
+     *
+     * @param queryDto 查询参数
+     * @return 总数
+     */
+    long getConfigCount(ConfigQueryDto queryDto);
+
+    /**
      * 导入配置
      *
      * @param configItems 配置项列表
