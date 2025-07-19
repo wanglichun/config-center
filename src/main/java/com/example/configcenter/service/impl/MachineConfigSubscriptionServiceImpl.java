@@ -124,14 +124,13 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
         try {
             List<String> subscribedMachines = getSubscribedMachines(appName, environment, groupName, configKey);
             int successCount = 0;
-            
             for (String instanceId : subscribedMachines) {
                 if (notifyMachineConfigChange(instanceId, appName, environment, groupName, configKey, newValue)) {
                     successCount++;
                 }
             }
-            
-            log.info("配置变更通知完成: configKey={}, 订阅机器数={}, 通知成功数={}", 
+
+            log.info("配置变更通知完成: configKey={}, 订阅机器数={}, 通知成功数={}",
                     configKey, subscribedMachines.size(), successCount);
             return successCount;
         } catch (Exception e) {

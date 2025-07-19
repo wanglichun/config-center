@@ -1,0 +1,65 @@
+FROM ubuntu:20.04
+
+# 设置环境变量
+ENV DEBIAN_FRONTEND=noninteractive
+
+# 安装基础工具
+RUN apt-get update && apt-get install -y \
+    curl \
+    wget \
+    vim \
+    nano \
+    tree \
+    net-tools \
+    iputils-ping \
+    telnet \
+    htop \
+    && rm -rf /var/lib/apt/lists/*
+
+# 设置工作目录
+WORKDIR /app
+
+# 创建应用目录
+RUN mkdir -p /app/config /app/logs /app/data
+
+# 创建配置文件
+RUN echo "# 普通容器配置文件" > /app/config/app.properties && \
+    echo "app.name=simple-app" >> /app/config/app.properties && \
+    echo "version=1.0.0" >> /app/config/app.properties && \
+    echo "port=8080" >> /app/config/app.properties && \
+    echo "env=dev" >> /app/config/app.properties
+
+# 创建启动脚本
+RUN echo '#!/bin/bash' > /app/start.sh && \
+    echo 'echo "=== 普通容器启动 ==="' >> /app/start.sh && \
+    echo 'echo "容器ID: $HOSTNAME"' >> /app/start.sh && \
+    echo 'echo "启动时间: $(date)"' >> /app/start.sh && \
+    echo 'echo "当前配置:"' >> /app/start.sh && \
+    echo 'cat /app/config/app.properties' >> /app/start.sh && \
+    echo '' >> /app/start.sh && \
+    echo 'echo "=== 系统信息 ==="' >> /app/start.sh && \
+    echo 'echo "主机名: $(hostname)"' >> /app/start.sh && \
+    echo 'echo "IP地址: $(hostname -i)"' >> /app/start.sh && \
+    echo 'echo "操作系统: $(cat /etc/os-release | grep PRETTY_NAME)"' >> /app/start.sh && \
+    echo '' >> /app/start.sh && \
+    echo 'echo "=== 开始运行 ==="' >> /app/start.sh && \
+    echo 'while true; do' >> /app/start.sh && \
+    echo '    echo "$(date): 普通容器 $HOSTNAME 运行中..."' >> /app/start.sh && \
+    echo '    echo "内存使用:"' >> /app/start.sh && \
+    echo '    free -h' >> /app/start.sh && \
+    echo '    echo "磁盘使用:"' >> /app/start.sh && \
+    echo '    df -h /app' >> /app/start.sh && \
+    echo '    echo "---"' >> /app/start.sh && \
+    echo '    sleep 30' >> /app/start.sh && \
+    echo 'done' >> /app/start.sh && \
+    chmod +x /app/start.sh
+
+# 暴露端口
+EXPOSE 8080
+
+# 设置默认环境变量
+ENV APP_NAME=simple-app
+ENV APP_VERSION=1.0.0
+
+# 启动命令
+CMD ["/app/start.sh"] 
