@@ -68,7 +68,7 @@ public interface ZooKeeperService {
      * @param data 数据
      * @return 是否成功
      */
-    boolean createEphemeralNode(String path, String data);
+    boolean createNode(String path, String data);
 
     /**
      * 更新节点数据

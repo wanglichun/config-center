@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -267,7 +266,7 @@ public class ConfigPushServiceImpl implements ConfigPushService {
             for (String instanceId : instanceIds) {
                 try {
                     String notifyPath = buildNotifyPath(appName, environment, instanceId);
-                    zooKeeperService.createEphemeralNode(notifyPath, message);
+                    zooKeeperService.createNode(notifyPath, message);
                     log.debug("通知实例成功: instanceId={}, path={}", instanceId, notifyPath);
                 } catch (Exception e) {
                     log.error("通知实例失败: instanceId={}", instanceId, e);

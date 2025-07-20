@@ -44,23 +44,6 @@ public class MachineConfigController {
         }
     }
 
-    /**
-     * 注销机器实例
-     */
-    @PostMapping("/unregister")
-    public ApiResult<Boolean> unregisterMachine(@RequestParam String appName,
-                                               @RequestParam String environment,
-                                               @RequestParam String groupName,
-                                               @RequestParam String instanceId) {
-        try {
-            boolean result = machineConfigSubscriptionService.unregisterMachine(
-                appName, environment, groupName, instanceId);
-            return result ? ApiResult.success(true) : ApiResult.error("注销机器实例失败");
-        } catch (Exception e) {
-            log.error("注销机器实例失败", e);
-            return ApiResult.error("注销失败：" + e.getMessage());
-        }
-    }
 
     /**
      * 获取订阅指定配置的机器列表
@@ -80,19 +63,6 @@ public class MachineConfigController {
         }
     }
 
-    /**
-     * 获取机器实例的配置信息
-     */
-    @GetMapping("/configs/{instanceId}")
-    public ApiResult<Map<String, String>> getMachineConfigs(@PathVariable String instanceId) {
-        try {
-            Map<String, String> configs = machineConfigSubscriptionService.getMachineConfigs(instanceId);
-            return ApiResult.success(configs);
-        } catch (Exception e) {
-            log.error("获取机器配置失败", e);
-            return ApiResult.error("查询失败：" + e.getMessage());
-        }
-    }
 
     /**
      * 心跳检测

@@ -26,17 +26,6 @@ public interface MachineConfigSubscriptionService {
                            String instanceId, String instanceIp, List<String> configKeys);
 
     /**
-     * 注销机器实例
-     *
-     * @param appName 应用名称
-     * @param environment 环境
-     * @param groupName 配置组
-     * @param instanceId 实例ID
-     * @return 是否成功
-     */
-    boolean unregisterMachine(String appName, String environment, String groupName, String instanceId);
-
-    /**
      * 获取订阅指定配置的机器列表
      *
      * @param appName 应用名称
@@ -58,14 +47,6 @@ public interface MachineConfigSubscriptionService {
      * @return 通知成功的机器数量
      */
     int notifyConfigChange(String appName, String environment, String groupName, String configKey, String newValue);
-
-    /**
-     * 获取机器实例的配置信息
-     *
-     * @param instanceId 实例ID
-     * @return 配置信息
-     */
-    Map<String, String> getMachineConfigs(String instanceId);
 
     /**
      * 心跳检测

@@ -136,14 +136,14 @@ public class ZooKeeperServiceImpl implements ZooKeeperService {
     }
 
     @Override
-    public boolean createEphemeralNode(String path, String data) {
+    public boolean createNode(String path, String data) {
         try {
             // 创建父节点
             createParentNodes(path);
             
             curatorFramework.create()
                     .creatingParentsIfNeeded()
-                    .withMode(CreateMode.EPHEMERAL)
+                    .withMode(CreateMode.PERSISTENT)
                     .forPath(path, data != null ? data.getBytes() : null);
             
             log.info("创建临时节点成功: path={}, data={}", path, data);
