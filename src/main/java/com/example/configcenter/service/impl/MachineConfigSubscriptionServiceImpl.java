@@ -81,7 +81,7 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
         String configPath = buildInstancePath(appName, environment, groupName, configKey);
         String config = zooKeeperService.getConfig(configPath);
         MachineInstance machineInstance = JsonUtil.jsonToObject(config, MachineInstance.class);
-        return machineInstance.getInstanceIp();
+        return machineInstance != null ? machineInstance.getInstanceIp() : Set.of();
     }
 
     @Override
