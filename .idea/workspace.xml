@@ -6,157 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="77c75336-3826-4a12-b021-43e0dc60a501" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CLUSTER-LOGIN-GUIDE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConfigListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile.machine" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile.simple" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/THREE-MACHINE-SUBSCRIPTION.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZooKeeperClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZooKeeperConfigViewer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-listener.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auto-pull-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/check-machines-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/complete-config-test.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-listener.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-monitor.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config-watcher.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/container-zk-pull.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose-machines.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose-simple.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose-virtual.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose-zk-single.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose-zk.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/explore-zk.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fix-config-sync.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fix-zk-issue.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/get-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/improved-pull-debug-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/list-configs.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/config-center.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/machine-001-listener-fixed.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/machine-001-listener-updated.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/machine-001-listener.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/machine-001-simple-listener.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/machines/machine-001/config/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/machines/machine-002/config/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/machines/machine-003/config/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage-simple-container.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/publish-active-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/publish-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/publish-existing-config-test.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/publish-existing-configs.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/publish-test-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pull-config-from-zk-container.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pull-config-from-zk-correct.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pull-config-from-zk-real.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pull-config-from-zk.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pull-config-ignore-status.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/query-cluster-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/real-pull-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register-machine-001-all-configs.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/show-zk-configs.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple-config-pull.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple-listener.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simple-zk-pull.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/MachineConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/MachineConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/MachineConfigSubscriptionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/MachineConfigSubscriptionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/ZooKeeperService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/ZooKeeperService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigPushServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigPushServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/MachineInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/MachineInstance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ZooKeeperServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ZooKeeperServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/start-container.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/subscribe-config-summary.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/subscribe-debug-enabled.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sync-machine-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ZooKeeperService$ConfigChangeListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ZooKeeperService$ConfigChangeListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ZooKeeperService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ZooKeeperService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigPushServiceImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigPushServiceImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigPushServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigPushServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl$MachineInstance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl$MachineInstance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/utils/JsonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/utils/JsonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/MachineInstance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/MachineInstance.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ZooKeeperServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ZooKeeperServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-config-publish.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-config-subscription.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-machine-subscription.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-notification.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-three-machines.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test-zk-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/update-config-test.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/update-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/verify-publish-flow.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view-zk-configs.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-client-pull-config.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/audience-annotations-0.12.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/commons-cli-1.5.0.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/commons-cli-1.5.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/commons-io-2.11.0.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/commons-io-2.11.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jackson-annotations-2.13.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jackson-core-2.13.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jackson-databind-2.13.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/javax.servlet-api-3.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-http-9.4.49.v20220914.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-http-9.4.49.v20220914.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-io-9.4.49.v20220914.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-io-9.4.49.v20220914.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-security-9.4.49.v20220914.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-security-9.4.49.v20220914.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-server-9.4.49.v20220914.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-server-9.4.49.v20220914.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-servlet-9.4.49.v20220914.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-servlet-9.4.49.v20220914.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-util-9.4.49.v20220914.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-util-9.4.49.v20220914.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-util-ajax-9.4.49.v20220914.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jetty-util-ajax-9.4.49.v20220914.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jline-2.14.6.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/jline-2.14.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/logback-classic-1.2.10.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/logback-classic-1.2.10.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/logback-core-1.2.10.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/logback-core-1.2.10.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/metrics-core-4.1.12.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/metrics-core-4.1.12.1.jar_LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-buffer-4.1.86.Final.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-buffer-4.1.86.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-codec-4.1.86.Final.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-codec-4.1.86.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-common-4.1.86.Final.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-common-4.1.86.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-handler-4.1.86.Final.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-handler-4.1.86.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-resolver-4.1.86.Final.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-resolver-4.1.86.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-transport-4.1.86.Final.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-transport-4.1.86.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-transport-classes-epoll-4.1.86.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-transport-native-epoll-4.1.86.Final.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-transport-native-epoll-4.1.86.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-transport-native-unix-common-4.1.86.Final.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/netty-transport-native-unix-common-4.1.86.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/simpleclient-0.9.0.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/simpleclient-0.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/simpleclient_common-0.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/simpleclient_common-0.9.0_LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/simpleclient_hotspot-0.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/simpleclient_hotspot-0.9.0_LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/simpleclient_servlet-0.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/simpleclient_servlet-0.9.0_LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/slf4j-1.7.30.LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/slf4j-api-1.7.30.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/snappy-java-1.1.7.7.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/snappy-java-1.1.7.7.jar_LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/zookeeper-3.8.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/zookeeper-jute-3.8.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zk-lib/zookeeper-prometheus-metrics-3.8.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zkCli.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zkEnv.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zookeeper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/utils/JsonUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/utils/JsonUtil.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +28,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />

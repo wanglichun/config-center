@@ -42,7 +42,7 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
 
     @Override
     public boolean registerMachine(String appName, String environment, String groupName, 
-                                  String instanceId, String instanceIp, List<String> configKeys) {
+                                  String instanceName, String instanceIp, List<String> configKeys) {
         try {
             for (String configKey : configKeys) {
                 // 创建机器实例信息
@@ -52,12 +52,14 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
                 boolean registered = false;
                 if (machineInstance == null) {
                     machineInstance = new MachineInstance();
-                    machineInstance.setInstanceIp(List.of(instanceIp));
-                    registered = zooKeeperService.createNode(instancePath, JsonUtil.objectToString(machineInstance));
+                    machineInstance.setInstanceName(instanceName);
+                    machineInstance.setInstanceIp(Set.of(instanceIp));
+                    registered = zooKeeperService.createNode(instancePath, JsonUtil.objectToStringIgnoreNull(machineInstance));
 
                 } else {
                     machineInstance.getInstanceIp().add(instanceIp);
-                    registered = zooKeeperService.updateNode(instancePath, JsonUtil.objectToString(machineInstance));
+                    machineInstance.setInstanceName(instanceName);
+                    registered = zooKeeperService.updateNode(instancePath, JsonUtil.objectToStringIgnoreNull(machineInstance));
                 }
 
                 if (!registered) {
@@ -67,7 +69,7 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
 
             return true;
         } catch (Exception e) {
-            log.error("注册机器实例失败: instanceId={}", instanceId, e);
+            log.error("注册机器实例失败: instanceName={}", instanceName, e);
             return false;
         }
     }
@@ -75,7 +77,7 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
 
 
     @Override
-    public List<String> getSubscribedMachines(String appName, String environment, String groupName, String configKey)  {
+    public Set<String> getSubscribedMachines(String appName, String environment, String groupName, String configKey)  {
         String configPath = buildInstancePath(appName, environment, groupName, "simple-container");
         String config = zooKeeperService.getConfig(configPath);
         MachineInstance machineInstance = JsonUtil.jsonToObject(config, MachineInstance.class);
@@ -85,7 +87,7 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
     @Override
     public int notifyConfigChange(String appName, String environment, String groupName, String configKey, String newValue) {
         try {
-            List<String> subscribedMachines = getSubscribedMachines(appName, environment, groupName, configKey);
+            Set<String> subscribedMachines = getSubscribedMachines(appName, environment, groupName, configKey);
             int successCount = 0;
             for (String instanceIp : subscribedMachines) {
                 if (notifyMachineConfigChange(instanceIp, appName, environment, groupName, configKey, newValue)) {

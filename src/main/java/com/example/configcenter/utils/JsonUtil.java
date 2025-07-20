@@ -1,6 +1,7 @@
 package com.example.configcenter.utils;
 
 import com.example.configcenter.service.impl.MachineConfigSubscriptionServiceImpl;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -9,7 +10,11 @@ import java.io.IOException;
 public class JsonUtil {
 
     private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper mapperIgnoreNull = new ObjectMapper();
 
+    static {
+        mapperIgnoreNull.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+    }
 
     /**
      * 安全地将JSON字符串转换为指定类型的对象
@@ -38,10 +43,22 @@ public class JsonUtil {
         if (object == null) {
             return "";
         }
-
         try {
             // 执行转换
             return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
+        } catch (IOException e) {
+            throw new IllegalArgumentException("JSON转换失败: " + object, e);
+        }
+    }
+
+    public static <T> String objectToStringIgnoreNull(Object object) {
+        // 参数校验
+        if (object == null) {
+            return "";
+        }
+        try {
+            // 执行转换
+            return mapperIgnoreNull.writerWithDefaultPrettyPrinter().writeValueAsString(object);
         } catch (IOException e) {
             throw new IllegalArgumentException("JSON转换失败: " + object, e);
         }

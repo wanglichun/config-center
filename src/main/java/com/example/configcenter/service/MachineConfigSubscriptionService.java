@@ -2,6 +2,7 @@ package com.example.configcenter.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 机器配置订阅服务接口
@@ -34,7 +35,7 @@ public interface MachineConfigSubscriptionService {
      * @param configKey 配置键
      * @return 机器实例列表
      */
-    List<String> getSubscribedMachines(String appName, String environment, String groupName, String configKey);
+    Set<String> getSubscribedMachines(String appName, String environment, String groupName, String configKey);
 
     /**
      * 通知机器配置变更

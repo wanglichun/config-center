@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 机器配置订阅控制器
@@ -49,12 +50,12 @@ public class MachineConfigController {
      * 获取订阅指定配置的机器列表
      */
     @GetMapping("/subscribers")
-    public ApiResult<List<String>> getSubscribedMachines(@RequestParam String appName,
+    public ApiResult<Set<String>> getSubscribedMachines(@RequestParam String appName,
                                                          @RequestParam String environment,
                                                          @RequestParam String groupName,
                                                          @RequestParam String configKey) {
         try {
-            List<String> machines = machineConfigSubscriptionService.getSubscribedMachines(
+            Set<String> machines = machineConfigSubscriptionService.getSubscribedMachines(
                 appName, environment, groupName, configKey);
             return ApiResult.success(machines);
         } catch (Exception e) {
