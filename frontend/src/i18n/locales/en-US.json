@@ -37,7 +37,11 @@
     "close": "Close",
     "actions": "Actions",
     "create": "Create",
-    "createTime": "Create Time"
+    "createTime": "Create Time",
+    "view": "View",
+    "yes": "Yes",
+    "no": "No",
+    "none": "None"
   },
   "config": {
     "title": "Configuration",
@@ -97,6 +101,16 @@
       "grayPublish": "Gray Publish",
       "grayPublishRedirect": "Redirecting to gray release page",
       "grayPublishRedirectFailed": "Failed to redirect to gray release page"
+    },
+    "detail": {
+      "title": "Configuration Detail",
+      "basicInfo": "Basic Information",
+      "subscribers": "Subscribed Containers",
+      "version": "Version",
+      "createTime": "Create Time",
+      "updateTime": "Update Time",
+      "createBy": "Created By",
+      "updateBy": "Updated By"
     }
   },
   "dashboard": {

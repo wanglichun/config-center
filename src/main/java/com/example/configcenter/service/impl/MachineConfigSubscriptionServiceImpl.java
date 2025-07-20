@@ -78,7 +78,7 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
 
     @Override
     public Set<String> getSubscribedMachines(String appName, String environment, String groupName, String configKey)  {
-        String configPath = buildInstancePath(appName, environment, groupName, "simple-container");
+        String configPath = buildInstancePath(appName, environment, groupName, configKey);
         String config = zooKeeperService.getConfig(configPath);
         MachineInstance machineInstance = JsonUtil.jsonToObject(config, MachineInstance.class);
         return machineInstance.getInstanceIp();

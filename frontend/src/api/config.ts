@@ -240,3 +240,20 @@ export const machineGroupApi = {
     return request.delete('/machine-groups/machines?' + new URLSearchParams(params).toString())
   }
 } 
+
+/**
+ * 机器配置订阅相关API
+ */
+export const machineConfigApi = {
+  /**
+   * 获取订阅指定配置的机器列表
+   */
+  getSubscribers(params: {
+    appName: string
+    environment: string
+    groupName: string
+    configKey: string
+  }): Promise<ApiResult<string[]>> {
+    return request.get('/machine-config/subscribers', params)
+  }
+} 

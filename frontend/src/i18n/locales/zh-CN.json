@@ -37,7 +37,11 @@
     "close": "关闭",
     "actions": "操作",
     "create": "创建",
-    "createTime": "创建时间"
+    "createTime": "创建时间",
+    "view": "查看",
+    "yes": "是",
+    "no": "否",
+    "none": "无"
   },
   "config": {
     "title": "配置",
@@ -97,6 +101,16 @@
       "grayPublish": "灰度发布",
       "grayPublishRedirect": "跳转到灰度发布页面",
       "grayPublishRedirectFailed": "跳转到灰度发布页面失败"
+    },
+    "detail": {
+      "title": "配置详情",
+      "basicInfo": "基础信息",
+      "subscribers": "订阅容器",
+      "version": "版本号",
+      "createTime": "创建时间",
+      "updateTime": "更新时间",
+      "createBy": "创建人",
+      "updateBy": "更新人"
     }
   },
   "dashboard": {

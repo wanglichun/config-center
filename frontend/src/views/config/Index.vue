@@ -63,9 +63,12 @@
             {{ formatTime(scope.row.updateTime) }}
           </template>
         </el-table-column>
-        <el-table-column :label="$t('config.operation')" width="180" fixed="right">
+        <el-table-column :label="$t('config.operation')" width="220" fixed="right">
           <template #default="scope">
             <div class="operation-buttons">
+              <el-button size="small" type="info" @click="handleViewDetail(scope.row)">
+                {{ $t('common.view') }}
+              </el-button>
               <el-button size="small" type="primary" @click="handleEdit(scope.row)">
                 {{ $t('common.edit') }}
               </el-button>
@@ -341,6 +344,19 @@ const handleReset = () => {
   })
   currentPage.value = 1
   loadConfigList()
+}
+
+const handleViewDetail = (row: ConfigItem) => {
+  router.push({
+    name: 'ConfigDetail',
+    params: { id: row.id },
+    query: {
+      appName: row.appName,
+      environment: row.environment,
+      groupName: row.groupName,
+      configKey: row.configKey
+    }
+  })
 }
 
 const handleEdit = (row: ConfigItem) => {
