@@ -14,21 +14,6 @@ import javax.validation.constraints.Size;
  */
 @Data
 public class ConfigItemDto {
-    
-    /**
-     * 应用名称
-     */
-    @NotBlank(message = "应用名称不能为空")
-    @Size(max = 100, message = "应用名称长度不能超过100字符")
-    private String appName;
-    
-    /**
-     * 环境
-     */
-    @NotBlank(message = "环境不能为空")
-    @Size(max = 50, message = "环境名称长度不能超过50字符")
-    private String environment;
-    
     /**
      * 配置组
      */

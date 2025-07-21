@@ -31,9 +31,6 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
     @Autowired
     private ZooKeeperService zooKeeperService;
 
-    // 机器实例信息缓存
-    private final Map<String, MachineInstance> machineInstances = new ConcurrentHashMap<>();
-
     @Override
     public boolean registerMachine(String groupName,
                                   String instanceName, String instanceIp, List<String> configKeys) {
@@ -99,19 +96,6 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
     }
 
 
-    
-
-
-    @Override
-    public boolean heartbeat(String instanceId) {
-        MachineInstance instance = machineInstances.get(instanceId);
-        if (instance != null) {
-            instance.setLastHeartbeat(System.currentTimeMillis());
-            return true;
-        }
-        return false;
-    }
-
     /**
      * 通知单个机器配置变更
      */
@@ -142,13 +126,6 @@ public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscr
      */
     private String buildInstancePath(String groupName, String instanceId) {
         return String.format("/instances/%s/%s", groupName, instanceId);
-    }
-
-    /**
-     * 构建配置路径
-     */
-    private String buildConfigPath( String groupName, String configKey) {
-        return String.format("/configs/%s/%s",groupName, configKey);
     }
 
     /**

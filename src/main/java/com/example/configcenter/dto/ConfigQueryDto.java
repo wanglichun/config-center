@@ -26,8 +26,4 @@ public class ConfigQueryDto extends PageBase {
      */
     private String status;
 
-    /**
-     * 关键词搜索
-     */
-    private String keyword;
 } 

@@ -32,6 +32,20 @@ public class ConfigController {
     private ConfigService configService;
 
     /**
+     * 创建配置
+     */
+    @PostMapping()
+    @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
+    public ApiResult<Boolean> createConfig(@RequestBody ConfigItem configItem) {
+        try {
+            boolean result = configService.createConfig(configItem);
+            return result ? ApiResult.success(true) : ApiResult.error("编辑配置失败");
+        } catch (Exception e) {
+            return ApiResult.error("创建失败：" + e.getMessage());
+        }
+    }
+
+    /**
      * 获取单个配置
      */
     @GetMapping

@@ -36,8 +36,6 @@ export interface ConfigQuery {
 // 配置表单
 export interface ConfigForm {
   id?: number
-  appName: string
-  environment: string
   groupName: string
   configKey: string
   configValue: string

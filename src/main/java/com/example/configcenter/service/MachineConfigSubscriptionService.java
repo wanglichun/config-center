@@ -41,12 +41,4 @@ public interface MachineConfigSubscriptionService {
      * @return 通知成功的机器数量
      */
     int notifyConfigChange(String groupName, String configKey, String newValue);
-
-    /**
-     * 心跳检测
-     *
-     * @param instanceId 实例ID
-     * @return 是否存活
-     */
-    boolean heartbeat(String instanceId);
 } 

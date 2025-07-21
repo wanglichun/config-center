@@ -56,16 +56,6 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
     @Override
-    public ConfigItem getConfigById(Long id) {
-        try {
-            return configItemMapper.findById(id);
-        } catch (Exception e) {
-            log.error("根据ID获取配置项失败: {}", id, e);
-            return null;
-        }
-    }
-
-    @Override
     @Transactional
     @CacheEvict(value = {"config", "configs", "configMap"}, allEntries = true)
     public boolean createConfig(ConfigItem configItem) {
@@ -75,10 +65,9 @@ public class ConfigServiceImpl implements ConfigService {
             configItem.setStatus("ACTIVE");
             configItem.setCreateTime(LocalDateTime.now());
             configItem.setUpdateTime(LocalDateTime.now());
-            
+            configItem.setDelFlag(0);
             // 生成ZK路径
-            String zkPath = buildZkPath(configItem.getEnvironment(),
-                                      configItem.getGroupName(), configItem.getConfigKey());
+            String zkPath = buildZkPath(configItem.getGroupName(), configItem.getConfigKey());
             configItem.setZkPath(zkPath);
 
             // 保存到数据库
@@ -152,7 +141,7 @@ public class ConfigServiceImpl implements ConfigService {
             configItem.setDelFlag(1);
             configItem.setUpdateTime(LocalDateTime.now());
             
-            int result = configItemMapper.update(configItem);
+            int result = configItemMapper.deleteById(configItem.getId());
             
             if (result > 0) {
                 // 从ZK删除
@@ -330,8 +319,8 @@ public class ConfigServiceImpl implements ConfigService {
     /**
      * 构建ZooKeeper路径
      */
-    private String buildZkPath(String environment, String groupName, String configKey) {
-        return String.format("/configs/%s/%s/%s", environment, groupName, configKey);
+    private String buildZkPath(String groupName, String configKey) {
+        return String.format("/configs/%s/%s", groupName, configKey);
     }
 
     /**
@@ -342,8 +331,6 @@ public class ConfigServiceImpl implements ConfigService {
         try {
             ConfigHistory history = new ConfigHistory();
             history.setConfigId(configItem.getId());
-            history.setAppName(configItem.getAppName());
-            history.setEnvironment(configItem.getEnvironment());
             history.setGroupName(configItem.getGroupName());
             history.setConfigKey(configItem.getConfigKey());
             history.setOldValue(oldValue);

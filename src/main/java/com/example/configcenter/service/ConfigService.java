@@ -18,21 +18,11 @@ public interface ConfigService {
     /**
      * 获取配置项
      *
-     * @param appName 应用名称
-     * @param environment 环境
      * @param groupName 配置组
      * @param configKey 配置键
      * @return 配置项
      */
     ConfigItem getConfig(String groupName, String configKey);
-
-    /**
-     * 根据ID获取配置项
-     *
-     * @param id 配置项ID
-     * @return 配置项
-     */
-    ConfigItem getConfigById(Long id);
     /**
      * 创建配置项
      *

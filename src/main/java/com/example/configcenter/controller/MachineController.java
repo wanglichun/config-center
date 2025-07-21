@@ -58,19 +58,4 @@ public class MachineController {
             return ApiResult.error("查询失败：" + e.getMessage());
         }
     }
-
-
-    /**
-     * 心跳检测
-     */
-    @PostMapping("/heartbeat/{instanceId}")
-    public ApiResult<Boolean> heartbeat(@PathVariable String instanceId) {
-        try {
-            boolean alive = machineConfigSubscriptionService.heartbeat(instanceId);
-            return ApiResult.success(alive);
-        } catch (Exception e) {
-            log.error("心跳检测失败", e);
-            return ApiResult.error("心跳失败：" + e.getMessage());
-        }
-    }
 } 

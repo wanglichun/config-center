@@ -101,19 +101,9 @@
       <el-form :model="configForm" label-width="120px" :rules="formRules" ref="formRef" class="dialog-form">
         <div class="form-grid">
           <div class="form-column">
-            <el-form-item :label="$t('config.appName')" prop="appName">
-              <el-input v-model="configForm.appName" :disabled="isEdit" :placeholder="$t('config.placeholders.appName')" />
-            </el-form-item>
-            <el-form-item :label="$t('config.environment')" prop="environment">
-              <el-select v-model="configForm.environment" :placeholder="$t('config.placeholders.environment')" :disabled="isEdit">
-                <el-option v-for="option in environmentOptions" :key="option.value" :label="option.label" :value="option.value" />
-              </el-select>
-            </el-form-item>
             <el-form-item :label="$t('config.groupName')" prop="groupName">
               <el-input v-model="configForm.groupName" :disabled="isEdit" :placeholder="$t('config.placeholders.groupName')" />
             </el-form-item>
-          </div>
-          <div class="form-column">
             <el-form-item :label="$t('config.configKey')" prop="configKey">
               <el-input v-model="configForm.configKey" :disabled="isEdit" :placeholder="$t('config.placeholders.configKey')" />
             </el-form-item>
@@ -125,6 +115,8 @@
                 <el-option :label="$t('config.dataTypes.JSON')" value="JSON" />
               </el-select>
             </el-form-item>
+          </div>
+          <div class="form-column">
             <el-form-item :label="$t('config.encrypted')">
               <el-switch v-model="configForm.encrypted" />
             </el-form-item>
@@ -187,8 +179,6 @@ const searchForm = reactive<ConfigQuery>({
 })
 
 const configForm = reactive<ConfigForm>({
-  appName: '',
-  environment: '',
   groupName: '',
   configKey: '',
   configValue: '',
@@ -198,8 +188,6 @@ const configForm = reactive<ConfigForm>({
 })
 
 const formRules = {
-  appName: [{ required: true, message: t('config.placeholders.appName'), trigger: 'blur' }],
-  environment: [{ required: true, message: t('config.placeholders.environment'), trigger: 'change' }],
   groupName: [{ required: true, message: t('config.placeholders.groupName'), trigger: 'blur' }],
   configKey: [{ required: true, message: t('config.placeholders.configKey'), trigger: 'blur' }],
   configValue: [{ required: true, message: t('config.placeholders.configValue'), trigger: 'blur' }],
@@ -485,8 +473,6 @@ const handleSave = async () => {
 
 const resetForm = () => {
   Object.assign(configForm, {
-    appName: '',
-    environment: '',
     groupName: '',
     configKey: '',
     configValue: '',
