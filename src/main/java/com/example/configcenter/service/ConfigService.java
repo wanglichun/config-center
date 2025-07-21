@@ -27,6 +27,14 @@ public interface ConfigService {
     ConfigItem getConfig(String appName, String environment, String groupName, String configKey);
 
     /**
+     * 根据ID获取配置项
+     *
+     * @param id 配置项ID
+     * @return 配置项
+     */
+    ConfigItem getConfigById(Long id);
+
+    /**
      * 获取应用的所有配置
      *
      * @param appName 应用名称

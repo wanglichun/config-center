@@ -64,6 +64,16 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
     @Override
+    public ConfigItem getConfigById(Long id) {
+        try {
+            return configItemMapper.findById(id);
+        } catch (Exception e) {
+            log.error("根据ID获取配置项失败: {}", id, e);
+            return null;
+        }
+    }
+
+    @Override
     @Cacheable(value = "configs", key = "#appName + ':' + #environment")
     public List<ConfigItem> getConfigs(String appName, String environment) {
         try {

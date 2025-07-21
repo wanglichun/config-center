@@ -180,19 +180,7 @@
     <!-- 更新配置 -->
     <update id="update" parameterType="com.example.configcenter.entity.ConfigItem">
         UPDATE config_item
-        SET config_value = #{configValue},
-            data_type = #{dataType},
-            description = #{description},
-            version = #{version},
-            encrypted = #{encrypted},
-            tags = #{tags},
-            status = #{status},
-            last_publish_time = #{lastPublishTime},
-            publisher = #{publisher},
-            update_time = #{updateTime},
-            update_by = #{updateBy},
-            remark = #{remark},
-            del_flag = #{delFlag}
+        SET config_value = #{configValue}
         WHERE id = #{id}
     </update>
 

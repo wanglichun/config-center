@@ -361,7 +361,21 @@ const handleViewDetail = (row: ConfigItem) => {
 
 const handleEdit = (row: ConfigItem) => {
   isEdit.value = true
-  Object.assign(configForm, row)
+  // 复制配置数据到表单
+  Object.assign(configForm, {
+    id: row.id,
+    appName: row.appName,
+    environment: row.environment,
+    groupName: row.groupName,
+    configKey: row.configKey,
+    configValue: row.configValue,
+    dataType: row.dataType || 'STRING',
+    description: row.description || '',
+    encrypted: row.encrypted || false,
+    tags: row.tags || '',
+    remark: row.remark || ''
+  })
+  // 显示编辑对话框
   showAddDialog.value = true
 }
 

@@ -96,6 +96,34 @@ public class ConfigController {
     }
 
     /**
+     * 编辑配置
+     */
+    @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
+    public ApiResult<Boolean> editConfig(@PathVariable Long id, 
+                                        @RequestBody ConfigItemDto configDto, 
+                                        HttpServletRequest request) {
+        try {
+            String operator = getCurrentUser(request);
+            
+            // 创建配置项对象
+            ConfigItem configItem = new ConfigItem();
+            configItem.setId(id);
+            configItem.setConfigValue(configDto.getConfigValue());
+            configItem.setDataType(configDto.getDataType());
+            configItem.setDescription(configDto.getDescription());
+            configItem.setEncrypted(configDto.getEncrypted());
+
+            configItem.setUpdateBy(operator);
+            
+            boolean result = configService.updateConfig(configItem);
+            return result ? ApiResult.success(true) : ApiResult.error("编辑配置失败");
+        } catch (Exception e) {
+            return ApiResult.error("编辑失败：" + e.getMessage());
+        }
+    }
+
+    /**
      * 发布配置
      */
     @PostMapping("/{id}/publish")
