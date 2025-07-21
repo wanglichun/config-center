@@ -7,9 +7,8 @@ import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.mapper.ConfigHistoryMapper;
 import com.example.configcenter.mapper.ConfigItemMapper;
 import com.example.configcenter.service.ConfigService;
-import com.example.configcenter.service.MachineConfigSubscriptionService;
+import com.example.configcenter.service.MachineService;
 import com.example.configcenter.service.ZooKeeperService;
-import com.example.configcenter.utils.EncryptUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -42,7 +41,7 @@ public class ConfigServiceImpl implements ConfigService {
     private ZooKeeperService zooKeeperService;
 
     @Autowired
-    private MachineConfigSubscriptionService machineConfigSubscriptionService;
+    private MachineService machineConfigSubscriptionService;
 
     @Override
     @Cacheable(value = "config", key = "#groupName + ':' + #configKey")

@@ -13,11 +13,6 @@
       
       <div class="search-bar">
         <el-form :model="searchForm" inline>
-          <el-form-item :label="$t('config.environment')">
-            <el-select v-model="searchForm.environment" :placeholder="$t('config.placeholders.environment')" clearable style="width: 160px;">
-              <el-option v-for="option in environmentOptions" :key="option.value" :label="option.label" :value="option.value" />
-            </el-select>
-          </el-form-item>
           <el-form-item :label="$t('config.groupName')">
             <el-input v-model="searchForm.groupName" :placeholder="$t('config.placeholders.groupName')" clearable style="width: 180px;" />
           </el-form-item>
@@ -40,13 +35,6 @@
       </div>
 
       <el-table :data="configList" v-loading="loading" style="width: 100%">
-        <el-table-column prop="environment" :label="$t('config.environment')" width="100">
-          <template #default="scope">
-            <el-tag :type="getEnvTagType(scope.row.environment)">
-              {{ getEnvText(scope.row.environment) }}
-            </el-tag>
-          </template>
-        </el-table-column>
         <el-table-column prop="groupName" :label="$t('config.groupName')" />
         <el-table-column prop="configKey" :label="$t('config.configKey')" />
         <el-table-column prop="configValue" :label="$t('config.configValue')" show-overflow-tooltip />
@@ -171,8 +159,6 @@ const router = useRouter()
 const searchForm = reactive<ConfigQuery>({
   pageNum: 1,
   pageSize: 20,
-  appName: '',
-  environment: '',
   groupName: '',
   keyword: '',
   status: ''
@@ -204,7 +190,6 @@ const formRef = ref()
 const loading = ref(false)
 
 // 枚举选项
-const environmentOptions = ref<Array<{value: string, label: string}>>([])
 const statusOptions = ref<Array<{value: string, label: string}>>([])
 const enumsData = ref<AllEnums>()
 
@@ -214,17 +199,11 @@ const loadEnums = async () => {
     const response = await getAllEnum()
     if (response.success) {
       enumsData.value = response.data
-      environmentOptions.value = enumToOptions(response.data.EnvironmentEnum)
       statusOptions.value = enumToOptions(response.data.ConfigStatusEnum)
       console.log('枚举数据加载成功:', response.data)
     } else {
       console.error('加载枚举失败:', response.message)
       // 使用默认值
-      environmentOptions.value = [
-        { value: 'dev', label: t('config.environments.dev') },
-        { value: 'test', label: t('config.environments.test') },
-        { value: 'prod', label: t('config.environments.prod') }
-      ]
       statusOptions.value = [
         { value: 'DRAFT', label: t('config.statuses.DRAFT') },
         { value: 'PUBLISHED', label: t('config.statuses.PUBLISHED') },
@@ -234,34 +213,12 @@ const loadEnums = async () => {
   } catch (error) {
     console.error('加载枚举异常:', error)
     // 使用默认值
-    environmentOptions.value = [
-      { value: 'dev', label: t('config.environments.dev') },
-      { value: 'test', label: t('config.environments.test') },
-      { value: 'prod', label: t('config.environments.prod') }
-    ]
     statusOptions.value = [
       { value: 'DRAFT', label: t('config.statuses.DRAFT') },
       { value: 'PUBLISHED', label: t('config.statuses.PUBLISHED') },
       { value: 'DISABLED', label: t('config.statuses.DISABLED') }
     ]
   }
-}
-
-const getEnvTagType = (env: string) => {
-  switch (env) {
-    case 'dev': return 'primary'
-    case 'test': return 'warning'
-    case 'prod': return 'danger'
-    default: return 'info'
-  }
-}
-
-const getEnvText = (env: string) => {
-  if (enumsData.value?.EnvironmentEnum) {
-    return enumsData.value.EnvironmentEnum[env] || env
-  }
-  // 使用国际化文本
-  return t(`config.environments.${env}`) || env
 }
 
 const getStatusTagType = (status: string) => {
@@ -324,8 +281,6 @@ const handleReset = () => {
   Object.assign(searchForm, {
     pageNum: 1,
     pageSize: 20,
-    appName: '',
-    environment: '',
     groupName: '',
     keyword: '',
     status: ''

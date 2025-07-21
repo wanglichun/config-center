@@ -2,10 +2,9 @@ package com.example.configcenter.service.impl;
 
 import com.example.configcenter.entity.MachineInstance;
 import com.example.configcenter.exception.ConfigException;
-import com.example.configcenter.service.MachineConfigSubscriptionService;
+import com.example.configcenter.service.MachineService;
 import com.example.configcenter.service.ZooKeeperService;
 import com.example.configcenter.utils.JsonUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 机器配置订阅服务实现类
@@ -23,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @Slf4j
 @Service
-public class MachineConfigSubscriptionServiceImpl implements MachineConfigSubscriptionService {
+public class MachineConfigSubscriptionServiceImpl implements MachineService {
 
     private static final Logger log = LoggerFactory.getLogger(MachineConfigSubscriptionServiceImpl.class);
 

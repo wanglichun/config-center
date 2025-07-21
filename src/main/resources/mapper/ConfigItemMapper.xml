@@ -48,28 +48,6 @@
           AND del_flag = 0
     </select>
 
-    <!-- 根据配置键查询（不指定组名） -->
-    <select id="findByKeyWithoutGroup" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List"/>
-        FROM config_item
-        WHERE app_name = #{appName}
-          AND environment = #{environment}
-          AND config_key = #{configKey}
-          AND del_flag = 0
-        LIMIT 1
-    </select>
-
-    <!-- 根据配置组查询 -->
-    <select id="findByGroup" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List"/>
-        FROM config_item
-        WHERE app_name = #{appName}
-          AND environment = #{environment}
-          AND group_name = #{groupName}
-          AND del_flag = 0
-        ORDER BY config_key
-    </select>
-
     <!-- 搜索配置 -->
     <select id="search" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
@@ -104,29 +82,6 @@
         </if>
     </select>
 
-    <!-- 分页查询 -->
-    <select id="findByPage" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List"/>
-        FROM config_item
-        WHERE del_flag = 0
-        <if test="appName != null and appName != ''">
-            AND app_name = #{appName}
-        </if>
-        <if test="environment != null and environment != ''">
-            AND environment = #{environment}
-        </if>
-        ORDER BY create_time DESC
-        LIMIT #{pageNum}, #{pageSize}
-    </select>
-
-    <!-- 统计数量 -->
-    <select id="countByApp" resultType="java.lang.Integer">
-        SELECT COUNT(1)
-        FROM config_item
-        WHERE app_name = #{appName}
-          AND environment = #{environment}
-          AND del_flag = 0
-    </select>
 
     <!-- 插入配置 -->
     <insert id="insert" parameterType="com.example.configcenter.entity.ConfigItem" useGeneratedKeys="true" keyProperty="id">
@@ -153,65 +108,5 @@
         UPDATE config_item SET del_flag = 1, update_time = NOW()
         WHERE id = #{id}
     </delete>
-
-    <!-- 批量插入 -->
-    <insert id="batchInsert" parameterType="java.util.List">
-        INSERT INTO config_item (
-            app_name, environment, group_name, config_key, config_value, data_type,
-            description, version, encrypted, tags, status, zk_path, last_publish_time,
-            publisher, create_time, update_time, create_by, update_by, remark, del_flag
-        ) VALUES
-        <foreach collection="list" item="item" separator=",">
-            (#{item.appName}, #{item.environment}, #{item.groupName}, #{item.configKey}, #{item.configValue}, #{item.dataType},
-             #{item.description}, #{item.version}, #{item.encrypted}, #{item.tags}, #{item.status}, #{item.zkPath}, #{item.lastPublishTime},
-             #{item.publisher}, #{item.createTime}, #{item.updateTime}, #{item.createBy}, #{item.updateBy}, #{item.remark}, #{item.delFlag})
-        </foreach>
-    </insert>
-
-    <!-- 批量更新 -->
-    <update id="batchUpdate" parameterType="java.util.List">
-        <foreach collection="list" item="item" separator=";">
-            UPDATE config_item
-            SET config_value = #{item.configValue},
-                data_type = #{item.dataType},
-                description = #{item.description},
-                version = #{item.version},
-                encrypted = #{item.encrypted},
-                tags = #{item.tags},
-                status = #{item.status},
-                last_publish_time = #{item.lastPublishTime},
-                publisher = #{item.publisher},
-                update_time = #{item.updateTime},
-                update_by = #{item.updateBy},
-                remark = #{item.remark}
-            WHERE id = #{item.id}
-        </foreach>
-    </update>
-
-    <!-- 获取所有应用名称 -->
-    <select id="findAllAppNames" resultType="java.lang.String">
-        SELECT DISTINCT app_name
-        FROM config_item
-        WHERE del_flag = 0
-        ORDER BY app_name
-    </select>
-
-    <!-- 获取应用的所有环境 -->
-    <select id="findEnvironmentsByApp" resultType="java.lang.String">
-        SELECT DISTINCT environment
-        FROM config_item
-        WHERE app_name = #{appName} AND del_flag = 0
-        ORDER BY environment
-    </select>
-
-    <!-- 获取应用环境的所有配置组 -->
-    <select id="findGroupsByAppEnv" resultType="java.lang.String">
-        SELECT DISTINCT group_name
-        FROM config_item
-        WHERE app_name = #{appName}
-          AND environment = #{environment}
-          AND del_flag = 0
-        ORDER BY group_name
-    </select>
 
 </mapper> 

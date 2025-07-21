@@ -1,7 +1,7 @@
 package com.example.configcenter.controller;
 
 import com.example.configcenter.common.ApiResult;
-import com.example.configcenter.service.MachineConfigSubscriptionService;
+import com.example.configcenter.service.MachineService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ import java.util.Set;
 public class MachineController {
 
     @Autowired
-    private MachineConfigSubscriptionService machineConfigSubscriptionService;
+    private MachineService machineService;
 
     /**
      * 注册机器实例
@@ -33,7 +33,7 @@ public class MachineController {
                                              @RequestParam String instanceIp,
                                              @RequestParam List<String> configKeys) {
         try {
-            boolean result = machineConfigSubscriptionService.registerMachine(groupName, instanceId, instanceIp, configKeys);
+            boolean result = machineService.registerMachine(groupName, instanceId, instanceIp, configKeys);
             return result ? ApiResult.success(true) : ApiResult.error("注册机器实例失败");
         } catch (Exception e) {
             log.error("注册机器实例失败", e);
@@ -46,12 +46,10 @@ public class MachineController {
      * 获取订阅指定配置的机器列表
      */
     @GetMapping("/subscribers")
-    public ApiResult<Set<String>> getSubscribedMachines(@RequestParam String appName,
-                                                         @RequestParam String environment,
-                                                         @RequestParam String groupName,
+    public ApiResult<Set<String>> getSubscribedMachines(@RequestParam String groupName,
                                                          @RequestParam String configKey) {
         try {
-            Set<String> machines = machineConfigSubscriptionService.getSubscribedMachines(groupName, configKey);
+            Set<String> machines = machineService.getSubscribedMachines(groupName, configKey);
             return ApiResult.success(machines);
         } catch (Exception e) {
             log.error("获取订阅机器列表失败", e);

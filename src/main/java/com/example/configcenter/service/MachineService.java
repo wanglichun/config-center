@@ -1,7 +1,6 @@
 package com.example.configcenter.service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -10,7 +9,7 @@ import java.util.Set;
  * @author ConfigCenter Team
  * @version 1.0.0
  */
-public interface MachineConfigSubscriptionService {
+public interface MachineService {
 
     /**
      * 注册机器实例

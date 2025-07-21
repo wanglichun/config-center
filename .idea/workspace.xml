@@ -5,54 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1625340a-b1de-4f9a-a29d-4a3030cc26bf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1625340a-b1de-4f9a-a29d-4a3030cc26bf.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/types/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/types/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/config-center.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/MachineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/MachineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/demo/ConfigSubscriber.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/dto/ConfigItemDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/dto/ConfigItemDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/dto/ConfigQueryDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/dto/ConfigQueryDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/ConfigItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/ConfigItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/ConfigPushService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/ConfigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/ConfigService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/MachineConfigSubscriptionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/MachineConfigSubscriptionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/MachineGroupService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigPushServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/MachineGroupServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/mapper/ConfigItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/mapper/ConfigItemMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ConfigItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ConfigItemMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/ConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/ConfigController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/MachineController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/MachineController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/demo/ConfigSubscriber$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/demo/ConfigSubscriber.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/ConfigItemDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/ConfigItemDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/ConfigQueryDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/ConfigQueryDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/ConfigSubscriberDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/ConfigSubscriberDto.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/ConfigItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/ConfigItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/MachineInstance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/MachineInstance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/mapper/ConfigHistoryMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/mapper/ConfigHistoryMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/mapper/ConfigItemMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/mapper/ConfigItemMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ConfigPushService$ConfigPushItem.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ConfigPushService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ConfigService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ConfigService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/MachineConfigSubscriptionService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/MachineConfigSubscriptionService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/MachineGroupService$GroupChangeListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/MachineGroupService$LayeredMachineGroups.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/MachineGroupService$MachineInstance.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/MachineGroupService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ZooKeeperService$ConfigChangeListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ZooKeeperService$ConfigChangeListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ZooKeeperService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ZooKeeperService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigPushServiceImpl$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigPushServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/MachineGroupServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ZooKeeperServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ZooKeeperServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ConfigItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ConfigItemMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +128,7 @@
       <updated>1750760922738</updated>
       <workItem from="1750760924420" duration="86000" />
       <workItem from="1750761022757" duration="11985000" />
-      <workItem from="1752722035022" duration="42796000" />
+      <workItem from="1752722035022" duration="43635000" />
     </task>
     <servers />
   </component>
@@ -193,11 +147,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java</url>
           <line>162</line>
           <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
