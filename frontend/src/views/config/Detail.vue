@@ -15,14 +15,6 @@
       <div class="basic-info">
         <h3>{{ $t('config.detail.basicInfo') }}</h3>
         <el-descriptions :column="2" border>
-          <el-descriptions-item :label="$t('config.appName')">
-            {{ configDetail?.appName }}
-          </el-descriptions-item>
-          <el-descriptions-item :label="$t('config.environment')">
-            <el-tag :type="getEnvironmentTagType(configDetail?.environment)">
-              {{ configDetail?.environment }}
-            </el-tag>
-          </el-descriptions-item>
           <el-descriptions-item :label="$t('config.groupName')">
             {{ configDetail?.groupName }}
           </el-descriptions-item>
@@ -101,27 +93,7 @@
           empty-text="暂无订阅容器"
           stripe
         >
-          <el-table-column prop="instanceId" label="实例ID" min-width="200" />
           <el-table-column prop="instanceIp" label="实例IP" min-width="150" />
-          <el-table-column prop="status" label="状态" width="100">
-            <template #default="{ row }">
-              <el-tag :type="row.status === 'online' ? 'success' : 'danger'">
-                {{ row.status === 'online' ? '在线' : '离线' }}
-              </el-tag>
-            </template>
-          </el-table-column>
-          <el-table-column prop="lastHeartbeat" label="最后心跳" width="180">
-            <template #default="{ row }">
-              {{ formatTime(row.lastHeartbeat) }}
-            </template>
-          </el-table-column>
-          <el-table-column label="操作" width="120" fixed="right">
-            <template #default="{ row }">
-              <el-button @click="viewInstanceDetail(row)" size="small" type="primary">
-                {{ $t('common.view') }}
-              </el-button>
-            </template>
-          </el-table-column>
         </el-table>
       </div>
     </el-card>
@@ -185,24 +157,21 @@ const loadConfigDetail = async () => {
 
 const loadSubscribers = async () => {
   if (!configDetail.value) return
-
+  
   loadingSubscribers.value = true
   try {
     const params = {
-      appName: configDetail.value.appName,
-      environment: configDetail.value.environment,
+      appName: route.query.appName as string || 'default',
+      environment: route.query.environment as string || 'dev',
       groupName: configDetail.value.groupName,
       configKey: configDetail.value.configKey
     }
     
     const response = await machineConfigApi.getSubscribers(params)
     if (response.success) {
-      // 将订阅者ID转换为对象数组，便于表格显示
+      // 将订阅者ID转换为简单的IP对象数组
       subscribers.value = response.data.map((instanceId: string) => ({
-        instanceId,
-        instanceIp: instanceId.split(':')[0] || instanceId, // 假设格式为 IP:PORT
-        status: 'online', // 这里可以根据实际情况判断状态
-        lastHeartbeat: new Date().toISOString() // 这里应该从实际数据获取
+        instanceIp: instanceId.split(':')[0] || instanceId // 提取IP部分
       }))
     } else {
       ElMessage.error(response.message || '获取订阅者信息失败')
@@ -235,22 +204,8 @@ const copyConfigValue = async () => {
   }
 }
 
-const viewInstanceDetail = (instance: any) => {
-  ElMessage.info(`查看实例详情: ${instance.instanceId}`)
-  // 这里可以跳转到实例详情页面或打开详情弹窗
-}
-
 const goBack = () => {
   router.back()
-}
-
-const getEnvironmentTagType = (environment?: string) => {
-  switch (environment) {
-    case 'dev': return 'info'
-    case 'test': return 'warning'
-    case 'prod': return 'danger'
-    default: return undefined
-  }
 }
 
 const getStatusTagType = (status?: string) => {

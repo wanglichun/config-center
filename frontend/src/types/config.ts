@@ -1,8 +1,6 @@
 // 配置项
 export interface ConfigItem {
   id: number
-  appName: string
-  environment: string
   groupName: string
   configKey: string
   configValue: string
@@ -26,8 +24,6 @@ export interface ConfigItem {
 export interface ConfigQuery {
   pageNum: number
   pageSize: number
-  appName?: string
-  environment?: string
   groupName?: string
   keyword?: string
   status?: string
@@ -36,8 +32,6 @@ export interface ConfigQuery {
 // 配置表单
 export interface ConfigForm {
   id?: number
-  appName: string
-  environment: string
   groupName: string
   configKey: string
   configValue: string

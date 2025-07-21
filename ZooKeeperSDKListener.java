@@ -6,14 +6,22 @@ import java.io.IOException;
 
 public class ZooKeeperSDKListener {
     private static final String ZK_SERVER = "config-center-zookeeper:2181";
-    private static final String NOTIFICATION_PATH = "/config-center/notifications/demo-app/dev/common";
-    private static final String CONFIG_PATH = "/config-center/configs/demo-app/dev/common";
+    private static final String NOTIFICATION_PATH = "/config-center/notifications/demo-app/dev/redis";
+    private static final String CONFIG_PATH = "/config-center/configs/demo-app/dev/redis";
     private static final String INSTANCE_ID = "simple-container";
     
     private ZooKeeper zk;
     
     public void connect() throws Exception {
-        zk = new ZooKeeper(ZK_SERVER, 30000, null);
+        zk = new ZooKeeper(ZK_SERVER, 30000, new Watcher() {
+            @Override
+            public void process(WatchedEvent event) {
+                // 处理连接事件
+                if (event.getState() == Event.KeeperState.SyncConnected) {
+                    System.out.println("已连接到ZooKeeper: " + ZK_SERVER);
+                }
+            }
+        });
         
         // 等待连接建立
         while (zk.getState() != ZooKeeper.States.CONNECTED) {

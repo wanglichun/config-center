@@ -4,7 +4,7 @@
       <template #header>
         <div class="card-header">
           <span>{{ $t('config.title') }}</span>
-          <el-button type="primary" @click="showAddDialog = true">
+          <el-button type="primary" @click="handleAdd">
             <el-icon><Plus /></el-icon>
             {{ $t('config.add') }}
           </el-button>
@@ -13,11 +13,6 @@
       
       <div class="search-bar">
         <el-form :model="searchForm" inline>
-          <el-form-item :label="$t('config.environment')">
-            <el-select v-model="searchForm.environment" :placeholder="$t('config.placeholders.environment')" clearable style="width: 160px;">
-              <el-option v-for="option in environmentOptions" :key="option.value" :label="option.label" :value="option.value" />
-            </el-select>
-          </el-form-item>
           <el-form-item :label="$t('config.groupName')">
             <el-input v-model="searchForm.groupName" :placeholder="$t('config.placeholders.groupName')" clearable style="width: 180px;" />
           </el-form-item>
@@ -40,13 +35,6 @@
       </div>
 
       <el-table :data="configList" v-loading="loading" style="width: 100%">
-        <el-table-column prop="environment" :label="$t('config.environment')" width="100">
-          <template #default="scope">
-            <el-tag :type="getEnvTagType(scope.row.environment)">
-              {{ getEnvText(scope.row.environment) }}
-            </el-tag>
-          </template>
-        </el-table-column>
         <el-table-column prop="groupName" :label="$t('config.groupName')" />
         <el-table-column prop="configKey" :label="$t('config.configKey')" />
         <el-table-column prop="configValue" :label="$t('config.configValue')" show-overflow-tooltip />
@@ -97,23 +85,13 @@
     </el-card>
 
     <!-- 新增/编辑对话框 -->
-    <el-dialog v-model="showAddDialog" :title="isEdit ? $t('config.edit') : $t('config.add')" width="800px" class="config-dialog">
+    <el-dialog v-model="showAddDialog" :title="isEdit ? $t('config.edit') : $t('config.add')" width="800px" class="config-dialog" @close="handleDialogClose">
       <el-form :model="configForm" label-width="120px" :rules="formRules" ref="formRef" class="dialog-form">
         <div class="form-grid">
           <div class="form-column">
-            <el-form-item :label="$t('config.appName')" prop="appName">
-              <el-input v-model="configForm.appName" :disabled="isEdit" :placeholder="$t('config.placeholders.appName')" />
-            </el-form-item>
-            <el-form-item :label="$t('config.environment')" prop="environment">
-              <el-select v-model="configForm.environment" :placeholder="$t('config.placeholders.environment')" :disabled="isEdit">
-                <el-option v-for="option in environmentOptions" :key="option.value" :label="option.label" :value="option.value" />
-              </el-select>
-            </el-form-item>
             <el-form-item :label="$t('config.groupName')" prop="groupName">
               <el-input v-model="configForm.groupName" :disabled="isEdit" :placeholder="$t('config.placeholders.groupName')" />
             </el-form-item>
-          </div>
-          <div class="form-column">
             <el-form-item :label="$t('config.configKey')" prop="configKey">
               <el-input v-model="configForm.configKey" :disabled="isEdit" :placeholder="$t('config.placeholders.configKey')" />
             </el-form-item>
@@ -125,6 +103,8 @@
                 <el-option :label="$t('config.dataTypes.JSON')" value="JSON" />
               </el-select>
             </el-form-item>
+          </div>
+          <div class="form-column">
             <el-form-item :label="$t('config.encrypted')">
               <el-switch v-model="configForm.encrypted" />
             </el-form-item>
@@ -153,7 +133,7 @@
       </el-form>
       <template #footer>
         <div class="dialog-footer">
-          <el-button @click="showAddDialog = false">{{ $t('common.cancel') }}</el-button>
+          <el-button @click="handleDialogClose">{{ $t('common.cancel') }}</el-button>
           <el-button type="primary" @click="handleSave">{{ $t('common.save') }}</el-button>
         </div>
       </template>
@@ -179,16 +159,12 @@ const router = useRouter()
 const searchForm = reactive<ConfigQuery>({
   pageNum: 1,
   pageSize: 20,
-  appName: '',
-  environment: '',
   groupName: '',
   keyword: '',
   status: ''
 })
 
 const configForm = reactive<ConfigForm>({
-  appName: '',
-  environment: '',
   groupName: '',
   configKey: '',
   configValue: '',
@@ -198,8 +174,6 @@ const configForm = reactive<ConfigForm>({
 })
 
 const formRules = {
-  appName: [{ required: true, message: t('config.placeholders.appName'), trigger: 'blur' }],
-  environment: [{ required: true, message: t('config.placeholders.environment'), trigger: 'change' }],
   groupName: [{ required: true, message: t('config.placeholders.groupName'), trigger: 'blur' }],
   configKey: [{ required: true, message: t('config.placeholders.configKey'), trigger: 'blur' }],
   configValue: [{ required: true, message: t('config.placeholders.configValue'), trigger: 'blur' }],
@@ -216,7 +190,6 @@ const formRef = ref()
 const loading = ref(false)
 
 // 枚举选项
-const environmentOptions = ref<Array<{value: string, label: string}>>([])
 const statusOptions = ref<Array<{value: string, label: string}>>([])
 const enumsData = ref<AllEnums>()
 
@@ -226,17 +199,11 @@ const loadEnums = async () => {
     const response = await getAllEnum()
     if (response.success) {
       enumsData.value = response.data
-      environmentOptions.value = enumToOptions(response.data.EnvironmentEnum)
       statusOptions.value = enumToOptions(response.data.ConfigStatusEnum)
       console.log('枚举数据加载成功:', response.data)
     } else {
       console.error('加载枚举失败:', response.message)
       // 使用默认值
-      environmentOptions.value = [
-        { value: 'dev', label: t('config.environments.dev') },
-        { value: 'test', label: t('config.environments.test') },
-        { value: 'prod', label: t('config.environments.prod') }
-      ]
       statusOptions.value = [
         { value: 'DRAFT', label: t('config.statuses.DRAFT') },
         { value: 'PUBLISHED', label: t('config.statuses.PUBLISHED') },
@@ -246,34 +213,12 @@ const loadEnums = async () => {
   } catch (error) {
     console.error('加载枚举异常:', error)
     // 使用默认值
-    environmentOptions.value = [
-      { value: 'dev', label: t('config.environments.dev') },
-      { value: 'test', label: t('config.environments.test') },
-      { value: 'prod', label: t('config.environments.prod') }
-    ]
     statusOptions.value = [
       { value: 'DRAFT', label: t('config.statuses.DRAFT') },
       { value: 'PUBLISHED', label: t('config.statuses.PUBLISHED') },
       { value: 'DISABLED', label: t('config.statuses.DISABLED') }
     ]
   }
-}
-
-const getEnvTagType = (env: string) => {
-  switch (env) {
-    case 'dev': return 'primary'
-    case 'test': return 'warning'
-    case 'prod': return 'danger'
-    default: return 'info'
-  }
-}
-
-const getEnvText = (env: string) => {
-  if (enumsData.value?.EnvironmentEnum) {
-    return enumsData.value.EnvironmentEnum[env] || env
-  }
-  // 使用国际化文本
-  return t(`config.environments.${env}`) || env
 }
 
 const getStatusTagType = (status: string) => {
@@ -336,8 +281,6 @@ const handleReset = () => {
   Object.assign(searchForm, {
     pageNum: 1,
     pageSize: 20,
-    appName: '',
-    environment: '',
     groupName: '',
     keyword: '',
     status: ''
@@ -361,7 +304,21 @@ const handleViewDetail = (row: ConfigItem) => {
 
 const handleEdit = (row: ConfigItem) => {
   isEdit.value = true
-  Object.assign(configForm, row)
+  // 复制配置数据到表单
+  Object.assign(configForm, {
+    id: row.id,
+    appName: row.appName,
+    environment: row.environment,
+    groupName: row.groupName,
+    configKey: row.configKey,
+    configValue: row.configValue,
+    dataType: row.dataType || 'STRING',
+    description: row.description || '',
+    encrypted: row.encrypted || false,
+    tags: row.tags || '',
+    remark: row.remark || ''
+  })
+  // 显示编辑对话框
   showAddDialog.value = true
 }
 
@@ -471,8 +428,6 @@ const handleSave = async () => {
 
 const resetForm = () => {
   Object.assign(configForm, {
-    appName: '',
-    environment: '',
     groupName: '',
     configKey: '',
     configValue: '',
@@ -493,6 +448,17 @@ const handleSizeChange = (val: number) => {
 const handleCurrentChange = (val: number) => {
   currentPage.value = val
   loadConfigList()
+}
+
+const handleAdd = () => {
+  isEdit.value = false
+  resetForm()
+  showAddDialog.value = true
+}
+
+const handleDialogClose = () => {
+  showAddDialog.value = false
+  resetForm()
 }
 
 onMounted(() => {

@@ -17,17 +17,7 @@ public class ConfigItem extends BaseEntity {
      * 配置项ID
      */
     private Long id;
-    
-    /**
-     * 应用名称
-     */
-    private String appName;
-    
-    /**
-     * 环境（dev/test/prod）
-     */
-    private String environment;
-    
+
     /**
      * 配置组
      */

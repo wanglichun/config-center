@@ -4,7 +4,7 @@
       <template #header>
         <div class="card-header">
           <span>{{ $t('users.title') }}</span>
-          <el-button type="primary" @click="showAddDialog = true">
+          <el-button type="primary" @click="handleAdd">
             <el-icon><Plus /></el-icon>
             {{ $t('users.addUser') }}
           </el-button>
@@ -107,7 +107,7 @@
     </el-card>
 
     <!-- 新增/编辑对话框 -->
-    <el-dialog v-model="showAddDialog" :title="isEdit ? $t('users.editUser') : $t('users.addUser')" width="600px">
+    <el-dialog v-model="showAddDialog" :title="isEdit ? $t('users.editUser') : $t('users.addUser')" width="600px" @close="handleDialogClose">
       <el-form :model="userForm" label-width="100px" :rules="formRules" ref="formRef">
         <el-row :gutter="16">
           <el-col :span="12">
@@ -394,6 +394,14 @@ const handleReset = () => {
   searchForm.status = ''
   pagination.page = 1
   loadUsers()
+}
+
+// 打开新增对话框
+const handleAdd = () => {
+  isEdit.value = false
+  originalEmail.value = ''
+  resetForm()
+  showAddDialog.value = true
 }
 
 // 编辑用户

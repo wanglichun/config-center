@@ -5,8 +5,6 @@
     <!-- 结果映射 -->
     <resultMap id="BaseResultMap" type="com.example.configcenter.entity.ConfigItem">
         <id column="id" property="id" jdbcType="BIGINT"/>
-        <result column="app_name" property="appName" jdbcType="VARCHAR"/>
-        <result column="environment" property="environment" jdbcType="VARCHAR"/>
         <result column="group_name" property="groupName" jdbcType="VARCHAR"/>
         <result column="config_key" property="configKey" jdbcType="VARCHAR"/>
         <result column="config_value" property="configValue" jdbcType="LONGVARCHAR"/>
@@ -23,15 +21,14 @@
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
         <result column="create_by" property="createBy" jdbcType="VARCHAR"/>
         <result column="update_by" property="updateBy" jdbcType="VARCHAR"/>
-        <result column="remark" property="remark" jdbcType="VARCHAR"/>
         <result column="del_flag" property="delFlag" jdbcType="TINYINT"/>
     </resultMap>
 
     <!-- 基础字段 -->
     <sql id="Base_Column_List">
-        id, app_name, environment, group_name, config_key, config_value, data_type, 
+        id, group_name, config_key, config_value, data_type,
         description, version, encrypted, tags, status, zk_path, last_publish_time, 
-        publisher, create_time, update_time, create_by, update_by, remark, del_flag
+        publisher, create_time, update_time, create_by, update_by, del_flag
     </sql>
 
     <!-- 根据ID查询 -->
@@ -45,43 +42,9 @@
     <select id="findByKey" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM config_item
-        WHERE app_name = #{appName}
-          AND environment = #{environment}
-          AND group_name = #{groupName}
+        WHERE  group_name = #{groupName}
           AND config_key = #{configKey}
           AND del_flag = 0
-    </select>
-
-    <!-- 根据配置键查询（不指定组名） -->
-    <select id="findByKeyWithoutGroup" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List"/>
-        FROM config_item
-        WHERE app_name = #{appName}
-          AND environment = #{environment}
-          AND config_key = #{configKey}
-          AND del_flag = 0
-        LIMIT 1
-    </select>
-
-    <!-- 根据应用查询 -->
-    <select id="findByApp" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List"/>
-        FROM config_item
-        WHERE app_name = #{appName}
-          AND environment = #{environment}
-          AND del_flag = 0
-        ORDER BY group_name, config_key
-    </select>
-
-    <!-- 根据配置组查询 -->
-    <select id="findByGroup" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List"/>
-        FROM config_item
-        WHERE app_name = #{appName}
-          AND environment = #{environment}
-          AND group_name = #{groupName}
-          AND del_flag = 0
-        ORDER BY config_key
     </select>
 
     <!-- 搜索配置 -->
@@ -89,25 +52,14 @@
         SELECT <include refid="Base_Column_List"/>
         FROM config_item
         WHERE del_flag = 0
-        <if test="appName != null and appName != ''">
-            AND app_name = #{appName}
-        </if>
         <if test="configKey != null and configKey != ''">
             AND config_key = #{configKey}
         </if>
         <if test="groupName != null and groupName != ''">
             AND group_name = #{groupName}
         </if>
-        <if test="environment != null and environment != ''">
-            AND environment = #{environment}
-        </if>
         <if test="status != null and status != ''">
             AND status = #{status}
-        </if>
-        <if test="keyword != null and keyword != ''">
-            AND (config_key LIKE CONCAT('%', #{keyword}, '%') 
-                 OR config_value LIKE CONCAT('%', #{keyword}, '%')
-                 OR description LIKE CONCAT('%', #{keyword}, '%'))
         </if>
         ORDER BY update_time DESC
         LIMIT #{pageSize} OFFSET #{pageNum}
@@ -118,60 +70,26 @@
         SELECT COUNT(1)
         FROM config_item
         WHERE del_flag = 0
-        <if test="appName != null and appName != ''">
-            AND app_name = #{appName}
-        </if>
         <if test="configKey != null and configKey != ''">
             AND config_key = #{configKey}
         </if>
         <if test="groupName != null and groupName != ''">
             AND group_name = #{groupName}
         </if>
-        <if test="environment != null and environment != ''">
-            AND environment = #{environment}
-        </if>
         <if test="status != null and status != ''">
             AND status = #{status}
         </if>
-        <if test="keyword != null and keyword != ''">
-            AND (config_key LIKE CONCAT('%', #{keyword}, '%') 
-                 OR config_value LIKE CONCAT('%', #{keyword}, '%')
-                 OR description LIKE CONCAT('%', #{keyword}, '%'))
-        </if>
     </select>
 
-    <!-- 分页查询 -->
-    <select id="findByPage" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List"/>
-        FROM config_item
-        WHERE del_flag = 0
-        <if test="appName != null and appName != ''">
-            AND app_name = #{appName}
-        </if>
-        <if test="environment != null and environment != ''">
-            AND environment = #{environment}
-        </if>
-        ORDER BY create_time DESC
-        LIMIT #{pageNum}, #{pageSize}
-    </select>
-
-    <!-- 统计数量 -->
-    <select id="countByApp" resultType="java.lang.Integer">
-        SELECT COUNT(1)
-        FROM config_item
-        WHERE app_name = #{appName}
-          AND environment = #{environment}
-          AND del_flag = 0
-    </select>
 
     <!-- 插入配置 -->
     <insert id="insert" parameterType="com.example.configcenter.entity.ConfigItem" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO config_item (
-            app_name, environment, group_name, config_key, config_value, data_type,
+            group_name, config_key, config_value, data_type,
             description, version, encrypted, tags, status, zk_path, last_publish_time,
             publisher, create_time, update_time, create_by, update_by, remark, del_flag
         ) VALUES (
-            #{appName}, #{environment}, #{groupName}, #{configKey}, #{configValue}, #{dataType},
+            #{groupName}, #{configKey}, #{configValue}, #{dataType},
             #{description}, #{version}, #{encrypted}, #{tags}, #{status}, #{zkPath}, #{lastPublishTime},
             #{publisher}, #{createTime}, #{updateTime}, #{createBy}, #{updateBy}, #{remark}, #{delFlag}
         )
@@ -180,19 +98,7 @@
     <!-- 更新配置 -->
     <update id="update" parameterType="com.example.configcenter.entity.ConfigItem">
         UPDATE config_item
-        SET config_value = #{configValue},
-            data_type = #{dataType},
-            description = #{description},
-            version = #{version},
-            encrypted = #{encrypted},
-            tags = #{tags},
-            status = #{status},
-            last_publish_time = #{lastPublishTime},
-            publisher = #{publisher},
-            update_time = #{updateTime},
-            update_by = #{updateBy},
-            remark = #{remark},
-            del_flag = #{delFlag}
+        SET config_value = #{configValue}
         WHERE id = #{id}
     </update>
 
@@ -201,65 +107,5 @@
         UPDATE config_item SET del_flag = 1, update_time = NOW()
         WHERE id = #{id}
     </delete>
-
-    <!-- 批量插入 -->
-    <insert id="batchInsert" parameterType="java.util.List">
-        INSERT INTO config_item (
-            app_name, environment, group_name, config_key, config_value, data_type,
-            description, version, encrypted, tags, status, zk_path, last_publish_time,
-            publisher, create_time, update_time, create_by, update_by, remark, del_flag
-        ) VALUES
-        <foreach collection="list" item="item" separator=",">
-            (#{item.appName}, #{item.environment}, #{item.groupName}, #{item.configKey}, #{item.configValue}, #{item.dataType},
-             #{item.description}, #{item.version}, #{item.encrypted}, #{item.tags}, #{item.status}, #{item.zkPath}, #{item.lastPublishTime},
-             #{item.publisher}, #{item.createTime}, #{item.updateTime}, #{item.createBy}, #{item.updateBy}, #{item.remark}, #{item.delFlag})
-        </foreach>
-    </insert>
-
-    <!-- 批量更新 -->
-    <update id="batchUpdate" parameterType="java.util.List">
-        <foreach collection="list" item="item" separator=";">
-            UPDATE config_item
-            SET config_value = #{item.configValue},
-                data_type = #{item.dataType},
-                description = #{item.description},
-                version = #{item.version},
-                encrypted = #{item.encrypted},
-                tags = #{item.tags},
-                status = #{item.status},
-                last_publish_time = #{item.lastPublishTime},
-                publisher = #{item.publisher},
-                update_time = #{item.updateTime},
-                update_by = #{item.updateBy},
-                remark = #{item.remark}
-            WHERE id = #{item.id}
-        </foreach>
-    </update>
-
-    <!-- 获取所有应用名称 -->
-    <select id="findAllAppNames" resultType="java.lang.String">
-        SELECT DISTINCT app_name
-        FROM config_item
-        WHERE del_flag = 0
-        ORDER BY app_name
-    </select>
-
-    <!-- 获取应用的所有环境 -->
-    <select id="findEnvironmentsByApp" resultType="java.lang.String">
-        SELECT DISTINCT environment
-        FROM config_item
-        WHERE app_name = #{appName} AND del_flag = 0
-        ORDER BY environment
-    </select>
-
-    <!-- 获取应用环境的所有配置组 -->
-    <select id="findGroupsByAppEnv" resultType="java.lang.String">
-        SELECT DISTINCT group_name
-        FROM config_item
-        WHERE app_name = #{appName}
-          AND environment = #{environment}
-          AND del_flag = 0
-        ORDER BY group_name
-    </select>
 
 </mapper> 

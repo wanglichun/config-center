@@ -98,14 +98,15 @@
                     :loading="updateLoading"
                     @click="handleUpdateProfile"
                   >
-                    {{ $t('profile.saveChanges') }}
-                  </el-button>
-                  <el-button @click="resetProfileForm">
-                    {{ $t('common.reset') }}
+                    {{ $t('profile.save') }}
                   </el-button>
                 </el-form-item>
               </el-form>
             </el-card>
+          </el-tab-pane>
+          
+          <el-tab-pane label="邮箱Cookie信息" name="email">
+            <UserEmailDisplay />
           </el-tab-pane>
           
           <el-tab-pane :label="$t('profile.changePassword')" name="password">
@@ -240,7 +241,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted, nextTick } from 'vue'
+import { reactive, ref, onMounted, nextTick } from 'vue'
 import { ElMessage } from 'element-plus'
 import { User, Plus } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
@@ -252,6 +253,7 @@ import {
 } from '@/api/user'
 import type { UserInfo } from '@/types/user'
 import type { UserUpdateRequest, PasswordChangeRequest } from '@/api/user'
+import UserEmailDisplay from '@/components/UserEmailDisplay.vue'
 
 const { t } = useI18n()
 const userStore = useUserStore()
@@ -354,7 +356,7 @@ const passwordRules = {
 const getRoleTagType = (role: string) => {
   switch (role) {
     case 'ADMIN': return 'danger'
-    case 'DEVELOPER': return 'warning' 
+    case 'DEVELOPER': return 'warning'
     case 'VIEWER': return 'info'
     default: return 'info'
   }
