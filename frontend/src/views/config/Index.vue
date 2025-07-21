@@ -4,7 +4,7 @@
       <template #header>
         <div class="card-header">
           <span>{{ $t('config.title') }}</span>
-          <el-button type="primary" @click="showAddDialog = true">
+          <el-button type="primary" @click="handleAdd">
             <el-icon><Plus /></el-icon>
             {{ $t('config.add') }}
           </el-button>
@@ -85,7 +85,7 @@
     </el-card>
 
     <!-- 新增/编辑对话框 -->
-    <el-dialog v-model="showAddDialog" :title="isEdit ? $t('config.edit') : $t('config.add')" width="800px" class="config-dialog">
+    <el-dialog v-model="showAddDialog" :title="isEdit ? $t('config.edit') : $t('config.add')" width="800px" class="config-dialog" @close="handleDialogClose">
       <el-form :model="configForm" label-width="120px" :rules="formRules" ref="formRef" class="dialog-form">
         <div class="form-grid">
           <div class="form-column">
@@ -133,7 +133,7 @@
       </el-form>
       <template #footer>
         <div class="dialog-footer">
-          <el-button @click="showAddDialog = false">{{ $t('common.cancel') }}</el-button>
+          <el-button @click="handleDialogClose">{{ $t('common.cancel') }}</el-button>
           <el-button type="primary" @click="handleSave">{{ $t('common.save') }}</el-button>
         </div>
       </template>
@@ -448,6 +448,17 @@ const handleSizeChange = (val: number) => {
 const handleCurrentChange = (val: number) => {
   currentPage.value = val
   loadConfigList()
+}
+
+const handleAdd = () => {
+  isEdit.value = false
+  resetForm()
+  showAddDialog.value = true
+}
+
+const handleDialogClose = () => {
+  showAddDialog.value = false
+  resetForm()
 }
 
 onMounted(() => {
