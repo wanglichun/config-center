@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/mapper/ConfigItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/mapper/ConfigItemMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/components.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/components.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/stores/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/stores/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Profile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/config/Detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/config/Detail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/config-center.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/ConfigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/ConfigService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ConfigItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ConfigItemMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/ConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/ConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/ConfigItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/ConfigItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/mapper/ConfigItemMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/mapper/ConfigItemMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ConfigService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ConfigService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ConfigItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ConfigItemMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +141,7 @@
       <updated>1750760922738</updated>
       <workItem from="1750760924420" duration="86000" />
       <workItem from="1750761022757" duration="11985000" />
-      <workItem from="1752722035022" duration="43635000" />
+      <workItem from="1752722035022" duration="47108000" />
     </task>
     <servers />
   </component>

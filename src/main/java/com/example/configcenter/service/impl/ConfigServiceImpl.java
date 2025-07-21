@@ -1,6 +1,7 @@
 package com.example.configcenter.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.example.configcenter.context.ContextManager;
 import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.entity.ConfigItem;
@@ -164,8 +165,9 @@ public class ConfigServiceImpl implements ConfigService {
     @Override
     @Transactional
     @CacheEvict(value = {"config", "configs", "configMap"}, allEntries = true)
-    public boolean publishConfig(Long id, String publisher) {
+    public boolean publishConfig(Long id) {
         try {
+            String publisher = ContextManager.getContext().getUserEmail();
             ConfigItem configItem = configItemMapper.findById(id);
             if (configItem == null) {
                 log.warn("配置项不存在: {}", id);
@@ -206,8 +208,9 @@ public class ConfigServiceImpl implements ConfigService {
     @Override
     @Transactional
     @CacheEvict(value = {"config", "configs", "configMap"}, allEntries = true)
-    public boolean rollbackConfig(Long id, Long targetVersion, String operator) {
+    public boolean rollbackConfig(Long id, Long targetVersion) {
         try {
+            String operator = ContextManager.getContext().getUserEmail();
             ConfigItem currentConfig = configItemMapper.findById(id);
             if (currentConfig == null) {
                 log.warn("配置项不存在: {}", id);
@@ -230,7 +233,7 @@ public class ConfigServiceImpl implements ConfigService {
             
             if (result > 0) {
                 // 重新发布
-                publishConfig(id, operator);
+                publishConfig(id);
                 
                 // 记录历史
                 recordHistory(currentConfig, "ROLLBACK", 

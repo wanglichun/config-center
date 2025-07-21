@@ -15,14 +15,6 @@
       <div class="basic-info">
         <h3>{{ $t('config.detail.basicInfo') }}</h3>
         <el-descriptions :column="2" border>
-          <el-descriptions-item :label="$t('config.appName')">
-            {{ configDetail?.appName }}
-          </el-descriptions-item>
-          <el-descriptions-item :label="$t('config.environment')">
-            <el-tag :type="getEnvironmentTagType(configDetail?.environment)">
-              {{ configDetail?.environment }}
-            </el-tag>
-          </el-descriptions-item>
           <el-descriptions-item :label="$t('config.groupName')">
             {{ configDetail?.groupName }}
           </el-descriptions-item>
@@ -185,12 +177,10 @@ const loadConfigDetail = async () => {
 
 const loadSubscribers = async () => {
   if (!configDetail.value) return
-
+  
   loadingSubscribers.value = true
   try {
     const params = {
-      appName: configDetail.value.appName,
-      environment: configDetail.value.environment,
       groupName: configDetail.value.groupName,
       configKey: configDetail.value.configKey
     }
@@ -242,15 +232,6 @@ const viewInstanceDetail = (instance: any) => {
 
 const goBack = () => {
   router.back()
-}
-
-const getEnvironmentTagType = (environment?: string) => {
-  switch (environment) {
-    case 'dev': return 'info'
-    case 'test': return 'warning'
-    case 'prod': return 'danger'
-    default: return undefined
-  }
 }
 
 const getStatusTagType = (status?: string) => {

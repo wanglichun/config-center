@@ -2,6 +2,7 @@ package com.example.configcenter.controller;
 
 import com.example.configcenter.common.ApiResult;
 import com.example.configcenter.common.PageResult;
+import com.example.configcenter.context.ContextManager;
 import com.example.configcenter.dto.ConfigItemDto;
 import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.entity.ConfigItem;
@@ -90,17 +91,10 @@ public class ConfigController {
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
     public ApiResult<Boolean> editConfig(@PathVariable Long id, 
-                                        @RequestBody ConfigItemDto configDto,
+                                        @RequestBody ConfigItem configItem,
                                         HttpServletRequest request) {
         try {
-            // 创建配置项对象
-            ConfigItem configItem = new ConfigItem();
-            configItem.setId(id);
-            configItem.setConfigValue(configDto.getConfigValue());
-            configItem.setDataType(configDto.getDataType());
-            configItem.setDescription(configDto.getDescription());
-            configItem.setEncrypted(configDto.getEncrypted());
-
+            configItem.setUpdateBy(ContextManager.getContext().getUserEmail());
             boolean result = configService.updateConfig(configItem);
             return result ? ApiResult.success(true) : ApiResult.error("编辑配置失败");
         } catch (Exception e) {
@@ -114,7 +108,7 @@ public class ConfigController {
     @PostMapping("/{id}/publish")
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
     public ApiResult<Boolean> publishConfig(@PathVariable Long id, HttpServletRequest request) {
-        boolean result = configService.publishConfig(id, "");
+        boolean result = configService.publishConfig(id);
         return result ? ApiResult.success(true) : ApiResult.error("发布配置失败");
     }
 
@@ -127,7 +121,7 @@ public class ConfigController {
     public ApiResult<Boolean> rollbackConfig(@PathVariable Long id,
                                             @RequestParam Long targetVersion,
                                             HttpServletRequest request) {
-        boolean result = configService.rollbackConfig(id, targetVersion, "");
+        boolean result = configService.rollbackConfig(id, targetVersion);
         return result ? ApiResult.success(true) : ApiResult.error("回滚配置失败");
     }
 

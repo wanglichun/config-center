@@ -54,7 +54,7 @@ public interface ConfigService {
      * @param publisher 发布者
      * @return 是否成功
      */
-    boolean publishConfig(Long id, String publisher);
+    boolean publishConfig(Long id);
 
     /**
      * 回滚配置
@@ -64,7 +64,7 @@ public interface ConfigService {
      * @param operator 操作者
      * @return 是否成功
      */
-    boolean rollbackConfig(Long id, Long targetVersion, String operator);
+    boolean rollbackConfig(Long id, Long targetVersion);
 
     /**
      * 获取配置历史
