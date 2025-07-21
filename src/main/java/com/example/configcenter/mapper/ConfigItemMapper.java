@@ -25,9 +25,7 @@ public interface ConfigItemMapper {
     /**
      * 根据配置键查询配置项
      */
-    ConfigItem findByKey(@Param("appName") String appName, 
-                        @Param("environment") String environment,
-                        @Param("groupName") String groupName, 
+    ConfigItem findByKey(@Param("groupName") String groupName,
                         @Param("configKey") String configKey);
 
     /**
@@ -36,19 +34,6 @@ public interface ConfigItemMapper {
     ConfigItem findByKeyWithoutGroup(@Param("appName") String appName, 
                                    @Param("environment") String environment,
                                    @Param("configKey") String configKey);
-
-    /**
-     * 根据应用查询配置项列表
-     */
-    List<ConfigItem> findByApp(@Param("appName") String appName, 
-                              @Param("environment") String environment);
-
-    /**
-     * 根据配置组查询配置项列表
-     */
-    List<ConfigItem> findByGroup(@Param("appName") String appName, 
-                                @Param("environment") String environment,
-                                @Param("groupName") String groupName);
 
     /**
      * 搜索配置项

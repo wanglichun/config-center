@@ -24,7 +24,7 @@ public interface ConfigService {
      * @param configKey 配置键
      * @return 配置项
      */
-    ConfigItem getConfig(String appName, String environment, String groupName, String configKey);
+    ConfigItem getConfig(String groupName, String configKey);
 
     /**
      * 根据ID获取配置项
@@ -33,26 +33,6 @@ public interface ConfigService {
      * @return 配置项
      */
     ConfigItem getConfigById(Long id);
-
-    /**
-     * 获取应用的所有配置
-     *
-     * @param appName 应用名称
-     * @param environment 环境
-     * @return 配置项列表
-     */
-    List<ConfigItem> getConfigs(String appName, String environment);
-
-    /**
-     * 获取应用配置的键值对
-     *
-     * @param appName 应用名称
-     * @param environment 环境
-     * @param groupName 配置组
-     * @return 配置键值对
-     */
-    Map<String, String> getConfigMap(String appName, String environment, String groupName);
-
     /**
      * 创建配置项
      *
@@ -85,16 +65,6 @@ public interface ConfigService {
      * @return 是否成功
      */
     boolean publishConfig(Long id, String publisher);
-
-    /**
-     * 批量发布配置
-     *
-     * @param appName 应用名称
-     * @param environment 环境
-     * @param publisher 发布者
-     * @return 是否成功
-     */
-    boolean publishConfigs(String appName, String environment, String publisher);
 
     /**
      * 回滚配置
@@ -131,24 +101,6 @@ public interface ConfigService {
     long getConfigCount(ConfigQueryDto queryDto);
 
     /**
-     * 导入配置
-     *
-     * @param configItems 配置项列表
-     * @param operator 操作者
-     * @return 成功导入的数量
-     */
-    int importConfigs(List<ConfigItem> configItems, String operator);
-
-    /**
-     * 导出配置
-     *
-     * @param appName 应用名称
-     * @param environment 环境
-     * @return 配置项列表
-     */
-    List<ConfigItem> exportConfigs(String appName, String environment);
-
-    /**
      * 检查配置格式
      *
      * @param configValue 配置值
@@ -157,19 +109,4 @@ public interface ConfigService {
      */
     boolean validateConfig(String configValue, String dataType);
 
-    /**
-     * 加密配置值
-     *
-     * @param configValue 原始配置值
-     * @return 加密后的配置值
-     */
-    String encryptConfig(String configValue);
-
-    /**
-     * 解密配置值
-     *
-     * @param encryptedValue 加密的配置值
-     * @return 解密后的配置值
-     */
-    String decryptConfig(String encryptedValue);
 }

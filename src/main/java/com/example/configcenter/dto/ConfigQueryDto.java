@@ -12,16 +12,6 @@ import lombok.Data;
 @Data
 public class ConfigQueryDto extends PageBase {
     /**
-     * 应用名称
-     */
-    private String appName;
-
-    /**
-     * 环境
-     */
-    private String environment;
-    
-    /**
      * 配置组
      */
     private String groupName;
