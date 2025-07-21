@@ -51,26 +51,6 @@ public class MachineController {
     }
 
     /**
-     * 注册机器实例 - 支持表单参数（向后兼容）
-     */
-    @PostMapping("/register/form")
-    public ApiResult<Boolean> registerMachineForm(@RequestParam String groupName,
-                                                 @RequestParam String instanceId,
-                                                 @RequestParam String instanceIp,
-                                                 @RequestParam List<String> configKeys) {
-        try {
-            log.info("注册机器实例(表单): groupName={}, instanceId={}, instanceIp={}, configKeys={}", 
-                    groupName, instanceId, instanceIp, configKeys);
-            
-            boolean result = machineService.registerMachine(groupName, instanceId, instanceIp, configKeys);
-            return result ? ApiResult.success(true) : ApiResult.error("注册机器实例失败");
-        } catch (Exception e) {
-            log.error("注册机器实例失败(表单): groupName={}, instanceId={}", groupName, instanceId, e);
-            return ApiResult.error("注册失败：" + e.getMessage());
-        }
-    }
-
-    /**
      * 获取订阅指定配置的机器列表
      */
     @GetMapping("/subscribers")
