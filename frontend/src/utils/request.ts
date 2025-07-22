@@ -102,8 +102,8 @@ export const request = {
     return service.get(url, { params })
   },
   
-  post<T = any>(url: string, data?: any): Promise<ApiResult<T>> {
-    return service.post(url, data)
+  post<T = any>(url: string, data?: any, params?: any): Promise<ApiResult<T>> {
+    return service.post(url, data, { params })
   },
   
   put<T = any>(url: string, data?: any): Promise<ApiResult<T>> {

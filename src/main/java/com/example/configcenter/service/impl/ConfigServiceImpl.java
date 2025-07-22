@@ -104,7 +104,7 @@ public class ConfigServiceImpl implements ConfigService {
             String newValue = configItem.getConfigValue();
             
             // 版本号递增
-            configItem.setVersion(oldConfig.getVersion() + 1);
+            configItem.setVersion(System.currentTimeMillis());
             configItem.setUpdateTime(LocalDateTime.now());
             
             // 更新数据库
@@ -165,7 +165,7 @@ public class ConfigServiceImpl implements ConfigService {
     @Override
     @Transactional
     @CacheEvict(value = {"config", "configs", "configMap"}, allEntries = true)
-    public boolean publishConfig(Long id) {
+    public boolean publishConfig(Long id, List<String> ipList) {
         try {
             String publisher = ContextManager.getContext().getUserEmail();
             ConfigItem configItem = configItemMapper.findById(id);
@@ -193,7 +193,7 @@ public class ConfigServiceImpl implements ConfigService {
                 
                 // 通知订阅的机器配置变更
                 int notifiedCount = machineConfigSubscriptionService.notifyConfigChange(
-                        configItem.getGroupName(), configItem.getConfigKey(), configValue);
+                        configItem.getGroupName(), configItem.getConfigKey(), configValue, configItem.getVersion(), ipList);
                 log.info("配置发布成功: {}, 通知机器数: {}", configItem.getConfigKey(), notifiedCount);
                 return true;
             }
@@ -233,7 +233,7 @@ public class ConfigServiceImpl implements ConfigService {
             
             if (result > 0) {
                 // 重新发布
-                publishConfig(id);
+//                publishConfig(id);
                 
                 // 记录历史
                 recordHistory(currentConfig, "ROLLBACK", 

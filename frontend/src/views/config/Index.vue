@@ -318,52 +318,14 @@ const handlePublish = async (row: ConfigItem) => {
   console.log('点击发布按钮，配置信息:', row)
   
   try {
-    // 确认发布操作
-    await ElMessageBox.confirm(
-      t('config.messages.publishConfirm', { key: row.configKey }), 
-      t('config.publish.title', { defaultValue: '发布配置' }), 
-      {
-        confirmButtonText: t('config.publish.directPublish', { defaultValue: '直接发布' }),
-        cancelButtonText: t('config.publish.grayPublish', { defaultValue: '灰度发布' }),
-        type: 'info',
-        distinguishCancelAndClose: true
-      }
-    )
-    
-    // 直接发布
-    console.log('执行直接发布...')
-    const response = await publishConfig(row.id)
-    
-    if (response.success) {
-      ElMessage.success(t('config.messages.publishSuccess'))
-      // 刷新配置列表
-      loadConfigList()
-    } else {
-      ElMessage.error(response.message || t('config.messages.publishFailed'))
-    }
-    
+    // 跳转到配置发布详情页面
+    await router.push({
+      name: 'ConfigPublishDetail',
+      params: { id: row.id }
+    })
   } catch (error) {
-    if (error === 'cancel') {
-      // 用户选择灰度发布，跳转到灰度发布页面
-      console.log('用户选择灰度发布，跳转到灰度发布页面')
-      try {
-        await router.push({
-          name: 'GrayRelease',
-          query: {
-            action: 'publish',
-            groupName: row.groupName,
-            configKey: row.configKey
-          }
-        })
-        ElMessage.info(t('config.publish.grayPublishRedirect', { defaultValue: '跳转到灰度发布页面' }))
-      } catch (routerError) {
-        console.error('跳转到灰度发布页面失败:', routerError)
-        ElMessage.error(t('config.publish.grayPublishRedirectFailed', { defaultValue: '跳转到灰度发布页面失败' }))
-      }
-    } else {
-      console.error('发布配置失败:', error)
-      ElMessage.error(t('config.messages.publishFailed'))
-    }
+    console.error('跳转到发布详情页面失败:', error)
+    ElMessage.error('跳转到发布详情页面失败')
   }
 }
 

@@ -50,10 +50,10 @@ public interface ConfigService {
      * 发布配置到ZooKeeper
      *
      * @param id 配置项ID
-     * @param publisher 发布者
+     * @param ipList 发布机器列表
      * @return 是否成功
      */
-    boolean publishConfig(Long id);
+    boolean publishConfig(Long id, List<String> ipList);
 
     /**
      * 回滚配置

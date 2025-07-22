@@ -98,7 +98,7 @@
     <!-- 更新配置 -->
     <update id="update" parameterType="com.example.configcenter.entity.ConfigItem">
         UPDATE config_item
-        SET config_value = #{configValue}
+        SET config_value = #{configValue}, version = #{version}
         WHERE id = #{id}
     </update>
 

@@ -3,20 +3,24 @@ package com.example.configcenter.controller;
 import com.example.configcenter.common.ApiResult;
 import com.example.configcenter.common.PageResult;
 import com.example.configcenter.context.ContextManager;
-import com.example.configcenter.dto.ConfigItemDto;
 import com.example.configcenter.dto.ConfigQueryDto;
+import com.example.configcenter.dto.PublishDto;
 import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.ConfigHistory;
+import com.example.configcenter.entity.MachineInstance;
 import com.example.configcenter.service.ConfigService;
+import com.example.configcenter.service.MachineService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 import java.util.List;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Set;
+
+import com.example.configcenter.service.ZooKeeperService;
 
 /**
  * 配置管理控制器
@@ -31,6 +35,10 @@ public class ConfigController {
 
     @Autowired
     private ConfigService configService;
+    @Autowired
+    private MachineService machineService;
+    @Autowired
+    private ZooKeeperService zooKeeperService;
 
     /**
      * 创建配置
@@ -103,8 +111,10 @@ public class ConfigController {
      */
     @PostMapping("/{id}/publish")
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
-    public ApiResult<Boolean> publishConfig(@PathVariable Long id, HttpServletRequest request) {
-        boolean result = configService.publishConfig(id);
+    public ApiResult<Boolean> publishConfig(@PathVariable Long id,
+                                            @RequestBody PublishDto publishDto,
+                                            HttpServletRequest request) {
+        boolean result = configService.publishConfig(id, publishDto.getIpList());
         return result ? ApiResult.success(true) : ApiResult.error("发布配置失败");
     }
 
@@ -139,5 +149,33 @@ public class ConfigController {
                                             @RequestParam String dataType) {
         boolean valid = configService.validateConfig(configValue, dataType);
         return ApiResult.success(valid);
+    }
+
+    /**
+     * 获取订阅指定配置的容器列表
+     */
+    @GetMapping("/{id}/subscribers")
+    public ApiResult<List<MachineInstance>> getSubscribedContainers(@PathVariable Long id) {
+        try {
+            log.info("查询订阅机器列表: id={}", id);
+
+            ConfigItem config = configService.getConfig(id);
+            if (config == null) {
+                return ApiResult.error("配置项不存在");
+            }
+
+            List<MachineInstance> subscribedMachines = machineService.getSubscribedMachines(config.getGroupName(), config.getConfigKey());
+            for (MachineInstance machineInstance : subscribedMachines) {
+                if (config.getVersion().equals(machineInstance.getVersion())) {
+                    machineInstance.setStatus("Success");
+                } else {
+                    machineInstance.setStatus("NoGray");
+                }
+            }
+            return ApiResult.success(subscribedMachines);
+        } catch (Exception e) {
+            log.error("获取订阅机器列表失败: id={}", id, e);
+            return ApiResult.error("查询失败：" + e.getMessage());
+        }
     }
 } 

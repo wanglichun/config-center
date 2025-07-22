@@ -1,6 +1,7 @@
 import { request } from '@/utils/request'
 import type { ApiResult, PageResult } from '@/types/common'
 import type { ConfigItem, ConfigQuery, ConfigForm } from '@/types/config'
+import type { MachineInstance } from '@/types/machine'
 
 /**
  * 分页查询配置列表
@@ -58,8 +59,12 @@ export function deleteConfig(id: number): Promise<ApiResult<boolean>> {
 /**
  * 发布配置
  */
-export function publishConfig(id: number): Promise<ApiResult<boolean>> {
-  return request.post(`/config/${id}/publish`)
+export function publishConfig(id: number, ipList?: string[]): Promise<ApiResult<boolean>> {
+  // 构建PublishDto对象
+  const publishDto = {
+    ipList: ipList || []
+  }
+  return request.post(`/config/${id}/publish`, publishDto)
 }
 
 /**
@@ -248,18 +253,10 @@ export const machineGroupApi = {
 }
 
 /**
- * 机器配置订阅相关API
+ * 获取订阅容器列表
  */
-export const machineConfigApi = {
-  /**
-   * 获取订阅指定配置的机器列表
-   */
-  getSubscribers(params: {
-    appName: string
-    environment: string
-    groupName: string
-    configKey: string
-  }): Promise<ApiResult<string[]>> {
-    return request.get('/machine-config/subscribers', params)
-  }
-} 
+export function getSubscribedContainers(configId: number): Promise<ApiResult<MachineInstance[]>> {
+  return request.get(`/config/${configId}/subscribers`)
+}
+
+ 

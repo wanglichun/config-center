@@ -1,5 +1,7 @@
 package com.example.configcenter.service;
 
+import com.example.configcenter.entity.MachineInstance;
+
 import java.util.List;
 import java.util.Set;
 
@@ -29,7 +31,7 @@ public interface MachineService {
      * @param configKey 配置键
      * @return 机器实例列表
      */
-    Set<String> getSubscribedMachines(String groupName, String configKey);
+    List<MachineInstance> getSubscribedMachines(String groupName, String configKey);
 
     /**
      * 通知机器配置变更
@@ -39,5 +41,5 @@ public interface MachineService {
      * @param newValue 新配置值
      * @return 通知成功的机器数量
      */
-    int notifyConfigChange(String groupName, String configKey, String newValue);
+    int notifyConfigChange(String groupName, String configKey, String newValue, Long version, List<String> ipList);
 } 

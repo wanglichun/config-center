@@ -49,21 +49,4 @@ public class MachineController {
             return ApiResult.error("注册失败：" + e.getMessage());
         }
     }
-
-    /**
-     * 获取订阅指定配置的机器列表
-     */
-    @GetMapping("/subscribers")
-    public ApiResult<Set<String>> getSubscribedMachines(@RequestParam String groupName,
-                                                         @RequestParam String configKey) {
-        try {
-            log.info("查询订阅机器列表: groupName={}, configKey={}", groupName, configKey);
-            
-            Set<String> machines = machineService.getSubscribedMachines(groupName, configKey);
-            return ApiResult.success(machines);
-        } catch (Exception e) {
-            log.error("获取订阅机器列表失败: groupName={}, configKey={}", groupName, configKey, e);
-            return ApiResult.error("查询失败：" + e.getMessage());
-        }
-    }
-} 
+}

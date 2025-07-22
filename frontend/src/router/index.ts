@@ -51,6 +51,15 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'config/publish/:id',
+        name: 'ConfigPublishDetail',
+        component: () => import('@/views/config/PublishDetail.vue'),
+        meta: {
+          title: '配置发布详情',
+          hidden: true
+        }
+      },
+      {
         path: 'history',
         name: 'History',
         component: () => import('@/views/History.vue'),
