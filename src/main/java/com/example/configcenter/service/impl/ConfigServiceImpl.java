@@ -46,11 +46,11 @@ public class ConfigServiceImpl implements ConfigService {
 
     @Override
     @Cacheable(value = "config", key = "#groupName + ':' + #configKey")
-    public ConfigItem getConfig(String groupName, String configKey) {
+    public ConfigItem getConfig(Long id) {
         try {
-            return configItemMapper.findByKey(groupName, configKey);
+            return configItemMapper.findById(id);
         } catch (Exception e) {
-            log.error("获取配置失败: groupName={}, configKey={}", groupName, configKey, e);
+            log.error("获取配置失败: id={}, configKey={}", id, e);
             return null;
         }
     }

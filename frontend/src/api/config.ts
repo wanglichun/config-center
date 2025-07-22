@@ -10,6 +10,12 @@ export function getConfigPage(params: ConfigQuery): Promise<ApiResult<PageResult
 }
 
 /**
+ * 通过ID获取配置详情
+ */
+export function getConfigById(id: number): Promise<ApiResult<ConfigItem>> {
+  return request.get(`/config/${id}`)
+}
+/**
  * 获取单个配置
  */
 export function getConfig(params: {
@@ -239,7 +245,7 @@ export const machineGroupApi = {
   }): Promise<ApiResult<void>> {
     return request.delete('/machine-groups/machines?' + new URLSearchParams(params).toString())
   }
-} 
+}
 
 /**
  * 机器配置订阅相关API

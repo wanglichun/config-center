@@ -104,7 +104,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { getConfig } from '@/api/config'
+import { getConfigById } from '@/api/config'
 import { machineConfigApi } from '@/api/config'
 import type { ConfigItem } from '@/types/config'
 
@@ -130,16 +130,8 @@ const loadConfigDetail = async () => {
 
   loading.value = true
   try {
-    // 这里需要根据实际的路由参数来获取配置详情
-    // 假设路由参数包含必要的信息
-    const params = {
-      appName: route.query.appName as string,
-      environment: route.query.environment as string,
-      groupName: route.query.groupName as string,
-      configKey: route.query.configKey as string
-    }
-    
-    const response = await getConfig(params)
+    // 使用ID直接获取配置详情
+    const response = await getConfigById(Number(configId.value))
     if (response.success) {
       configDetail.value = response.data
       // 加载订阅者信息
@@ -161,8 +153,8 @@ const loadSubscribers = async () => {
   loadingSubscribers.value = true
   try {
     const params = {
-      appName: route.query.appName as string || 'default',
-      environment: route.query.environment as string || 'dev',
+      appName: 'default', // 使用默认值，或者从配置详情中获取
+      environment: 'dev', // 使用默认值，或者从配置详情中获取
       groupName: configDetail.value.groupName,
       configKey: configDetail.value.configKey
     }

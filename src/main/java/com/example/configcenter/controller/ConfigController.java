@@ -49,13 +49,9 @@ public class ConfigController {
     /**
      * 获取单个配置
      */
-    @GetMapping
-    public ApiResult<ConfigItem> getConfig(@Valid ConfigQueryDto queryDto) {
-        ConfigItem config = configService.getConfig(
-            queryDto.getGroupName(), 
-            queryDto.getConfigKey()
-        );
-        return ApiResult.success(config);
+    @GetMapping("/{id}")
+    public ApiResult<ConfigItem> getConfig(@PathVariable Long id) {
+        return ApiResult.success(configService.getConfig(id));
     }
 
     /**

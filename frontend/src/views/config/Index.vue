@@ -292,13 +292,7 @@ const handleReset = () => {
 const handleViewDetail = (row: ConfigItem) => {
   router.push({
     name: 'ConfigDetail',
-    params: { id: row.id },
-    query: {
-      appName: row.appName,
-      environment: row.environment,
-      groupName: row.groupName,
-      configKey: row.configKey
-    }
+    params: { id: row.id }
   })
 }
 
@@ -307,8 +301,6 @@ const handleEdit = (row: ConfigItem) => {
   // 复制配置数据到表单
   Object.assign(configForm, {
     id: row.id,
-    appName: row.appName,
-    environment: row.environment,
     groupName: row.groupName,
     configKey: row.configKey,
     configValue: row.configValue,
@@ -359,8 +351,6 @@ const handlePublish = async (row: ConfigItem) => {
           name: 'GrayRelease',
           query: {
             action: 'publish',
-            appName: row.appName,
-            environment: row.environment,
             groupName: row.groupName,
             configKey: row.configKey
           }

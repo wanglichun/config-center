@@ -18,11 +18,10 @@ public interface ConfigService {
     /**
      * 获取配置项
      *
-     * @param groupName 配置组
-     * @param configKey 配置键
+     * @param id 配置id
      * @return 配置项
      */
-    ConfigItem getConfig(String groupName, String configKey);
+    ConfigItem getConfig(Long id);
     /**
      * 创建配置项
      *
