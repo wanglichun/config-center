@@ -410,11 +410,13 @@ const loadConfigDetail = async () => {
       // 加载容器列表
       await loadContainers()
     } else {
-      ElMessage.error(response.message || '获取配置详情失败')
+      ElMessage.error(response.message || t('config.publish.messages.getConfigDetailFailed'))
     }
   } catch (error) {
-    console.error('获取配置详情失败:', error)
-    ElMessage.error('获取配置详情失败')
+    console.error(t('config.publish.messages.getConfigDetailFailed'), error)
+    ElMessage.error(t('config.publish.messages.getConfigDetailFailed'))
+  } finally {
+    loading.value = false
   }
 }
 
@@ -450,16 +452,16 @@ const loadContainers = async () => {
       availableContainers.value = containers.filter(container => container.status !== 'Success')
       publishedContainers.value = containers.filter(container => container.status === 'Success')
       
-      console.log('加载的容器列表:', containers)
-      console.log('可发布容器:', availableContainers.value)
-      console.log('已发布容器:', publishedContainers.value)
-      console.log('原始接口返回数据:', response.data)
+      console.log(t('config.publish.messages.loadContainerListSuccess'), containers)
+      console.log(t('config.publish.messages.availableContainers'), availableContainers.value)
+      console.log(t('config.publish.messages.publishedContainers'), publishedContainers.value)
+      console.log(t('config.publish.messages.originalApiData'), response.data)
     } else {
-      ElMessage.error(response.message || '获取容器列表失败')
+      ElMessage.error(response.message || t('config.publish.messages.getContainerListFailed'))
     }
   } catch (error) {
-    console.error('获取容器列表失败:', error)
-    ElMessage.error('获取容器列表失败')
+    console.error(t('config.publish.messages.getContainerListFailed'), error)
+    ElMessage.error(t('config.publish.messages.getContainerListFailed'))
   } finally {
     loading.value = false
   }
@@ -515,7 +517,7 @@ const handlePublishedCurrentChange = (page) => {
 // 发布操作
 const publishToSelected = async () => {
   if (selectedContainers.value.length === 0) {
-    ElMessage.warning('请选择要发布的容器')
+    ElMessage.warning(t('config.publish.messages.selectContainersToPublish'))
     return
   }
   
@@ -524,7 +526,7 @@ const publishToSelected = async () => {
 
 const publishToAll = async () => {
   if (availableContainers.value.length === 0) {
-    ElMessage.warning('没有可发布的容器')
+    ElMessage.warning(t('config.publish.messages.noContainersToPublish'))
     return
   }
   
@@ -551,10 +553,10 @@ const publishConfigToContainers = async (targetContainers) => {
       publishProgress.value = publishProgress.value.map(item => ({
         ...item,
         status: 'success',
-        statusText: '发布成功'
+        statusText: t('config.publish.messages.publishSuccess')
       }))
 
-      ElMessage.success('发布成功')
+      ElMessage.success(t('config.publish.messages.publishSuccess'))
       
       // 更新容器状态
       targetContainers.forEach(ip => {
@@ -572,7 +574,7 @@ const publishConfigToContainers = async (targetContainers) => {
         }
       })
     } else {
-      throw new Error(response.message || '发布失败')
+      throw new Error(response.message || t('config.publish.messages.publishFailed'))
     }
     
     setTimeout(() => {
@@ -580,32 +582,32 @@ const publishConfigToContainers = async (targetContainers) => {
     }, 2000)
 
   } catch (error) {
-    console.error('发布失败:', error)
+    console.error(t('config.publish.messages.publishFailed'), error)
     publishProgress.value = publishProgress.value.map(item => ({
       ...item,
       status: 'error',
-      statusText: '发布失败'
+      statusText: t('config.publish.messages.publishFailed')
     }))
-    ElMessage.error('发布失败：' + error.message)
+    ElMessage.error(t('config.publish.messages.publishFailed') + '：' + error.message)
   }
 }
 
 // 回滚操作
 const rollbackSelected = async () => {
   if (selectedPublishedContainers.value.length === 0) {
-    ElMessage.warning('请选择要回滚的容器')
+    ElMessage.warning(t('config.publish.messages.selectContainersToRollback'))
     return
   }
   
   try {
-    await ElMessageBox.confirm('确定要回滚选中的容器吗？', '确认回滚', {
-      confirmButtonText: '确定',
-      cancelButtonText: '取消',
+    await ElMessageBox.confirm(t('config.publish.messages.confirmRollback'), t('common.confirm'), {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel'),
       type: 'warning'
     })
     
     // 模拟回滚过程
-    ElMessage.success('回滚成功')
+    ElMessage.success(t('config.publish.messages.rollbackSuccess'))
     
     // 更新容器状态
     selectedPublishedContainers.value.forEach(ip => {
@@ -623,8 +625,8 @@ const rollbackSelected = async () => {
     
   } catch (error) {
     if (error !== 'cancel') {
-      console.error('回滚失败:', error)
-      ElMessage.error('回滚失败')
+      console.error(t('config.publish.messages.rollbackFailed'), error)
+      ElMessage.error(t('config.publish.messages.rollbackFailed'))
     }
   }
 }
@@ -634,17 +636,17 @@ const refreshContainers = async () => {
   loading.value = true
   await loadContainers()
   loading.value = false
-  ElMessage.success('容器列表已刷新')
+  ElMessage.success(t('config.publish.messages.refreshSuccess'))
 }
 
 // 复制到剪贴板
 const copyToClipboard = async (text) => {
   try {
     await navigator.clipboard.writeText(text)
-    ElMessage.success('已复制到剪贴板')
+    ElMessage.success(t('config.publish.messages.copySuccess'))
   } catch (error) {
-    console.error('复制失败:', error)
-    ElMessage.error('复制失败')
+    console.error(t('config.publish.messages.copyFailed'), error)
+    ElMessage.error(t('config.publish.messages.copyFailed'))
   }
 }
 

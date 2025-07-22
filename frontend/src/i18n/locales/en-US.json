@@ -41,7 +41,8 @@
     "view": "View",
     "yes": "Yes",
     "no": "No",
-    "none": "None"
+    "none": "None",
+    "locale": "en-US"
   },
   "config": {
     "title": "Configuration",
@@ -93,14 +94,42 @@
       "updateSuccess": "Updated successfully",
       "saveFailed": "Save failed",
       "publishFailed": "Publish failed",
-      "deleteFailed": "Delete failed"
+      "deleteFailed": "Delete failed",
+      "loadFailed": "Load failed",
+      "loadEnumsSuccess": "Enums loaded successfully",
+      "loadEnumsFailed": "Load enums failed",
+      "loadEnumsError": "Load enums error",
+      "publishConfigInfo": "Click publish button, configuration info",
+      "navigateToPublishFailed": "Navigate to publish detail page failed",
+      "loadConfigListFailed": "Load configuration list failed",
+      "deleteConfigFailed": "Delete configuration failed",
+      "saveConfigFailed": "Save configuration failed"
     },
     "publish": {
       "title": "Publish Configuration",
       "directPublish": "Direct Publish",
       "grayPublish": "Gray Publish",
-      "grayPublishRedirect": "Redirecting to gray release page",
-      "grayPublishRedirectFailed": "Failed to redirect to gray release page"
+      "grayPublishRedirect": "Navigate to gray publish page",
+      "grayPublishRedirectFailed": "Navigate to gray publish page failed",
+      "messages": {
+        "getConfigDetailFailed": "Get configuration detail failed",
+        "getContainerListFailed": "Get container list failed",
+        "publishSuccess": "Publish successful",
+        "publishFailed": "Publish failed",
+        "rollbackSuccess": "Rollback successful",
+        "rollbackFailed": "Rollback failed",
+        "refreshSuccess": "Container list refreshed",
+        "copySuccess": "Copied to clipboard",
+        "copyFailed": "Copy failed",
+        "loadContainerListSuccess": "Loaded container list",
+        "availableContainers": "Available containers",
+        "publishedContainers": "Published containers",
+        "originalApiData": "Original API data",
+        "selectContainersToPublish": "Please select containers to publish",
+        "noContainersToPublish": "No containers to publish",
+        "selectContainersToRollback": "Please select containers to rollback",
+        "confirmRollback": "Are you sure to rollback selected containers?"
+      }
     },
     "detail": {
       "title": "Configuration Detail",
@@ -110,7 +139,15 @@
       "createTime": "Create Time",
       "updateTime": "Update Time",
       "createBy": "Created By",
-      "updateBy": "Updated By"
+      "updateBy": "Updated By",
+      "messages": {
+        "configIdRequired": "Configuration ID cannot be empty",
+        "getConfigDetailFailed": "Get configuration detail failed",
+        "getSubscribersFailed": "Get subscribers information failed",
+        "configValueCopied": "Configuration value copied to clipboard",
+        "copySuccess": "Copied to clipboard",
+        "copyFailed": "Copy failed"
+      }
     }
   },
   "dashboard": {

@@ -200,9 +200,9 @@ const loadEnums = async () => {
     if (response.success) {
       enumsData.value = response.data
       statusOptions.value = enumToOptions(response.data.ConfigStatusEnum)
-      console.log('枚举数据加载成功:', response.data)
+      console.log(t('config.messages.loadEnumsSuccess'), response.data)
     } else {
-      console.error('加载枚举失败:', response.message)
+      console.error(t('config.messages.loadEnumsFailed'), response.message)
       // 使用默认值
       statusOptions.value = [
         { value: 'DRAFT', label: t('config.statuses.DRAFT') },
@@ -211,7 +211,7 @@ const loadEnums = async () => {
       ]
     }
   } catch (error) {
-    console.error('加载枚举异常:', error)
+    console.error(t('config.messages.loadEnumsError'), error)
     // 使用默认值
     statusOptions.value = [
       { value: 'DRAFT', label: t('config.statuses.DRAFT') },
@@ -240,7 +240,7 @@ const getStatusText = (status: string) => {
 
 const formatTime = (timeStr: string) => {
   if (!timeStr) return '-'
-  return new Date(timeStr).toLocaleString('zh-CN', {
+  return new Date(timeStr).toLocaleString(t('common.locale', 'zh-CN'), {
     year: 'numeric',
     month: '2-digit',
     day: '2-digit',
@@ -262,11 +262,11 @@ const loadConfigList = async () => {
       configList.value = pageResult.records
       total.value = pageResult.total
     } else {
-      ElMessage.error(response.message || t('common.loading') + ' failed')
+      ElMessage.error(response.message || t('config.messages.loadFailed'))
     }
   } catch (error) {
-    console.error('加载配置列表失败:', error)
-    ElMessage.error(t('common.loading') + ' failed')
+    console.error(t('config.messages.loadConfigListFailed'), error)
+    ElMessage.error(t('config.messages.loadFailed'))
   } finally {
     loading.value = false
   }
@@ -315,7 +315,7 @@ const handleEdit = (row: ConfigItem) => {
 }
 
 const handlePublish = async (row: ConfigItem) => {
-  console.log('点击发布按钮，配置信息:', row)
+  console.log(t('config.messages.publishConfigInfo'), row)
   
   try {
     // 跳转到配置发布详情页面
@@ -325,7 +325,7 @@ const handlePublish = async (row: ConfigItem) => {
     })
   } catch (error) {
     console.error('跳转到发布详情页面失败:', error)
-    ElMessage.error('跳转到发布详情页面失败')
+    ElMessage.error(t('config.messages.navigateToPublishFailed'))
   }
 }
 
@@ -346,7 +346,7 @@ const handleDelete = async (row: ConfigItem) => {
     }
   } catch (error) {
     if (error !== 'cancel') {
-      console.error('删除配置失败:', error)
+      console.error(t('config.messages.deleteConfigFailed'), error)
       ElMessage.error(t('config.messages.deleteFailed'))
     }
   }
@@ -373,7 +373,7 @@ const handleSave = async () => {
       }
     }
   } catch (error) {
-    console.error('保存配置失败:', error)
+    console.error(t('config.messages.saveConfigFailed'), error)
     ElMessage.error(t('config.messages.saveFailed'))
   }
 }

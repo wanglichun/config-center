@@ -41,7 +41,8 @@
     "view": "查看",
     "yes": "是",
     "no": "否",
-    "none": "无"
+    "none": "无",
+    "locale": "zh-CN"
   },
   "config": {
     "title": "配置",
@@ -93,14 +94,42 @@
       "updateSuccess": "更新成功",
       "saveFailed": "保存失败",
       "publishFailed": "发布失败",
-      "deleteFailed": "删除失败"
+      "deleteFailed": "删除失败",
+      "loadFailed": "加载失败",
+      "loadEnumsSuccess": "枚举数据加载成功",
+      "loadEnumsFailed": "加载枚举失败",
+      "loadEnumsError": "加载枚举异常",
+      "publishConfigInfo": "点击发布按钮，配置信息",
+      "navigateToPublishFailed": "跳转到发布详情页面失败",
+      "loadConfigListFailed": "加载配置列表失败",
+      "deleteConfigFailed": "删除配置失败",
+      "saveConfigFailed": "保存配置失败"
     },
     "publish": {
       "title": "发布配置",
       "directPublish": "直接发布",
       "grayPublish": "灰度发布",
       "grayPublishRedirect": "跳转到灰度发布页面",
-      "grayPublishRedirectFailed": "跳转到灰度发布页面失败"
+      "grayPublishRedirectFailed": "跳转到灰度发布页面失败",
+      "messages": {
+        "getConfigDetailFailed": "获取配置详情失败",
+        "getContainerListFailed": "获取容器列表失败",
+        "publishSuccess": "发布成功",
+        "publishFailed": "发布失败",
+        "rollbackSuccess": "回滚成功",
+        "rollbackFailed": "回滚失败",
+        "refreshSuccess": "容器列表已刷新",
+        "copySuccess": "已复制到剪贴板",
+        "copyFailed": "复制失败",
+        "loadContainerListSuccess": "加载的容器列表",
+        "availableContainers": "可发布容器",
+        "publishedContainers": "已发布容器",
+        "originalApiData": "原始接口返回数据",
+        "selectContainersToPublish": "请选择要发布的容器",
+        "noContainersToPublish": "没有可发布的容器",
+        "selectContainersToRollback": "请选择要回滚的容器",
+        "confirmRollback": "确定要回滚选中的容器吗？"
+      }
     },
     "detail": {
       "title": "配置详情",
@@ -110,7 +139,15 @@
       "createTime": "创建时间",
       "updateTime": "更新时间",
       "createBy": "创建人",
-      "updateBy": "更新人"
+      "updateBy": "更新人",
+      "messages": {
+        "configIdRequired": "配置ID不能为空",
+        "getConfigDetailFailed": "获取配置详情失败",
+        "getSubscribersFailed": "获取订阅者信息失败",
+        "configValueCopied": "配置值已复制到剪贴板",
+        "copySuccess": "已复制到剪贴板",
+        "copyFailed": "复制失败"
+      }
     }
   },
   "dashboard": {

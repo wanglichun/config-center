@@ -173,9 +173,11 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import { CopyDocument } from '@element-plus/icons-vue'
 import { getConfigById, getSubscribedContainers } from '@/api/config'
 import type { ConfigItem } from '@/types/config'
+import { useI18n } from 'vue-i18n'
 
 const route = useRoute()
 const router = useRouter()
+const { t } = useI18n()
 
 // 响应式数据
 const configDetail = ref<ConfigItem | null>(null)
@@ -194,7 +196,7 @@ const configId = computed(() => route.params.id as string)
 // 方法
 const loadConfigDetail = async () => {
   if (!configId.value) {
-    ElMessage.error('配置ID不能为空')
+    ElMessage.error(t('config.detail.messages.configIdRequired'))
     return
   }
 
@@ -207,11 +209,11 @@ const loadConfigDetail = async () => {
       // 加载订阅者信息
       await loadSubscribers()
     } else {
-      ElMessage.error(response.message || '获取配置详情失败')
+      ElMessage.error(response.message || t('config.detail.messages.getConfigDetailFailed'))
     }
   } catch (error) {
-    console.error('获取配置详情失败:', error)
-    ElMessage.error('获取配置详情失败')
+    console.error(t('config.detail.messages.getConfigDetailFailed'), error)
+    ElMessage.error(t('config.detail.messages.getConfigDetailFailed'))
   } finally {
     loading.value = false
   }
@@ -234,11 +236,11 @@ const loadSubscribers = async () => {
         lastUpdateTime: machine.lastUpdateTime
       }))
     } else {
-      ElMessage.error(response.message || '获取订阅者信息失败')
+      ElMessage.error(response.message || t('config.detail.messages.getSubscribersFailed'))
     }
   } catch (error) {
-    console.error('获取订阅者信息失败:', error)
-    ElMessage.error('获取订阅者信息失败')
+    console.error(t('config.detail.messages.getSubscribersFailed'), error)
+    ElMessage.error(t('config.detail.messages.getSubscribersFailed'))
   } finally {
     loadingSubscribers.value = false
   }
@@ -252,26 +254,25 @@ const refreshSubscribers = () => {
   loadSubscribers()
 }
 
+// 复制配置值
 const copyConfigValue = async () => {
-  if (!configDetail.value?.configValue) return
-  
   try {
-    await navigator.clipboard.writeText(configDetail.value.configValue)
-    ElMessage.success('配置值已复制到剪贴板')
+    await navigator.clipboard.writeText(configDetail.value?.configValue || '')
+    ElMessage.success(t('config.detail.messages.configValueCopied'))
   } catch (error) {
-    console.error('复制失败:', error)
-    ElMessage.error('复制失败')
+    console.error(t('config.detail.messages.copyFailed'), error)
+    ElMessage.error(t('config.detail.messages.copyFailed'))
   }
 }
 
 // 复制到剪贴板
-const copyToClipboard = async (text) => {
+const copyToClipboard = async (text: string) => {
   try {
     await navigator.clipboard.writeText(text)
-    ElMessage.success('已复制到剪贴板')
+    ElMessage.success(t('config.detail.messages.copySuccess'))
   } catch (error) {
-    console.error('复制失败:', error)
-    ElMessage.error('复制失败')
+    console.error(t('config.detail.messages.copyFailed'), error)
+    ElMessage.error(t('config.detail.messages.copyFailed'))
   }
 }
 
