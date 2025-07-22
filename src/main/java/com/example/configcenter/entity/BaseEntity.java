@@ -43,12 +43,7 @@ public class BaseEntity implements Serializable {
      * 更新者
      */
     private String updateBy;
-    
-    /**
-     * 备注
-     */
-    private String remark;
-    
+
     /**
      * 逻辑删除标志（0存在 1删除）
      */

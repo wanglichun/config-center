@@ -5,40 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/_metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-3MVY7TPP.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-3MVY7TPP.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-7BX6W32S.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-7BX6W32S.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-BHBEH6WS.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-BHBEH6WS.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-BSAMG26Z.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-BSAMG26Z.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-IFSFLPYR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-IFSFLPYR.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-MII7WWRK.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-MII7WWRK.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-R2NDME64.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-R2NDME64.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-WV5ESEMN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-WV5ESEMN.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-XE7DIRNW.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-XE7DIRNW.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_charts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_components.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_components.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_core.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_renderers.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_renderers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_dropdown_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_dropdown_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_pagination_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_pagination_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_table_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_table_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/vue-echarts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/vue-echarts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Users.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Users.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/config/Detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/config/Detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/config-center.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ZooKeeperServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ZooKeeperServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$CanaryRules.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$CanaryRules.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$CreatePlanRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$CreatePlanRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$DetailResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$DetailResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$GrayRules.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$GrayRules.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$OperationRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$OperationRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$PlanQueryRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$PlanQueryRequest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$PlanResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$PlanResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$RollbackCondition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$RollbackCondition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/BaseEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/ConfigHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/ConfigHistory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/ConfigItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/ConfigItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/GrayReleaseDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/GrayReleaseDetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/GrayReleasePlan.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/GrayReleasePlan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/MachineInstance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/MachineInstance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ZooKeeperServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ZooKeeperServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +65,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ConfigCenterApplication (1).executor": "Debug",
+    "Spring Boot.ConfigCenterApplication (1).executor": "Run",
     "Spring Boot.ConfigCenterApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
@@ -105,6 +93,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/example/configcenter" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.configcenter.config" />
       <recent name="com.example.configcenter.enums" />
     </key>
   </component>
@@ -160,7 +149,7 @@
       <updated>1750760922738</updated>
       <workItem from="1750760924420" duration="86000" />
       <workItem from="1750761022757" duration="11985000" />
-      <workItem from="1752722035022" duration="50226000" />
+      <workItem from="1752722035022" duration="56051000" />
     </task>
     <servers />
   </component>
@@ -179,6 +168,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java</url>
           <line>162</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/interceptor/ContextInterceptor.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

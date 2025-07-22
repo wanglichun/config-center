@@ -138,6 +138,9 @@ public class ZooKeeperServiceImpl implements ZooKeeperService {
     @Override
     public boolean createNode(String path, String data) {
         try {
+            if (exists(path)) {
+                return updateNode(path, data);
+            }
             // 创建父节点
             createParentNodes(path);
             
