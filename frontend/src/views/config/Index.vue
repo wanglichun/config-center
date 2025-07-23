@@ -39,7 +39,7 @@
         <el-table-column prop="configKey" :label="$t('config.configKey')" />
         <el-table-column prop="configValue" :label="$t('config.configValue')" show-overflow-tooltip />
         <el-table-column prop="description" :label="$t('config.description')" show-overflow-tooltip />
-        <el-table-column prop="status" :label="$t('config.status')" width="80">
+        <el-table-column prop="status" :label="$t('config.status')" width="100">
           <template #default="scope">
             <el-tag :type="getStatusTagType(scope.row.status)">
               {{ getStatusText(scope.row.status) }}

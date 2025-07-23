@@ -47,27 +47,25 @@
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" width="55" />
-        <el-table-column prop="username" :label="$t('users.username')" />
-        <el-table-column prop="realName" :label="$t('users.realName')" />
-        <el-table-column prop="email" :label="$t('users.email')" />
-        <el-table-column prop="phone" :label="$t('users.phone')" />
-        <el-table-column prop="department" :label="$t('users.department')" />
-        <el-table-column prop="role" :label="$t('users.role')">
+        <el-table-column prop="username" :label="$t('Username')" width="100" />
+        <el-table-column prop="email" :label="$t('Email')" />
+        <el-table-column prop="phone" :label="$t('Phone')" width="120"/>
+        <el-table-column prop="role" :label="$t('Role')" width="150">
           <template #default="scope">
             <el-tag :type="getRoleTagType(scope.row.role)">
               {{ getRoleText(scope.row.role) }}
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="status" :label="$t('users.status')">
+        <el-table-column prop="status" :label="$t('users.status')" width="100">
           <template #default="scope">
             <el-tag :type="getStatusTagType(scope.row.status)">
               {{ getStatusText(scope.row.status) }}
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="createTime" :label="$t('users.createTime')" />
-        <el-table-column :label="$t('common.actions')" width="250" fixed="right">
+        <el-table-column prop="createTime" :label="$t('users.createTime')" width="200"/>
+        <el-table-column :label="$t('common.actions')" width="400" fixed="right">
           <template #default="scope">
             <el-button size="small" @click="handleEdit(scope.row)">{{ $t('common.edit') }}</el-button>
             <el-button 
@@ -78,7 +76,7 @@
               {{ scope.row.status === 'ACTIVE' ? $t('users.disable') : $t('users.enable') }}
             </el-button>
             <el-button size="small" type="info" @click="handleResetPassword(scope.row)">
-              {{ $t('users.resetPassword') }}
+              {{ $t('resetPassword') }}
             </el-button>
             <el-button size="small" type="danger" @click="handleDelete(scope.row)">{{ $t('common.delete') }}</el-button>
           </template>
@@ -182,10 +180,10 @@
     <!-- 重置密码对话框 -->
     <el-dialog v-model="showPasswordDialog" :title="$t('users.resetPassword')" width="400px">
       <el-form :model="passwordForm" :rules="passwordRules" ref="passwordFormRef">
-        <el-form-item :label="$t('users.newPassword')" prop="newPassword">
+        <el-form-item :label="$t('newPassword')" prop="newPassword">
           <el-input v-model="passwordForm.newPassword" type="password" show-password />
         </el-form-item>
-        <el-form-item :label="$t('users.confirmPassword')" prop="confirmPassword">
+        <el-form-item :label="$t('confirmPassword')" prop="confirmPassword">
           <el-input v-model="passwordForm.confirmPassword" type="password" show-password />
         </el-form-item>
       </el-form>
