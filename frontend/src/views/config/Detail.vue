@@ -93,7 +93,7 @@
           empty-text="暂无订阅容器"
           stripe
         >
-          <el-table-column prop="ip" label="实例IP" min-width="150">
+          <el-table-column prop="ip" label="实例IP" min-width="50">
             <template #default="scope">
               <div class="ip-cell">
                 <span>{{ scope.row.ip }}</span>
@@ -103,25 +103,11 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="status" label="状态" width="100">
-            <template #default="scope">
-              <el-tag :type="scope.row.status === 'Running' ? 'success' : 'danger'" size="small">
-                {{ scope.row.status }}
-              </el-tag>
-            </template>
-          </el-table-column>
-          <el-table-column prop="version" label="当前版本" width="120" />
+          <el-table-column prop="version" label="当前版本" width="130" />
           <el-table-column prop="configValue" label="当前配置值" min-width="150" show-overflow-tooltip />
           <el-table-column prop="lastUpdateTime" label="最后更新" width="160">
             <template #default="scope">
               {{ formatTime(scope.row.lastUpdateTime) }}
-            </template>
-          </el-table-column>
-          <el-table-column label="详细信息" width="200">
-            <template #default="scope">
-              <el-button size="small" type="info" @click="showContainerDetail(scope.row)">
-                查看详情
-              </el-button>
             </template>
           </el-table-column>
         </el-table>

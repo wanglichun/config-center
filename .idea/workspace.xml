@@ -5,136 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConfigCenterPushListenerEn.java" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigCenterPushListenerEn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ConfigCenterPushListenerEn.tar.gz" beforeDir="false" afterPath="$PROJECT_DIR$/ConfigCenterPushListenerEn.tar.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/_metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-2CLHZ5XY.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-2CLHZ5XY.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-47TSPSQU.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-47TSPSQU.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-CJSVQ2TV.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-CJSVQ2TV.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-IEGHBEWM.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-IEGHBEWM.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-JC7C7ME3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-JC7C7ME3.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-L2CIMW3Y.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-L2CIMW3Y.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-PC54MIDT.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-PC54MIDT.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-S4FOGDUL.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-S4FOGDUL.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-X25UXITJ.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-X25UXITJ.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-ZO4W4SIV.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/chunk-ZO4W4SIV.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_charts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_components.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_components.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_core.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_renderers.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/echarts_renderers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_checkbox-group_style_css.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_checkbox-group_style_css.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_checkbox_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_checkbox_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_dropdown_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_dropdown_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_pagination_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_pagination_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_select_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_select_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_slider_style_css.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_slider_style_css.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_table-column_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_table-column_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_table_style_css.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/element-plus_es_components_table_style_css.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/vue-echarts.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/node_modules/.vite/deps/vue-echarts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/@element-plus_icons-vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/@element-plus_icons-vue.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/axios.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/axios.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-2CLHZ5XY.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-2CLHZ5XY.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-47TSPSQU.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-47TSPSQU.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-5KWEUE2O.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-5KWEUE2O.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-5WWUZCGV.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-5WWUZCGV.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-HYZ2CRGS.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-HYZ2CRGS.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-JC7C7ME3.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-JC7C7ME3.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-L2CIMW3Y.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-L2CIMW3Y.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-MJBQLJKK.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-MJBQLJKK.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-PC54MIDT.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-PC54MIDT.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-S4FOGDUL.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-S4FOGDUL.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-THX7JSAO.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-THX7JSAO.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-UGLA4GWR.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-UGLA4GWR.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-X25UXITJ.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-X25UXITJ.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-YFT6OQ5R.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-YFT6OQ5R.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-ZO4W4SIV.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/chunk-ZO4W4SIV.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/dayjs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/dayjs.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/dayjs_plugin_relativeTime.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/dayjs_plugin_relativeTime.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/echarts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/echarts.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/echarts_charts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/echarts_charts.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/echarts_components.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/echarts_components.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/echarts_core.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/echarts_core.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/echarts_renderers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/echarts_renderers.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/element-plus.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/element-plus.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/js-cookie.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/js-cookie.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/nprogress.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/nprogress.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/pinia.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/pinia.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/vue-echarts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/vue-echarts.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/vue-i18n.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/vue-i18n.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/vue-router.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/vue-router.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/vue.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/node_modules/.vite/deps_temp_26982777/vue.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/api/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/api/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/utils/request.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/utils/request.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/config/Detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/config/Detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/config/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/config-center.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/MachineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/MachineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/MachineInstance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/MachineInstance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/ConfigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/ConfigService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/MachineService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/MachineService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ConfigItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ConfigItemMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/ConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/ConfigController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/MachineController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/MachineController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/MachineInstance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/MachineInstance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ConfigService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ConfigService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/MachineService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/MachineService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/ConfigItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/ConfigItemMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +129,7 @@
       <updated>1750760922738</updated>
       <workItem from="1750760924420" duration="86000" />
       <workItem from="1750761022757" duration="11985000" />
-      <workItem from="1752722035022" duration="71657000" />
+      <workItem from="1752722035022" duration="74750000" />
     </task>
     <servers />
   </component>
@@ -279,7 +151,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/frontend/src/views/config/Detail.vue</url>
-          <line>113</line>
+          <line>106</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="91" />
         </line-breakpoint>
