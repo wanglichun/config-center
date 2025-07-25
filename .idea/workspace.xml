@@ -5,8 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1625340a-b1de-4f9a-a29d-4a3030cc26bf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1625340a-b1de-4f9a-a29d-4a3030cc26bf.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en-US.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en-US.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/zh-CN.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/zh-CN.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/layout/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/Layout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/views/config/Detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/config/Detail.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/config-center.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/TicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/common/ApiResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/common/ApiResult.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/common/PageResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/TicketController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/TicketController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$CanaryRules.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$CreatePlanRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$DetailResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$GrayRules.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$OperationRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$PlanQueryRequest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$PlanResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto$RollbackCondition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/dto/GrayReleaseDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/BaseEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/BaseEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/GrayReleaseDetail.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/GrayReleaseDetail.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/Ticket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/utils/JsonUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/utils/JsonUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,11 +72,11 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ConfigCenterApplication (1).executor": "Debug",
+    "Spring Boot.ConfigCenterApplication (1).executor": "Run",
     "Spring Boot.ConfigCenterApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/lichun.wang/Git/config-center/src/main/java/com/example/configcenter",
+    "last_opened_file_path": "/Users/lichun.wang/Git/config-center/src/main/resources/mapper",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -70,6 +97,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/mapper" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/configcenter" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -129,7 +157,7 @@
       <updated>1750760922738</updated>
       <workItem from="1750760924420" duration="86000" />
       <workItem from="1750761022757" duration="11985000" />
-      <workItem from="1752722035022" duration="74750000" />
+      <workItem from="1752722035022" duration="88272000" />
     </task>
     <servers />
   </component>
@@ -151,7 +179,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/frontend/src/views/config/Detail.vue</url>
-          <line>106</line>
+          <line>109</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="91" />
         </line-breakpoint>

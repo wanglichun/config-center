@@ -104,6 +104,51 @@ const routes: RouteRecordRaw[] = [
           title: '个人中心',
           hidden: true
         }
+      },
+      {
+        path: 'ticket',
+        name: 'Ticket',
+        component: () => import('@/views/ticket/Index.vue'),
+        meta: {
+          title: '工单管理',
+          icon: 'Ticket'
+        }
+      },
+      {
+        path: 'ticket/detail/:id',
+        name: 'TicketDetail',
+        component: () => import('@/views/ticket/Detail.vue'),
+        meta: {
+          title: '工单详情',
+          hidden: true
+        }
+      },
+      {
+        path: 'ticket/edit/:id',
+        name: 'TicketEdit',
+        component: () => import('@/views/ticket/Edit.vue'),
+        meta: {
+          title: '编辑工单',
+          hidden: true
+        }
+      },
+      {
+        path: 'ticket/my',
+        name: 'MyTickets',
+        component: () => import('@/views/ticket/MyTickets.vue'),
+        meta: {
+          title: '我的工单',
+          hidden: true
+        }
+      },
+      {
+        path: 'ticket/templates',
+        name: 'TicketTemplates',
+        component: () => import('@/views/ticket/Templates.vue'),
+        meta: {
+          title: '工单模板',
+          hidden: true
+        }
       }
     ]
   },

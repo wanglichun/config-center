@@ -1,15 +1,3 @@
-com/example/configcenter/controller/GrayReleaseController.class
-com/example/configcenter/common/PageResult.class
-com/example/configcenter/dto/GrayReleaseDto$DetailResponse.class
-com/example/configcenter/dto/GrayReleaseDto.class
-com/example/configcenter/dto/GrayReleaseDto$PlanResponse.class
-com/example/configcenter/dto/GrayReleaseDto$GrayRules.class
-com/example/configcenter/dto/GrayReleaseDto$CanaryRules.class
-com/example/configcenter/dto/GrayReleaseDto$OperationRequest.class
-com/example/configcenter/entity/BaseEntity.class
-com/example/configcenter/dto/GrayReleaseDto$PlanQueryRequest.class
-com/example/configcenter/dto/GrayReleaseDto$CreatePlanRequest.class
-com/example/configcenter/dto/GrayReleaseDto$RollbackCondition.class
-com/example/configcenter/service/GrayReleaseService.class
 com/example/configcenter/common/ApiResult.class
 com/example/configcenter/entity/GrayReleaseDetail.class
+com/example/configcenter/entity/BaseEntity.class

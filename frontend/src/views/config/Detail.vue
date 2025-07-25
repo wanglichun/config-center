@@ -5,6 +5,9 @@
         <div class="card-header">
           <span class="title">{{ $t('config.detail.title') }}</span>
           <div class="actions">
+            <el-button type="primary" @click="handleEdit" icon="Edit">
+              {{ $t('common.edit') }}
+            </el-button>
             <el-button @click="goBack" icon="ArrowLeft">{{ $t('common.back') }}</el-button>
             <el-button @click="refreshData" icon="Refresh" :loading="loading">{{ $t('common.refresh') }}</el-button>
           </div>
@@ -149,6 +152,54 @@
         <el-button @click="showContainerDetailDialog = false">关闭</el-button>
       </template>
     </el-dialog>
+
+    <!-- 创建工单对话框 -->
+    <el-dialog
+      v-model="showCreateTicketDialog"
+      title="创建配置修改工单"
+      width="600px"
+      :close-on-click-modal="false"
+    >
+      <el-form
+        ref="ticketFormRef"
+        :model="ticketForm"
+        :rules="ticketRules"
+        label-width="100px"
+      >
+        <el-form-item label="工单标题" prop="title">
+          <el-input
+            v-model="ticketForm.title"
+            placeholder="请输入工单标题"
+            maxlength="200"
+            show-word-limit
+          />
+        </el-form-item>
+        <el-form-item label="新配置值" prop="newData">
+          <el-input
+            v-model="ticketForm.newData"
+            type="textarea"
+            :rows="6"
+            placeholder="请输入新的配置值"
+            :show-password="configDetail?.encrypted"
+          />
+        </el-form-item>
+        <el-form-item label="当前配置值">
+          <el-input
+            :model-value="configDetail?.configValue || ''"
+            type="textarea"
+            :rows="4"
+            readonly
+            :show-password="configDetail?.encrypted && !showEncrypted"
+          />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <el-button @click="showCreateTicketDialog = false">{{ $t('common.cancel') }}</el-button>
+        <el-button type="primary" @click="handleCreateTicket" :loading="creatingTicket">
+          {{ $t('common.submit') }}
+        </el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -158,6 +209,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { CopyDocument } from '@element-plus/icons-vue'
 import { getConfigById, getSubscribedContainers } from '@/api/config'
+import { createTicket } from '@/api/ticket'
 import type { ConfigItem } from '@/types/config'
 import { useI18n } from 'vue-i18n'
 
@@ -175,6 +227,19 @@ const showEncrypted = ref(false)
 // 容器详情对话框
 const showContainerDetailDialog = ref(false)
 const selectedContainerDetail = ref({})
+
+// 创建工单对话框
+const showCreateTicketDialog = ref(false)
+const ticketFormRef = ref(null)
+const ticketForm = ref({
+  title: '',
+  newData: ''
+})
+const ticketRules = {
+  title: [{ required: true, message: '请输入工单标题', trigger: 'blur' }],
+  newData: [{ required: true, message: '请输入新的配置值', trigger: 'blur' }]
+}
+const creatingTicket = ref(false)
 
 // 计算属性
 const configId = computed(() => route.params.id as string)
@@ -270,6 +335,43 @@ const showContainerDetail = (container) => {
 
 const goBack = () => {
   router.back()
+}
+
+const handleEdit = () => {
+  showCreateTicketDialog.value = true
+  // 预填充工单标题
+  ticketForm.value.title = `修改配置项: ${configDetail.value?.configKey}`
+  ticketForm.value.newData = configDetail.value?.configValue || ''
+}
+
+const handleCreateTicket = async () => {
+  if (!ticketFormRef.value) return
+
+  try {
+    await ticketFormRef.value.validate()
+    creatingTicket.value = true
+    
+    const configId = Number(route.params.id)
+    const response = await createTicket({
+      configId,
+      title: ticketForm.value.title,
+      newData: ticketForm.value.newData
+    })
+    
+    if (response.success && response.data) {
+      ElMessage.success('工单创建成功')
+      showCreateTicketDialog.value = false
+      // 跳转到工单详情页面
+      router.push(`/ticket/detail/${response.data}`)
+    } else {
+      ElMessage.error(response.message || '工单创建失败')
+    }
+  } catch (error) {
+    console.error('创建工单失败', error)
+    ElMessage.error('工单创建失败')
+  } finally {
+    creatingTicket.value = false
+  }
 }
 
 const getStatusTagType = (status?: string) => {

@@ -415,5 +415,109 @@
     "email": "请输入有效的邮箱地址",
     "minLength": "长度不能少于 {min} 个字符",
     "maxLength": "长度不能超过 {max} 个字符"
+  },
+  "ticket": {
+    "title": "工单管理",
+    "add": "新建工单",
+    "edit": "编辑工单",
+    "detail": "工单详情",
+    "myTickets": "我的工单",
+    "templates": "工单模板",
+    "ticketId": "工单编号",
+    "ticketTitle": "标题",
+    "description": "描述",
+    "type": "类型",
+    "priority": "优先级",
+    "status": "状态",
+    "assignee": "处理人",
+    "reporter": "报告人",
+    "createTime": "创建时间",
+    "updateTime": "更新时间",
+    "dueTime": "截止时间",
+    "tags": "标签",
+    "comments": "评论",
+    "operations": "操作记录",
+    "relatedConfigs": "关联配置",
+    "environment": "环境",
+    "appName": "应用名称",
+    "types": {
+      "BUG": "缺陷",
+      "FEATURE": "功能需求",
+      "CONFIG": "配置变更",
+      "DEPLOY": "部署问题",
+      "OTHER": "其他"
+    },
+    "priorities": {
+      "LOW": "低",
+      "MEDIUM": "中",
+      "HIGH": "高",
+      "URGENT": "紧急"
+    },
+    "statuses": {
+      "PENDING": "待处理",
+      "IN_PROGRESS": "处理中",
+      "RESOLVED": "已解决",
+      "CLOSED": "已关闭",
+      "REJECTED": "已拒绝"
+    },
+    "placeholders": {
+      "ticketTitle": "请输入工单标题",
+      "description": "请输入工单描述",
+      "type": "请选择工单类型",
+      "priority": "请选择优先级",
+      "assignee": "请选择处理人",
+      "dueTime": "请选择截止时间",
+      "tags": "请输入标签，按回车分隔",
+      "search": "搜索工单标题或描述",
+      "comment": "请输入评论内容"
+    },
+    "messages": {
+      "createSuccess": "工单创建成功",
+      "updateSuccess": "工单更新成功",
+      "deleteSuccess": "工单删除成功",
+      "statusUpdateSuccess": "状态更新成功",
+      "assignSuccess": "分配成功",
+      "commentSuccess": "评论添加成功",
+      "createFailed": "工单创建失败",
+      "updateFailed": "工单更新失败",
+      "deleteFailed": "工单删除失败",
+      "loadFailed": "加载失败",
+      "deleteConfirm": "确定要删除工单 {title} 吗？",
+      "statusUpdateConfirm": "确定要更新工单状态吗？",
+      "assignConfirm": "确定要分配工单吗？"
+    },
+    "stats": {
+      "total": "总工单数",
+      "pending": "待处理",
+      "inProgress": "处理中",
+      "resolved": "已解决",
+      "closed": "已关闭",
+      "rejected": "已拒绝",
+      "myTickets": "我的工单",
+      "overdue": "逾期工单"
+    },
+    "actions": {
+      "view": "查看",
+      "edit": "编辑",
+      "delete": "删除",
+      "assign": "分配",
+      "updateStatus": "更新状态",
+      "addComment": "添加评论",
+      "close": "关闭",
+      "reopen": "重新打开"
+    },
+    "templates": {
+      "title": "工单模板",
+      "add": "新建模板",
+      "edit": "编辑模板",
+      "name": "模板名称",
+      "description": "模板描述",
+      "createBy": "创建人",
+      "createSuccess": "模板创建成功",
+      "updateSuccess": "模板更新成功",
+      "deleteSuccess": "模板删除成功",
+      "deleteConfirm": "确定要删除模板 {name} 吗？",
+      "createFromTemplate": "从模板创建"
+    }
   }
 } 
