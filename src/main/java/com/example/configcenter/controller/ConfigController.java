@@ -8,6 +8,7 @@ import com.example.configcenter.dto.PublishDto;
 import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.entity.MachineInstance;
+import com.example.configcenter.entity.Ticket;
 import com.example.configcenter.service.ConfigService;
 import com.example.configcenter.service.MachineService;
 import lombok.extern.slf4j.Slf4j;
@@ -94,13 +95,13 @@ public class ConfigController {
      */
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
-    public ApiResult<Boolean> editConfig(@PathVariable Long id, 
+    public ApiResult<Ticket> editConfig(@PathVariable Long id,
                                         @RequestBody ConfigItem configItem,
                                         HttpServletRequest request) {
         try {
             configItem.setUpdateBy(ContextManager.getContext().getUserEmail());
-            boolean result = configService.updateConfig(configItem);
-            return result ? ApiResult.success(true) : ApiResult.error("编辑配置失败");
+            Ticket ticket = configService.updateConfig(configItem);
+            return ApiResult.success(ticket);
         } catch (Exception e) {
             return ApiResult.error("编辑失败：" + e.getMessage());
         }

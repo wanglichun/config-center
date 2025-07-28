@@ -51,6 +51,15 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
+        path: 'config/edit/:id',
+        name: 'EditConfig',
+        component: () => import('@/views/config/Edit.vue'),
+        meta: {
+          title: '编辑配置',
+          hidden: true
+        }
+      },
+      {
         path: 'config/publish/:id',
         name: 'ConfigPublishDetail',
         component: () => import('@/views/config/PublishDetail.vue'),

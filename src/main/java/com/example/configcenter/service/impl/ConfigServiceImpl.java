@@ -1,14 +1,17 @@
 package com.example.configcenter.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.example.configcenter.context.Context;
 import com.example.configcenter.context.ContextManager;
 import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.entity.ConfigItem;
+import com.example.configcenter.entity.Ticket;
 import com.example.configcenter.mapper.ConfigHistoryMapper;
 import com.example.configcenter.mapper.ConfigItemMapper;
 import com.example.configcenter.service.ConfigService;
 import com.example.configcenter.service.MachineService;
+import com.example.configcenter.service.TicketService;
 import com.example.configcenter.service.ZooKeeperService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +46,9 @@ public class ConfigServiceImpl implements ConfigService {
 
     @Autowired
     private MachineService machineConfigSubscriptionService;
+
+    @Autowired
+    TicketService ticketService;
 
     @Override
     @Cacheable(value = "config", key = "#groupName + ':' + #configKey")
@@ -92,38 +98,40 @@ public class ConfigServiceImpl implements ConfigService {
     @Override
     @Transactional
     @CacheEvict(value = {"config", "configs", "configMap"}, allEntries = true)
-    public boolean updateConfig(ConfigItem configItem) {
+    public Ticket updateConfig(ConfigItem configItem) {
         try {
             ConfigItem oldConfig = configItemMapper.findById(configItem.getId());
             if (oldConfig == null) {
-                log.warn("配置项不存在: {}", configItem.getId());
-                return false;
+                throw new IllegalArgumentException("配置项不存在");
             }
-            
-            String oldValue = oldConfig.getConfigValue();
-            String newValue = configItem.getConfigValue();
-            
+
             // 版本号递增
             configItem.setVersion(System.currentTimeMillis());
             configItem.setUpdateTime(LocalDateTime.now());
-            
-            // 更新数据库
-            int result = configItemMapper.update(configItem);
-            
-            if (result > 0) {
-                // 记录历史
-                recordHistory(configItem, "UPDATE", oldValue, configItem.getConfigValue(),
-                            "更新配置项", configItem.getUpdateBy());
-                
-                log.info("配置项更新成功: {}", configItem.getConfigKey());
-                return true;
-            }
-            
-            return false;
+
+            Ticket ticket = buildTicket(oldConfig, configItem);
+            ticketService.createTicket(ticket);
+
+//            // 更新数据库
+//            int result = configItemMapper.update(configItem);
+
+            return ticket;
         } catch (Exception e) {
             log.error("更新配置项失败", e);
-            return false;
+            return null;
         }
+    }
+
+    private Ticket buildTicket(ConfigItem oldConfig, ConfigItem newConfig) {
+        Ticket ticket = new Ticket();
+        Context context = ContextManager.getContext();
+        ticket.setTitle(newConfig.getConfigKey());
+        ticket.setOldData(oldConfig.getConfigValue());
+        ticket.setNewData(newConfig.getConfigValue());
+        ticket.setApplicator(context.getUserEmail());
+        ticket.setDataId(oldConfig.getId());
+        ticket.setPhase("Reviewing");
+        return ticket;
     }
 
     @Override

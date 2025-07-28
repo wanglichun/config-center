@@ -2,6 +2,7 @@ import { request } from '@/utils/request'
 import type { ApiResult, PageResult } from '@/types/common'
 import type { ConfigItem, ConfigQuery, ConfigForm } from '@/types/config'
 import type { MachineInstance } from '@/types/machine'
+import type { Ticket } from '@/types/ticket'
 
 /**
  * 分页查询配置列表
@@ -45,7 +46,7 @@ export function createConfig(data: ConfigForm): Promise<ApiResult<boolean>> {
 /**
  * 更新配置
  */
-export function updateConfig(id: number, data: ConfigForm): Promise<ApiResult<boolean>> {
+export function updateConfig(id: number, data: ConfigForm): Promise<ApiResult<Ticket>> {
   return request.put(`/config/${id}`, data)
 }
 

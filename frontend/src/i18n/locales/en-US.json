@@ -45,9 +45,11 @@
     "locale": "en-US"
   },
   "config": {
-    "title": "Configuration",
+    "title": "Configuration Management",
     "add": "Add Configuration",
-    "edit": "Edit Configuration",
+    "edit": {
+      "title": "Edit Configuration"
+    },
     "appName": "Application Name",
     "environment": "Environment",
     "groupName": "Configuration Group",

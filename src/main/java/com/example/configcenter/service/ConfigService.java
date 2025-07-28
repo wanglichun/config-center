@@ -4,6 +4,8 @@ import com.example.configcenter.common.PageResult;
 import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.entity.ConfigItem;
+import com.example.configcenter.entity.Ticket;
+
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +38,7 @@ public interface ConfigService {
      * @param configItem 配置项
      * @return 是否成功
      */
-    boolean updateConfig(ConfigItem configItem);
+    Ticket updateConfig(ConfigItem configItem);
 
     /**
      * 删除配置项

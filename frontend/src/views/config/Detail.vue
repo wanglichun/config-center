@@ -5,6 +5,9 @@
         <div class="card-header">
           <span class="title">{{ $t('config.detail.title') }}</span>
           <div class="actions">
+            <el-button type="primary" @click="handleEdit" icon="Edit">
+              {{ $t('common.edit') }}
+            </el-button>
             <el-button @click="goBack" icon="ArrowLeft">{{ $t('common.back') }}</el-button>
             <el-button @click="refreshData" icon="Refresh" :loading="loading">{{ $t('common.refresh') }}</el-button>
           </div>
@@ -270,6 +273,12 @@ const showContainerDetail = (container) => {
 
 const goBack = () => {
   router.back()
+}
+
+const handleEdit = () => {
+  if (configDetail.value) {
+    router.push({ name: 'EditConfig', params: { id: configDetail.value.id } })
+  }
 }
 
 const getStatusTagType = (status?: string) => {

@@ -45,9 +45,11 @@
     "locale": "zh-CN"
   },
   "config": {
-    "title": "配置",
+    "title": "配置管理",
     "add": "新增配置",
-    "edit": "编辑配置",
+    "edit": {
+      "title": "编辑配置"
+    },
     "appName": "应用名称",
     "environment": "环境",
     "groupName": "配置组",
