@@ -104,6 +104,24 @@ const routes: RouteRecordRaw[] = [
           title: '个人中心',
           hidden: true
         }
+      },
+      {
+        path: 'ticket',
+        name: 'Ticket',
+        component: () => import('@/views/ticket/Index.vue'),
+        meta: {
+          title: '工单管理',
+          icon: 'Ticket'
+        }
+      },
+      {
+        path: 'ticket/detail/:id',
+        name: 'TicketDetail',
+        component: () => import('@/views/ticket/Detail.vue'),
+        meta: {
+          title: '工单详情',
+          hidden: true
+        }
       }
     ]
   },

@@ -409,5 +409,49 @@
     "email": "Please enter a valid email address",
     "minLength": "Length cannot be less than {min} characters",
     "maxLength": "Length cannot exceed {max} characters"
+  },
+  "ticket": {
+    "title": "Ticket Management",
+    "add": "Add Ticket",
+    "phase": "Phase",
+    "applicator": "Applicator",
+    "operator": "Operator",
+    "createTime": "Create Time",
+    "updateTime": "Update Time",
+    "id": "Ticket ID",
+    "dataId": "Data ID",
+    "phases": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "approved": "Approved",
+      "rejected": "Rejected",
+      "completed": "Completed"
+    },
+    "placeholders": {
+      "title": "Please enter ticket title",
+      "phase": "Please select ticket phase",
+      "applicator": "Please enter applicator"
+    },
+    "messages": {
+      "loadFailed": "Failed to load ticket list",
+      "deleteConfirm": "Are you sure to delete this ticket?",
+      "deleteSuccess": "Delete ticket successfully",
+      "deleteFailed": "Failed to delete ticket"
+    },
+    "detail": {
+      "title": "Ticket Detail",
+      "basicInfo": "Basic Information",
+      "dataComparison": "Data Comparison",
+      "oldData": "Old Data",
+      "newData": "New Data",
+      "noOldData": "No old data",
+      "noNewData": "No new data",
+      "operationHistory": "Operation History",
+      "operator": "Operator",
+      "messages": {
+        "ticketIdRequired": "Ticket ID is required",
+        "loadFailed": "Failed to load ticket detail"
+      }
+    }
   }
 } 

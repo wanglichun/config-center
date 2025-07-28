@@ -415,5 +415,49 @@
     "email": "请输入有效的邮箱地址",
     "minLength": "长度不能少于 {min} 个字符",
     "maxLength": "长度不能超过 {max} 个字符"
+  },
+  "ticket": {
+    "title": "工单管理",
+    "add": "新建工单",
+    "phase": "工单阶段",
+    "applicator": "申请人",
+    "operator": "操作人",
+    "createTime": "创建时间",
+    "updateTime": "更新时间",
+    "id": "工单ID",
+    "dataId": "关联数据ID",
+    "phases": {
+      "pending": "待处理",
+      "processing": "处理中",
+      "approved": "已批准",
+      "rejected": "已拒绝",
+      "completed": "已完成"
+    },
+    "placeholders": {
+      "title": "请输入工单标题",
+      "phase": "请选择工单阶段",
+      "applicator": "请输入申请人"
+    },
+    "messages": {
+      "loadFailed": "加载工单列表失败",
+      "deleteConfirm": "确定要删除这个工单吗？",
+      "deleteSuccess": "删除工单成功",
+      "deleteFailed": "删除工单失败"
+    },
+    "detail": {
+      "title": "工单详情",
+      "basicInfo": "基础信息",
+      "dataComparison": "数据对比",
+      "oldData": "旧数据",
+      "newData": "新数据",
+      "noOldData": "无旧数据",
+      "noNewData": "无新数据",
+      "operationHistory": "操作记录",
+      "operator": "操作人",
+      "messages": {
+        "ticketIdRequired": "工单ID不能为空",
+        "loadFailed": "加载工单详情失败"
+      }
+    }
   }
 } 

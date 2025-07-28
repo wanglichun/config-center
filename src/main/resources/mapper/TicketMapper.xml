@@ -31,4 +31,25 @@
         )
     </insert>
 
+    <!-- 根据ID获取工单 -->
+    <select id="findById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM ticket
+        WHERE id = #{id}
+    </select>
+
+    <!-- 统计工单总数 -->
+    <select id="count" resultType="int">
+        SELECT COUNT(*)
+        FROM ticket
+    </select>
+
+    <!-- 分页查询工单列表 -->
+    <select id="findByPage" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM ticket
+        ORDER BY create_time DESC
+        LIMIT #{offset}, #{pageSize}
+    </select>
+
 </mapper> 
