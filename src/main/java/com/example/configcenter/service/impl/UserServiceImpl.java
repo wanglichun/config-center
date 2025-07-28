@@ -356,25 +356,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserStatistics getUserStatistics() {
+    public UserService.UserStatistics getUserStatistics() {
         try {
-            UserStatistics statistics = new UserStatistics();
-            
-            // 使用数据库统计查询，性能更好
             Map<String, Long> statsMap = userMapper.getUserStatistics();
             
-            if (statsMap != null) {
-                statistics.setTotalUsers(statsMap.getOrDefault("totalUsers", 0L));
-                statistics.setActiveUsers(statsMap.getOrDefault("activeUsers", 0L));
-                statistics.setInactiveUsers(statsMap.getOrDefault("inactiveUsers", 0L));
-                statistics.setLockedUsers(statsMap.getOrDefault("lockedUsers", 0L));
-                statistics.setAdminUsers(statsMap.getOrDefault("adminUsers", 0L));
-                statistics.setDeveloperUsers(statsMap.getOrDefault("developerUsers", 0L));
-                statistics.setViewerUsers(statsMap.getOrDefault("viewerUsers", 0L));
-            }
+            UserService.UserStatistics statistics = new UserService.UserStatistics();
+            statistics.setTotalUsers(statsMap.getOrDefault("totalUsers", 0L));
+            statistics.setActiveUsers(statsMap.getOrDefault("activeUsers", 0L));
+            statistics.setInactiveUsers(statsMap.getOrDefault("inactiveUsers", 0L));
+            statistics.setLockedUsers(statsMap.getOrDefault("lockedUsers", 0L));
+            statistics.setAdminUsers(statsMap.getOrDefault("adminUsers", 0L));
+            statistics.setDeveloperUsers(statsMap.getOrDefault("developerUsers", 0L));
+            statistics.setViewerUsers(statsMap.getOrDefault("viewerUsers", 0L));
             
             return statistics;
-            
         } catch (Exception e) {
             log.error("获取用户统计信息失败", e);
             throw new BusinessException("获取用户统计信息失败：" + e.getMessage());

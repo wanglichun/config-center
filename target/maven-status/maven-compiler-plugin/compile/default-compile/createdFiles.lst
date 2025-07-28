@@ -1,3 +1,5 @@
+com/example/configcenter/entity/BaseEntity.class
 com/example/configcenter/common/ApiResult.class
 com/example/configcenter/entity/GrayReleaseDetail.class
-com/example/configcenter/entity/BaseEntity.class
+com/example/configcenter/utils/JsonUtil.class
+com/example/configcenter/entity/Ticket.class

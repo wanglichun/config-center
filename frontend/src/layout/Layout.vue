@@ -142,8 +142,7 @@ import {
   Odometer,
   Clock,
   Monitor,
-  Operation,
-  Ticket
+  Operation
 } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
 import type { BreadcrumbItem } from '@/types/common'
@@ -166,8 +165,7 @@ const iconMap: Record<string, any> = {
   Clock,
   User,
   Monitor,
-  Operation,
-  Ticket
+  Operation
 }
 
 // 当前激活的菜单
@@ -182,12 +180,10 @@ const menuRoutes = computed(() => {
     .find(r => r.path === '/')
     ?.children?.filter(child => 
       !child.meta?.hidden && 
-      (!child.meta?.role || (Array.isArray(child.meta.role) && child.meta.role.includes(userStore.userInfo?.role || '')))
+      (!child.meta?.role || child.meta.role.includes(userStore.userInfo?.role || ''))
     ) || []
   
-  console.log('菜单路由:', routes.map(r => ({ path: r.path, fullPath: '/' + r.path, title: r.meta?.title, hidden: r.meta?.hidden, role: r.meta?.role })))
-  console.log('用户信息:', userStore.userInfo)
-  console.log('用户角色:', userStore.userInfo?.role)
+  console.log('菜单路由:', routes.map(r => ({ path: r.path, fullPath: '/' + r.path })))
   return routes
 })
 
@@ -241,8 +237,7 @@ const getMenuTitle = (title: string) => {
     '灰度发布': 'grayRelease.title',
     '用户管理': 'nav.users',
     '系统监控': 'nav.monitor',
-    '个人中心': 'nav.profile',
-    '工单管理': 'ticket.title'
+    '个人中心': 'nav.profile'
   }
   return titleMap[title] ? t(titleMap[title]) : title
 }
@@ -257,8 +252,7 @@ const getBreadcrumbTitle = (title: string) => {
     '用户管理': 'nav.users',
     '系统监控': 'nav.monitor',
     '个人中心': 'nav.profile',
-    '配置详情': 'config.title',
-    '工单管理': 'ticket.title'
+    '配置详情': 'config.title'
   }
   return titleMap[title] ? t(titleMap[title]) : title
 }
