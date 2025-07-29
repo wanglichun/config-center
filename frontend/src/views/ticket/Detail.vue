@@ -11,6 +11,36 @@
         </div>
       </template>
 
+      <!-- 工单状态进度条 -->
+      <div class="status-progress" v-if="ticketDetail">
+        <div class="progress-header">
+          <h3>{{ $t('ticket.detail.statusProgress') }}</h3>
+          <div class="action-buttons" v-if="ticketDetail?.action && ticketDetail.action.length > 0">
+            <el-button 
+              v-for="action in ticketDetail.action" 
+              :key="action"
+              :type="getActionButtonType(action)"
+              :icon="getActionIcon(action)"
+              @click="handleAction(action)"
+              size="small"
+            >
+              {{ getActionText(action) }}
+            </el-button>
+          </div>
+        </div>
+        <div class="progress-container">
+          <el-steps :active="getCurrentStepIndex()" finish-status="success" align-center>
+            <el-step 
+              v-for="(step, index) in getCurrentSteps()" 
+              :key="index"
+              :title="step.title"
+              :description="step.description"
+              :status="getStepStatus(index)"
+            />
+          </el-steps>
+        </div>
+      </div>
+
       <!-- 工单基础信息 -->
       <div class="basic-info">
         <h3>{{ $t('ticket.detail.basicInfo') }}</h3>
@@ -36,16 +66,16 @@
             {{ ticketDetail?.dataId }}
           </el-descriptions-item>
           <el-descriptions-item :label="$t('ticket.createTime')">
-            {{ formatTime(ticketDetail?.createTime) }}
+            {{ formatTime(ticketDetail?.createTime?.toString()) }}
           </el-descriptions-item>
           <el-descriptions-item :label="$t('ticket.updateTime')">
-            {{ formatTime(ticketDetail?.updateTime) }}
+            {{ formatTime(ticketDetail?.updateTime?.toString()) }}
           </el-descriptions-item>
-          <el-descriptions-item :label="$t('ticket.createBy')">
-            {{ ticketDetail?.createBy || $t('common.none') }}
+          <el-descriptions-item :label="$t('ticket.applicator')">
+            {{ ticketDetail?.applicator || $t('common.none') }}
           </el-descriptions-item>
-          <el-descriptions-item :label="$t('ticket.updateBy')">
-            {{ ticketDetail?.updateBy || $t('common.none') }}
+          <el-descriptions-item :label="$t('ticket.operator')">
+            {{ ticketDetail?.operator || $t('common.none') }}
           </el-descriptions-item>
         </el-descriptions>
       </div>
@@ -140,7 +170,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
+import { ElMessage, ElMessageBox } from 'element-plus'
 import { getTicketById } from '@/api/ticket'
 import type { Ticket } from '@/types/ticket'
 import { TicketPhase } from '@/types/ticket'
@@ -157,6 +187,40 @@ const isEncrypted = ref(false)
 
 // 计算属性
 const ticketId = computed(() => route.params.id as string)
+
+// 状态步骤定义
+const statusSteps = computed(() => [
+  {
+    title: t('ticket.detail.steps.submit'),
+    description: t('ticket.detail.steps.submitDesc'),
+    phase: TicketPhase.PENDING
+  },
+  {
+    title: t('ticket.detail.steps.reviewing'),
+    description: t('ticket.detail.steps.reviewingDesc'),
+    phase: TicketPhase.REVIEWING
+  },
+  {
+    title: t('ticket.detail.steps.approved'),
+    description: t('ticket.detail.steps.approvedDesc'),
+    phase: TicketPhase.APPROVED
+  },
+  {
+    title: t('ticket.detail.steps.publishing'),
+    description: t('ticket.detail.steps.publishingDesc'),
+    phase: TicketPhase.PUBLISHING
+  },
+  {
+    title: t('ticket.detail.steps.loading'),
+    description: t('ticket.detail.steps.loadingDesc'),
+    phase: TicketPhase.LOADING
+  },
+  {
+    title: t('ticket.detail.steps.success'),
+    description: t('ticket.detail.steps.successDesc'),
+    phase: TicketPhase.SUCCESS
+  }
+])
 
 // 模拟操作历史数据
 const operationHistory = ref([
@@ -227,7 +291,7 @@ const getPhaseTagType = (phase?: string) => {
     case TicketPhase.COMPLETED:
       return 'success'
     default:
-      return ''
+      return 'info'
   }
 }
 
@@ -282,6 +346,117 @@ const formatTime = (time?: string) => {
   return new Date(time).toLocaleString('zh-CN')
 }
 
+// 状态进度条相关方法
+const getCurrentStepIndex = () => {
+  if (!ticketDetail.value?.phase) return 0
+  
+  const currentPhase = ticketDetail.value.phase
+  const currentSteps = getCurrentSteps()
+  const normalizedPhase = currentPhase.toUpperCase()
+  const stepIndex = currentSteps.findIndex(step => step.phase === normalizedPhase)
+  return stepIndex >= 0 ? stepIndex : currentSteps.length - 1
+}
+
+const getStepStatus = (index: number) => {
+  if (!ticketDetail.value?.phase) return 'wait'
+  
+  const currentPhase = ticketDetail.value.phase
+  const currentSteps = getCurrentSteps()
+  const normalizedPhase = currentPhase.toUpperCase()
+  const currentStepIndex = currentSteps.findIndex(step => step.phase === normalizedPhase)
+  
+  if (index < currentStepIndex) {
+    return 'finish'
+  } else if (index === currentStepIndex) {
+    return 'process'
+  } else {
+    return 'wait'
+  }
+}
+
+const getCurrentSteps = () => {
+  const currentPhase = ticketDetail.value?.phase
+  console.log('Current phase:', currentPhase)
+  console.log('Status steps:', statusSteps.value)
+  
+  if (!currentPhase) return []
+
+  // 处理状态大小写不匹配的问题
+  const normalizedPhase = currentPhase.toUpperCase()
+  const currentStepIndex = statusSteps.value.findIndex(step => step.phase === normalizedPhase)
+  console.log('Normalized phase:', normalizedPhase)
+  console.log('Current step index:', currentStepIndex)
+  
+  const result = statusSteps.value.slice(0, currentStepIndex + 1)
+  console.log('Current steps to show:', result)
+  return result
+}
+
+// Action按钮相关方法
+const getActionButtonType = (action: string) => {
+  switch (action) {
+    case 'Approve':
+      return 'success'
+    case 'Reject':
+      return 'danger'
+    case 'Cancel':
+      return 'warning'
+    default:
+      return 'primary'
+  }
+}
+
+const getActionIcon = (action: string) => {
+  switch (action) {
+    case 'Approve':
+      return 'Check'
+    case 'Reject':
+      return 'Close'
+    case 'Cancel':
+      return 'Close'
+    default:
+      return 'Operation'
+  }
+}
+
+const getActionText = (action: string) => {
+  switch (action) {
+    case 'Approve':
+      return t('ticket.actions.approve')
+    case 'Reject':
+      return t('ticket.actions.reject')
+    case 'Cancel':
+      return t('ticket.actions.cancel')
+    default:
+      return action
+  }
+}
+
+const handleAction = async (action: string) => {
+  try {
+    const actionText = getActionText(action)
+    const confirmMessage = t('ticket.actions.confirmMessage', { action: actionText })
+    
+    await ElMessageBox.confirm(confirmMessage, t('common.confirm'), {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel'),
+      type: 'warning'
+    })
+    
+    // TODO: 调用后端API执行操作
+    console.log(`执行操作: ${action}`)
+    ElMessage.success(t('ticket.actions.successMessage', { action: actionText }))
+    
+    // 刷新数据
+    await loadTicketDetail()
+  } catch (error) {
+    if (error !== 'cancel') {
+      console.error('操作失败:', error)
+      ElMessage.error(t('ticket.actions.errorMessage'))
+    }
+  }
+}
+
 // 生命周期
 onMounted(() => {
   loadTicketDetail()
@@ -307,6 +482,13 @@ onMounted(() => {
     .actions {
       display: flex;
       gap: 10px;
+      align-items: center;
+      
+      .action-buttons {
+        display: flex;
+        gap: 8px;
+        margin-right: 10px;
+      }
     }
   }
 }
@@ -321,6 +503,48 @@ onMounted(() => {
     color: #303133;
     font-size: 16px;
     font-weight: 600;
+  }
+}
+
+.status-progress {
+  margin-bottom: 30px;
+  
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    
+    h3 {
+      color: #303133;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+    }
+  }
+  
+  .progress-container {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    
+    .el-steps {
+      .el-step {
+        .el-step__title {
+          font-weight: 600;
+        }
+        
+        .el-step__description {
+          font-size: 12px;
+          color: #909399;
+        }
+      }
+    }
   }
 }
 

@@ -440,8 +440,17 @@
       "deleteSuccess": "Delete ticket successfully",
       "deleteFailed": "Failed to delete ticket"
     },
+    "actions": {
+      "approve": "Approve",
+      "reject": "Reject",
+      "cancel": "Cancel",
+      "confirmMessage": "Are you sure to {action} this ticket?",
+      "successMessage": "{action} operation successful",
+      "errorMessage": "Operation failed, please try again"
+    },
     "detail": {
       "title": "Ticket Detail",
+      "statusProgress": "Status Progress",
       "basicInfo": "Basic Information",
       "dataComparison": "Data Comparison",
       "oldData": "Old Data",
@@ -450,6 +459,20 @@
       "noNewData": "No new data",
       "operationHistory": "Operation History",
       "operator": "Operator",
+      "steps": {
+        "submit": "Submit",
+        "submitDesc": "Ticket submitted",
+        "reviewing": "Reviewing",
+        "reviewingDesc": "Waiting for review",
+        "approved": "Approved",
+        "approvedDesc": "Review passed",
+        "publishing": "Publishing",
+        "publishingDesc": "Publishing config",
+        "loading": "Loading",
+        "loadingDesc": "Config loading",
+        "success": "Success",
+        "successDesc": "Publish successful"
+      },
       "messages": {
         "ticketIdRequired": "Ticket ID is required",
         "loadFailed": "Failed to load ticket detail"

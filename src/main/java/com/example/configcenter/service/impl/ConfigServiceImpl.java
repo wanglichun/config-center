@@ -7,6 +7,7 @@ import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.Ticket;
+import com.example.configcenter.enums.TicketPhaseEnum;
 import com.example.configcenter.mapper.ConfigHistoryMapper;
 import com.example.configcenter.mapper.ConfigItemMapper;
 import com.example.configcenter.service.ConfigService;
@@ -130,7 +131,7 @@ public class ConfigServiceImpl implements ConfigService {
         ticket.setNewData(newConfig.getConfigValue());
         ticket.setApplicator(context.getUserEmail());
         ticket.setDataId(oldConfig.getId());
-        ticket.setPhase("Reviewing");
+        ticket.setPhase(TicketPhaseEnum.Reviewing);
         return ticket;
     }
 

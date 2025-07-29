@@ -446,8 +446,17 @@
       "deleteSuccess": "删除工单成功",
       "deleteFailed": "删除工单失败"
     },
+    "actions": {
+      "approve": "批准",
+      "reject": "拒绝",
+      "cancel": "取消",
+      "confirmMessage": "确定要{action}这个工单吗？",
+      "successMessage": "{action}操作成功",
+      "errorMessage": "操作失败，请重试"
+    },
     "detail": {
       "title": "工单详情",
+      "statusProgress": "状态进度",
       "basicInfo": "基础信息",
       "dataComparison": "数据对比",
       "oldData": "旧数据",
@@ -456,6 +465,20 @@
       "noNewData": "无新数据",
       "operationHistory": "操作记录",
       "operator": "操作人",
+      "steps": {
+        "submit": "提交",
+        "submitDesc": "工单已提交",
+        "reviewing": "审核中",
+        "reviewingDesc": "等待审核",
+        "approved": "已批准",
+        "approvedDesc": "审核通过",
+        "publishing": "发布中",
+        "publishingDesc": "正在发布",
+        "loading": "加载中",
+        "loadingDesc": "配置加载",
+        "success": "成功",
+        "successDesc": "发布成功"
+      },
       "messages": {
         "ticketIdRequired": "工单ID不能为空",
         "loadFailed": "加载工单详情失败"

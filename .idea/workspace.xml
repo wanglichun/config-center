@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/ConfigService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/ConfigService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/Ticket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/ConfigController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/ConfigController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/TicketController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/controller/TicketController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/entity/Ticket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/mapper/TicketMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/mapper/TicketMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ConfigService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/ConfigService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/TicketService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/TicketService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/ConfigServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/TicketServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/configcenter/service/impl/TicketServiceImpl.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,9 +82,9 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/example/configcenter" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.configcenter.enums" />
       <recent name="com.example.configcenter.dto" />
       <recent name="com.example.configcenter.config" />
-      <recent name="com.example.configcenter.enums" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.ConfigCenterApplication (1)">
@@ -133,7 +140,7 @@
       <workItem from="1750760924420" duration="86000" />
       <workItem from="1750761022757" duration="11985000" />
       <workItem from="1752722035022" duration="91857000" />
-      <workItem from="1753668833842" duration="3689000" />
+      <workItem from="1753668833842" duration="12632000" />
     </task>
     <servers />
   </component>

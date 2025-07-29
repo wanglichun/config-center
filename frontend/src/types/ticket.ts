@@ -1,12 +1,16 @@
-// 工单状态枚举
 export enum TicketPhase {
-  Reviewing	 = 'Reviewing',
-  Approved = 'Approved',
-  Rejected = 'Rejected',
-  Completed = 'Completed'
+  PENDING = 'PENDING',
+  PROCESSING = 'PROCESSING',
+  REVIEWING = 'REVIEWING',
+  APPROVED = 'APPROVED',
+  REJECTED = 'REJECTED',
+  PUBLISHING = 'PUBLISHING',
+  LOADING = 'LOADING',
+  SUCCESS = 'SUCCESS',
+  FAILED = 'FAILED',
+  COMPLETED = 'COMPLETED'
 }
 
-// 工单实体
 export interface Ticket {
   id: number
   dataId: number
@@ -14,35 +18,37 @@ export interface Ticket {
   phase: TicketPhase
   applicator: string
   operator?: string
-  createTime: long
-  updateTime: long
-  createBy?: string
-  updateBy?: string
-  oldData?: string
-  newData?: string
+  createTime: number
+  updateTime: number
+  oldData: string
+  newData: string
+  description?: string
+  remark?: string
+  action?: string[]
 }
 
-// 工单查询请求
 export interface TicketQueryRequest {
-  pageNum: number
-  pageSize: number
+  page: number
+  size: number
   title?: string
-  phase?: string
+  phase?: TicketPhase
   applicator?: string
+  operator?: string
+  startTime?: number
+  endTime?: number
 }
 
-// 工单创建请求
 export interface TicketCreateRequest {
   dataId: number
   title: string
+  oldData: string
   newData: string
+  description?: string
+  remark?: string
 }
 
-// 工单更新请求
 export interface TicketUpdateRequest {
-  id: number
-  title?: string
   phase?: TicketPhase
   operator?: string
-  newData?: string
+  remark?: string
 } 
