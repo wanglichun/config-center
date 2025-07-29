@@ -152,6 +152,7 @@ import { getAllEnum, enumToOptions } from '@/api/enum'
 import type { ConfigItem, ConfigQuery, ConfigForm } from '@/types/config'
 import type { PageResult } from '@/types/common'
 import type { AllEnums } from '@/api/enum'
+import type {Ticket} from "@/types/ticket.ts";
 
 const { t } = useI18n()
 const router = useRouter()
@@ -367,7 +368,8 @@ const handleSave = async () => {
         ElMessage.success(isEdit.value ? t('config.messages.updateSuccess') : t('config.messages.createSuccess'))
         showAddDialog.value = false
         resetForm()
-        loadConfigList()
+        const ticket = response.data as Ticket
+        router.push(`/ticket/detail/${ticket.id}`)
       } else {
         ElMessage.error(response.message || t('config.messages.saveFailed'))
       }

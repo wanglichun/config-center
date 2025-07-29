@@ -1,10 +1,9 @@
 // 工单状态枚举
 export enum TicketPhase {
-  PENDING = 'PENDING',
-  PROCESSING = 'PROCESSING',
-  APPROVED = 'APPROVED',
-  REJECTED = 'REJECTED',
-  COMPLETED = 'COMPLETED'
+  Reviewing	 = 'Reviewing',
+  Approved = 'Approved',
+  Rejected = 'Rejected',
+  Completed = 'Completed'
 }
 
 // 工单实体
@@ -15,8 +14,8 @@ export interface Ticket {
   phase: TicketPhase
   applicator: string
   operator?: string
-  createTime: string
-  updateTime: string
+  createTime: long
+  updateTime: long
   createBy?: string
   updateBy?: string
   oldData?: string

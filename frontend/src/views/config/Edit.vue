@@ -164,7 +164,6 @@ const handleSubmit = async () => {
     
     if (response.success) {
       ElMessage.success(t('config.messages.updateSuccess'))
-      
       // 如果返回了ticket对象，跳转到ticket详情页面
       if (response.data && typeof response.data === 'object' && 'id' in response.data) {
         const ticket = response.data as Ticket
