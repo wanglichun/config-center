@@ -53,7 +53,7 @@
           </el-descriptions-item>
           <el-descriptions-item :label="$t('ticket.phase')">
             <el-tag :type="getPhaseTagType(ticketDetail?.phase)">
-              {{ getPhaseText(ticketDetail?.phase) }}
+              {{ ticketDetail?.phase }}
             </el-tag>
           </el-descriptions-item>
           <el-descriptions-item :label="$t('ticket.applicator')">
@@ -202,7 +202,7 @@
                 <el-button type="primary" size="small" @click="publishToSelected" :disabled="selectedMachines.length === 0">
                   {{ $t('ticket.detail.publishToSelected') }}
                 </el-button>
-                <el-button type="success" size="small" @click="publishToAll" :disabled="availableMachines.length === 0">
+                <el-button type="success" size="small" @click="publishToAll" :disabled="availableMachines.filter(m => m.status === 'NoGray').length === 0">
                   {{ $t('ticket.detail.publishToAll') }}
                 </el-button>
               </div>
@@ -397,7 +397,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Refresh, CopyDocument, Check } from '@element-plus/icons-vue'
 import { getTicketById, updateTicket } from '@/api/ticket'
-import { getSubscribedContainers, publishConfig } from '@/api/config'
+import {getSubscribedContainers, publishConfig, rollbackConfig} from '@/api/config'
 import type { Ticket } from '@/types/ticket'
 import type { MachineInstance } from '@/types/machine'
 import { TicketPhase } from '@/types/ticket'
@@ -478,28 +478,28 @@ const filteredPublishedMachines = computed(() => {
 // 状态步骤定义
 const statusSteps = computed(() => [
   {
-    title: t('Submit'),
+    title: t('ticket.detail.steps.submit'),
     phase: TicketPhase.Submit
   },
   {
-    title: t('Reviewing'),
+    title: t('ticket.detail.steps.reviewing'),
     phase: TicketPhase.Reviewing
   },
   {
-    title: t('GrayPublish'),
+    title: t('ticket.detail.steps.grayPublish'),
     phase: TicketPhase.GrayPublish
   },
   {
-    title: t('Success'),
+    title: t('ticket.detail.steps.success'),
     phase: TicketPhase.Success
   },
   {
-    title: t('Cancelled'),
-    phase: TicketPhase.Cancelled
+    title: t('ticket.phases.rejected'),
+    phase: TicketPhase.Rejected
   },
   {
-    title: t('Rejected'),
-    phase: TicketPhase.Rejected
+    title: t('ticket.phases.cancelled'),
+    phase: TicketPhase.Cancelled
   }
 ])
 
@@ -540,6 +540,9 @@ const loadTicketDetail = async () => {
     const response = await getTicketById(Number(ticketId.value))
     if (response.success) {
       ticketDetail.value = response.data
+      console.log('加载的工单详情:', ticketDetail.value)
+      console.log('工单状态:', ticketDetail.value?.phase)
+      console.log('状态类型:', typeof ticketDetail.value?.phase)
     } else {
       ElMessage.error(response.message || t('ticket.detail.messages.loadFailed'))
     }
@@ -941,21 +944,32 @@ const publishToSelected = async () => {
 }
 
 const publishToAll = async () => {
-  if (availableMachines.value.length === 0) {
-    ElMessage.warning('没有可发布的机器')
+  // 过滤出状态为NoGray的机器
+  const noGrayMachines = availableMachines.value.filter(machine => machine.status === 'NoGray')
+  
+  if (noGrayMachines.length === 0) {
+    ElMessage.warning('没有状态为NoGray的机器可发布')
     return
   }
   
   try {
-    await ElMessageBox.confirm(`确定要发布到全部 ${availableMachines.value.length} 台机器吗？`, '确认发布', {
+    await ElMessageBox.confirm(`确定要发布到全部 ${noGrayMachines.length} 台NoGray状态的机器吗？`, '确认发布', {
       confirmButtonText: '确定',
       cancelButtonText: '取消',
       type: 'warning'
     })
     
-    // TODO: 调用发布API
-    ElMessage.success('发布成功')
-    await refreshMachines()
+    // 调用发布API
+    const selectedIPs = noGrayMachines.map(machine => machine.ip)
+    console.log('发布到所有NoGray机器，IP列表:', selectedIPs)
+    const response = await publishConfig(ticketDetail.value.dataId, selectedIPs, ticketDetail.value.id)
+    
+    if (response.success) {
+      ElMessage.success(t('ticket.detail.grayPublishDialog.publishSuccess'))
+      await refreshMachines()
+    } else {
+      ElMessage.error(response.message || t('ticket.detail.grayPublishDialog.publishFailed'))
+    }
   } catch (error) {
     if (error !== 'cancel') {
       ElMessage.error('发布失败')
@@ -964,6 +978,8 @@ const publishToAll = async () => {
 }
 
 const rollbackSelected = async () => {
+  console.log('回滚操作开始，选中的已发布机器:', selectedPublishedMachines.value)
+  
   if (selectedPublishedMachines.value.length === 0) {
     ElMessage.warning('请选择要回滚的机器')
     return
@@ -975,10 +991,21 @@ const rollbackSelected = async () => {
       cancelButtonText: '取消',
       type: 'warning'
     })
-    
-    // TODO: 调用回滚API
-    ElMessage.success('回滚成功')
-    await refreshMachines()
+
+    // 调用服务端publishConfig接口
+    const selectedIPs = selectedPublishedMachines.value.map(machine => machine.ip)
+    console.log('回滚选中的IP:', selectedIPs)
+    const response = await rollbackConfig(ticketDetail.value.dataId, selectedIPs, ticketDetail.value.id)
+
+    if (response.success) {
+      ElMessage.success(t('ticket.detail.grayPublishDialog.publishSuccess'))
+      // 关闭弹窗
+      grayPublishDialogVisible.value = false
+      // 刷新ticket详情
+      await loadTicketDetail()
+    } else {
+      ElMessage.error(response.message || t('ticket.detail.grayPublishDialog.publishFailed'))
+    }
   } catch (error) {
     if (error !== 'cancel') {
       ElMessage.error('回滚失败')

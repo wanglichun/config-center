@@ -434,7 +434,8 @@
       "processing": "处理中",
       "approved": "已批准",
       "rejected": "已拒绝",
-      "completed": "已完成"
+      "completed": "已完成",
+      "cancelled": "已取消"
     },
     "placeholders": {
       "title": "请输入工单标题",

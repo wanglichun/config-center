@@ -59,11 +59,19 @@ export function deleteConfig(id: number): Promise<ApiResult<boolean>> {
 /**
  * 发布配置到指定机器
  */
-export function publishConfig(configId: number, selectedMachines: string[], ticketId?: number): Promise<ApiResult<boolean>> {
+export function publishConfig(configId: number, selectedMachines: string[], ticketId?: number, action: string = 'Publish'): Promise<ApiResult<boolean>> {
   return request.post(`/config/${configId}/publish`, {
     ipList: selectedMachines,
-    ticketId: ticketId
+    ticketId: ticketId,
+    action: action
   })
+}
+
+/**
+ * 回滚配置到指定机器
+ */
+export function rollbackConfig(configId: number, selectedMachines: string[], ticketId?: number): Promise<ApiResult<boolean>> {
+  return publishConfig(configId, selectedMachines, ticketId, 'Rollback')
 }
 
 /**
@@ -254,8 +262,9 @@ export const machineGroupApi = {
 /**
  * 获取订阅容器列表
  */
-export function getSubscribedContainers(configId: number, ticketId: number): Promise<ApiResult<MachineInstance[]>> {
-  return request.get(`/config/${configId}/subscribers?ticketId=${ticketId}`)
+export function getSubscribedContainers(configId: number, ticketId?: number): Promise<ApiResult<MachineInstance[]>> {
+  const params = ticketId ? `?ticketId=${ticketId}` : ''
+  return request.get(`/config/${configId}/subscribers${params}`)
 }
 
  
