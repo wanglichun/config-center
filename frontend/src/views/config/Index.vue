@@ -147,7 +147,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus, Search } from '@element-plus/icons-vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import { getConfigPage, createConfig, updateConfig, deleteConfig, publishConfig } from '@/api/config'
+import { getConfigPage, createConfig, updateConfig, deleteConfig, publishConfig, getConfigById } from '@/api/config'
 import { getAllEnum, enumToOptions } from '@/api/enum'
 import type { ConfigItem, ConfigQuery, ConfigForm } from '@/types/config'
 import type { PageResult } from '@/types/common'
@@ -359,7 +359,39 @@ const handleSave = async () => {
     if (valid) {
       let response
       if (isEdit.value && configForm.id) {
-        response = await updateConfig(configForm.id, configForm)
+        // 获取原始配置信息，确保传递完整的配置数据
+        const originalConfigResponse = await getConfigById(configForm.id)
+        if (!originalConfigResponse.success) {
+          ElMessage.error('获取原始配置信息失败')
+          return
+        }
+        
+        const originalConfig = originalConfigResponse.data
+        
+        // 构建完整的配置信息，包含所有字段
+        const completeConfigData = {
+          id: originalConfig.id,
+          groupName: configForm.groupName,
+          configKey: configForm.configKey,
+          configValue: configForm.configValue,
+          dataType: configForm.dataType,
+          description: configForm.description,
+          encrypted: configForm.encrypted,
+          tags: originalConfig.tags,
+          remark: originalConfig.remark,
+          version: originalConfig.version,
+          status: originalConfig.status,
+          zkPath: originalConfig.zkPath,
+          lastPublishTime: originalConfig.lastPublishTime,
+          publisher: originalConfig.publisher,
+          createTime: originalConfig.createTime,
+          updateTime: originalConfig.updateTime,
+          createBy: originalConfig.createBy,
+          updateBy: originalConfig.updateBy,
+          delFlag: originalConfig.delFlag
+        }
+        
+        response = await updateConfig(configForm.id, completeConfigData)
       } else {
         response = await createConfig(configForm)
       }

@@ -42,9 +42,9 @@ export interface TicketCreateRequest {
 
 // 工单更新请求
 export interface TicketUpdateRequest {
-  id: number
+  id?: number
   title?: string
-  phase?: TicketPhase
+  action?: string  // 对应后端的TicketActionEnum
   operator?: string
   newData?: string
 } 

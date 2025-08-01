@@ -160,7 +160,40 @@ const handleSubmit = async () => {
     submitting.value = true
 
     const configId = Number(route.params.id)
-    const response = await updateConfig(configId, form)
+    
+    // 获取原始配置信息
+    const originalConfigResponse = await getConfigById(configId)
+    if (!originalConfigResponse.success) {
+      ElMessage.error('获取原始配置信息失败')
+      return
+    }
+    
+    const originalConfig = originalConfigResponse.data
+    
+    // 构建完整的配置信息，包含所有字段
+    const completeConfigData = {
+      id: originalConfig.id,
+      groupName: form.groupName,
+      configKey: form.configKey,
+      configValue: form.configValue,
+      dataType: form.dataType,
+      description: form.description,
+      encrypted: form.encrypted,
+      tags: originalConfig.tags,
+      remark: originalConfig.remark,
+      version: originalConfig.version,
+      status: originalConfig.status,
+      zkPath: originalConfig.zkPath,
+      lastPublishTime: originalConfig.lastPublishTime,
+      publisher: originalConfig.publisher,
+      createTime: originalConfig.createTime,
+      updateTime: originalConfig.updateTime,
+      createBy: originalConfig.createBy,
+      updateBy: originalConfig.updateBy,
+      delFlag: originalConfig.delFlag
+    }
+    
+    const response = await updateConfig(configId, completeConfigData)
     
     if (response.success) {
       ElMessage.success(t('config.messages.updateSuccess'))

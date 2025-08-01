@@ -18,6 +18,7 @@ export interface ConfigItem {
   createBy: string
   updateBy: string
   remark?: string
+  delFlag?: number
 }
 
 // 配置查询参数

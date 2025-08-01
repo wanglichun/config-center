@@ -5,13 +5,19 @@ import com.example.configcenter.context.Context;
 import com.example.configcenter.context.ContextManager;
 import com.example.configcenter.dto.TicketQueryRequest;
 import com.example.configcenter.dto.TicketUpdateRequest;
+import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.Ticket;
 import com.example.configcenter.enums.TicketActionEnum;
+import com.example.configcenter.mapper.ConfigItemMapper;
 import com.example.configcenter.mapper.TicketMapper;
+import com.example.configcenter.service.ConfigService;
 import com.example.configcenter.service.TicketService;
+import com.example.configcenter.service.ZooKeeperService;
+import com.example.configcenter.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,6 +31,10 @@ public class TicketServiceImpl implements TicketService {
 
     @Autowired
     private TicketMapper ticketMapper;
+    @Autowired
+    private ConfigItemMapper configItemMapper;
+    @Autowired
+    private ZooKeeperService zooKeeperService;
 
     @Override
     public PageResult<Ticket> getTicketPage(TicketQueryRequest request) {
@@ -73,17 +83,27 @@ public class TicketServiceImpl implements TicketService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Ticket updateTicket(Long id, TicketUpdateRequest ticketUpdateRequest) {
         Context context = ContextManager.getContext();
         Ticket ticket = getTicketById(id);
         ticket.setOperator(context.getUserEmail());
         ticket.setUpdateTime(System.currentTimeMillis());
         ticket.setPhase(TicketActionEnum.getTargetPhase(ticketUpdateRequest.getAction()));
-        int result = ticketMapper.update(ticket);
-        if (result > 0) {
-            return ticket;
+        ticketMapper.update(ticket);
+
+        String newData = ticket.getNewData();
+        ConfigItem configItem = JsonUtil.jsonToObject(newData, ConfigItem.class);
+
+        switch (ticketUpdateRequest.getAction()) {
+            case Complete: {
+                // 根据mysql配置数据
+                configItemMapper.update(configItem);
+                // 更新zk存储数据
+                zooKeeperService.publishConfig(configItem.getZkPath(), configItem.getConfigValue());
+            }
         }
-        return null;
+        return ticket;
     }
 
     @Override

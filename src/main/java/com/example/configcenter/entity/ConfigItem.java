@@ -1,12 +1,8 @@
 package com.example.configcenter.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.time.LocalDateTime;
+import java.io.Serializable;
 
 /**
  * 配置项实体
@@ -15,7 +11,9 @@ import java.time.LocalDateTime;
  * @version 1.0.0
  */
 @Data
-public class ConfigItem {
+public class ConfigItem implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
     
     /**
      * 配置项ID

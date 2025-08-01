@@ -1,7 +1,6 @@
 package com.example.configcenter.enums;
 
 import com.example.configcenter.exception.ParamException;
-import com.example.configcenter.exception.SystemException;
 
 public enum TicketActionEnum {
 

@@ -175,6 +175,20 @@
       class="gray-publish-dialog"
     >
       <div class="gray-publish-content">
+        <!-- 状态指示器 -->
+        <div v-if="allMachinesSuccess" class="success-indicator" style="margin-bottom: 20px; padding: 15px; background-color: #f0f9ff; border: 1px solid #409eff; border-radius: 4px;">
+          <el-alert
+            title="所有机器状态都是Success"
+            type="success"
+            :closable="false"
+            show-icon
+          >
+            <template #default>
+              <p>所有机器都已成功发布，可以点击下方的"Complete"按钮完成灰度发布。</p>
+            </template>
+          </el-alert>
+        </div>
+        
         <div class="machine-management">
           <!-- 左侧：可发布机器 -->
           <div class="left-panel">
@@ -355,16 +369,33 @@
             </div>
           </div>
         </div>
+        
+        <!-- 底部操作按钮 -->
+        <div class="dialog-footer" style="margin-top: 20px; text-align: center;">
+          <el-button 
+            v-if="allMachinesSuccess" 
+            type="success" 
+            size="large" 
+            @click="completeGrayPublish"
+            :loading="publishing"
+          >
+            <el-icon><Check /></el-icon>
+            {{ $t('ticket.detail.complete') }}
+          </el-button>
+          <el-button @click="grayPublishDialogVisible = false" size="large">
+            {{ $t('common.cancel') }}
+          </el-button>
+        </div>
       </div>
     </el-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { Refresh, CopyDocument } from '@element-plus/icons-vue'
+import { Refresh, CopyDocument, Check } from '@element-plus/icons-vue'
 import { getTicketById, updateTicket } from '@/api/ticket'
 import { getSubscribedContainers, publishConfig } from '@/api/config'
 import type { Ticket } from '@/types/ticket'
@@ -408,6 +439,12 @@ const publishedFilterForm = ref({
 
 // 计算属性
 const ticketId = computed(() => route.params.id as string)
+
+// 检查是否所有机器都是Success状态
+const allMachinesSuccess = computed(() => {
+  const allMachines = [...availableMachines.value, ...publishedMachines.value]
+  return allMachines.length > 0 && allMachines.every(machine => machine.status === 'Success')
+})
 
 // 筛选后的机器列表
 const filteredAvailableMachines = computed(() => {
@@ -524,16 +561,18 @@ const refreshData = () => {
 
 const getPhaseTagType = (phase?: string) => {
   switch (phase) {
-    case TicketPhase.PENDING:
+    case TicketPhase.Submit:
       return 'info'
-    case TicketPhase.PROCESSING:
+    case TicketPhase.Reviewing:
       return 'warning'
-    case TicketPhase.APPROVED:
+    case TicketPhase.Success:
       return 'success'
-    case TicketPhase.REJECTED:
+    case TicketPhase.Rejected:
       return 'danger'
-    case TicketPhase.COMPLETED:
-      return 'success'
+    case TicketPhase.GrayPublish:
+      return 'warning'
+    case TicketPhase.Cancelled:
+      return 'info'
     default:
       return 'info'
   }
@@ -541,16 +580,18 @@ const getPhaseTagType = (phase?: string) => {
 
 const getPhaseText = (phase?: string) => {
   switch (phase) {
-    case TicketPhase.PENDING:
-      return t('ticket.phases.pending')
-    case TicketPhase.PROCESSING:
-      return t('ticket.phases.processing')
-    case TicketPhase.APPROVED:
-      return t('ticket.phases.approved')
-    case TicketPhase.REJECTED:
+    case TicketPhase.Submit:
+      return t('ticket.phases.submit')
+    case TicketPhase.Reviewing:
+      return t('ticket.phases.reviewing')
+    case TicketPhase.Success:
+      return t('ticket.phases.success')
+    case TicketPhase.Rejected:
       return t('ticket.phases.rejected')
-    case TicketPhase.COMPLETED:
-      return t('ticket.phases.completed')
+    case TicketPhase.GrayPublish:
+      return t('ticket.phases.grayPublish')
+    case TicketPhase.Cancelled:
+      return t('ticket.phases.cancelled')
     default:
       return phase || ''
   }
@@ -722,7 +763,7 @@ const handleAction = async (action: string) => {
       return
     }
     
-    // 根据action确定新的phase
+    // 根据action确定新的action
     let actionValue: string
     switch (action) {
       case 'Approve':
@@ -744,7 +785,8 @@ const handleAction = async (action: string) => {
     
     // 调用后端API执行操作
     const response = await updateTicket(ticketDetail.value.id, {
-      action: actionValue
+      action: actionValue,
+      operator: 'system' // 或者从用户信息中获取
     })
     
     if (response.success) {
@@ -770,8 +812,17 @@ const loadMachineList = async () => {
     if (ticketDetail.value?.dataId && ticketDetail.value?.id) {
       const response = await getSubscribedContainers(ticketDetail.value.dataId, ticketDetail.value.id)
       if (response.success) {
-        availableMachines.value = response.data
-        publishedMachines.value = [] // 初始化为空，表示还没有发布的机器
+        const allMachines = response.data
+        
+        // 自动分类机器：状态为"Success"的机器显示在右边，其他显示在左边
+        availableMachines.value = allMachines.filter(machine => machine.status !== 'Success')
+        publishedMachines.value = allMachines.filter(machine => machine.status === 'Success')
+        
+        console.log('机器分类完成:', {
+          available: availableMachines.value.length,
+          published: publishedMachines.value.length,
+          total: allMachines.length
+        })
       } else {
         ElMessage.error(response.message || '获取机器列表失败')
       }
@@ -799,7 +850,8 @@ const confirmGrayPublish = async () => {
 
     // 调用后端API执行灰度发布
     const response = await updateTicket(ticketDetail.value.id, {
-      action: 'Publish'
+      action: 'Publish',
+      operator: 'system' // 或者从用户信息中获取
     })
     
     if (response.success) {
@@ -962,7 +1014,53 @@ const getStatusTagType = (status: string) => {
 onMounted(() => {
   loadTicketDetail()
   refreshMachines()
+  
+  // 添加定时器，每10秒检查一次机器状态
+  const statusCheckInterval = setInterval(async () => {
+    if (grayPublishDialogVisible.value) {
+      await refreshMachines()
+    }
+  }, 10000)
+  
+  // 组件卸载时清理定时器
+  onUnmounted(() => {
+    clearInterval(statusCheckInterval)
+  })
 })
+
+const completeGrayPublish = async () => {
+  if (!ticketDetail.value?.id) {
+    ElMessage.error(t('ticket.detail.messages.ticketIdRequired'))
+    return
+  }
+
+  try {
+    await ElMessageBox.confirm(`确定要完成灰度发布吗？`, '确认完成', {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning'
+    })
+
+    // 调用后端API，将工单状态更新为Success
+    const response = await updateTicket(ticketDetail.value.id, {
+      action: 'Complete',
+      operator: 'system' // 或者从用户信息中获取
+    })
+
+    if (response.success) {
+      ElMessage.success('灰度发布完成')
+      grayPublishDialogVisible.value = false
+      await loadTicketDetail()
+    } else {
+      ElMessage.error(response.message || '灰度发布完成失败')
+    }
+  } catch (error) {
+    if (error !== 'cancel') {
+      console.error('灰度发布完成失败:', error)
+      ElMessage.error('灰度发布完成失败')
+    }
+  }
+}
 </script>
 
 <style scoped lang="scss">
@@ -1189,6 +1287,14 @@ onMounted(() => {
   }
   
   .gray-publish-content {
+    .success-indicator {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #f0f9ff;
+      border: 1px solid #409eff;
+      border-radius: 4px;
+    }
+
     .machine-management {
       display: flex;
       gap: 16px;

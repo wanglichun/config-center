@@ -49,9 +49,6 @@ public class ConfigServiceImpl implements ConfigService {
     private ConfigHistoryMapper configHistoryMapper;
 
     @Autowired
-    private ZooKeeperService zooKeeperService;
-
-    @Autowired
     private MachineService machineConfigSubscriptionService;
 
     @Autowired

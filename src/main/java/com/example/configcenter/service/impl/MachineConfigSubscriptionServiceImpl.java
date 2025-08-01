@@ -20,7 +20,6 @@ import java.util.*;
  * @author ConfigCenter Team
  * @version 1.0.0
  */
-@Slf4j
 @Service
 public class MachineConfigSubscriptionServiceImpl implements MachineService {
 
