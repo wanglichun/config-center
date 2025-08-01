@@ -73,19 +73,4 @@ public class TicketController {
     public ApiResult<Ticket> updateTicket(@PathVariable Long id, @RequestBody TicketUpdateRequest req) {
         return ApiResult.success(ticketService.updateTicket(id, req));
     }
-
-    /**
-     * 删除工单
-     */
-    @DeleteMapping("/{id}")
-    public ApiResult<Boolean> deleteTicket(@PathVariable Long id) {
-        try {
-            log.info("删除工单，ID：{}", id);
-            boolean result = ticketService.deleteTicket(id);
-            return ApiResult.success(result);
-        } catch (Exception e) {
-            log.error("删除工单失败", e);
-            return ApiResult.error("删除工单失败：" + e.getMessage());
-        }
-    }
 }

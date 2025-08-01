@@ -6,9 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/layout/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/layout/Layout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/config/Detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/config/Detail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/GrayRelease.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/History.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/TestEmailCookie.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/config-center.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/TicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/UserServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +144,7 @@
       <workItem from="1752722035022" duration="91857000" />
       <workItem from="1753668833842" duration="35024000" />
       <workItem from="1753856977667" duration="40000" />
-      <workItem from="1753947209657" duration="14678000" />
+      <workItem from="1753947209657" duration="16581000" />
     </task>
     <servers />
   </component>
@@ -150,11 +158,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java</url>
           <line>69</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/AuthController.java</url>
-          <line>162</line>
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java</url>

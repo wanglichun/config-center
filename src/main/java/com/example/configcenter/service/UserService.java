@@ -58,59 +58,8 @@ public interface UserService {
      * 重置用户密码
      */
     void resetPassword(Long id, String newPassword);
-    
-    /**
-     * 修改密码
-     */
-    void changePassword(Long userId, PasswordChangeRequest request);
-    
     /**
      * 检查用户名是否存在
      */
     boolean existsByUsername(String username);
-    
-    /**
-     * 检查邮箱是否存在
-     */
-    boolean existsByEmail(String email);
-    
-    /**
-     * 获取用户统计信息
-     */
-    UserStatistics getUserStatistics();
-    
-    /**
-     * 用户统计信息内部类
-     */
-    class UserStatistics {
-        private long totalUsers;
-        private long activeUsers;
-        private long inactiveUsers;
-        private long lockedUsers;
-        private long adminUsers;
-        private long developerUsers;
-        private long viewerUsers;
-        
-        // getters and setters
-        public long getTotalUsers() { return totalUsers; }
-        public void setTotalUsers(long totalUsers) { this.totalUsers = totalUsers; }
-        
-        public long getActiveUsers() { return activeUsers; }
-        public void setActiveUsers(long activeUsers) { this.activeUsers = activeUsers; }
-        
-        public long getInactiveUsers() { return inactiveUsers; }
-        public void setInactiveUsers(long inactiveUsers) { this.inactiveUsers = inactiveUsers; }
-        
-        public long getLockedUsers() { return lockedUsers; }
-        public void setLockedUsers(long lockedUsers) { this.lockedUsers = lockedUsers; }
-        
-        public long getAdminUsers() { return adminUsers; }
-        public void setAdminUsers(long adminUsers) { this.adminUsers = adminUsers; }
-        
-        public long getDeveloperUsers() { return developerUsers; }
-        public void setDeveloperUsers(long developerUsers) { this.developerUsers = developerUsers; }
-        
-        public long getViewerUsers() { return viewerUsers; }
-        public void setViewerUsers(long viewerUsers) { this.viewerUsers = viewerUsers; }
-    }
 } 

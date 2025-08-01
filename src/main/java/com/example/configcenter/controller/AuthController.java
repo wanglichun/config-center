@@ -9,20 +9,15 @@ import com.example.configcenter.dto.LoginResponse;
 import com.example.configcenter.entity.User;
 import com.example.configcenter.mapper.UserMapper;
 import com.example.configcenter.security.JwtTokenProvider;
-import com.example.configcenter.security.UserPrincipal;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.Date;
 
 /**

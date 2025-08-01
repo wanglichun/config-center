@@ -207,26 +207,6 @@ public class UserController {
         }
     }
 
-    /**
-     * 修改密码
-     */
-    @PutMapping("/change-password")
-    public ApiResult<String> changePassword(@Valid @RequestBody PasswordChangeRequest request,
-                                           HttpServletRequest httpRequest) {
-        String clientIp = getClientIpAddress(httpRequest);
-        String username = getCurrentUsername();
-        Long userId = getCurrentUserId();
-        log.info("修改密码 - 用户: {}, IP: {}", username, clientIp);
-        
-        try {
-            userService.changePassword(userId, request);
-            log.info("修改密码成功 - 用户: {}, IP: {}", username, clientIp);
-            return ApiResult.success("密码修改成功");
-        } catch (Exception e) {
-            log.error("修改密码失败 - 用户: {}, IP: {}, 错误: {}", username, clientIp, e.getMessage());
-            return ApiResult.error("修改密码失败：" + e.getMessage());
-        }
-    }
 
     /**
      * 检查用户名是否存在
@@ -240,36 +220,6 @@ public class UserController {
         } catch (Exception e) {
             log.error("检查用户名失败 - 用户名: {}, 错误: {}", username, e.getMessage());
             return ApiResult.error("检查用户名失败：" + e.getMessage());
-        }
-    }
-
-    /**
-     * 检查邮箱是否存在
-     */
-    @GetMapping("/check-email")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ApiResult<Boolean> checkEmail(@RequestParam @NotNull String email) {
-        try {
-            boolean exists = userService.existsByEmail(email);
-            return ApiResult.success(exists);
-        } catch (Exception e) {
-            log.error("检查邮箱失败 - 邮箱: {}, 错误: {}", email, e.getMessage());
-            return ApiResult.error("检查邮箱失败：" + e.getMessage());
-        }
-    }
-
-    /**
-     * 获取用户统计信息
-     */
-    @GetMapping("/statistics")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ApiResult<UserService.UserStatistics> getUserStatistics() {
-        try {
-            UserService.UserStatistics statistics = userService.getUserStatistics();
-            return ApiResult.success(statistics);
-        } catch (Exception e) {
-            log.error("获取用户统计信息失败 - 错误: {}", e.getMessage());
-            return ApiResult.error("获取用户统计信息失败：" + e.getMessage());
         }
     }
 

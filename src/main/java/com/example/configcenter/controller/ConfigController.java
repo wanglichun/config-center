@@ -3,16 +3,16 @@ package com.example.configcenter.controller;
 import com.alibaba.fastjson.JSON;
 import com.example.configcenter.common.ApiResult;
 import com.example.configcenter.common.PageResult;
-import com.example.configcenter.context.ContextManager;
 import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.dto.PublishDto;
-import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.ConfigHistory;
+import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.MachineInstance;
 import com.example.configcenter.entity.Ticket;
 import com.example.configcenter.service.ConfigService;
 import com.example.configcenter.service.MachineService;
 import com.example.configcenter.service.TicketService;
+import com.example.configcenter.service.ZooKeeperService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,10 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Set;
-
-import com.example.configcenter.service.ZooKeeperService;
 
 /**
  * 配置管理控制器
@@ -134,16 +130,6 @@ public class ConfigController {
         boolean result = configService.rollbackConfig(id, targetVersion);
         return result ? ApiResult.success(true) : ApiResult.error("回滚配置失败");
     }
-
-    /**
-     * 获取配置历史
-     */
-    @GetMapping("/{id}/history")
-    public ApiResult<List<ConfigHistory>> getConfigHistory(@PathVariable Long id) {
-        List<ConfigHistory> history = configService.getConfigHistory(id);
-        return ApiResult.success(history);
-    }
-
 
     /**
      * 验证配置格式

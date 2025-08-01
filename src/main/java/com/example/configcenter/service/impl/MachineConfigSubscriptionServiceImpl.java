@@ -20,11 +20,9 @@ import java.util.*;
  * @author ConfigCenter Team
  * @version 1.0.0
  */
+@Slf4j
 @Service
 public class MachineConfigSubscriptionServiceImpl implements MachineService {
-
-    private static final Logger log = LoggerFactory.getLogger(MachineConfigSubscriptionServiceImpl.class);
-
 
     @Autowired
     private ZooKeeperService zooKeeperService;
@@ -129,13 +127,6 @@ public class MachineConfigSubscriptionServiceImpl implements MachineService {
      */
     private String buildInstanceReportInfo(String groupName, String configKey) {
         return String.format("/container-status/%s/%s", groupName, configKey);
-    }
-
-    /**
-     * 构建实例路径
-     */
-    private String buildInstancePath(String groupName, String instanceId) {
-        return String.format("/instances/%s/%s", groupName, instanceId);
     }
 
     /**

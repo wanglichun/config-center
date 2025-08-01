@@ -304,42 +304,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
-    public void changePassword(Long userId, PasswordChangeRequest request) {
-        if (userId == null) {
-            throw new BusinessException("用户ID不能为空");
-        }
-        
-        if (!request.getNewPassword().equals(request.getConfirmPassword())) {
-            throw new BusinessException("新密码和确认密码不匹配");
-        }
-        
-        User user = userMapper.findById(userId);
-        if (user == null) {
-            throw new BusinessException("用户不存在");
-        }
-        
-        // 验证原密码
-        if (!passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
-            throw new BusinessException("原密码不正确");
-        }
-        
-        try {
-            String encodedPassword = passwordEncoder.encode(request.getNewPassword());
-            int result = userMapper.updatePassword(userId, encodedPassword);
-            if (result <= 0) {
-                throw new BusinessException("修改密码失败");
-            }
-            
-            log.info("用户密码修改成功 - 用户ID: {}", userId);
-            
-        } catch (Exception e) {
-            log.error("修改用户密码失败", e);
-            throw new BusinessException("修改密码失败：" + e.getMessage());
-        }
-    }
-
-    @Override
     public boolean existsByUsername(String username) {
         if (!StringUtils.hasText(username)) {
             return false;
@@ -347,34 +311,6 @@ public class UserServiceImpl implements UserService {
         return userMapper.existsByUsername(username);
     }
 
-    @Override
-    public boolean existsByEmail(String email) {
-        if (!StringUtils.hasText(email)) {
-            return false;
-        }
-        return userMapper.existsByEmail(email);
-    }
-
-    @Override
-    public UserService.UserStatistics getUserStatistics() {
-        try {
-            Map<String, Long> statsMap = userMapper.getUserStatistics();
-            
-            UserService.UserStatistics statistics = new UserService.UserStatistics();
-            statistics.setTotalUsers(statsMap.getOrDefault("totalUsers", 0L));
-            statistics.setActiveUsers(statsMap.getOrDefault("activeUsers", 0L));
-            statistics.setInactiveUsers(statsMap.getOrDefault("inactiveUsers", 0L));
-            statistics.setLockedUsers(statsMap.getOrDefault("lockedUsers", 0L));
-            statistics.setAdminUsers(statsMap.getOrDefault("adminUsers", 0L));
-            statistics.setDeveloperUsers(statsMap.getOrDefault("developerUsers", 0L));
-            statistics.setViewerUsers(statsMap.getOrDefault("viewerUsers", 0L));
-            
-            return statistics;
-        } catch (Exception e) {
-            log.error("获取用户统计信息失败", e);
-            throw new BusinessException("获取用户统计信息失败：" + e.getMessage());
-        }
-    }
 
     /**
      * 转换User实体为UserDto
