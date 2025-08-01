@@ -32,7 +32,7 @@
               {{ getStatusText(configDetail?.status) }}
             </el-tag>
           </el-descriptions-item>
-          <el-descriptions-item :label="$t('config.version')">
+          <el-descriptions-item :label="$t('Version')">
             {{ configDetail?.version }}
           </el-descriptions-item>
           <el-descriptions-item :label="$t('config.encrypted')">
@@ -66,92 +66,22 @@
               </div>
             </div>
           </el-descriptions-item>
-          <el-descriptions-item :label="$t('config.createTime')">
+          <el-descriptions-item :label="$t('CreateTime')">
             {{ formatTime(configDetail?.createTime) }}
           </el-descriptions-item>
-          <el-descriptions-item :label="$t('config.updateTime')">
+          <el-descriptions-item :label="$t('UpdateTime')">
             {{ formatTime(configDetail?.updateTime) }}
           </el-descriptions-item>
-          <el-descriptions-item :label="$t('config.createBy')">
+          <el-descriptions-item :label="$t('CreateBy')">
             {{ configDetail?.createBy }}
           </el-descriptions-item>
-          <el-descriptions-item :label="$t('config.updateBy')">
+          <el-descriptions-item :label="$t('UpdateBy')">
             {{ configDetail?.updateBy }}
           </el-descriptions-item>
         </el-descriptions>
       </div>
 
-      <!-- 订阅容器信息 -->
-      <div class="subscribers-info">
-        <div class="section-header">
-          <h3>{{ $t('config.detail.subscribers') }}</h3>
-          <el-button @click="refreshSubscribers" icon="Refresh" :loading="loadingSubscribers" size="small">
-            {{ $t('common.refresh') }}
-          </el-button>
-        </div>
-        
-        <el-table 
-          :data="subscribers" 
-          v-loading="loadingSubscribers"
-          empty-text="暂无订阅容器"
-          stripe
-        >
-          <el-table-column prop="ip" label="实例IP" min-width="50">
-            <template #default="scope">
-              <div class="ip-cell">
-                <span>{{ scope.row.ip }}</span>
-                <el-icon class="copy-icon" @click="copyToClipboard(scope.row.ip)">
-                  <CopyDocument />
-                </el-icon>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column prop="version" label="当前版本" width="130" />
-          <el-table-column prop="configValue" label="当前配置值" min-width="150" show-overflow-tooltip />
-          <el-table-column prop="lastUpdateTime" label="最后更新" width="160">
-            <template #default="scope">
-              {{ formatTime(scope.row.lastUpdateTime) }}
-            </template>
-          </el-table-column>
-        </el-table>
-      </div>
     </el-card>
-
-    <!-- 容器详情对话框 -->
-    <el-dialog
-      v-model="showContainerDetailDialog"
-      title="容器详情"
-      width="600px"
-      :close-on-click-modal="false"
-    >
-      <div class="container-detail-content">
-        <div class="detail-item">
-          <span class="label">IP：</span>
-          <span class="value">{{ selectedContainerDetail.ip }}</span>
-        </div>
-        <div class="detail-item">
-          <span class="label">状态：</span>
-          <el-tag :type="selectedContainerDetail.status === 'Running' ? 'success' : 'danger'">
-            {{ selectedContainerDetail.status }}
-          </el-tag>
-        </div>
-        <div class="detail-item">
-          <span class="label">当前版本：</span>
-          <span class="value">{{ selectedContainerDetail.version }}</span>
-        </div>
-        <div class="detail-item">
-          <span class="label">当前配置值：</span>
-          <span class="value config-value">{{ selectedContainerDetail.configValue }}</span>
-        </div>
-        <div class="detail-item">
-          <span class="label">最后更新：</span>
-          <span class="value">{{ formatTime(selectedContainerDetail.lastUpdateTime) }}</span>
-        </div>
-      </div>
-      <template #footer>
-        <el-button @click="showContainerDetailDialog = false">关闭</el-button>
-      </template>
-    </el-dialog>
   </div>
 </template>
 
@@ -195,8 +125,6 @@ const loadConfigDetail = async () => {
     const response = await getConfigById(Number(configId.value))
     if (response.success) {
       configDetail.value = response.data
-      // 加载订阅者信息
-      await loadSubscribers()
     } else {
       ElMessage.error(response.message || t('config.detail.messages.getConfigDetailFailed'))
     }

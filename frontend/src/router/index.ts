@@ -60,15 +60,6 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: 'history',
-        name: 'History',
-        component: () => import('@/views/History.vue'),
-        meta: {
-          title: '变更历史',
-          icon: 'Clock'
-        }
-      },
-      {
         path: 'users',
         name: 'Users',
         component: () => import('@/views/Users.vue'),

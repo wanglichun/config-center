@@ -4598,3 +4598,312 @@ java.net.ConnectException: Connection refused
 2025-08-01 15:19:19 [http-nio-9090-exec-4] INFO  c.example.configcenter.controller.TicketController - 获取工单详情，ID：40
 2025-08-01 15:19:19 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/ticket/40
 2025-08-01 15:19:19 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:26:46 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/ticket/40
+2025-08-01 16:26:46 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:26:46 [http-nio-9090-exec-5] ERROR com.example.configcenter.security.JwtTokenProvider - Token验证失败: The Token has expired on 2025-08-01T07:38:28Z.
+2025-08-01 16:26:46 [http-nio-9090-exec-5] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-01 16:26:46 [http-nio-9090-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Failed to authorize filter invocation [GET /api/ticket/40] with attributes [authenticated]
+2025-08-01 16:26:46 [http-nio-9090-exec-5] ERROR c.e.c.security.JwtAuthenticationEntryPoint - 认证失败: Full authentication is required to access this resource
+2025-08-01 16:26:48 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:26:50 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing POST /api/auth/login
+2025-08-01 16:26:50 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:26:50 [http-nio-9090-exec-6] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2025-08-01 16:26:50 [http-nio-9090-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [POST /api/auth/login] with attributes [permitAll]
+2025-08-01 16:26:50 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured POST /api/auth/login
+2025-08-01 16:26:50 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:26:50 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/auth/login
+2025-08-01 16:26:50 [http-nio-9090-exec-6] INFO  com.example.configcenter.controller.AuthController - 用户登录尝试 - 用户: admin, IP: 0:0:0:0:0:0:0:1, UserAgent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+2025-08-01 16:26:51 [http-nio-9090-exec-6] DEBUG com.example.configcenter.controller.AuthController - 更新用户登录信息成功 - 用户ID: 1, IP: 0:0:0:0:0:0:0:1
+2025-08-01 16:26:51 [http-nio-9090-exec-6] INFO  com.example.configcenter.controller.AuthController - 用户登录成功 - 用户: admin, IP: 0:0:0:0:0:0:0:1, TokenID: 4L6wYqpg
+2025-08-01 16:26:51 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/auth/login
+2025-08-01 16:26:51 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:26:54 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-01 16:26:54 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:26:54 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:26:54 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:26:54 [http-nio-9090-exec-9] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-01 16:26:54 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-01 16:26:54 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:26:54 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:26:54 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:26:54 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:26:54 [http-nio-9090-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-01 16:26:54 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:26:54 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:26:54 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/page
+2025-08-01 16:26:55 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/page
+2025-08-01 16:26:55 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:27:04 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/10
+2025-08-01 16:27:04 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:27:04 [http-nio-9090-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/10] with attributes [authenticated]
+2025-08-01 16:27:04 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/10
+2025-08-01 16:27:04 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:27:04 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/10
+2025-08-01 16:27:05 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/10
+2025-08-01 16:27:05 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:27:05 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/10/subscribers
+2025-08-01 16:27:05 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:27:05 [http-nio-9090-exec-10] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/10/subscribers] with attributes [authenticated]
+2025-08-01 16:27:05 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/10/subscribers
+2025-08-01 16:27:05 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:27:05 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/10/subscribers
+2025-08-01 16:27:05 [http-nio-9090-exec-10] WARN  c.e.configcenter.exception.GlobalExceptionHandler - 缺少请求参数: Required request parameter 'ticketId' for method parameter type Long is not present
+2025-08-01 16:27:05 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/10/subscribers
+2025-08-01 16:27:05 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:28:00 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/10/subscribers
+2025-08-01 16:28:00 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:28:00 [http-nio-9090-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/10/subscribers] with attributes [authenticated]
+2025-08-01 16:28:00 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/10/subscribers
+2025-08-01 16:28:00 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:28:00 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/10/subscribers
+2025-08-01 16:28:00 [http-nio-9090-exec-1] WARN  c.e.configcenter.exception.GlobalExceptionHandler - 缺少请求参数: Required request parameter 'ticketId' for method parameter type Long is not present
+2025-08-01 16:28:00 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/10/subscribers
+2025-08-01 16:28:00 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:28:50 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/10
+2025-08-01 16:28:50 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:28:51 [http-nio-9090-exec-2] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/10] with attributes [authenticated]
+2025-08-01 16:28:51 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/10
+2025-08-01 16:28:51 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:28:51 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/10
+2025-08-01 16:28:52 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/10
+2025-08-01 16:28:52 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:28:52 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/10/subscribers
+2025-08-01 16:28:52 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:28:52 [http-nio-9090-exec-3] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/10/subscribers] with attributes [authenticated]
+2025-08-01 16:28:52 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/10/subscribers
+2025-08-01 16:28:52 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:28:52 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/10/subscribers
+2025-08-01 16:28:52 [http-nio-9090-exec-3] WARN  c.e.configcenter.exception.GlobalExceptionHandler - 缺少请求参数: Required request parameter 'ticketId' for method parameter type Long is not present
+2025-08-01 16:28:52 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/10/subscribers
+2025-08-01 16:28:52 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:29:21 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/10
+2025-08-01 16:29:21 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:29:21 [http-nio-9090-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/10] with attributes [authenticated]
+2025-08-01 16:29:21 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/10
+2025-08-01 16:29:21 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:29:21 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/10
+2025-08-01 16:29:21 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/10
+2025-08-01 16:29:21 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:29:23 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:29:23 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:29:23 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-01 16:29:23 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:29:23 [http-nio-9090-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-01 16:29:23 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:29:23 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:29:23 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/page
+2025-08-01 16:29:23 [http-nio-9090-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-01 16:29:23 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-01 16:29:23 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:29:23 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:29:23 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:29:23 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:29:23 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/page
+2025-08-01 16:29:23 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:29:24 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/10
+2025-08-01 16:29:24 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:29:24 [http-nio-9090-exec-9] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/10] with attributes [authenticated]
+2025-08-01 16:29:24 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/10
+2025-08-01 16:29:24 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:29:24 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/10
+2025-08-01 16:29:24 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/10
+2025-08-01 16:29:24 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:29:26 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-01 16:29:26 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:29:26 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:29:26 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:29:27 [http-nio-9090-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-01 16:29:27 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:29:27 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:29:27 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/page
+2025-08-01 16:29:27 [http-nio-9090-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-01 16:29:27 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-01 16:29:27 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:29:27 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:29:27 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:29:27 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:29:27 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/page
+2025-08-01 16:29:27 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:29:29 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/12
+2025-08-01 16:29:29 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:29:29 [http-nio-9090-exec-10] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/12] with attributes [authenticated]
+2025-08-01 16:29:29 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/12
+2025-08-01 16:29:29 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:29:29 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/12
+2025-08-01 16:29:29 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/12
+2025-08-01 16:29:29 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:29:30 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:29:30 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:29:30 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-01 16:29:30 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:29:30 [http-nio-9090-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-01 16:29:30 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-01 16:29:30 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:29:30 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:29:30 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:29:30 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:29:30 [http-nio-9090-exec-2] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-01 16:29:30 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:29:30 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:29:30 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/page
+2025-08-01 16:29:30 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/page
+2025-08-01 16:29:30 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:07 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-01 16:30:07 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:07 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:30:07 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:07 [http-nio-9090-exec-3] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-01 16:30:07 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:30:07 [http-nio-9090-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-01 16:30:07 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-01 16:30:07 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:07 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:07 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/page
+2025-08-01 16:30:07 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:30:07 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:30:07 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:07 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/page
+2025-08-01 16:30:07 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:26 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-01 16:30:26 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:26 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:30:26 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:27 [http-nio-9090-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-01 16:30:27 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:30:27 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:27 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/page
+2025-08-01 16:30:27 [http-nio-9090-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-01 16:30:27 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-01 16:30:27 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/page
+2025-08-01 16:30:27 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:27 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:27 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:30:27 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:30:27 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:28 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-01 16:30:28 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:30:28 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:28 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:28 [http-nio-9090-exec-9] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-01 16:30:28 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-01 16:30:28 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:28 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:30:28 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:30:28 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:28 [http-nio-9090-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-01 16:30:28 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:30:28 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:28 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/page
+2025-08-01 16:30:28 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/page
+2025-08-01 16:30:28 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:55 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:30:55 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-01 16:30:55 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:55 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:55 [http-nio-9090-exec-10] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-01 16:30:55 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-01 16:30:55 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:55 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:30:55 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:30:55 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:55 [http-nio-9090-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-01 16:30:55 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:30:55 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:55 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/page
+2025-08-01 16:30:55 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/page
+2025-08-01 16:30:55 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:55 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/users/list?page=1&size=20
+2025-08-01 16:30:55 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:55 [http-nio-9090-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/users/list?page=1&size=20] with attributes [authenticated]
+2025-08-01 16:30:55 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/users/list?page=1&size=20
+2025-08-01 16:30:55 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:55 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/users/list
+2025-08-01 16:30:55 [http-nio-9090-exec-1] DEBUG o.s.s.a.i.aopalliance.MethodSecurityInterceptor - Authorized ReflectiveMethodInvocation: public com.example.configcenter.common.ApiResult com.example.configcenter.controller.UserController.getUsers(com.example.configcenter.dto.UserQueryRequest,javax.servlet.http.HttpServletRequest); target is of class [com.example.configcenter.controller.UserController] with attributes [[authorize: 'hasRole('ADMIN')', filter: 'null', filterTarget: 'null']]
+2025-08-01 16:30:56 [http-nio-9090-exec-1] INFO  com.example.configcenter.controller.UserController - 查询用户列表 - 参数: UserQueryRequest(keyword=null, role=null, status=null, department=null, startTime=null, endTime=null), IP: 0:0:0:0:0:0:0:1
+2025-08-01 16:30:56 [http-nio-9090-exec-1] INFO  com.example.configcenter.controller.UserController - 查询用户列表成功 - 总数: 4, 当前页: 1, IP: 0:0:0:0:0:0:0:1
+2025-08-01 16:30:56 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/users/list
+2025-08-01 16:30:56 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:56 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-01 16:30:56 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:30:56 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:56 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:56 [http-nio-9090-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-01 16:30:56 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:30:56 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:56 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/page
+2025-08-01 16:30:56 [http-nio-9090-exec-2] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-01 16:30:56 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-01 16:30:56 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:56 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:30:56 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:30:56 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:56 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/page
+2025-08-01 16:30:56 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:30:59 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-01 16:30:59 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:30:59 [http-nio-9090-exec-3] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=] with attributes [authenticated]
+2025-08-01 16:30:59 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-01 16:30:59 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:30:59 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/ticket/page
+2025-08-01 16:30:59 [http-nio-9090-exec-3] INFO  c.example.configcenter.controller.TicketController - 查询工单列表，参数：TicketQueryRequest(pageNum=1, pageSize=10, title=, phase=, applicator=)
+2025-08-01 16:31:00 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/ticket/page
+2025-08-01 16:31:00 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:31:00 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/users/list?page=1&size=20
+2025-08-01 16:31:00 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:31:00 [http-nio-9090-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/users/list?page=1&size=20] with attributes [authenticated]
+2025-08-01 16:31:00 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/users/list?page=1&size=20
+2025-08-01 16:31:00 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:31:00 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/users/list
+2025-08-01 16:31:00 [http-nio-9090-exec-6] DEBUG o.s.s.a.i.aopalliance.MethodSecurityInterceptor - Authorized ReflectiveMethodInvocation: public com.example.configcenter.common.ApiResult com.example.configcenter.controller.UserController.getUsers(com.example.configcenter.dto.UserQueryRequest,javax.servlet.http.HttpServletRequest); target is of class [com.example.configcenter.controller.UserController] with attributes [[authorize: 'hasRole('ADMIN')', filter: 'null', filterTarget: 'null']]
+2025-08-01 16:31:00 [http-nio-9090-exec-6] INFO  com.example.configcenter.controller.UserController - 查询用户列表 - 参数: UserQueryRequest(keyword=null, role=null, status=null, department=null, startTime=null, endTime=null), IP: 0:0:0:0:0:0:0:1
+2025-08-01 16:31:00 [http-nio-9090-exec-6] INFO  com.example.configcenter.controller.UserController - 查询用户列表成功 - 总数: 4, 当前页: 1, IP: 0:0:0:0:0:0:0:1
+2025-08-01 16:31:00 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/users/list
+2025-08-01 16:31:00 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:31:01 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-01 16:31:01 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:31:01 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:31:01 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:31:01 [http-nio-9090-exec-9] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-01 16:31:01 [http-nio-9090-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-01 16:31:01 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:31:01 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-01 16:31:01 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:31:01 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/page
+2025-08-01 16:31:01 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:31:01 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:31:01 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:31:01 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:31:01 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/page
+2025-08-01 16:31:01 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:31:34 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/10
+2025-08-01 16:31:34 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:31:34 [http-nio-9090-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/10] with attributes [authenticated]
+2025-08-01 16:31:34 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/10
+2025-08-01 16:31:34 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:31:34 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/10
+2025-08-01 16:31:35 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/10
+2025-08-01 16:31:35 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:31:37 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-01 16:31:37 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:31:37 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:31:37 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:31:37 [http-nio-9090-exec-10] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-01 16:31:37 [http-nio-9090-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-01 16:31:37 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-01 16:31:37 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-01 16:31:37 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:31:37 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:31:37 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:31:37 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/page
+2025-08-01 16:31:37 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/enum/get_all_enum
+2025-08-01 16:31:37 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:31:37 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/page
+2025-08-01 16:31:37 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-01 16:31:38 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/12
+2025-08-01 16:31:38 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-01 16:31:38 [http-nio-9090-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/12] with attributes [authenticated]
+2025-08-01 16:31:38 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/12
+2025-08-01 16:31:38 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-01 16:31:38 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context set for request: /config-center/api/config/12
+2025-08-01 16:31:38 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Context cleaned for request: /config-center/api/config/12
+2025-08-01 16:31:38 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request

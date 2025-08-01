@@ -235,8 +235,6 @@ const getMenuTitle = (title: string) => {
   const titleMap: Record<string, string> = {
     '仪表盘': 'nav.dashboard',
     '配置管理': 'nav.config',
-    '变更历史': 'nav.history',
-    '灰度发布': 'grayRelease.title',
     '用户管理': 'nav.users',
     '系统监控': 'nav.monitor',
     '个人中心': 'nav.profile',
@@ -250,8 +248,6 @@ const getBreadcrumbTitle = (title: string) => {
   const titleMap: Record<string, string> = {
     '仪表盘': 'nav.dashboard',
     '配置管理': 'nav.config',
-    '变更历史': 'nav.history',
-    '灰度发布': 'grayRelease.title',
     '用户管理': 'nav.users',
     '系统监控': 'nav.monitor',
     '个人中心': 'nav.profile',
