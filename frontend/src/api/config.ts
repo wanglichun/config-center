@@ -2,7 +2,6 @@ import { request } from '@/utils/request'
 import type { ApiResult, PageResult } from '@/types/common'
 import type { ConfigItem, ConfigQuery, ConfigForm } from '@/types/config'
 import type { MachineInstance } from '@/types/machine'
-import type { Ticket } from '@/types/ticket'
 
 /**
  * 分页查询配置列表
@@ -46,7 +45,7 @@ export function createConfig(data: ConfigForm): Promise<ApiResult<boolean>> {
 /**
  * 更新配置
  */
-export function updateConfig(id: number, data: ConfigForm): Promise<ApiResult<Ticket>> {
+export function updateConfig(id: number, data: ConfigForm): Promise<ApiResult<boolean>> {
   return request.put(`/config/${id}`, data)
 }
 
@@ -58,14 +57,13 @@ export function deleteConfig(id: number): Promise<ApiResult<boolean>> {
 }
 
 /**
- * 发布配置
+ * 发布配置到指定机器
  */
-export function publishConfig(id: number, ipList?: string[]): Promise<ApiResult<boolean>> {
-  // 构建PublishDto对象
-  const publishDto = {
-    ipList: ipList || []
-  }
-  return request.post(`/config/${id}/publish`, publishDto)
+export function publishConfig(configId: number, selectedMachines: string[], ticketId?: number): Promise<ApiResult<boolean>> {
+  return request.post(`/config/${configId}/publish`, {
+    ipList: selectedMachines,
+    ticketId: ticketId
+  })
 }
 
 /**
@@ -256,8 +254,8 @@ export const machineGroupApi = {
 /**
  * 获取订阅容器列表
  */
-export function getSubscribedContainers(configId: number): Promise<ApiResult<MachineInstance[]>> {
-  return request.get(`/config/${configId}/subscribers`)
+export function getSubscribedContainers(configId: number, ticketId: number): Promise<ApiResult<MachineInstance[]>> {
+  return request.get(`/config/${configId}/subscribers?ticketId=${ticketId}`)
 }
 
  

@@ -3,7 +3,6 @@ package com.example.configcenter.entity;
 import com.example.configcenter.enums.TicketActionEnum;
 import com.example.configcenter.enums.TicketPhaseEnum;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
@@ -72,8 +71,8 @@ public class Ticket {
         switch (phase) {
             case Reviewing:
                 return List.of(TicketActionEnum.Approve, TicketActionEnum.Reject, TicketActionEnum.Cancel);
-            case Processing:
-                return List.of(TicketActionEnum.Complete, TicketActionEnum.Cancel);
+            case GrayPublish:
+                return List.of(TicketActionEnum.Publish, TicketActionEnum.Cancel);
             default:
                 return List.of();
         }

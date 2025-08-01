@@ -11,7 +11,8 @@
     "monitor": "系统监控",
     "profile": "个人中心",
     "settings": "系统设置",
-    "logout": "退出登录"
+    "logout": "退出登录",
+    "ticket": "工单管理"
   },
   "common": {
     "search": "搜索",
@@ -450,13 +451,14 @@
       "approve": "批准",
       "reject": "拒绝",
       "cancel": "取消",
+      "complete": "完成",
+      "publish": "发布",
       "confirmMessage": "确定要{action}这个工单吗？",
-      "successMessage": "{action}操作成功",
-      "errorMessage": "操作失败，请重试"
+      "successMessage": "{action}成功",
+      "errorMessage": "操作失败"
     },
     "detail": {
       "title": "工单详情",
-      "statusProgress": "状态进度",
       "basicInfo": "基础信息",
       "dataComparison": "数据对比",
       "oldData": "旧数据",
@@ -465,6 +467,7 @@
       "noNewData": "无新数据",
       "operationHistory": "操作记录",
       "operator": "操作人",
+      "statusProgress": "状态进度",
       "steps": {
         "submit": "提交",
         "submitDesc": "工单已提交",
@@ -472,12 +475,36 @@
         "reviewingDesc": "等待审核",
         "approved": "已批准",
         "approvedDesc": "审核通过",
+        "grayPublish": "灰度发布",
+        "grayPublishDesc": "灰度发布中",
         "publishing": "发布中",
         "publishingDesc": "正在发布",
         "loading": "加载中",
-        "loadingDesc": "配置加载",
+        "loadingDesc": "配置加载中",
         "success": "成功",
         "successDesc": "发布成功"
+      },
+      "machineList": "机器列表",
+      "availableMachines": "可发布机器",
+      "publishedMachines": "已发布机器",
+      "publishToSelected": "发布到选中",
+      "publishToAll": "发布到全部",
+      "rollbackSelected": "回滚选中",
+      "selectMachinesFirst": "请先选择要发布的机器",
+      "ip": "IP地址",
+      "searchIp": "搜索IP",
+      "status": "状态",
+      "currentVersion": "当前版本",
+      "currentConfig": "当前配置",
+      "machineName": "机器名称",
+      "lastUpdate": "最后更新",
+      "details": "详情",
+      "viewDetails": "查看详情",
+      "grayPublishDialog": {
+        "title": "灰度发布",
+        "confirm": "确认发布",
+        "publishSuccess": "发布成功",
+        "publishFailed": "发布失败"
       },
       "messages": {
         "ticketIdRequired": "工单ID不能为空",

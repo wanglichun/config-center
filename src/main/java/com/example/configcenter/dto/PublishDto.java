@@ -8,4 +8,5 @@ import java.util.List;
 @Data
 public class PublishDto {
     private List<String> ipList;
+    private Long ticketId;
 }

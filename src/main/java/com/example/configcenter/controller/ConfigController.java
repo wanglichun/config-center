@@ -1,5 +1,6 @@
 package com.example.configcenter.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.example.configcenter.common.ApiResult;
 import com.example.configcenter.common.PageResult;
 import com.example.configcenter.context.ContextManager;
@@ -11,6 +12,7 @@ import com.example.configcenter.entity.MachineInstance;
 import com.example.configcenter.entity.Ticket;
 import com.example.configcenter.service.ConfigService;
 import com.example.configcenter.service.MachineService;
+import com.example.configcenter.service.TicketService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -40,6 +42,8 @@ public class ConfigController {
     private MachineService machineService;
     @Autowired
     private ZooKeeperService zooKeeperService;
+    @Autowired
+    TicketService ticketService;
 
     /**
      * 创建配置
@@ -99,7 +103,6 @@ public class ConfigController {
                                         @RequestBody ConfigItem configItem,
                                         HttpServletRequest request) {
         try {
-            configItem.setUpdateBy(ContextManager.getContext().getUserEmail());
             Ticket ticket = configService.updateConfig(configItem);
             return ApiResult.success(ticket);
         } catch (Exception e) {
@@ -115,7 +118,7 @@ public class ConfigController {
     public ApiResult<Boolean> publishConfig(@PathVariable Long id,
                                             @RequestBody PublishDto publishDto,
                                             HttpServletRequest request) {
-        boolean result = configService.publishConfig(id, publishDto.getIpList());
+        boolean result = configService.publishConfig(id, publishDto);
         return result ? ApiResult.success(true) : ApiResult.error("发布配置失败");
     }
 
@@ -156,15 +159,12 @@ public class ConfigController {
      * 获取订阅指定配置的容器列表
      */
     @GetMapping("/{id}/subscribers")
-    public ApiResult<List<MachineInstance>> getSubscribedContainers(@PathVariable Long id) {
+    public ApiResult<List<MachineInstance>> getSubscribedContainers(@PathVariable Long id,
+                                                                    @RequestParam Long ticketId) {
         try {
             log.info("查询订阅机器列表: id={}", id);
-
-            ConfigItem config = configService.getConfig(id);
-            if (config == null) {
-                return ApiResult.error("配置项不存在");
-            }
-
+            Ticket ticket = ticketService.getTicketById(ticketId);
+            ConfigItem config = JSON.parseObject(ticket.getNewData(), ConfigItem.class);
             List<MachineInstance> subscribedMachines = machineService.getSubscribedMachines(config.getGroupName(), config.getConfigKey());
             for (MachineInstance machineInstance : subscribedMachines) {
                 if (config.getVersion().equals(machineInstance.getVersion())) {

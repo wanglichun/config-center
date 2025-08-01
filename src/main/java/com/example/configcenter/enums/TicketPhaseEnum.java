@@ -3,7 +3,7 @@ package com.example.configcenter.enums;
 public enum TicketPhaseEnum {
 
     Reviewing("Reviewing"),
-    Processing("Processing"),
+    GrayPublish("GrayPublish"),
     Success("Success"),
     Rejected("Rejected"),
     Cancelled("Cancelled");

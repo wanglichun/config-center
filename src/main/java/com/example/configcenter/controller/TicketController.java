@@ -3,6 +3,7 @@ package com.example.configcenter.controller;
 import com.example.configcenter.common.ApiResult;
 import com.example.configcenter.common.PageResult;
 import com.example.configcenter.dto.TicketQueryRequest;
+import com.example.configcenter.dto.TicketUpdateRequest;
 import com.example.configcenter.entity.Ticket;
 import com.example.configcenter.service.TicketService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,10 +17,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/ticket")
 @Slf4j
 public class TicketController {
-    
+
     @Autowired
     private TicketService ticketService;
-    
+
     /**
      * 分页查询工单列表
      */
@@ -34,7 +35,7 @@ public class TicketController {
             return ApiResult.error("查询工单列表失败：" + e.getMessage());
         }
     }
-    
+
     /**
      * 根据ID获取工单详情
      */
@@ -49,7 +50,7 @@ public class TicketController {
             return ApiResult.error("获取工单详情失败：" + e.getMessage());
         }
     }
-    
+
     /**
      * 创建工单
      */
@@ -64,23 +65,15 @@ public class TicketController {
             return ApiResult.error("创建工单失败：" + e.getMessage());
         }
     }
-    
+
     /**
      * 更新工单
      */
     @PutMapping("/{id}")
-    public ApiResult<Boolean> updateTicket(@PathVariable Long id, @RequestBody Ticket ticket) {
-        try {
-            log.info("更新工单，ID：{}，参数：{}", id, ticket);
-            ticket.setId(id);
-            boolean result = ticketService.updateTicket(ticket);
-            return ApiResult.success(result);
-        } catch (Exception e) {
-            log.error("更新工单失败", e);
-            return ApiResult.error("更新工单失败：" + e.getMessage());
-        }
+    public ApiResult<Ticket> updateTicket(@PathVariable Long id, @RequestBody TicketUpdateRequest req) {
+        return ApiResult.success(ticketService.updateTicket(id, req));
     }
-    
+
     /**
      * 删除工单
      */

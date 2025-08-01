@@ -2,6 +2,7 @@ package com.example.configcenter.service;
 
 import com.example.configcenter.common.PageResult;
 import com.example.configcenter.dto.TicketQueryRequest;
+import com.example.configcenter.dto.TicketUpdateRequest;
 import com.example.configcenter.entity.Ticket;
 
 /**
@@ -27,7 +28,7 @@ public interface TicketService {
     /**
      * 更新工单
      */
-    boolean updateTicket(Ticket ticket);
+    Ticket updateTicket(Long id, TicketUpdateRequest ticketUpdateRequest);
     
     /**
      * 删除工单

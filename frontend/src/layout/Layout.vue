@@ -142,7 +142,8 @@ import {
   Odometer,
   Clock,
   Monitor,
-  Operation
+  Operation,
+  Tickets
 } from '@element-plus/icons-vue'
 import { useUserStore } from '@/stores/user'
 import type { BreadcrumbItem } from '@/types/common'
@@ -165,7 +166,8 @@ const iconMap: Record<string, any> = {
   Clock,
   User,
   Monitor,
-  Operation
+  Operation,
+  Tickets
 }
 
 // 当前激活的菜单
@@ -237,7 +239,8 @@ const getMenuTitle = (title: string) => {
     '灰度发布': 'grayRelease.title',
     '用户管理': 'nav.users',
     '系统监控': 'nav.monitor',
-    '个人中心': 'nav.profile'
+    '个人中心': 'nav.profile',
+    '工单管理': 'nav.ticket'
   }
   return titleMap[title] ? t(titleMap[title]) : title
 }
@@ -252,7 +255,8 @@ const getBreadcrumbTitle = (title: string) => {
     '用户管理': 'nav.users',
     '系统监控': 'nav.monitor',
     '个人中心': 'nav.profile',
-    '配置详情': 'config.title'
+    '配置详情': 'config.title',
+    '工单管理': 'nav.ticket'
   }
   return titleMap[title] ? t(titleMap[title]) : title
 }

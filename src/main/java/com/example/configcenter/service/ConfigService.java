@@ -2,6 +2,7 @@ package com.example.configcenter.service;
 
 import com.example.configcenter.common.PageResult;
 import com.example.configcenter.dto.ConfigQueryDto;
+import com.example.configcenter.dto.PublishDto;
 import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.Ticket;
@@ -55,7 +56,7 @@ public interface ConfigService {
      * @param ipList 发布机器列表
      * @return 是否成功
      */
-    boolean publishConfig(Long id, List<String> ipList);
+    boolean publishConfig(Long id, PublishDto publishDto);
 
     /**
      * 回滚配置

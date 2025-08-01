@@ -1,7 +1,12 @@
 package com.example.configcenter.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.time.LocalDateTime;
 
 /**
  * 配置项实体
@@ -10,8 +15,7 @@ import lombok.EqualsAndHashCode;
  * @version 1.0.0
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class ConfigItem extends BaseEntity {
+public class ConfigItem {
     
     /**
      * 配置项ID
@@ -77,4 +81,19 @@ public class ConfigItem extends BaseEntity {
      * 发布者
      */
     private String publisher;
+
+    /**
+     * 创建时间
+     */
+    private Long createTime;
+
+    /**
+     * 更新时间
+     */
+    private Long updateTime;
+
+    /**
+     * 逻辑删除标志（0存在 1删除）
+     */
+    private Integer delFlag;
 } 

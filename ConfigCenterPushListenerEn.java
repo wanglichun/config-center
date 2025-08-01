@@ -1,8 +1,11 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.Inet4Address;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Enumeration;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -38,77 +41,110 @@ public class ConfigCenterPushListenerEn {
      */
     private static String getInstanceIp() {
         try {
-            // Try to get IP from environment variable first
-            String envIp = System.getenv("INSTANCE_IP");
-            if (envIp != null && !envIp.trim().isEmpty()) {
-                return envIp.trim();
+            // Get all network interfaces
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+            while (interfaces.hasMoreElements()) {
+                NetworkInterface iface = interfaces.nextElement();
+                // Skip loopback and down interfaces
+                if (iface.isLoopback() || !iface.isUp()) {
+                    continue;
+                }
+                
+                Enumeration<InetAddress> addresses = iface.getInetAddresses();
+                while (addresses.hasMoreElements()) {
+                    InetAddress addr = addresses.nextElement();
+                    if (addr instanceof Inet4Address) {
+                        String ip = addr.getHostAddress();
+                        // Return external IP (192.168.1.x) instead of Docker internal IP (172.20.0.x)
+                        if (ip.startsWith("192.168.1.")) {
+                            return ip;
+                        }
+                    }
+                }
             }
-
-            // Get local IP address
-            InetAddress localHost = InetAddress.getLocalHost();
-            String ip = localHost.getHostAddress();
-            System.out.println("Detected instance IP: " + ip);
-            return ip;
         } catch (Exception e) {
-            System.err.println("Failed to get instance IP: " + e.getMessage());
-            // Fallback to INSTANCE_ID if IP detection fails
-            return INSTANCE_ID;
+            System.err.println("Error getting instance IP: " + e.getMessage());
         }
+        
+        // Fallback to environment variable or default
+        return System.getenv().getOrDefault("INSTANCE_IP", "192.168.1.1");
     }
 
+    /**
+     * Main method
+     */
     public static void main(String[] args) {
         ConfigCenterPushListenerEn listener = new ConfigCenterPushListenerEn();
         listener.start();
     }
 
+    /**
+     * Start the listener
+     */
     public void start() {
-        System.out.println("=== Config Center Push Listener Starting ===");
-        System.out.println("ZooKeeper Server: " + ZK_SERVER);
-        System.out.println("Instance ID: " + INSTANCE_ID);
-        System.out.println("Instance IP: " + INSTANCE_IP);
-        System.out.println("Local Config Dir: " + LOCAL_CONFIG_DIR);
-
         try {
+            System.out.println("Starting Config Center Push Listener...");
+            System.out.println("Instance ID: " + INSTANCE_ID);
+            System.out.println("Instance IP: " + INSTANCE_IP);
+            System.out.println("ZooKeeper Server: " + ZK_SERVER);
+            System.out.println("Local Config Dir: " + LOCAL_CONFIG_DIR);
+
             // Connect to ZooKeeper
-            zk = new ZooKeeper(ZK_SERVER, 5000, new Watcher() {
-                @Override
-                public void process(WatchedEvent event) {
-                    System.out.println("ZooKeeper Event: " + event.getType() + " - " + event.getState());
-                    if (event.getState() == Watcher.Event.KeeperState.SyncConnected) {
-                        System.out.println("Connected to ZooKeeper: " + ZK_SERVER);
-                        connectedSignal.countDown();
-                    }
-                }
-            });
+            connectToZooKeeper();
 
-            // Wait for connection
-            connectedSignal.await();
-            System.out.println("Config center push listener started, listening for notifications...");
-
-            // Start watching notifications
+            // Initial watch setup
             watchNotifications();
 
-            // Keep running
+            // Keep running and re-watch periodically
             while (running.get()) {
-                Thread.sleep(1000);
+                Thread.sleep(5000); // Check every 5 seconds
+                try {
+                    // Re-watch notifications to catch any missed events
+                    watchNotifications();
+                } catch (Exception e) {
+                    System.err.println("Error re-watching notifications: " + e.getMessage());
+                }
             }
 
         } catch (Exception e) {
-            System.err.println("Error in config center push listener: " + e.getMessage());
+            System.err.println("Error in listener: " + e.getMessage());
             e.printStackTrace();
         } finally {
-            if (zk != null) {
-                try {
-                    zk.close();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-            }
+            closeZooKeeper();
         }
     }
 
     /**
-     * Watch for config change notifications
+     * Connect to ZooKeeper
+     */
+    private void connectToZooKeeper() throws Exception {
+        zk = new ZooKeeper(ZK_SERVER, 30000, new Watcher() {
+            @Override
+            public void process(WatchedEvent event) {
+                System.out.println("ZooKeeper Event: " + event.getType() + " - " + event.getState());
+                
+                if (event.getState() == Watcher.Event.KeeperState.SyncConnected) {
+                    System.out.println("Connected to ZooKeeper: " + ZK_SERVER);
+                    connectedSignal.countDown();
+                } else if (event.getState() == Watcher.Event.KeeperState.Disconnected) {
+                    System.out.println("Disconnected from ZooKeeper");
+                } else if (event.getState() == Watcher.Event.KeeperState.Expired) {
+                    System.out.println("ZooKeeper session expired, reconnecting...");
+                    try {
+                        connectToZooKeeper();
+                        watchNotifications();
+                    } catch (Exception e) {
+                        System.err.println("Failed to reconnect: " + e.getMessage());
+                    }
+                }
+            }
+        });
+
+        connectedSignal.await();
+    }
+
+    /**
+     * Watch notifications recursively
      */
     private void watchNotifications() {
         try {
@@ -117,14 +153,18 @@ public class ConfigCenterPushListenerEn {
                 @Override
                 public void process(WatchedEvent event) {
                     if (event.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
+                        System.out.println("[WATCH] Notifications base path changed, re-watching...");
                         watchNotifications();
                     }
                 }
             });
 
-            // Watch each group
-            for (String groupName : groups) {
-                watchGroupNotifications(groupName);
+            System.out.println("[DEBUG] Found " + groups.size() + " groups: " + groups);
+
+            // Process each group
+            for (String group : groups) {
+                System.out.println("[DEBUG] Watching group: " + group);
+                watchGroupNotifications(group);
             }
 
         } catch (Exception e) {
@@ -135,21 +175,21 @@ public class ConfigCenterPushListenerEn {
     /**
      * Watch notifications for a specific group
      */
-    private void watchGroupNotifications(String groupName) {
+    private void watchGroupNotifications(String group) {
         try {
-            String groupPath = NOTIFICATION_BASE_PATH + "/" + groupName;
+            String groupPath = NOTIFICATION_BASE_PATH + "/" + group;
             List<String> configKeys = zk.getChildren(groupPath, new Watcher() {
                 @Override
                 public void process(WatchedEvent event) {
                     if (event.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
-                        watchGroupNotifications(groupName);
+                        watchGroupNotifications(group);
                     }
                 }
             });
 
-            // Watch each config key
+            // Process each config key
             for (String configKey : configKeys) {
-                watchConfigNotifications(groupName, configKey);
+                watchConfigNotifications(group, configKey);
             }
 
         } catch (Exception e) {
@@ -160,25 +200,29 @@ public class ConfigCenterPushListenerEn {
     /**
      * Watch notifications for a specific config
      */
-    private void watchConfigNotifications(String groupName, String configKey) {
+    private void watchConfigNotifications(String group, String configKey) {
         try {
-            String configNotificationPath = NOTIFICATION_BASE_PATH + "/" + groupName + "/" + configKey;
-            List<String> instances = zk.getChildren(configNotificationPath, new Watcher() {
+            String configPath = NOTIFICATION_BASE_PATH + "/" + group + "/" + configKey;
+            List<String> instances = zk.getChildren(configPath, new Watcher() {
                 @Override
                 public void process(WatchedEvent event) {
                     if (event.getType() == Watcher.Event.EventType.NodeChildrenChanged) {
-                        watchConfigNotifications(groupName, configKey);
+                        watchConfigNotifications(group, configKey);
                     }
                 }
             });
 
-            // Check if there's a notification for this instance
-            String instanceNotificationPath = configNotificationPath + "/" + INSTANCE_IP;
-            Stat stat = zk.exists(instanceNotificationPath, false);
-            
-            if (stat != null) {
-                // Process the notification
-                processNotification(groupName, configKey, instanceNotificationPath);
+            // Process each instance - Only process notifications for this instance's IP
+            System.out.println("[DEBUG] Found " + instances.size() + " instances for " + group + "/" + configKey);
+            for (String instance : instances) {
+                System.out.println("[DEBUG] Processing notification for instance: " + instance);
+                // Only process notifications intended for this instance
+                if (instance.equals(INSTANCE_IP)) {
+                    System.out.println("[DEBUG] This notification is for our IP: " + INSTANCE_IP);
+                    processNotification(group, configKey, instance);
+                } else {
+                    System.out.println("[DEBUG] Skipping notification for IP: " + instance + " (our IP: " + INSTANCE_IP + ")");
+                }
             }
 
         } catch (Exception e) {
@@ -187,48 +231,49 @@ public class ConfigCenterPushListenerEn {
     }
 
     /**
-     * Process a config change notification
+     * Process a notification
      */
-    private void processNotification(String groupName, String configKey, String notificationPath) {
+    private void processNotification(String group, String configKey, String instance) {
         try {
-            System.out.println("[NOTIFICATION] Received config change notification: group=" + groupName + ", key=" + configKey);
+            System.out.println("[NOTIFICATION] Processing notification: " + group + "/" + configKey + "/" + instance);
 
             // Get notification data
-            byte[] notificationData = zk.getData(notificationPath, false, null);
-            String notificationJson = new String(notificationData, StandardCharsets.UTF_8);
-            System.out.println("[DATA] Notification data: " + notificationJson);
+            String notificationPath = NOTIFICATION_BASE_PATH + "/" + group + "/" + configKey + "/" + instance;
+            Stat stat = zk.exists(notificationPath, false);
+            if (stat != null) {
+                byte[] data = zk.getData(notificationPath, false, stat);
+                String notificationJson = new String(data, StandardCharsets.UTF_8);
+                System.out.println("[DATA] Notification data: " + notificationJson);
 
-            // Parse notification data
-            String configValue = parseNotificationData(notificationJson);
-            long version = parseNotificationDataVersion(notificationJson);
-            System.out.println("[PARSE] Parsed config value: " + configValue + ", version: " + version);
+                // Parse notification data
+                String configValue = parseNotificationData(notificationJson);
+                System.out.println("[PARSE] Parsed config value: " + configValue + ", version: " + getVersionFromJson(notificationJson));
 
-            // Save config to local
-            String localFilePath = LOCAL_CONFIG_DIR + "/" + groupName + "/" + configKey;
-            System.out.println("[SAVE] Saving config to local file: " + localFilePath);
-            saveConfigToLocal(localFilePath, configValue, groupName, configKey);
+                // Save config to local file
+                String localFilePath = LOCAL_CONFIG_DIR + "/" + group + "/" + configKey;
+                saveConfigToLocal(localFilePath, configValue, group, configKey);
 
-            // Report current config status to ZooKeeper
-            System.out.println("[REPORT] Starting status report to ZooKeeper...");
-            reportConfigStatus(groupName, configKey, configValue, version);
+                // Report config status
+                reportConfigStatus(group, configKey, configValue, getVersionFromJson(notificationJson));
 
-            // Delete the notification node
-            System.out.println("[DELETE] Deleting notification node: " + notificationPath);
-            zk.delete(notificationPath, -1);
-            System.out.println("[SUCCESS] Successfully processed and deleted notification node: " + notificationPath);
-
+                // Delete notification node
+                System.out.println("[DELETE] Deleting notification node: " + notificationPath);
+                zk.delete(notificationPath, -1);
+                System.out.println("[SUCCESS] Successfully processed and deleted notification node: " + notificationPath);
+            }
         } catch (Exception e) {
-            System.err.println("[ERROR] Error processing notification: " + e.getMessage());
+            System.err.println("Error processing notification: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     /**
-     * Parse notification data to extract config value and version
+     * Parse notification data - treat newValue as complete string
      */
     private String parseNotificationData(String notificationJson) {
         try {
             // Parse new JSON format: {"configKey":"xxx","newValue":"xxx","version":xxx}
+            // Treat newValue as a complete string, don't try to parse it further
             String newValueStart = "\"newValue\":\"";
             String newValueEnd = "\",\"version\"";
             
@@ -237,27 +282,9 @@ public class ConfigCenterPushListenerEn {
                 startIndex += newValueStart.length();
                 int endIndex = notificationJson.indexOf(newValueEnd, startIndex);
                 if (endIndex != -1) {
-                    String configValue = notificationJson.substring(startIndex, endIndex);
-                    
-                    // Also extract version for logging
-                    String versionStart = "\"version\":";
-                    String versionEnd = "}";
-                    int versionStartIndex = notificationJson.indexOf(versionStart);
-                    if (versionStartIndex != -1) {
-                        versionStartIndex += versionStart.length();
-                        int versionEndIndex = notificationJson.indexOf(versionEnd, versionStartIndex);
-                        if (versionEndIndex != -1) {
-                            String versionStr = notificationJson.substring(versionStartIndex, versionEndIndex);
-                            try {
-                                long version = Long.parseLong(versionStr);
-                                System.out.println("[PARSE] Parsed config value: " + configValue + ", version: " + version);
-                            } catch (NumberFormatException e) {
-                                System.out.println("[PARSE] Parsed config value: " + configValue + ", version: unknown");
-                            }
-                        }
-                    }
-                    
-                    return configValue;
+                    String newValue = notificationJson.substring(startIndex, endIndex);
+                    System.out.println("[PARSE] Parsed newValue: " + newValue);
+                    return newValue;
                 }
             }
             
@@ -269,35 +296,27 @@ public class ConfigCenterPushListenerEn {
             return notificationJson;
         }
     }
+
     /**
-     * Parse notification data to extract version
+     * Get version from JSON
      */
-    private long parseNotificationDataVersion(String notificationJson) {
+    private long getVersionFromJson(String notificationJson) {
         try {
-            // Parse version from JSON format: {"configKey":"xxx","newValue":"xxx","version":xxx}
             String versionStart = "\"version\":";
             String versionEnd = "}";
-            
-            int startIndex = notificationJson.indexOf(versionStart);
-            if (startIndex != -1) {
-                startIndex += versionStart.length();
-                int endIndex = notificationJson.indexOf(versionEnd, startIndex);
-                if (endIndex != -1) {
-                    String versionStr = notificationJson.substring(startIndex, endIndex);
-                    try {
-                        return Long.parseLong(versionStr);
-                    } catch (NumberFormatException e) {
-                        System.err.println("[ERROR] Failed to parse version number: " + versionStr);
-                    }
+            int versionStartIndex = notificationJson.indexOf(versionStart);
+            if (versionStartIndex != -1) {
+                versionStartIndex += versionStart.length();
+                int versionEndIndex = notificationJson.indexOf(versionEnd, versionStartIndex);
+                if (versionEndIndex != -1) {
+                    String versionStr = notificationJson.substring(versionStartIndex, versionEndIndex);
+                    return Long.parseLong(versionStr);
                 }
             }
-            
-            // Fallback: return 0 if parsing fails
-            return 0;
         } catch (Exception e) {
-            System.err.println("[ERROR] Error parsing version from notification data: " + e.getMessage());
-            return 0;
+            System.err.println("Error parsing version: " + e.getMessage());
         }
+        return System.currentTimeMillis();
     }
 
     /**
@@ -313,89 +332,51 @@ public class ConfigCenterPushListenerEn {
             }
 
             // Write config value to file
-            try (FileWriter writer = new FileWriter(file)) {
+            try (FileWriter writer = new FileWriter(filePath)) {
                 writer.write(configValue);
             }
 
             System.out.println("Config saved to local: " + filePath);
             System.out.println("Config value: " + configValue);
-
         } catch (Exception e) {
             System.err.println("Error saving config to local: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 
     /**
-     * Report current config status to ZooKeeper
+     * Report config status to ZooKeeper
      */
     private void reportConfigStatus(String groupName, String configKey, String configValue, long version) {
         try {
             System.out.println("=== Starting config status report ===");
             System.out.println("Group: " + groupName + ", Config: " + configKey + ", Value: " + configValue);
-            
-            // Create status path: /config-center/container-status/{groupName}/{configKey}/{instanceIp}
+
+            // Create status path
             String statusPath = CONFIG_STATUS_BASE_PATH + "/" + groupName + "/" + configKey + "/" + INSTANCE_IP;
-            System.out.println("Status path: " + statusPath);
-            
+
             // Create status data
             String statusData = createStatusData(groupName, configKey, configValue, version);
-            System.out.println("Status data: " + statusData);
-            
-            // Create parent directories if they don't exist
+
+            // Ensure parent directories exist
             createParentDirectories(statusPath);
-            
+
             // Create or update status node
             Stat stat = zk.exists(statusPath, false);
-            if (stat == null) {
-                // Create new status node
-                System.out.println("Creating new status node...");
-                zk.create(statusPath, statusData.getBytes(StandardCharsets.UTF_8), 
-                         org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE,
-                         org.apache.zookeeper.CreateMode.PERSISTENT);
-                System.out.println("[SUCCESS] Successfully created config status node: " + statusPath);
-            } else {
-                // Update existing status node
+            if (stat != null) {
                 System.out.println("Updating existing status node...");
                 zk.setData(statusPath, statusData.getBytes(StandardCharsets.UTF_8), -1);
-                System.out.println("[SUCCESS] Successfully updated config status node: " + statusPath);
+            } else {
+                System.out.println("Creating new status node...");
+                zk.create(statusPath, statusData.getBytes(StandardCharsets.UTF_8), 
+                         org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE, 
+                         org.apache.zookeeper.CreateMode.EPHEMERAL);
             }
-            
+
+            System.out.println("[SUCCESS] Successfully updated config status node: " + statusPath);
             System.out.println("=== Config status report completed ===");
 
         } catch (Exception e) {
-            System.err.println("[ERROR] Error reporting config status: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Create parent directories for status path
-     */
-    private void createParentDirectories(String statusPath) {
-        try {
-            String[] pathParts = statusPath.split("/");
-            String currentPath = "";
-            
-            for (String part : pathParts) {
-                if (part.isEmpty()) continue;
-                
-                currentPath += "/" + part;
-                System.out.println("Checking path: " + currentPath);
-                
-                Stat stat = zk.exists(currentPath, false);
-                if (stat == null) {
-                    System.out.println("Creating directory: " + currentPath);
-                    zk.create(currentPath, "".getBytes(StandardCharsets.UTF_8), 
-                             org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE,
-                             org.apache.zookeeper.CreateMode.PERSISTENT);
-                    System.out.println("[SUCCESS] Created directory: " + currentPath);
-                } else {
-                    System.out.println("Directory already exists: " + currentPath);
-                }
-            }
-        } catch (Exception e) {
-            System.err.println("Error creating parent directories: " + e.getMessage());
+            System.err.println("Error reporting config status: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -405,13 +386,65 @@ public class ConfigCenterPushListenerEn {
      */
     private String createStatusData(String groupName, String configKey, String configValue, long version) {
         long timestamp = System.currentTimeMillis();
+        // Escape JSON special characters in configValue
+        String escapedConfigValue = escapeJsonString(configValue);
         return String.format(
             "{\"ip\":\"%s\",\"configValue\":\"%s\",\"version\":%d,\"lastUpdateTime\":%d,\"status\":\"Running\"}",
-            INSTANCE_IP, configValue, version, timestamp
+            INSTANCE_IP, escapedConfigValue, version, timestamp
         );
     }
 
-    public void stop() {
-        running.set(false);
+    /**
+     * Escape JSON string
+     */
+    private String escapeJsonString(String input) {
+        if (input == null) {
+            return "";
+        }
+        return input.replace("\\", "\\\\")
+                   .replace("\"", "\\\"")
+                   .replace("\n", "\\n")
+                   .replace("\r", "\\r")
+                   .replace("\t", "\\t");
+    }
+
+    /**
+     * Create parent directories in ZooKeeper
+     */
+    private void createParentDirectories(String path) {
+        try {
+            String[] parts = path.split("/");
+            String currentPath = "";
+            
+            for (String part : parts) {
+                if (!part.isEmpty()) {
+                    currentPath += "/" + part;
+                    Stat stat = zk.exists(currentPath, false);
+                    if (stat == null) {
+                        System.out.println("Creating directory: " + currentPath);
+                        zk.create(currentPath, new byte[0], 
+                                 org.apache.zookeeper.ZooDefs.Ids.OPEN_ACL_UNSAFE, 
+                                 org.apache.zookeeper.CreateMode.PERSISTENT);
+                    } else {
+                        System.out.println("Directory already exists: " + currentPath);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error creating parent directories: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Close ZooKeeper connection
+     */
+    private void closeZooKeeper() {
+        try {
+            if (zk != null) {
+                zk.close();
+            }
+        } catch (Exception e) {
+            System.err.println("Error closing ZooKeeper: " + e.getMessage());
+        }
     }
 } 

@@ -1,9 +1,11 @@
 package com.example.configcenter.service.impl;
 
+import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.fastjson.JSON;
 import com.example.configcenter.context.Context;
 import com.example.configcenter.context.ContextManager;
 import com.example.configcenter.dto.ConfigQueryDto;
+import com.example.configcenter.dto.PublishDto;
 import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.Ticket;
@@ -14,6 +16,8 @@ import com.example.configcenter.service.ConfigService;
 import com.example.configcenter.service.MachineService;
 import com.example.configcenter.service.TicketService;
 import com.example.configcenter.service.ZooKeeperService;
+import com.example.configcenter.utils.JsonUtil;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -35,6 +39,8 @@ import java.util.List;
 @Slf4j
 @Service
 public class ConfigServiceImpl implements ConfigService {
+
+
 
     @Autowired
     private ConfigItemMapper configItemMapper;
@@ -68,10 +74,10 @@ public class ConfigServiceImpl implements ConfigService {
     public boolean createConfig(ConfigItem configItem) {
         try {
             // 设置基础信息
-            configItem.setVersion(1L);
+            configItem.setVersion(System.currentTimeMillis());
             configItem.setStatus("ACTIVE");
-            configItem.setCreateTime(LocalDateTime.now());
-            configItem.setUpdateTime(LocalDateTime.now());
+            configItem.setCreateTime(System.currentTimeMillis());
+            configItem.setUpdateTime(System.currentTimeMillis());
             configItem.setDelFlag(0);
             // 生成ZK路径
             String zkPath = buildZkPath(configItem.getGroupName(), configItem.getConfigKey());
@@ -79,17 +85,8 @@ public class ConfigServiceImpl implements ConfigService {
 
             // 保存到数据库
             int result = configItemMapper.insert(configItem);
-            
-            if (result > 0) {
-                // 记录历史
-                recordHistory(configItem, "CREATE", null, configItem.getConfigValue(), 
-                            "创建配置项", configItem.getCreateBy());
-                
-                log.info("配置项创建成功: {}", configItem.getConfigKey());
-                return true;
-            }
-            
-            return false;
+
+            return true;
         } catch (Exception e) {
             log.error("创建配置项失败", e);
             return false;
@@ -108,13 +105,10 @@ public class ConfigServiceImpl implements ConfigService {
 
             // 版本号递增
             configItem.setVersion(System.currentTimeMillis());
-            configItem.setUpdateTime(LocalDateTime.now());
+            configItem.setUpdateTime(System.currentTimeMillis());
 
             Ticket ticket = buildTicket(oldConfig, configItem);
             ticketService.createTicket(ticket);
-
-//            // 更新数据库
-//            int result = configItemMapper.update(configItem);
 
             return ticket;
         } catch (Exception e) {
@@ -124,11 +118,12 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
     private Ticket buildTicket(ConfigItem oldConfig, ConfigItem newConfig) {
+        newConfig.setVersion(System.currentTimeMillis());
         Ticket ticket = new Ticket();
         Context context = ContextManager.getContext();
         ticket.setTitle(newConfig.getConfigKey());
-        ticket.setOldData(oldConfig.getConfigValue());
-        ticket.setNewData(newConfig.getConfigValue());
+        ticket.setOldData(JsonUtil.objectToString(oldConfig));
+        ticket.setNewData(JsonUtil.objectToString(newConfig));
         ticket.setApplicator(context.getUserEmail());
         ticket.setDataId(oldConfig.getId());
         ticket.setPhase(TicketPhaseEnum.Reviewing);
@@ -145,26 +140,15 @@ public class ConfigServiceImpl implements ConfigService {
                 log.warn("配置项不存在: {}", id);
                 return false;
             }
-            
+
             // 软删除
             configItem.setDelFlag(1);
-            configItem.setUpdateTime(LocalDateTime.now());
-            
+            configItem.setUpdateTime(System.currentTimeMillis());
+
             int result = configItemMapper.deleteById(configItem.getId());
-            
-            if (result > 0) {
-                // 从ZK删除
-                zooKeeperService.deleteConfig(configItem.getZkPath());
-                
-                // 记录历史
-                recordHistory(configItem, "DELETE", configItem.getConfigValue(), null, 
-                            "删除配置项", configItem.getUpdateBy());
-                
-                log.info("配置项删除成功: {}", configItem.getConfigKey());
-                return true;
-            }
-            
-            return false;
+
+
+            return true;
         } catch (Exception e) {
             log.error("删除配置项失败", e);
             return false;
@@ -174,41 +158,18 @@ public class ConfigServiceImpl implements ConfigService {
     @Override
     @Transactional
     @CacheEvict(value = {"config", "configs", "configMap"}, allEntries = true)
-    public boolean publishConfig(Long id, List<String> ipList) {
+    public boolean publishConfig(Long id, PublishDto publishDto) {
         try {
-            String publisher = ContextManager.getContext().getUserEmail();
-            ConfigItem configItem = configItemMapper.findById(id);
-            if (configItem == null) {
-                log.warn("配置项不存在: {}", id);
-                return false;
-            }
-            
-            String configValue = configItem.getConfigValue();
-            
-            // 发布到ZooKeeper
-            boolean published = zooKeeperService.publishConfig(configItem.getZkPath(), configValue);
-            
-            if (published) {
-                // 更新发布信息
-                configItem.setLastPublishTime(System.currentTimeMillis());
-                configItem.setPublisher(publisher);
-                configItem.setStatus("PUBLISHED");
-                configItem.setUpdateTime(LocalDateTime.now());
-                configItemMapper.update(configItem);
-                
-                // 记录历史
-                recordHistory(configItem, "PUBLISH", null, configValue, 
-                            "发布配置", publisher);
-                
-                // 通知订阅的机器配置变更
-                int notifiedCount = machineConfigSubscriptionService.notifyConfigChange(
-                        configItem.getGroupName(), configItem.getConfigKey(), configValue, configItem.getVersion(), ipList);
-                log.info("配置发布成功: {}, 通知机器数: {}", configItem.getConfigKey(), notifiedCount);
-                return true;
-            }
-            
-            return false;
-        } catch (Exception e) {
+
+            Ticket ticket = ticketService.getTicketById(publishDto.getTicketId());
+            ConfigItem configItem = JsonUtil.jsonToObject(ticket.getNewData(), ConfigItem.class);
+            // 通知订阅的机器配置变更
+            int notifiedCount = machineConfigSubscriptionService.notifyConfigChange(
+                    configItem.getGroupName(), configItem.getConfigKey(), configItem.getConfigValue(), configItem.getVersion(), publishDto.getIpList());
+            log.info("配置发布成功: {}, 通知机器数: {}", configItem.getConfigKey(), notifiedCount);
+            return true;
+        } catch (
+                Exception e) {
             log.error("发布配置失败", e);
             return false;
         }
@@ -225,34 +186,34 @@ public class ConfigServiceImpl implements ConfigService {
                 log.warn("配置项不存在: {}", id);
                 return false;
             }
-            
+
             ConfigHistory targetHistory = configHistoryMapper.findByConfigAndVersion(id, targetVersion);
             if (targetHistory == null) {
                 log.warn("目标版本不存在: configId={}, version={}", id, targetVersion);
                 return false;
             }
-            
+
             // 回滚配置值
             currentConfig.setConfigValue(targetHistory.getNewValue());
             currentConfig.setVersion(currentConfig.getVersion() + 1);
-            currentConfig.setUpdateTime(LocalDateTime.now());
-            currentConfig.setUpdateBy(operator);
-            
+            currentConfig.setUpdateTime(System.currentTimeMillis());
+            currentConfig.setPublisher(operator);
+
             int result = configItemMapper.update(currentConfig);
-            
+
             if (result > 0) {
                 // 重新发布
 //                publishConfig(id);
-                
+
                 // 记录历史
-                recordHistory(currentConfig, "ROLLBACK", 
-                            targetHistory.getOldValue(), targetHistory.getNewValue(), 
-                            "回滚到版本: " + targetVersion, operator);
-                
+                recordHistory(currentConfig, "ROLLBACK",
+                        targetHistory.getOldValue(), targetHistory.getNewValue(),
+                        "回滚到版本: " + targetVersion, operator);
+
                 log.info("配置回滚成功: configId={}, targetVersion={}", id, targetVersion);
                 return true;
             }
-            
+
             return false;
         } catch (Exception e) {
             log.error("回滚配置失败", e);
@@ -299,7 +260,7 @@ public class ConfigServiceImpl implements ConfigService {
         if (!StringUtils.hasText(configValue)) {
             return false;
         }
-        
+
         try {
             switch (dataType.toUpperCase()) {
                 case "NUMBER":
@@ -326,7 +287,6 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
 
-
     /**
      * 构建ZooKeeper路径
      */
@@ -337,8 +297,8 @@ public class ConfigServiceImpl implements ConfigService {
     /**
      * 记录配置历史
      */
-    private void recordHistory(ConfigItem configItem, String operationType, 
-                             String oldValue, String newValue, String changeReason, String operator) {
+    private void recordHistory(ConfigItem configItem, String operationType,
+                               String oldValue, String newValue, String changeReason, String operator) {
         try {
             ConfigHistory history = new ConfigHistory();
             history.setConfigId(configItem.getId());
@@ -353,7 +313,7 @@ public class ConfigServiceImpl implements ConfigService {
             history.setOperateTime(System.currentTimeMillis());
             history.setCreateTime(LocalDateTime.now());
             history.setCreateBy(operator);
-            
+
             configHistoryMapper.insert(history);
         } catch (Exception e) {
             log.error("记录配置历史失败", e);

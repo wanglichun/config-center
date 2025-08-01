@@ -51,15 +51,6 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: 'config/edit/:id',
-        name: 'EditConfig',
-        component: () => import('@/views/config/Edit.vue'),
-        meta: {
-          title: '编辑配置',
-          hidden: true
-        }
-      },
-      {
         path: 'config/publish/:id',
         name: 'ConfigPublishDetail',
         component: () => import('@/views/config/PublishDetail.vue'),
@@ -75,15 +66,6 @@ const routes: RouteRecordRaw[] = [
         meta: {
           title: '变更历史',
           icon: 'Clock'
-        }
-      },
-      {
-        path: 'gray-release',
-        name: 'GrayRelease',
-        component: () => import('@/views/GrayRelease.vue'),
-        meta: {
-          title: '灰度发布',
-          icon: 'Operation'
         }
       },
       {
@@ -106,21 +88,12 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: 'profile',
-        name: 'Profile',
-        component: () => import('@/views/Profile.vue'),
-        meta: {
-          title: '个人中心',
-          hidden: true
-        }
-      },
-      {
         path: 'ticket',
         name: 'Ticket',
         component: () => import('@/views/ticket/Index.vue'),
         meta: {
           title: '工单管理',
-          icon: 'Ticket'
+          icon: 'Tickets'
         }
       },
       {
@@ -129,6 +102,24 @@ const routes: RouteRecordRaw[] = [
         component: () => import('@/views/ticket/Detail.vue'),
         meta: {
           title: '工单详情',
+          hidden: true
+        }
+      },
+      {
+        path: 'config/edit/:id',
+        name: 'EditConfig',
+        component: () => import('@/views/config/Edit.vue'),
+        meta: {
+          title: '编辑配置',
+          hidden: true
+        }
+      },
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: () => import('@/views/Profile.vue'),
+        meta: {
+          title: '个人中心',
           hidden: true
         }
       }

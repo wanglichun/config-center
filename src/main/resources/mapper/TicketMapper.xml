@@ -52,4 +52,16 @@
         LIMIT #{offset}, #{pageSize}
     </select>
 
+
+    <!-- 更新Ticket -->
+    <update id="update" parameterType="com.example.configcenter.entity.Ticket">
+        UPDATE ticket
+        <set>
+            <if test="phase != null">phase = #{phase},</if>
+            <if test="operator != null">operator = #{operator},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
 </mapper> 

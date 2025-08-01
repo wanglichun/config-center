@@ -11,7 +11,8 @@
     "monitor": "System Monitor",
     "profile": "Profile",
     "settings": "Settings",
-    "logout": "Logout"
+    "logout": "Logout",
+    "ticket": "Ticket Management"
   },
   "common": {
     "search": "Search",
@@ -415,7 +416,7 @@
   "ticket": {
     "title": "Ticket Management",
     "add": "Add Ticket",
-    "phase": "Phase",
+    "phase": "Ticket Phase",
     "applicator": "Applicator",
     "operator": "Operator",
     "createTime": "Create Time",
@@ -444,13 +445,14 @@
       "approve": "Approve",
       "reject": "Reject",
       "cancel": "Cancel",
+      "complete": "Complete",
+      "publish": "Publish",
       "confirmMessage": "Are you sure to {action} this ticket?",
-      "successMessage": "{action} operation successful",
-      "errorMessage": "Operation failed, please try again"
+      "successMessage": "{action} successfully",
+      "errorMessage": "Operation failed"
     },
     "detail": {
       "title": "Ticket Detail",
-      "statusProgress": "Status Progress",
       "basicInfo": "Basic Information",
       "dataComparison": "Data Comparison",
       "oldData": "Old Data",
@@ -459,6 +461,7 @@
       "noNewData": "No new data",
       "operationHistory": "Operation History",
       "operator": "Operator",
+      "statusProgress": "Status Progress",
       "steps": {
         "submit": "Submit",
         "submitDesc": "Ticket submitted",
@@ -466,12 +469,36 @@
         "reviewingDesc": "Waiting for review",
         "approved": "Approved",
         "approvedDesc": "Review passed",
+        "grayPublish": "Gray Publish",
+        "grayPublishDesc": "Gray publishing",
         "publishing": "Publishing",
-        "publishingDesc": "Publishing config",
+        "publishingDesc": "Publishing",
         "loading": "Loading",
         "loadingDesc": "Config loading",
         "success": "Success",
-        "successDesc": "Publish successful"
+        "successDesc": "Publish success"
+      },
+      "machineList": "Machine List",
+      "availableMachines": "Available Machines",
+      "publishedMachines": "Published Machines",
+      "publishToSelected": "Publish to Selected",
+      "publishToAll": "Publish to All",
+      "rollbackSelected": "Rollback Selected",
+      "selectMachinesFirst": "Please select machines to publish first",
+      "ip": "IP Address",
+      "searchIp": "Search IP",
+      "status": "Status",
+      "currentVersion": "Current Version",
+      "currentConfig": "Current Config",
+      "machineName": "Machine Name",
+      "lastUpdate": "Last Update",
+      "details": "Details",
+      "viewDetails": "View Details",
+      "grayPublishDialog": {
+        "title": "Gray Publish",
+        "confirm": "Confirm Publish",
+        "publishSuccess": "Publish Success",
+        "publishFailed": "Publish Failed"
       },
       "messages": {
         "ticketIdRequired": "Ticket ID is required",
