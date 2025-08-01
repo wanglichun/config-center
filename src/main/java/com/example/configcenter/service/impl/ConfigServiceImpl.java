@@ -157,9 +157,13 @@ public class ConfigServiceImpl implements ConfigService {
     @CacheEvict(value = {"config", "configs", "configMap"}, allEntries = true)
     public boolean publishConfig(Long id, PublishDto publishDto) {
         try {
-
             Ticket ticket = ticketService.getTicketById(publishDto.getTicketId());
-            ConfigItem configItem = JsonUtil.jsonToObject(ticket.getNewData(), ConfigItem.class);
+            ConfigItem configItem;
+            if ("Publish".equals(publishDto.getAction())) {
+                configItem = JsonUtil.jsonToObject(ticket.getNewData(), ConfigItem.class);
+            } else {
+                configItem = JsonUtil.jsonToObject(ticket.getOldData(), ConfigItem.class);
+            }
             // 通知订阅的机器配置变更
             int notifiedCount = machineConfigSubscriptionService.notifyConfigChange(
                     configItem.getGroupName(), configItem.getConfigKey(), configItem.getConfigValue(), configItem.getVersion(), publishDto.getIpList());

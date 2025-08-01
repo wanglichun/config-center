@@ -1,7 +1,6 @@
 package com.example.configcenter.dto;
 
 import lombok.Data;
-import org.apache.catalina.LifecycleState;
 
 import java.util.List;
 
@@ -9,4 +8,5 @@ import java.util.List;
 public class PublishDto {
     private List<String> ipList;
     private Long ticketId;
+    private String action;
 }
