@@ -95,8 +95,8 @@ export function searchConfigs(params: {
 /**
  * 获取配置历史
  */
-export function getConfigHistory(id: number): Promise<ApiResult<any[]>> {
-  return request.get(`/config/${id}/history`)
+export function getConfigHistory(id: number, params?: { pageNum?: number; pageSize?: number }): Promise<ApiResult<PageResult<any>>> {
+  return request.get(`/config/history`, { configId: id, ...params })
 }
 
 /**

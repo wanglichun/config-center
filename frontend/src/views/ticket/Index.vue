@@ -66,7 +66,7 @@
         style="width: 100%"
       >
         <el-table-column prop="id" label="ID" width="80" />
-        <el-table-column prop="title" :label="$t('ticket.title')" min-width="200" show-overflow-tooltip />
+        <el-table-column prop="title" :label="$t('ticket.title')" width="300" show-overflow-tooltip />
         <el-table-column prop="phase" :label="$t('ticket.phase')" width="120">
           <template #default="scope">
             <el-tag :type="getPhaseTagType(scope.row.phase)">
@@ -74,8 +74,8 @@
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column prop="applicator" :label="$t('ticket.applicator')" width="120" />
-        <el-table-column prop="operator" :label="$t('ticket.operator')" width="120" />
+        <el-table-column prop="applicator" :label="$t('ticket.applicator')" width="200" />
+        <el-table-column prop="operator" :label="$t('ticket.operator')" width="200" />
         <el-table-column prop="createTime" :label="$t('ticket.createTime')" width="160">
           <template #default="scope">
             {{ formatTime(scope.row.createTime) }}
@@ -86,7 +86,7 @@
             {{ formatTime(scope.row.updateTime) }}
           </template>
         </el-table-column>
-        <el-table-column :label="$t('common.actions')" width="200" fixed="right">
+        <el-table-column :label="$t('common.actions')" width="300" fixed="right">
           <template #default="scope">
             <el-button
               size="small"

@@ -1,23 +1,13 @@
 package com.example.configcenter.dto;
 
+import com.example.configcenter.common.PageBase;
 import lombok.Data;
 
 /**
  * 工单查询请求DTO
  */
 @Data
-public class TicketQueryRequest {
-    
-    /**
-     * 页码
-     */
-    private Integer pageNum = 1;
-    
-    /**
-     * 每页大小
-     */
-    private Integer pageSize = 10;
-    
+public class TicketQueryRequest extends PageBase {
     /**
      * 工单标题
      */
@@ -32,4 +22,9 @@ public class TicketQueryRequest {
      * 申请人
      */
     private String applicator;
+
+    /**
+     * 配置id
+     */
+    private Long configId;
 } 

@@ -3,7 +3,9 @@ package com.example.configcenter.service;
 import com.example.configcenter.common.PageResult;
 import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.dto.PublishDto;
+import com.example.configcenter.dto.TicketQueryRequest;
 import com.example.configcenter.entity.ConfigHistory;
+import com.example.configcenter.entity.ConfigHistoryReq;
 import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.Ticket;
 
@@ -71,10 +73,10 @@ public interface ConfigService {
     /**
      * 获取配置历史
      *
-     * @param configId 配置项ID
+     * @param request
      * @return 历史记录列表
      */
-    List<ConfigHistory> getConfigHistory(Long configId);
+    PageResult<Ticket> getConfigHistory(TicketQueryRequest request);
 
     /**
      * 分页查询配置项

@@ -5,10 +5,8 @@ import com.example.configcenter.common.ApiResult;
 import com.example.configcenter.common.PageResult;
 import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.dto.PublishDto;
-import com.example.configcenter.entity.ConfigHistory;
-import com.example.configcenter.entity.ConfigItem;
-import com.example.configcenter.entity.MachineInstance;
-import com.example.configcenter.entity.Ticket;
+import com.example.configcenter.dto.TicketQueryRequest;
+import com.example.configcenter.entity.*;
 import com.example.configcenter.service.ConfigService;
 import com.example.configcenter.service.MachineService;
 import com.example.configcenter.service.TicketService;
@@ -164,5 +162,10 @@ public class ConfigController {
             log.error("获取订阅机器列表失败: id={}", id, e);
             return ApiResult.error("查询失败：" + e.getMessage());
         }
+    }
+
+    @GetMapping("/history")
+    public ApiResult<PageResult<Ticket>> getConfigHistory(TicketQueryRequest req) {
+        return ApiResult.success(configService.getConfigHistory(req));
     }
 } 

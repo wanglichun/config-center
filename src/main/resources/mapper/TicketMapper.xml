@@ -42,12 +42,22 @@
     <select id="count" resultType="int">
         SELECT COUNT(*)
         FROM ticket
+        <where>
+            <if test="configId != null and configId != ''">
+                data_id = #{configId}
+            </if>
+        </where>
     </select>
 
     <!-- 分页查询工单列表 -->
     <select id="findByPage" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM ticket
+        <where>
+            <if test="configId != null and configId != ''">
+                data_id = #{configId}
+            </if>
+        </where>
         ORDER BY create_time DESC
         LIMIT #{offset}, #{pageSize}
     </select>

@@ -15,18 +15,20 @@ public interface TicketMapper {
     /**
      * 分页查询工单列表
      */
-    List<Ticket> findByPage(@Param("offset") int offset, 
-                           @Param("pageSize") int pageSize,
-                           @Param("title") String title,
-                           @Param("phase") String phase,
-                           @Param("applicator") String applicator);
+    List<Ticket> findByPage(@Param("offset") int offset,
+                            @Param("pageSize") int pageSize,
+                            @Param("title") String title,
+                            @Param("phase") String phase,
+                            @Param("applicator") String applicator,
+                            @Param("configId") Long configId);
 
     /**
      * 统计工单总数
      */
     int count(@Param("title") String title,
               @Param("phase") String phase,
-              @Param("applicator") String applicator);
+              @Param("applicator") String applicator,
+              @Param("configId") Long configId);
 
     /**
      * 根据ID获取工单

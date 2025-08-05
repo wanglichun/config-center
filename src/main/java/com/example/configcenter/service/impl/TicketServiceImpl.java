@@ -44,10 +44,10 @@ public class TicketServiceImpl implements TicketService {
 
             // 查询工单列表
             List<Ticket> tickets = ticketMapper.findByPage(offset, request.getPageSize(),
-                    request.getTitle(), request.getPhase(), request.getApplicator());
+                    request.getTitle(), request.getPhase(), request.getApplicator(), request.getConfigId());
 
             // 查询总数量
-            int total = ticketMapper.count(request.getTitle(), request.getPhase(), request.getApplicator());
+            int total = ticketMapper.count(request.getTitle(), request.getPhase(), request.getApplicator(), request.getConfigId());
 
             return new PageResult<>(tickets, total, request.getPageNum(), request.getPageSize());
 

@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class PageBase {
     private int pageNum = 1;
-    private int pageSize = 20;
+    private int pageSize = 10;
 }

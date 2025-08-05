@@ -138,6 +138,7 @@
       "title": "配置详情",
       "basicInfo": "基础信息",
       "subscribers": "订阅容器",
+      "history": "配置变更历史",
       "version": "版本号",
       "createTime": "创建时间",
       "updateTime": "更新时间",
@@ -147,9 +148,32 @@
         "configIdRequired": "配置ID不能为空",
         "getConfigDetailFailed": "获取配置详情失败",
         "getSubscribersFailed": "获取订阅者信息失败",
+        "getHistoryFailed": "获取配置历史失败",
         "configValueCopied": "配置值已复制到剪贴板",
         "copySuccess": "已复制到剪贴板",
         "copyFailed": "复制失败"
+      }
+    },
+    "history": {
+      "ticketId": "工单ID",
+      "ticketTitle": "工单标题",
+      "applicator": "申请人",
+      "status": "状态",
+      "createTime": "创建时间",
+      "oldData": "变更前数据",
+      "newData": "变更后数据",
+      "operationType": "操作类型",
+      "oldValue": "变更前值",
+      "newValue": "变更后值",
+      "operator": "操作人",
+      "operateTime": "操作时间",
+      "changeReason": "变更原因",
+      "operationType": {
+        "create": "创建",
+        "update": "更新",
+        "delete": "删除",
+        "publish": "发布",
+        "rollback": "回滚"
       }
     }
   },

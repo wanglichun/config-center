@@ -2,11 +2,14 @@ package com.example.configcenter.service.impl;
 
 import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.fastjson.JSON;
+import com.example.configcenter.common.PageResult;
 import com.example.configcenter.context.Context;
 import com.example.configcenter.context.ContextManager;
 import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.dto.PublishDto;
+import com.example.configcenter.dto.TicketQueryRequest;
 import com.example.configcenter.entity.ConfigHistory;
+import com.example.configcenter.entity.ConfigHistoryReq;
 import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.Ticket;
 import com.example.configcenter.enums.TicketPhaseEnum;
@@ -203,13 +206,7 @@ public class ConfigServiceImpl implements ConfigService {
             int result = configItemMapper.update(currentConfig);
 
             if (result > 0) {
-                // 重新发布
-//                publishConfig(id);
 
-                // 记录历史
-                recordHistory(currentConfig, "ROLLBACK",
-                        targetHistory.getOldValue(), targetHistory.getNewValue(),
-                        "回滚到版本: " + targetVersion, operator);
 
                 log.info("配置回滚成功: configId={}, targetVersion={}", id, targetVersion);
                 return true;
@@ -223,13 +220,8 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
     @Override
-    public List<ConfigHistory> getConfigHistory(Long configId) {
-        try {
-            return configHistoryMapper.findByConfigId(configId);
-        } catch (Exception e) {
-            log.error("获取配置历史失败: configId={}", configId, e);
-            return Collections.emptyList();
-        }
+    public PageResult<Ticket> getConfigHistory(TicketQueryRequest req) {
+        return ticketService.getTicketPage(req);
     }
 
     @Override
@@ -293,31 +285,5 @@ public class ConfigServiceImpl implements ConfigService {
      */
     private String buildZkPath(String groupName, String configKey) {
         return String.format("/configs/%s/%s", groupName, configKey);
-    }
-
-    /**
-     * 记录配置历史
-     */
-    private void recordHistory(ConfigItem configItem, String operationType,
-                               String oldValue, String newValue, String changeReason, String operator) {
-        try {
-            ConfigHistory history = new ConfigHistory();
-            history.setConfigId(configItem.getId());
-            history.setGroupName(configItem.getGroupName());
-            history.setConfigKey(configItem.getConfigKey());
-            history.setOldValue(oldValue);
-            history.setNewValue(newValue);
-            history.setVersion(configItem.getVersion());
-            history.setOperationType(operationType);
-            history.setChangeReason(changeReason);
-            history.setOperator(operator);
-            history.setOperateTime(System.currentTimeMillis());
-            history.setCreateTime(LocalDateTime.now());
-            history.setCreateBy(operator);
-
-            configHistoryMapper.insert(history);
-        } catch (Exception e) {
-            log.error("记录配置历史失败", e);
-        }
     }
 } 

@@ -81,6 +81,42 @@
         </el-descriptions>
       </div>
 
+      <!-- 配置变更历史 -->
+      <div class="history-section">
+        <h3>{{ $t('config.detail.history') }}</h3>
+        <div class="history-content">
+          <el-table 
+            :data="historyList" 
+            v-loading="historyLoading"
+            style="width: 100%"
+            :empty-text="$t('common.noData')"
+          >
+            <el-table-column prop="title" :label="$t('config.history.ticketTitle')" width="180" />
+            <el-table-column prop="applicator" :label="$t('config.history.applicator')" width="180" />
+            <el-table-column prop="phase" :label="$t('config.history.phase')" width="100">
+            </el-table-column>
+            <el-table-column prop="createTime" :label="$t('config.history.createTime')" width="180">
+              <template #default="{ row }">
+                {{ formatTime(row.createTime) }}
+              </template>
+            </el-table-column>
+          </el-table>
+          
+          <!-- 分页 -->
+          <div class="pagination-wrapper" v-if="historyTotal > 0">
+            <el-pagination
+              v-model:current-page="historyQuery.pageNum"
+              v-model:page-size="historyQuery.pageSize"
+              :page-sizes="[10, 20, 50, 100]"
+              :total="historyTotal"
+              layout="total, sizes, prev, pager, next, jumper"
+              @size-change="handleHistorySizeChange"
+              @current-change="handleHistoryCurrentChange"
+            />
+          </div>
+        </div>
+      </div>
+
     </el-card>
   </div>
 </template>
@@ -90,8 +126,8 @@ import { ref, onMounted, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { CopyDocument } from '@element-plus/icons-vue'
-import { getConfigById, getSubscribedContainers } from '@/api/config'
-import type { ConfigItem } from '@/types/config'
+import { getConfigById, getSubscribedContainers, getConfigHistory } from '@/api/config'
+import type { ConfigItem, ConfigHistory } from '@/types/config'
 import { useI18n } from 'vue-i18n'
 
 const route = useRoute()
@@ -100,10 +136,18 @@ const { t } = useI18n()
 
 // 响应式数据
 const configDetail = ref<ConfigItem | null>(null)
-const subscribers = ref<any[]>([])
 const loading = ref(false)
-const loadingSubscribers = ref(false)
 const showEncrypted = ref(false)
+
+// 历史相关数据
+const historyList = ref<any[]>([])
+const historyLoading = ref(false)
+const historyTotal = ref(0)
+const historyQuery = ref({
+  pageNum: 1,
+  pageSize: 10,
+  configId: 0
+})
 
 // 容器详情对话框
 const showContainerDetailDialog = ref(false)
@@ -136,39 +180,96 @@ const loadConfigDetail = async () => {
   }
 }
 
-const loadSubscribers = async () => {
-  if (!configDetail.value) return
+// 加载配置历史
+const loadConfigHistory = async () => {
+  if (!configId.value) return
   
-  loadingSubscribers.value = true
+  historyLoading.value = true
   try {
-    const configId = Number(route.params.id)
-    const response = await getSubscribedContainers(configId)
+    const response = await getConfigHistory(Number(configId.value), {
+      pageNum: historyQuery.value.pageNum,
+      pageSize: historyQuery.value.pageSize
+    })
     if (response.success) {
-      // 将MachineInstance数据转换为简单的IP对象数组
-      subscribers.value = response.data.map((machine) => ({
-        ip: machine.ip,
-        status: machine.status,
-        version: machine.version,
-        configValue: machine.configValue, // 使用API返回的configValue
-        lastUpdateTime: machine.lastUpdateTime
-      }))
+      historyList.value = response.data.records || []
+      historyTotal.value = response.data.total || 0
     } else {
-      ElMessage.error(response.message || t('config.detail.messages.getSubscribersFailed'))
+      ElMessage.error(response.message || t('config.detail.messages.getHistoryFailed'))
     }
   } catch (error) {
-    console.error(t('config.detail.messages.getSubscribersFailed'), error)
-    ElMessage.error(t('config.detail.messages.getSubscribersFailed'))
+    console.error(t('config.detail.messages.getHistoryFailed'), error)
+    ElMessage.error(t('config.detail.messages.getHistoryFailed'))
   } finally {
-    loadingSubscribers.value = false
+    historyLoading.value = false
   }
 }
 
-const refreshData = () => {
-  loadConfigDetail()
+// 历史分页处理
+const handleHistorySizeChange = (size: number) => {
+  historyQuery.value.pageSize = size
+  historyQuery.value.pageNum = 1
+  loadConfigHistory()
 }
 
-const refreshSubscribers = () => {
-  loadSubscribers()
+const handleHistoryCurrentChange = (page: number) => {
+  historyQuery.value.pageNum = page
+  loadConfigHistory()
+}
+
+// 操作类型标签颜色
+const getOperationTypeTagType = (operationType: string) => {
+  switch (operationType) {
+    case 'CREATE': return 'success'
+    case 'UPDATE': return 'warning'
+    case 'DELETE': return 'danger'
+    case 'PUBLISH': return 'primary'
+    case 'ROLLBACK': return 'info'
+    default: return ''
+  }
+}
+
+// 工单状态标签颜色
+const getTicketStatusTagType = (status?: string) => {
+  switch (status) {
+    case 'Submit': return 'info'
+    case 'Reviewing': return 'warning'
+    case 'GrayPublish': return 'primary'
+    case 'Success': return 'success'
+    case 'Rejected': return 'danger'
+    case 'Cancelled': return ''
+    default: return ''
+  }
+}
+
+// 工单状态文本
+const getTicketStatusText = (status?: string) => {
+  switch (status) {
+    case 'Submit': return t('ticket.phases.submit')
+    case 'Reviewing': return t('ticket.phases.reviewing')
+    case 'GrayPublish': return t('ticket.phases.grayPublish')
+    case 'Success': return t('ticket.phases.success')
+    case 'Rejected': return t('ticket.phases.rejected')
+    case 'Cancelled': return t('ticket.phases.cancelled')
+    default: return status || ''
+  }
+}
+
+// 格式化JSON数据
+const formatJsonData = (jsonString: string) => {
+  if (!jsonString) return ''
+  try {
+    const parsed = JSON.parse(jsonString)
+    return JSON.stringify(parsed, null, 2)
+  } catch (error) {
+    return jsonString
+  }
+}
+
+
+
+const refreshData = () => {
+  loadConfigDetail()
+  loadConfigHistory()
 }
 
 // 复制配置值
@@ -235,6 +336,7 @@ const formatTime = (time?: string | number) => {
 // 生命周期
 onMounted(() => {
   loadConfigDetail()
+  loadConfigHistory()
 })
 </script>
 
@@ -349,5 +451,35 @@ onMounted(() => {
   border-radius: 4px;
   font-family: monospace;
   word-break: break-all;
+}
+
+/* 历史部分样式 */
+.history-section {
+  margin-top: 30px;
+  
+  h3 {
+    margin-bottom: 20px;
+    color: #303133;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.history-content {
+  .config-value-cell {
+    .el-input {
+      .el-textarea__inner {
+        font-family: monospace;
+        font-size: 12px;
+        background-color: #f8f9fa;
+      }
+    }
+  }
+}
+
+.pagination-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 </style> 
