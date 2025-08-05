@@ -135,17 +135,19 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.ConfigClientDemo.executor": "Run",
+    "Maven.config-center [clean].executor": "Run",
+    "Maven.config-center [compile].executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.ConfigCenterApplication (1).executor": "Debug",
+    "Spring Boot.ConfigCenterApplication (1).executor": "Run",
     "Spring Boot.ConfigCenterApplication.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/lichun.wang/Git/config-center/src/main/resources/mapper",
+    "last_opened_file_path": "/Users/lichun.wang/Git/config-center",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -166,6 +168,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources/mapper" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/configcenter" />
     </key>
@@ -231,7 +234,7 @@
       <workItem from="1753668833842" duration="35024000" />
       <workItem from="1753856977667" duration="40000" />
       <workItem from="1753947209657" duration="33362000" />
-      <workItem from="1754293313480" duration="19087000" />
+      <workItem from="1754293313480" duration="23572000" />
     </task>
     <servers />
   </component>
@@ -250,11 +253,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/utils/JsonUtil.java</url>
           <line>49</line>
           <option name="timeStamp" value="112" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/interceptor/MysqlInterceptor.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="125" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/frontend/src/views/config/Detail.vue</url>
