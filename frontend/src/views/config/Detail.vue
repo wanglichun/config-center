@@ -93,7 +93,12 @@
           >
             <el-table-column prop="title" :label="$t('config.history.ticketTitle')" width="180" />
             <el-table-column prop="applicator" :label="$t('config.history.applicator')" width="180" />
-            <el-table-column prop="phase" :label="$t('config.history.phase')" width="100">
+            <el-table-column prop="phase" :label="$t('ticket.phase')" width="100">
+              <template #default="{ row }">
+                <el-tag :type="getTicketStatusTagType(row.phase)">
+                  {{ getTicketStatusText(row.phase) }}
+                </el-tag>
+              </template>
             </el-table-column>
             <el-table-column prop="createTime" :label="$t('config.history.createTime')" width="180">
               <template #default="{ row }">
@@ -236,20 +241,20 @@ const getTicketStatusTagType = (status?: string) => {
     case 'GrayPublish': return 'primary'
     case 'Success': return 'success'
     case 'Rejected': return 'danger'
-    case 'Cancelled': return ''
-    default: return ''
+    case 'Cancelled': return undefined
+    default: return undefined
   }
 }
 
 // 工单状态文本
 const getTicketStatusText = (status?: string) => {
   switch (status) {
-    case 'Submit': return t('ticket.phases.submit')
-    case 'Reviewing': return t('ticket.phases.reviewing')
-    case 'GrayPublish': return t('ticket.phases.grayPublish')
-    case 'Success': return t('ticket.phases.success')
-    case 'Rejected': return t('ticket.phases.rejected')
-    case 'Cancelled': return t('ticket.phases.cancelled')
+    case 'Submit': return t('Submit')
+    case 'Reviewing': return t('Reviewing')
+    case 'GrayPublish': return t('GrayPublish')
+    case 'Success': return t('Success')
+    case 'Rejected': return t('Rejected')
+    case 'Cancelled': return t('Cancelled')
     default: return status || ''
   }
 }
