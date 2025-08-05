@@ -44,54 +44,11 @@ public class ContextInterceptor implements HandlerInterceptor {
         return true;
     }
 
-    private void buildContext(Context context, HttpServletRequest request) {
-        // 从请求头获取或生成TraceId
-        String traceId = request.getHeader("X-Trace-Id");
-        if (traceId == null || traceId.isEmpty()) {
-            traceId = generateTraceId();
-        }
-
-        // 生成请求ID
-        String requestId = request.getHeader("X-Request-Id");
-        if (requestId == null || requestId.isEmpty()) {
-            requestId = "req_" + UUID.randomUUID().toString().substring(0, 8);
-        }
-
-        // 创建根Span
-        String spanId = TraceContext.generateSpanId();
-        context.setTraceId(traceId);
-        context.setSpanId(spanId);
-        context.setRequestId(requestId);
-        context.setStartTime(System.currentTimeMillis());
-
-    }
-
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
                                 Exception ex) {
 
-            ContextManager.deleteContext();
+        ContextManager.deleteContext();
 
-    }
-
-    public static String generateTraceId() {
-        return "trace_" + UUID.randomUUID().toString().replace("-", "");
-    }
-
-    /**
-     * 获取客户端IP
-     */
-    private String getClientIp(HttpServletRequest request) {
-        String xForwardedFor = request.getHeader("X-Forwarded-For");
-        if (xForwardedFor != null && !xForwardedFor.isEmpty()) {
-            return xForwardedFor.split(",")[0].trim();
-        }
-
-        String xRealIp = request.getHeader("X-Real-IP");
-        if (xRealIp != null && !xRealIp.isEmpty()) {
-            return xRealIp;
-        }
-
-        return request.getRemoteAddr();
     }
 }
