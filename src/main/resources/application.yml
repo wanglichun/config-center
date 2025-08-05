@@ -46,7 +46,7 @@ spring:
   redis:
     host: localhost
     port: 6379
-    password: 
+    password:
     timeout: 10000ms
     lettuce:
       pool:
@@ -98,12 +98,35 @@ management:
     web:
       exposure:
         include: health,info,metrics,prometheus
-  endpoint:
-    health:
-      show-details: always
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: 1
+      retries: 3
+      batch-size: 16384
+      linger-ms: 1
+      buffer-memory: 33554432
+
+# Elasticsearch配置
+elasticsearch:
+  host: localhost
+  port: 9200
+  index-prefix: logs
+
 
 # 日志配置
 logging:
+  sql:
+    enabled: true
+    slow-query-threshold: 1000  # 慢查询阈值(毫秒)
+    log-parameters: true        # 是否记录SQL参数
+    log-results: false          # 是否记录查询结果
+  endpoint:
+    health:
+      show-details: always
   level:
     com.example.configcenter: DEBUG
     org.apache.curator: INFO

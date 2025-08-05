@@ -22,5 +22,4 @@ public class ContextManager {
     public static void deleteContext() {
         Context.remove();
     }
-
 }
