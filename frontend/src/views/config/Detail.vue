@@ -40,6 +40,18 @@
               {{ configDetail?.encrypted ? $t('common.yes') : $t('common.no') }}
             </el-tag>
           </el-descriptions-item>
+          <el-descriptions-item :label="$t('Operator')">
+            {{ configDetail?.operator }}
+          </el-descriptions-item>
+          <el-descriptions-item :label="$t('Owner')">
+          {{ configDetail?.owner }}
+        </el-descriptions-item>
+          <el-descriptions-item :label="$t('CreateTime')">
+            {{ formatTime(configDetail?.createTime, 'yyyy-MM-dd HH:mm:ss') }}
+          </el-descriptions-item>
+          <el-descriptions-item :label="$t('UpdateTime')">
+            {{ formatTime(configDetail?.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
+          </el-descriptions-item>
           <el-descriptions-item :label="$t('config.description')" :span="2">
             {{ configDetail?.description || $t('common.none') }}
           </el-descriptions-item>
@@ -65,12 +77,6 @@
                 </el-button>
               </div>
             </div>
-          </el-descriptions-item>
-          <el-descriptions-item :label="$t('CreateTime')">
-            {{ formatTime(configDetail?.createTime, 'yyyy-MM-dd HH:mm:ss') }}
-          </el-descriptions-item>
-          <el-descriptions-item :label="$t('UpdateTime')">
-            {{ formatTime(configDetail?.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
           </el-descriptions-item>
         </el-descriptions>
       </div>

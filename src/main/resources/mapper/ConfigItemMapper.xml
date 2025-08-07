@@ -15,7 +15,8 @@
         <result column="tags" property="tags" jdbcType="VARCHAR"/>
         <result column="status" property="status" jdbcType="VARCHAR"/>
         <result column="zk_path" property="zkPath" jdbcType="VARCHAR"/>
-        <result column="publisher" property="publisher" jdbcType="VARCHAR"/>
+        <result column="operator" property="operator" jdbcType="VARCHAR"/>
+        <result column="owner" property="owner" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
         <result column="del_flag" property="delFlag" jdbcType="TINYINT"/>
@@ -25,7 +26,7 @@
     <sql id="Base_Column_List">
         id, group_name, config_key, config_value, data_type,
         description, version, encrypted, tags, status, zk_path,
-        publisher, create_time, update_time, del_flag
+        create_time, update_time, operator, owner, del_flag
     </sql>
 
     <!-- 根据ID查询 -->
@@ -84,11 +85,11 @@
         INSERT INTO config_item (
             group_name, config_key, config_value, data_type,
             description, version, encrypted, tags, status, zk_path,
-            publisher, create_time, update_time, del_flag
+            create_time, update_time, owner, operator, del_flag
         ) VALUES (
             #{groupName}, #{configKey}, #{configValue}, #{dataType},
             #{description}, #{version}, #{encrypted}, #{tags}, #{status}, #{zkPath},
-            #{publisher}, #{createTime}, #{updateTime}, #{delFlag}
+            #{createTime}, #{updateTime}, #{owner}, #{operator}, #{delFlag}
         )
     </insert>
 

@@ -1,6 +1,5 @@
 package com.example.configcenter.service.impl;
 
-import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.fastjson.JSON;
 import com.example.configcenter.common.PageResult;
 import com.example.configcenter.context.Context;
@@ -9,7 +8,6 @@ import com.example.configcenter.dto.ConfigQueryDto;
 import com.example.configcenter.dto.PublishDto;
 import com.example.configcenter.dto.TicketQueryRequest;
 import com.example.configcenter.entity.ConfigHistory;
-import com.example.configcenter.entity.ConfigHistoryReq;
 import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.Ticket;
 import com.example.configcenter.enums.ConfigStatusEnum;
@@ -19,9 +17,7 @@ import com.example.configcenter.mapper.ConfigItemMapper;
 import com.example.configcenter.service.ConfigService;
 import com.example.configcenter.service.MachineService;
 import com.example.configcenter.service.TicketService;
-import com.example.configcenter.service.ZooKeeperService;
 import com.example.configcenter.utils.JsonUtil;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
@@ -30,7 +26,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 
@@ -74,6 +69,7 @@ public class ConfigServiceImpl implements ConfigService {
     @CacheEvict(value = {"config", "configs", "configMap"}, allEntries = true)
     public boolean createConfig(ConfigItem configItem) {
         try {
+            Context context = ContextManager.getContext();
             // 设置基础信息
             long currentTimeMillis = System.currentTimeMillis();
             configItem.setVersion(currentTimeMillis);
@@ -84,6 +80,8 @@ public class ConfigServiceImpl implements ConfigService {
             // 生成ZK路径
             String zkPath = buildZkPath(configItem.getGroupName(), configItem.getConfigKey());
             configItem.setZkPath(zkPath);
+            configItem.setOwner(context.getUserEmail());
+            configItem.setOperator(context.getUserEmail());
 
             // 保存到数据库
             configItemMapper.insert(configItem);
@@ -203,7 +201,7 @@ public class ConfigServiceImpl implements ConfigService {
             currentConfig.setConfigValue(targetHistory.getNewValue());
             currentConfig.setVersion(currentConfig.getVersion() + 1);
             currentConfig.setUpdateTime(System.currentTimeMillis());
-            currentConfig.setPublisher(operator);
+            currentConfig.setOperator(operator);
 
             int result = configItemMapper.update(currentConfig);
 

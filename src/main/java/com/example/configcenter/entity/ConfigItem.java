@@ -74,7 +74,7 @@ public class ConfigItem implements Serializable {
     /**
      * 发布者
      */
-    private String publisher;
+    private String operator;
     /**
      * 配置
      */

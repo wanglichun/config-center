@@ -19,6 +19,8 @@ export interface ConfigItem {
   updateBy: string
   remark?: string
   delFlag?: number
+  owner?: string
+  operator?: string
 }
 
 // 配置查询参数
