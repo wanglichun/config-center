@@ -42,13 +42,18 @@
         <el-table-column prop="status" :label="$t('config.status')" width="100">
           <template #default="scope">
             <el-tag :type="getStatusTagType(scope.row.status)">
-              {{ getStatusText(scope.row.status) }}
+              {{ scope.row.status }}
             </el-tag>
+          </template>
+        </el-table-column>
+        <el-table-column prop="createTime" :label="$t('config.createTime')">
+          <template #default="scope">
+            {{ TimeUtils.formatTime(scope.row.createTime, 'yyyy-MM-dd HH:mm:ss') }}
           </template>
         </el-table-column>
         <el-table-column prop="updateTime" :label="$t('config.updateTime')">
           <template #default="scope">
-            {{ formatTime(scope.row.updateTime) }}
+            {{ TimeUtils.formatTime(scope.row.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
           </template>
         </el-table-column>
         <el-table-column :label="$t('config.operation')" width="220" fixed="right">
@@ -59,9 +64,6 @@
               </el-button>
               <el-button size="small" type="primary" @click="handleEdit(scope.row)">
                 {{ $t('common.edit') }}
-              </el-button>
-              <el-button size="small" type="success" @click="handlePublish(scope.row)">
-                {{ $t('common.publish') }}
               </el-button>
               <el-button size="small" type="danger" @click="handleDelete(scope.row)">
                 {{ $t('common.delete') }}
@@ -98,9 +100,8 @@
             <el-form-item :label="$t('config.dataType')" prop="dataType">
               <el-select v-model="configForm.dataType" :placeholder="$t('config.dataType')">
                 <el-option :label="$t('config.dataTypes.STRING')" value="STRING" />
-                <el-option :label="$t('config.dataTypes.NUMBER')" value="NUMBER" />
-                <el-option :label="$t('config.dataTypes.BOOLEAN')" value="BOOLEAN" />
                 <el-option :label="$t('config.dataTypes.JSON')" value="JSON" />
+                <el-option :label="$t('config.dataTypes.YAML')" value="YAML" />
               </el-select>
             </el-form-item>
           </div>
@@ -153,6 +154,7 @@ import type { ConfigItem, ConfigQuery, ConfigForm } from '@/types/config'
 import type { PageResult } from '@/types/common'
 import type { AllEnums } from '@/api/enum'
 import type {Ticket} from "@/types/ticket.ts";
+import {TimeUtils} from "@/utils/time.ts";
 
 const { t } = useI18n()
 const router = useRouter()
@@ -224,9 +226,9 @@ const loadEnums = async () => {
 
 const getStatusTagType = (status: string) => {
   switch (status) {
-    case 'PUBLISHED': return 'success'
-    case 'DRAFT': return 'warning'
-    case 'DISABLED': return 'danger'
+    case 'ONLINE': return 'success'
+    case 'OFFLINE': return 'info'
+    case 'INIT': return 'info'
     default: return 'info'
   }
 }
@@ -237,17 +239,6 @@ const getStatusText = (status: string) => {
   }
   // 使用国际化文本
   return t(`config.statuses.${status}`) || status
-}
-
-const formatTime = (timeStr: string) => {
-  if (!timeStr) return '-'
-  return new Date(timeStr).toLocaleString(t('common.locale', 'zh-CN'), {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit'
-  })
 }
 
 // 加载配置列表

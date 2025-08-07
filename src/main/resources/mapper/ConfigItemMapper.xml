@@ -15,20 +15,17 @@
         <result column="tags" property="tags" jdbcType="VARCHAR"/>
         <result column="status" property="status" jdbcType="VARCHAR"/>
         <result column="zk_path" property="zkPath" jdbcType="VARCHAR"/>
-        <result column="last_publish_time" property="lastPublishTime" jdbcType="BIGINT"/>
         <result column="publisher" property="publisher" jdbcType="VARCHAR"/>
         <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
         <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
-        <result column="create_by" property="createBy" jdbcType="VARCHAR"/>
-        <result column="update_by" property="updateBy" jdbcType="VARCHAR"/>
         <result column="del_flag" property="delFlag" jdbcType="TINYINT"/>
     </resultMap>
 
     <!-- 基础字段 -->
     <sql id="Base_Column_List">
         id, group_name, config_key, config_value, data_type,
-        description, version, encrypted, tags, status, zk_path, last_publish_time, 
-        publisher, create_time, update_time, create_by, update_by, del_flag
+        description, version, encrypted, tags, status, zk_path,
+        publisher, create_time, update_time, del_flag
     </sql>
 
     <!-- 根据ID查询 -->
@@ -86,12 +83,12 @@
     <insert id="insert" parameterType="com.example.configcenter.entity.ConfigItem" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO config_item (
             group_name, config_key, config_value, data_type,
-            description, version, encrypted, tags, status, zk_path, last_publish_time,
-            publisher, create_time, update_time, create_by, update_by, del_flag
+            description, version, encrypted, tags, status, zk_path,
+            publisher, create_time, update_time, del_flag
         ) VALUES (
             #{groupName}, #{configKey}, #{configValue}, #{dataType},
-            #{description}, #{version}, #{encrypted}, #{tags}, #{status}, #{zkPath}, #{lastPublishTime},
-            #{publisher}, #{createTime}, #{updateTime}, #{createBy}, #{updateBy}, #{delFlag}
+            #{description}, #{version}, #{encrypted}, #{tags}, #{status}, #{zkPath},
+            #{publisher}, #{createTime}, #{updateTime}, #{delFlag}
         )
     </insert>
 

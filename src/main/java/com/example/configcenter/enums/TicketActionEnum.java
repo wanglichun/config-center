@@ -10,7 +10,7 @@ public enum TicketActionEnum {
     Complete("Complete"),
     Publish("Publish");
 
-    private String value;
+    public final String value;
 
     TicketActionEnum(String value) {
         this.value = value;

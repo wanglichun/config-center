@@ -6,7 +6,6 @@
   "nav": {
     "dashboard": "Dashboard",
     "config": "Configuration",
-    "history": "Change History",
     "users": "User Management",
     "monitor": "System Monitor",
     "profile": "Profile",
@@ -60,6 +59,7 @@
     "description": "Description",
     "status": "Status",
     "updateTime": "Update Time",
+    "createTime": "Create Time",
     "operation": "Operation",
     "keyword": "Keyword",
     "encrypted": "Encrypted",
@@ -87,6 +87,14 @@
       "configValue": "Enter configuration value",
       "keyword": "Configuration key or value keyword",
       "description": "Enter configuration description"
+    },
+    "history": {
+      "ticketTitle": "Ticket Title",
+      "applicator": "Applicator",
+      "status": "Status",
+      "createTime": "Create Time",
+      "updateTime": "Update Time"
+
     },
     "messages": {
       "publishConfirm": "Are you sure to publish configuration {key}?",
@@ -139,6 +147,7 @@
       "basicInfo": "Basic Information",
       "subscribers": "Subscribed Containers",
       "version": "Version",
+      "history": "Configuration Operate History",
       "createTime": "Create Time",
       "updateTime": "Update Time",
       "createBy": "Created By",

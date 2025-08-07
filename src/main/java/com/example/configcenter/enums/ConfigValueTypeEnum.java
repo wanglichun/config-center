@@ -1,17 +1,15 @@
 package com.example.configcenter.enums;
 
-public enum ConfigStatusEnum {
+public enum ConfigValueTypeEnum {
 
-    INIT("INIT"),
-    ONLINE("ONLINE"),
-    OFFLINE("OFFLINE"),
-    DELETED("DELETED");
-
+    STRING("STRING"),
+    JSON("JSON"),
+    YAML("YAML");
 
 
     private final String value;
 
-    ConfigStatusEnum(String value) {
+    ConfigValueTypeEnum(String value) {
         this.value = value;
     }
 

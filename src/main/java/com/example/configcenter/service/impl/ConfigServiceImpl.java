@@ -12,6 +12,7 @@ import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.entity.ConfigHistoryReq;
 import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.Ticket;
+import com.example.configcenter.enums.ConfigStatusEnum;
 import com.example.configcenter.enums.TicketPhaseEnum;
 import com.example.configcenter.mapper.ConfigHistoryMapper;
 import com.example.configcenter.mapper.ConfigItemMapper;
@@ -74,17 +75,18 @@ public class ConfigServiceImpl implements ConfigService {
     public boolean createConfig(ConfigItem configItem) {
         try {
             // 设置基础信息
-            configItem.setVersion(System.currentTimeMillis());
-            configItem.setStatus("ACTIVE");
-            configItem.setCreateTime(System.currentTimeMillis());
-            configItem.setUpdateTime(System.currentTimeMillis());
+            long currentTimeMillis = System.currentTimeMillis();
+            configItem.setVersion(currentTimeMillis);
+            configItem.setStatus(ConfigStatusEnum.INIT);
+            configItem.setCreateTime(currentTimeMillis);
+            configItem.setUpdateTime(currentTimeMillis);
             configItem.setDelFlag(0);
             // 生成ZK路径
             String zkPath = buildZkPath(configItem.getGroupName(), configItem.getConfigKey());
             configItem.setZkPath(zkPath);
 
             // 保存到数据库
-            int result = configItemMapper.insert(configItem);
+            configItemMapper.insert(configItem);
 
             return true;
         } catch (Exception e) {

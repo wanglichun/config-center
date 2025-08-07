@@ -1,5 +1,7 @@
 package com.example.configcenter.entity;
 
+import com.example.configcenter.enums.ConfigStatusEnum;
+import com.example.configcenter.enums.ConfigValueTypeEnum;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -36,9 +38,9 @@ public class ConfigItem implements Serializable {
     private String configValue;
     
     /**
-     * 数据类型（STRING/NUMBER/BOOLEAN/JSON）
+     * 数据类型
      */
-    private String dataType;
+    private ConfigValueTypeEnum dataType;
     
     /**
      * 配置描述
@@ -63,22 +65,20 @@ public class ConfigItem implements Serializable {
     /**
      * 状态（ACTIVE/INACTIVE）
      */
-    private String status;
+    private ConfigStatusEnum status;
     
     /**
      * ZooKeeper路径
      */
     private String zkPath;
-    
-    /**
-     * 最后发布时间
-     */
-    private Long lastPublishTime;
-    
     /**
      * 发布者
      */
     private String publisher;
+    /**
+     * 配置
+     */
+    private String owner;
 
     /**
      * 创建时间

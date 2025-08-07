@@ -67,16 +67,10 @@
             </div>
           </el-descriptions-item>
           <el-descriptions-item :label="$t('CreateTime')">
-            {{ formatTime(configDetail?.createTime) }}
+            {{ formatTime(configDetail?.createTime, 'yyyy-MM-dd HH:mm:ss') }}
           </el-descriptions-item>
           <el-descriptions-item :label="$t('UpdateTime')">
-            {{ formatTime(configDetail?.updateTime) }}
-          </el-descriptions-item>
-          <el-descriptions-item :label="$t('CreateBy')">
-            {{ configDetail?.createBy }}
-          </el-descriptions-item>
-          <el-descriptions-item :label="$t('UpdateBy')">
-            {{ configDetail?.updateBy }}
+            {{ formatTime(configDetail?.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
           </el-descriptions-item>
         </el-descriptions>
       </div>
@@ -91,18 +85,23 @@
             style="width: 100%"
             :empty-text="$t('common.noData')"
           >
-            <el-table-column prop="title" :label="$t('config.history.ticketTitle')" width="180" />
-            <el-table-column prop="applicator" :label="$t('config.history.applicator')" width="180" />
-            <el-table-column prop="phase" :label="$t('ticket.phase')" width="100">
+            <el-table-column prop="title" :label="$t('config.history.ticketTitle')" width="280" />
+            <el-table-column prop="applicator" :label="$t('config.history.applicator')" width="280" />
+            <el-table-column prop="phase" :label="$t('ticket.phase')" width="280">
               <template #default="{ row }">
                 <el-tag :type="getTicketStatusTagType(row.phase)">
                   {{ getTicketStatusText(row.phase) }}
                 </el-tag>
               </template>
             </el-table-column>
-            <el-table-column prop="createTime" :label="$t('config.history.createTime')" width="180">
+            <el-table-column prop="createTime" :label="$t('config.history.createTime')" width="280">
               <template #default="{ row }">
-                {{ formatTime(row.createTime) }}
+                {{ TimeUtils.formatTime(row.createTime, 'yyyy-MM-dd HH:mm:ss') }}
+              </template>
+            </el-table-column>
+            <el-table-column prop="updateTime" :label="$t('config.history.updateTime')" width="280">
+              <template #default="{ row }">
+                {{ TimeUtils.formatTime(row.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
               </template>
             </el-table-column>
           </el-table>
@@ -134,6 +133,7 @@ import { CopyDocument } from '@element-plus/icons-vue'
 import { getConfigById, getSubscribedContainers, getConfigHistory } from '@/api/config'
 import type { ConfigItem, ConfigHistory } from '@/types/config'
 import { useI18n } from 'vue-i18n'
+import {TimeUtils} from "@/utils/time.ts";
 
 const route = useRoute()
 const router = useRouter()
@@ -333,9 +333,55 @@ const getStatusText = (status?: string) => {
   }
 }
 
-const formatTime = (time?: string | number) => {
+const formatTime = (
+    time?: string | number | Date,
+    format?: string,
+    locale: string = 'zh-CN'
+) => {
   if (!time) return '-'
-  return new Date(time).toLocaleString('zh-CN')
+
+  // 尝试将输入转换为Date对象
+  let date: Date | null = null
+  if (time instanceof Date) {
+    date = time
+  } else {
+    // 处理时间戳（支持秒级和毫秒级）
+    if (typeof time === 'number') {
+      // 如果是秒级时间戳（位数小于13位），转换为毫秒级
+      if (time.toString().length < 13) {
+        time *= 1000
+      }
+      date = new Date(time)
+    } else if (typeof time === 'string') {
+      date = new Date(time)
+    }
+  }
+
+  // 检查是否为有效日期
+  if (!date || isNaN(date.getTime())) {
+    return '-'
+  }
+
+  // 如果指定了格式，使用自定义格式化
+  if (format) {
+    const year = date.getFullYear()
+    const month = String(date.getMonth() + 1).padStart(2, '0')
+    const day = String(date.getDate()).padStart(2, '0')
+    const hours = String(date.getHours()).padStart(2, '0')
+    const minutes = String(date.getMinutes()).padStart(2, '0')
+    const seconds = String(date.getSeconds()).padStart(2, '0')
+
+    return format
+        .replace('yyyy', year.toString())
+        .replace('MM', month)
+        .replace('dd', day)
+        .replace('HH', hours)
+        .replace('mm', minutes)
+        .replace('ss', seconds)
+  }
+
+  // 否则使用本地化格式
+  return date.toLocaleString(locale)
 }
 
 // 生命周期

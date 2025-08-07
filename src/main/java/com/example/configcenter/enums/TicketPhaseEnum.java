@@ -9,7 +9,7 @@ public enum TicketPhaseEnum {
     Cancelled("Cancelled");
 
 
-    private String value;
+    private final String value;
 
     TicketPhaseEnum(String value) {
         this.value = value;
