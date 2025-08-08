@@ -20105,3 +20105,160 @@ Caused by: com.fasterxml.jackson.databind.exc.InvalidFormatException: Cannot des
 2025-08-08 18:45:01 [http-nio-9090-exec-8] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_2642a48550a04d00b747218f73c356fb
 2025-08-08 18:45:01 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_2642a48550a04d00b747218f73c356fb, duration=438ms, status=200
 2025-08-08 18:45:01 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:46:14 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-08 18:46:14 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:46:14 [http-nio-9090-exec-9] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=] with attributes [authenticated]
+2025-08-08 18:46:14 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-08 18:46:14 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:46:14 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_ccf1b55186ac41faa2b00d4bee1a99bd, requestId=req_ed39729c, url=/config-center/api/ticket/page
+2025-08-08 18:46:14 [http-nio-9090-exec-9] INFO  c.example.configcenter.controller.TicketController - 查询工单列表，参数：TicketQueryRequest(title=, phase=[], applicator=, configId=null)
+2025-08-08 18:46:15 [http-nio-9090-exec-9] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_ccf1b55186ac41faa2b00d4bee1a99bd
+2025-08-08 18:46:15 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=findByPage, duration=78ms, rowsAffected=2
+2025-08-08 18:46:15 [http-nio-9090-exec-9] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_ccf1b55186ac41faa2b00d4bee1a99bd
+2025-08-08 18:46:15 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=count, duration=34ms, rowsAffected=2
+2025-08-08 18:46:15 [http-nio-9090-exec-9] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_ccf1b55186ac41faa2b00d4bee1a99bd
+2025-08-08 18:46:15 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_ccf1b55186ac41faa2b00d4bee1a99bd, duration=764ms, status=200
+2025-08-08 18:46:15 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:47:47 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-08 18:47:47 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:47:48 [http-nio-9090-exec-10] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=] with attributes [authenticated]
+2025-08-08 18:47:48 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-08 18:47:48 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:47:48 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_e50f75725f644750a012ae105edcc6d5, requestId=req_1764d6b3, url=/config-center/api/ticket/page
+2025-08-08 18:47:48 [http-nio-9090-exec-10] INFO  c.example.configcenter.controller.TicketController - 查询工单列表，参数：TicketQueryRequest(title=, phase=[], applicator=, configId=null)
+2025-08-08 18:47:48 [http-nio-9090-exec-10] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_e50f75725f644750a012ae105edcc6d5
+2025-08-08 18:47:48 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=findByPage, duration=79ms, rowsAffected=2
+2025-08-08 18:47:48 [http-nio-9090-exec-10] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_e50f75725f644750a012ae105edcc6d5
+2025-08-08 18:47:48 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=count, duration=32ms, rowsAffected=2
+2025-08-08 18:47:48 [http-nio-9090-exec-10] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_e50f75725f644750a012ae105edcc6d5
+2025-08-08 18:47:48 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_e50f75725f644750a012ae105edcc6d5, duration=184ms, status=200
+2025-08-08 18:47:48 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:49:07 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-08 18:49:07 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:49:08 [http-nio-9090-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=] with attributes [authenticated]
+2025-08-08 18:49:08 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-08 18:49:08 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:49:08 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_4640f00b8dd94cba8fff764ea7ab1353, requestId=req_4584eeff, url=/config-center/api/ticket/page
+2025-08-08 18:49:08 [http-nio-9090-exec-1] INFO  c.example.configcenter.controller.TicketController - 查询工单列表，参数：TicketQueryRequest(title=, phase=[], applicator=, configId=null)
+2025-08-08 18:49:08 [http-nio-9090-exec-1] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_4640f00b8dd94cba8fff764ea7ab1353
+2025-08-08 18:49:08 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=findByPage, duration=139ms, rowsAffected=2
+2025-08-08 18:49:08 [http-nio-9090-exec-1] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_4640f00b8dd94cba8fff764ea7ab1353
+2025-08-08 18:49:08 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=count, duration=27ms, rowsAffected=2
+2025-08-08 18:49:08 [http-nio-9090-exec-1] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_4640f00b8dd94cba8fff764ea7ab1353
+2025-08-08 18:49:08 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_4640f00b8dd94cba8fff764ea7ab1353, duration=225ms, status=200
+2025-08-08 18:49:08 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=] with attributes [authenticated]
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_0fd6bcc9c011490d9a157f65de8e4e7f, requestId=req_25dcbe7d, url=/config-center/api/ticket/page
+2025-08-08 18:49:20 [http-nio-9090-exec-3] INFO  c.example.configcenter.controller.TicketController - 查询工单列表，参数：TicketQueryRequest(title=, phase=[], applicator=, configId=null)
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_0fd6bcc9c011490d9a157f65de8e4e7f
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=findByPage, duration=30ms, rowsAffected=2
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_0fd6bcc9c011490d9a157f65de8e4e7f
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=count, duration=4ms, rowsAffected=2
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_0fd6bcc9c011490d9a157f65de8e4e7f
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_0fd6bcc9c011490d9a157f65de8e4e7f, duration=56ms, status=200
+2025-08-08 18:49:20 [http-nio-9090-exec-3] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:49:31 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/ticket/59
+2025-08-08 18:49:31 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:49:31 [http-nio-9090-exec-2] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/ticket/59] with attributes [authenticated]
+2025-08-08 18:49:31 [http-nio-9090-exec-2] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/ticket/59
+2025-08-08 18:49:31 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:49:31 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_2ef5cd4d23ed460e9b0d6d691a187acd, requestId=req_65f5af89, url=/config-center/api/ticket/59
+2025-08-08 18:49:31 [http-nio-9090-exec-2] INFO  c.example.configcenter.controller.TicketController - 获取工单详情，ID：59
+2025-08-08 18:49:31 [http-nio-9090-exec-2] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_2ef5cd4d23ed460e9b0d6d691a187acd
+2025-08-08 18:49:31 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=findById, duration=46ms, rowsAffected=1
+2025-08-08 18:49:31 [http-nio-9090-exec-2] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_2ef5cd4d23ed460e9b0d6d691a187acd
+2025-08-08 18:49:31 [http-nio-9090-exec-2] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_2ef5cd4d23ed460e9b0d6d691a187acd, duration=359ms, status=200
+2025-08-08 18:49:31 [http-nio-9090-exec-2] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:49:31 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/10
+2025-08-08 18:49:31 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:49:31 [http-nio-9090-exec-4] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/10] with attributes [authenticated]
+2025-08-08 18:49:31 [http-nio-9090-exec-4] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/10
+2025-08-08 18:49:31 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:49:31 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_1a09bc65fb9b48108e5b6aa2c8bf2e46, requestId=req_1c15cae2, url=/config-center/api/config/10
+2025-08-08 18:49:31 [http-nio-9090-exec-4] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_1a09bc65fb9b48108e5b6aa2c8bf2e46
+2025-08-08 18:49:31 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=findById, duration=34ms, rowsAffected=1
+2025-08-08 18:49:31 [http-nio-9090-exec-4] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_1a09bc65fb9b48108e5b6aa2c8bf2e46
+2025-08-08 18:49:31 [http-nio-9090-exec-4] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_1a09bc65fb9b48108e5b6aa2c8bf2e46, duration=279ms, status=200
+2025-08-08 18:49:31 [http-nio-9090-exec-4] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:50:50 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/ticket/59
+2025-08-08 18:50:50 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:50:50 [http-nio-9090-exec-5] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/ticket/59] with attributes [authenticated]
+2025-08-08 18:50:50 [http-nio-9090-exec-5] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/ticket/59
+2025-08-08 18:50:50 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:50:50 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_231315bd1d35432db2903de6723a0a4c, requestId=req_be997849, url=/config-center/api/ticket/59
+2025-08-08 18:50:50 [http-nio-9090-exec-5] INFO  c.example.configcenter.controller.TicketController - 获取工单详情，ID：59
+2025-08-08 18:50:50 [http-nio-9090-exec-5] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_231315bd1d35432db2903de6723a0a4c
+2025-08-08 18:50:50 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=findById, duration=7ms, rowsAffected=1
+2025-08-08 18:50:50 [http-nio-9090-exec-5] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_231315bd1d35432db2903de6723a0a4c
+2025-08-08 18:50:50 [http-nio-9090-exec-5] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_231315bd1d35432db2903de6723a0a4c, duration=52ms, status=200
+2025-08-08 18:50:50 [http-nio-9090-exec-5] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:50:50 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/10
+2025-08-08 18:50:50 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:50:51 [http-nio-9090-exec-7] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/10] with attributes [authenticated]
+2025-08-08 18:50:51 [http-nio-9090-exec-7] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/10
+2025-08-08 18:50:51 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:50:51 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_622821de83e54f0086a491767f753b89, requestId=req_77b05232, url=/config-center/api/config/10
+2025-08-08 18:50:51 [http-nio-9090-exec-7] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_622821de83e54f0086a491767f753b89
+2025-08-08 18:50:51 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_622821de83e54f0086a491767f753b89, duration=100ms, status=200
+2025-08-08 18:50:51 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:51:04 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/enum/get_all_enum
+2025-08-08 18:51:04 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:51:04 [http-nio-9090-exec-6] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/enum/get_all_enum] with attributes [authenticated]
+2025-08-08 18:51:04 [http-nio-9090-exec-6] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/enum/get_all_enum
+2025-08-08 18:51:04 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:51:04 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_c845e333015f4737bba6c6377c3cc134, requestId=req_0e5d64e3, url=/config-center/api/enum/get_all_enum
+2025-08-08 18:51:04 [http-nio-9090-exec-6] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_c845e333015f4737bba6c6377c3cc134
+2025-08-08 18:51:04 [http-nio-9090-exec-6] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_c845e333015f4737bba6c6377c3cc134, duration=86ms, status=200
+2025-08-08 18:51:04 [http-nio-9090-exec-6] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=] with attributes [authenticated]
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/page?pageNum=1&pageSize=20&groupName=&keyword=&status=
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_3a4917118b534b8b88364a7f642af7dc, requestId=req_940657aa, url=/config-center/api/config/page
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_3a4917118b534b8b88364a7f642af7dc
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=search, duration=49ms, rowsAffected=5
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_3a4917118b534b8b88364a7f642af7dc
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=countByQuery, duration=21ms, rowsAffected=5
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_3a4917118b534b8b88364a7f642af7dc
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_3a4917118b534b8b88364a7f642af7dc, duration=94ms, status=200
+2025-08-08 18:51:04 [http-nio-9090-exec-8] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=] with attributes [authenticated]
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/ticket/page?pageNum=1&pageSize=10&title=&phase=&applicator=
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_77a6307e2c2c4688918037ad6703048f, requestId=req_6efef920, url=/config-center/api/ticket/page
+2025-08-08 18:51:07 [http-nio-9090-exec-9] INFO  c.example.configcenter.controller.TicketController - 查询工单列表，参数：TicketQueryRequest(title=, phase=[], applicator=, configId=null)
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_77a6307e2c2c4688918037ad6703048f
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=findByPage, duration=45ms, rowsAffected=2
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_77a6307e2c2c4688918037ad6703048f
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=count, duration=7ms, rowsAffected=2
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_77a6307e2c2c4688918037ad6703048f
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_77a6307e2c2c4688918037ad6703048f, duration=62ms, status=200
+2025-08-08 18:51:07 [http-nio-9090-exec-9] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:51:09 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/ticket/58
+2025-08-08 18:51:09 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:51:09 [http-nio-9090-exec-10] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/ticket/58] with attributes [authenticated]
+2025-08-08 18:51:09 [http-nio-9090-exec-10] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/ticket/58
+2025-08-08 18:51:09 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:51:09 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_6dd617c2fbce4fc5972657fbe39774a6, requestId=req_3220ed97, url=/config-center/api/ticket/58
+2025-08-08 18:51:09 [http-nio-9090-exec-10] INFO  c.example.configcenter.controller.TicketController - 获取工单详情，ID：58
+2025-08-08 18:51:09 [http-nio-9090-exec-10] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=mysql-logs, traceId=trace_6dd617c2fbce4fc5972657fbe39774a6
+2025-08-08 18:51:09 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.MysqlInterceptor - MySQL操作完成: method=findById, duration=9ms, rowsAffected=1
+2025-08-08 18:51:09 [http-nio-9090-exec-10] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_6dd617c2fbce4fc5972657fbe39774a6
+2025-08-08 18:51:09 [http-nio-9090-exec-10] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_6dd617c2fbce4fc5972657fbe39774a6, duration=15ms, status=200
+2025-08-08 18:51:09 [http-nio-9090-exec-10] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 18:51:09 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Securing GET /api/config/10
+2025-08-08 18:51:09 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Set SecurityContextHolder to empty SecurityContext
+2025-08-08 18:51:09 [http-nio-9090-exec-1] DEBUG o.s.s.w.access.intercept.FilterSecurityInterceptor - Authorized filter invocation [GET /api/config/10] with attributes [authenticated]
+2025-08-08 18:51:09 [http-nio-9090-exec-1] DEBUG org.springframework.security.web.FilterChainProxy - Secured GET /api/config/10
+2025-08-08 18:51:09 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.ContextInterceptor - Set user email from cookie: admin@example.com
+2025-08-08 18:51:09 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 开始处理请求: traceId=trace_f3ee2b3045904c4faca5d319879289cf, requestId=req_7da324c6, url=/config-center/api/config/10
+2025-08-08 18:51:09 [http-nio-9090-exec-1] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_f3ee2b3045904c4faca5d319879289cf
+2025-08-08 18:51:09 [http-nio-9090-exec-1] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_f3ee2b3045904c4faca5d319879289cf, duration=13ms, status=200
+2025-08-08 18:51:09 [http-nio-9090-exec-1] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request

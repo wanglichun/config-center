@@ -590,25 +590,6 @@ const refreshData = () => {
 }
 
 
-const getPhaseTagType = (phase?: string) => {
-  switch (phase) {
-    case TicketPhase.Submit:
-      return 'info'
-    case TicketPhase.Reviewing:
-      return 'warning'
-    case TicketPhase.Success:
-      return 'success'
-    case TicketPhase.Rejected:
-      return 'danger'
-    case TicketPhase.GrayPublish:
-      return 'warning'
-    case TicketPhase.Cancelled:
-      return 'info'
-    default:
-      return 'info'
-  }
-}
-
 const getPhaseText = (phase?: string) => {
   switch (phase) {
     case TicketPhase.Submit:
@@ -1056,18 +1037,20 @@ const showMachineDetail = (machine: MachineInstance) => {
   ElMessage.info(`查看机器详情: ${machine.ip}`)
 }
 
-const getStatusTagType = (status: string) => {
-  switch (status) {
-    case 'Running':
-      return 'success'
-    case 'Success':
-      return 'success'
-    case 'NoGray':
-      return 'warning'
-    case 'Offline':
-      return 'danger'
-    default:
+const getPhaseTagType = (phase: string) => {
+  switch (phase) {
+    case TicketPhase.Reviewing:
       return 'info'
+    case TicketPhase.GrayPublish:
+      return 'warning'
+    case TicketPhase.Rejected:
+      return 'danger'
+    case TicketPhase.Cancelled:
+      return 'danger'
+    case TicketPhase.Success:
+      return 'success'
+    default:
+      return ''
   }
 }
 

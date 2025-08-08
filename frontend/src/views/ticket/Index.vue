@@ -242,15 +242,15 @@ const handleDelete = async (row: Ticket) => {
 
 const getPhaseTagType = (phase: string) => {
   switch (phase) {
-    case TicketPhase.PENDING:
+    case TicketPhase.Reviewing:
       return 'info'
-    case TicketPhase.PROCESSING:
+    case TicketPhase.GrayPublish:
       return 'warning'
-    case TicketPhase.APPROVED:
-      return 'success'
-    case TicketPhase.REJECTED:
+    case TicketPhase.Rejected:
       return 'danger'
-    case TicketPhase.COMPLETED:
+    case TicketPhase.Cancelled:
+      return 'danger'
+    case TicketPhase.Success:
       return 'success'
     default:
       return ''
