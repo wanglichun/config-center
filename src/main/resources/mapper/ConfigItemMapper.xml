@@ -96,7 +96,11 @@
     <!-- 更新配置 -->
     <update id="update" parameterType="com.example.configcenter.entity.ConfigItem">
         UPDATE config_item
-        SET config_value = #{configValue}, version = #{version}
+        <set>
+            <if test="configValue != null">config_value = #{configValue},</if>
+            <if test="version != null">operator = #{version},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+        </set>
         WHERE id = #{id}
     </update>
 

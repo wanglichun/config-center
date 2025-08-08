@@ -403,7 +403,7 @@ const handleSave = async () => {
           // 编辑配置成功后，检查是否返回了ticket信息
           console.log('编辑模式，检查返回数据:', response.data)
           console.log('数据类型:', typeof response.data)
-          console.log('是否有id属性:', 'id' in response.data)
+          console.log('是否有id属性:', response.data && 'id' in response.data)
           
           if (response.data && typeof response.data === 'object' && 'id' in response.data) {
             const ticket = response.data as Ticket

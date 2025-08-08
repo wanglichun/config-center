@@ -103,14 +103,21 @@ public class ConfigServiceImpl implements ConfigService {
                 throw new IllegalArgumentException("配置项不存在");
             }
 
-            // 版本号递增
-            configItem.setVersion(System.currentTimeMillis());
-            configItem.setUpdateTime(System.currentTimeMillis());
+            // 初始化状态的配置变更不需要工单流程
+            if (ConfigStatusEnum.INIT.equals(oldConfig.getStatus())) {
+                configItemMapper.update(configItem);
+                return null;
+            } else {
+                // 版本号递增
+                configItem.setVersion(System.currentTimeMillis());
+                configItem.setUpdateTime(System.currentTimeMillis());
 
-            Ticket ticket = buildTicket(oldConfig, configItem);
-            ticketService.createTicket(ticket);
+                Ticket ticket = buildTicket(oldConfig, configItem);
+                ticketService.createTicket(ticket);
 
-            return ticket;
+                return ticket;
+            }
+
         } catch (Exception e) {
             log.error("更新配置项失败", e);
             return null;
