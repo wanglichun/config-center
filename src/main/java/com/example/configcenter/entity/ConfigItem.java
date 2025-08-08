@@ -13,7 +13,7 @@ import java.io.Serializable;
  * @version 1.0.0
  */
 @Data
-public class ConfigItem implements Serializable {
+public class ConfigItem implements Serializable, Cloneable {
     
     private static final long serialVersionUID = 1L;
     
@@ -94,4 +94,15 @@ public class ConfigItem implements Serializable {
      * 逻辑删除标志（0存在 1删除）
      */
     private Integer delFlag;
-} 
+
+    @Override
+    public ConfigItem clone() {
+        try {
+            ConfigItem clone = (ConfigItem) super.clone();
+            // TODO: copy mutable state here, so the clone can't change the internals of the original
+            return clone;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+}

@@ -1,5 +1,6 @@
 package com.example.configcenter.dto;
 
+import com.example.configcenter.enums.ConfigValueTypeEnum;
 import lombok.Data;
 
 @Data
@@ -19,9 +20,9 @@ public class ConfigCreateReq {
      */
     private String configValue;
     /**
-     * 数据类型（STRING/NUMBER/BOOLEAN/JSON）
+     * 数据类型
      */
-    private String dataType;
+    private ConfigValueTypeEnum dataType;
 
     /**
      * 配置描述

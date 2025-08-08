@@ -4088,3 +4088,7 @@ java.net.ConnectException: Connection refused
 2025-08-08 11:05:29 [http-nio-9090-exec-7] DEBUG com.example.configcenter.log.LogSenderService - 异步发送日志到Kafka成功: topic=api-logs, traceId=trace_72ed975b7d02439ebdda888b900de745
 2025-08-08 11:05:29 [http-nio-9090-exec-7] DEBUG c.e.configcenter.interceptor.TraceInterceptor - 请求处理完成: traceId=trace_72ed975b7d02439ebdda888b900de745, duration=11ms, status=200
 2025-08-08 11:05:29 [http-nio-9090-exec-7] DEBUG o.s.s.web.context.SecurityContextPersistenceFilter - Cleared SecurityContextHolder to complete request
+2025-08-08 11:08:14 [kafka-producer-network-thread | producer-1] INFO  org.apache.kafka.clients.Metadata - [Producer clientId=producer-1] Resetting the last seen epoch of partition mysql-logs-0 to 0 since the associated topicId changed from null to kUhUBuxHTcKewxf81vcSvw
+2025-08-08 11:08:14 [kafka-producer-network-thread | producer-1] INFO  org.apache.kafka.clients.Metadata - [Producer clientId=producer-1] Resetting the last seen epoch of partition mysql-logs-2 to 0 since the associated topicId changed from null to kUhUBuxHTcKewxf81vcSvw
+2025-08-08 11:08:14 [kafka-producer-network-thread | producer-1] INFO  org.apache.kafka.clients.Metadata - [Producer clientId=producer-1] Resetting the last seen epoch of partition mysql-logs-1 to 0 since the associated topicId changed from null to kUhUBuxHTcKewxf81vcSvw
+2025-08-08 11:12:14 [kafka-producer-network-thread | producer-1] INFO  org.apache.kafka.clients.NetworkClient - [Producer clientId=producer-1] Node -1 disconnected.

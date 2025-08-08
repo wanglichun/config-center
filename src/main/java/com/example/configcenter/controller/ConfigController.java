@@ -3,9 +3,7 @@ package com.example.configcenter.controller;
 import com.alibaba.fastjson.JSON;
 import com.example.configcenter.common.ApiResult;
 import com.example.configcenter.common.PageResult;
-import com.example.configcenter.dto.ConfigQueryDto;
-import com.example.configcenter.dto.PublishDto;
-import com.example.configcenter.dto.TicketQueryRequest;
+import com.example.configcenter.dto.*;
 import com.example.configcenter.entity.*;
 import com.example.configcenter.service.ConfigService;
 import com.example.configcenter.service.MachineService;
@@ -44,9 +42,9 @@ public class ConfigController {
      */
     @PostMapping()
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
-    public ApiResult<Boolean> createConfig(@RequestBody ConfigItem configItem) {
+    public ApiResult<Boolean> createConfig(@RequestBody ConfigCreateReq configCreateReq) {
         try {
-            boolean result = configService.createConfig(configItem);
+            boolean result = configService.createConfig(configCreateReq);
             return result ? ApiResult.success(true) : ApiResult.error("编辑配置失败");
         } catch (Exception e) {
             return ApiResult.error("创建失败：" + e.getMessage());
@@ -94,10 +92,10 @@ public class ConfigController {
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN') or hasRole('DEVELOPER')")
     public ApiResult<Ticket> editConfig(@PathVariable Long id,
-                                        @RequestBody ConfigItem configItem,
+                                        @RequestBody ConfigUpdateReq configUpdateReq,
                                         HttpServletRequest request) {
         try {
-            Ticket ticket = configService.updateConfig(configItem);
+            Ticket ticket = configService.updateConfig(configUpdateReq);
             return ApiResult.success(ticket);
         } catch (Exception e) {
             return ApiResult.error("编辑失败：" + e.getMessage());

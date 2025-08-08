@@ -4,9 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.example.configcenter.common.PageResult;
 import com.example.configcenter.context.Context;
 import com.example.configcenter.context.ContextManager;
-import com.example.configcenter.dto.ConfigQueryDto;
-import com.example.configcenter.dto.PublishDto;
-import com.example.configcenter.dto.TicketQueryRequest;
+import com.example.configcenter.dto.*;
 import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.Ticket;
@@ -67,21 +65,28 @@ public class ConfigServiceImpl implements ConfigService {
     @Override
     @Transactional
     @CacheEvict(value = {"config", "configs", "configMap"}, allEntries = true)
-    public boolean createConfig(ConfigItem configItem) {
+    public boolean createConfig(ConfigCreateReq configCreateReq) {
         try {
             Context context = ContextManager.getContext();
             // 设置基础信息
+            ConfigItem configItem = new ConfigItem();
             long currentTimeMillis = System.currentTimeMillis();
             configItem.setVersion(currentTimeMillis);
             configItem.setStatus(ConfigStatusEnum.INIT);
             configItem.setCreateTime(currentTimeMillis);
             configItem.setUpdateTime(currentTimeMillis);
             configItem.setDelFlag(0);
-            // 生成ZK路径
-            String zkPath = buildZkPath(configItem.getGroupName(), configItem.getConfigKey());
-            configItem.setZkPath(zkPath);
             configItem.setOwner(context.getUserEmail());
             configItem.setOperator(context.getUserEmail());
+            configItem.setGroupName(configCreateReq.getGroupName());
+            configItem.setConfigKey(configCreateReq.getConfigKey());
+            configItem.setConfigValue(configCreateReq.getConfigValue());
+            configItem.setDescription(configCreateReq.getDescription());
+            configItem.setDataType(configCreateReq.getDataType());
+
+            // 生成ZK路径
+            String zkPath = buildZkPath(configCreateReq.getGroupName(), configCreateReq.getConfigKey());
+            configItem.setZkPath(zkPath);
 
             // 保存到数据库
             configItemMapper.insert(configItem);
@@ -96,32 +101,44 @@ public class ConfigServiceImpl implements ConfigService {
     @Override
     @Transactional
     @CacheEvict(value = {"config", "configs", "configMap"}, allEntries = true)
-    public Ticket updateConfig(ConfigItem configItem) {
+    public Ticket updateConfig(ConfigUpdateReq configUpdateReq) {
         try {
-            ConfigItem oldConfig = configItemMapper.findById(configItem.getId());
+            ConfigItem oldConfig = configItemMapper.findById(configUpdateReq.getId());
             if (oldConfig == null) {
                 throw new IllegalArgumentException("配置项不存在");
             }
 
             // 初始化状态的配置变更不需要工单流程
             if (ConfigStatusEnum.INIT.equals(oldConfig.getStatus())) {
+                ConfigItem configItem = buildNewConfig(null, configUpdateReq);
                 configItemMapper.update(configItem);
                 return null;
             } else {
-                // 版本号递增
-                configItem.setVersion(System.currentTimeMillis());
-                configItem.setUpdateTime(System.currentTimeMillis());
-
+                ConfigItem newConfig = oldConfig.clone();
+                ConfigItem configItem = buildNewConfig(newConfig, configUpdateReq);
                 Ticket ticket = buildTicket(oldConfig, configItem);
                 ticketService.createTicket(ticket);
-
                 return ticket;
             }
-
         } catch (Exception e) {
             log.error("更新配置项失败", e);
             return null;
         }
+    }
+
+    private ConfigItem buildNewConfig(ConfigItem configItem, ConfigUpdateReq configUpdateReq) {
+        long currentTimeMillis = System.currentTimeMillis();
+        if (configItem == null) {
+            configItem = new ConfigItem();
+        }
+        configItem.setId(configUpdateReq.getId());
+        configItem.setConfigValue(configUpdateReq.getConfigValue());
+        configItem.setDescription(configUpdateReq.getDescription());
+        configItem.setDataType(configUpdateReq.getDataType());
+        // 版本号递增
+        configItem.setVersion(currentTimeMillis);
+        configItem.setUpdateTime(currentTimeMillis);
+        return configItem;
     }
 
     private Ticket buildTicket(ConfigItem oldConfig, ConfigItem newConfig) {

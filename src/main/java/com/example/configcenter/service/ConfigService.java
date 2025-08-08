@@ -1,9 +1,7 @@
 package com.example.configcenter.service;
 
 import com.example.configcenter.common.PageResult;
-import com.example.configcenter.dto.ConfigQueryDto;
-import com.example.configcenter.dto.PublishDto;
-import com.example.configcenter.dto.TicketQueryRequest;
+import com.example.configcenter.dto.*;
 import com.example.configcenter.entity.ConfigHistory;
 import com.example.configcenter.entity.ConfigHistoryReq;
 import com.example.configcenter.entity.ConfigItem;
@@ -30,18 +28,18 @@ public interface ConfigService {
     /**
      * 创建配置项
      *
-     * @param configItem 配置项
+     * @param configCreateReq 配置项
      * @return 是否成功
      */
-    boolean createConfig(ConfigItem configItem);
+    boolean createConfig(ConfigCreateReq configCreateReq);
 
     /**
      * 更新配置项
      *
-     * @param configItem 配置项
+     * @param configUpdateReq 配置项
      * @return 是否成功
      */
-    Ticket updateConfig(ConfigItem configItem);
+    Ticket updateConfig(ConfigUpdateReq configUpdateReq);
 
     /**
      * 删除配置项
