@@ -72,7 +72,7 @@ public class ConfigServiceImpl implements ConfigService {
             ConfigItem configItem = new ConfigItem();
             long currentTimeMillis = System.currentTimeMillis();
             configItem.setVersion(currentTimeMillis);
-            configItem.setStatus(ConfigStatusEnum.INIT);
+            configItem.setStatus(ConfigStatusEnum.Init);
             configItem.setCreateTime(currentTimeMillis);
             configItem.setUpdateTime(currentTimeMillis);
             configItem.setDelFlag(0);
@@ -109,7 +109,7 @@ public class ConfigServiceImpl implements ConfigService {
             }
 
             // 初始化状态的配置变更不需要工单流程
-            if (ConfigStatusEnum.INIT.equals(oldConfig.getStatus())) {
+            if (ConfigStatusEnum.Init.equals(oldConfig.getStatus())) {
                 ConfigItem configItem = buildNewConfig(null, configUpdateReq);
                 configItemMapper.update(configItem);
                 return null;
@@ -142,7 +142,8 @@ public class ConfigServiceImpl implements ConfigService {
     }
 
     private Ticket buildTicket(ConfigItem oldConfig, ConfigItem newConfig) {
-        newConfig.setVersion(System.currentTimeMillis());
+        long currentTimeMillis = System.currentTimeMillis();
+        newConfig.setVersion(currentTimeMillis);
         Ticket ticket = new Ticket();
         Context context = ContextManager.getContext();
         ticket.setTitle(newConfig.getConfigKey());
@@ -151,6 +152,8 @@ public class ConfigServiceImpl implements ConfigService {
         ticket.setApplicator(context.getUserEmail());
         ticket.setDataId(oldConfig.getId());
         ticket.setPhase(TicketPhaseEnum.Reviewing);
+        ticket.setCreateTime(currentTimeMillis);
+        ticket.setUpdateTime(currentTimeMillis);
         return ticket;
     }
 

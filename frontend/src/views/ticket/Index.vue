@@ -5,9 +5,6 @@
         <div class="card-header">
           <span class="title">{{ $t('ticket.management') }}</span>
           <div class="actions">
-            <el-button type="primary" @click="handleAdd" icon="Plus">
-              {{ $t('ticket.add') }}
-            </el-button>
             <el-button @click="handleRefresh" icon="Refresh" :loading="loading">
               {{ $t('common.refresh') }}
             </el-button>
@@ -65,8 +62,18 @@
         border
         style="width: 100%"
       >
-        <el-table-column prop="id" label="ID" width="80" />
-        <el-table-column prop="title" :label="$t('ticket.title')" width="300" show-overflow-tooltip />
+        <el-table-column prop="title" :label="$t('ticket.title')" width="300" show-overflow-tooltip>
+          <template #default="scope">
+            <el-link
+              type="primary"
+              :underline="false"
+              @click="handleTitleClick(scope.row)"
+              class="title-link"
+            >
+              {{ scope.row.title }}
+            </el-link>
+          </template>
+        </el-table-column>
         <el-table-column prop="phase" :label="$t('ticket.phase')" width="120">
           <template #default="scope">
             <el-tag :type="getPhaseTagType(scope.row.phase)">
@@ -75,7 +82,6 @@
           </template>
         </el-table-column>
         <el-table-column prop="applicator" :label="$t('ticket.applicator')" width="200" />
-        <el-table-column prop="operator" :label="$t('ticket.operator')" width="200" />
         <el-table-column prop="createTime" :label="$t('ticket.createTime')" width="200">
           <template #default="scope">
             {{ TimeUtils.formatTime(scope.row.createTime, 'yyyy-MM-dd HH:mm:ss') }}
@@ -84,17 +90,6 @@
         <el-table-column prop="updateTime" :label="$t('ticket.updateTime')" width="200">
           <template #default="scope">
             {{ TimeUtils.formatTime(scope.row.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
-          </template>
-        </el-table-column>
-        <el-table-column :label="$t('common.actions')" width="200" fixed="right">
-          <template #default="scope">
-            <el-button
-              size="small"
-              @click="handleView(scope.row)"
-              icon="View"
-            >
-              {{ $t('common.view') }}
-            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -206,11 +201,11 @@ const handleCurrentChange = (page: number) => {
   loadData()
 }
 
-const handleAdd = () => {
-  router.push('/ticket/add')
+const handleView = (row: Ticket) => {
+  router.push(`/ticket/detail/${row.id}`)
 }
 
-const handleView = (row: Ticket) => {
+const handleTitleClick = (row: Ticket) => {
   router.push(`/ticket/detail/${row.id}`)
 }
 
@@ -322,5 +317,16 @@ onMounted(() => {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+}
+
+.title-link {
+  color: #409eff;
+  font-weight: 500;
+  cursor: pointer;
+  
+  &:hover {
+    color: #66b1ff;
+    text-decoration: underline;
+  }
 }
 </style> 

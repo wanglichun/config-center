@@ -2,10 +2,10 @@ package com.example.configcenter.enums;
 
 public enum ConfigStatusEnum {
 
-    INIT("INIT"),
-    ONLINE("ONLINE"),
-    OFFLINE("OFFLINE"),
-    DELETED("DELETED");
+    Init("Init"),
+    Online("Online"),
+    Offline("Offline"),
+    Deleted("Deleted");
 
 
 

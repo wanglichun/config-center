@@ -2,9 +2,8 @@ package com.example.configcenter.enums;
 
 public enum ConfigValueTypeEnum {
 
-    STRING("STRING"),
-    JSON("JSON"),
-    YAML("YAML");
+    Json("Json"),
+    Yaml("Yaml");
 
 
     private final String value;

@@ -15,7 +15,7 @@ export interface Ticket {
   title: string
   phase: TicketPhase
   applicator: string
-  operator?: string
+  operator: string
   createTime: long
   updateTime: long
   createBy?: string

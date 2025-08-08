@@ -2,8 +2,8 @@ package com.example.configcenter.enums;
 
 public enum RoleEnum {
 
-    ADMIN("ADMIN"),
-    DEVELOPER("DEVELOPER"),
+    Admin("Admin"),
+    Developer("Developer");
 
     private final String value;
 

@@ -29,7 +29,7 @@
           </el-descriptions-item>
           <el-descriptions-item :label="$t('config.status')">
             <el-tag :type="getStatusTagType(configDetail?.status)">
-              {{ getStatusText(configDetail?.status) }}
+              {{ configDetail?.status }}
             </el-tag>
           </el-descriptions-item>
           <el-descriptions-item :label="$t('Version')">
@@ -91,7 +91,18 @@
             style="width: 100%"
             :empty-text="$t('common.noData')"
           >
-            <el-table-column prop="title" :label="$t('config.history.ticketTitle')" width="280" />
+            <el-table-column prop="title" :label="$t('config.history.ticketTitle')" width="280" show-overflow-tooltip>
+              <template #default="scope">
+                <el-link
+                    type="primary"
+                    :underline="false"
+                    @click="handleTitleClick(scope.row)"
+                    class="title-link"
+                >
+                  {{ scope.row.title }}
+                </el-link>
+              </template>
+            </el-table-column>
             <el-table-column prop="applicator" :label="$t('config.history.applicator')" width="280" />
             <el-table-column prop="phase" :label="$t('ticket.phase')" width="280">
               <template #default="{ row }">
@@ -140,6 +151,7 @@ import { getConfigById, getSubscribedContainers, getConfigHistory } from '@/api/
 import type { ConfigItem, ConfigHistory } from '@/types/config'
 import { useI18n } from 'vue-i18n'
 import {TimeUtils} from "@/utils/time.ts";
+import type {Ticket} from "@/types/ticket.ts";
 
 const route = useRoute()
 const router = useRouter()
@@ -189,6 +201,10 @@ const loadConfigDetail = async () => {
   } finally {
     loading.value = false
   }
+}
+
+const handleTitleClick = (row: Ticket) => {
+  router.push(`/ticket/detail/${row.id}`)
 }
 
 // 加载配置历史
@@ -323,19 +339,10 @@ const handleEdit = () => {
 
 const getStatusTagType = (status?: string) => {
   switch (status) {
-    case 'ACTIVE': return 'success'
-    case 'DRAFT': return 'info'
-    case 'DELETED': return 'danger'
+    case 'Online': return 'success'
+    case 'Offline': return 'info'
+    case 'Init': return 'danger'
     default: return undefined
-  }
-}
-
-const getStatusText = (status?: string) => {
-  switch (status) {
-    case 'ACTIVE': return '已发布'
-    case 'DRAFT': return '草稿'
-    case 'DELETED': return '已删除'
-    default: return status || ''
   }
 }
 

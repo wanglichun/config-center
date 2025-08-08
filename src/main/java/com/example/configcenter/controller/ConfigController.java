@@ -33,8 +33,6 @@ public class ConfigController {
     @Autowired
     private MachineService machineService;
     @Autowired
-    private ZooKeeperService zooKeeperService;
-    @Autowired
     TicketService ticketService;
 
     /**

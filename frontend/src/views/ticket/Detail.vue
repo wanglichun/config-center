@@ -59,23 +59,26 @@
           <el-descriptions-item :label="$t('ticket.applicator')">
             {{ ticketDetail?.applicator }}
           </el-descriptions-item>
-          <el-descriptions-item :label="$t('ticket.operator')">
-            {{ ticketDetail?.operator || $t('common.none') }}
+          <el-descriptions-item :label="$t('config.groupName')">
+            {{ configInfo?.groupName || '-' }}
           </el-descriptions-item>
-          <el-descriptions-item :label="$t('ticket.dataId')">
-            {{ ticketDetail?.dataId }}
+          <el-descriptions-item :label="$t('config.configKey')">
+            <el-link
+              v-if="configInfo?.configKey"
+              type="primary"
+              :underline="false"
+              @click="handleConfigKeyClick"
+              class="config-key-link"
+            >
+              {{ configInfo.configKey }}
+            </el-link>
+            <span v-else>-</span>
           </el-descriptions-item>
           <el-descriptions-item :label="$t('ticket.createTime')">
-            {{ formatTime(ticketDetail?.createTime?.toString()) }}
+            {{ TimeUtils.formatTime(ticketDetail?.createTime, 'yyyy-MM-dd HH:mm:ss') }}
           </el-descriptions-item>
           <el-descriptions-item :label="$t('ticket.updateTime')">
-            {{ formatTime(ticketDetail?.updateTime?.toString()) }}
-          </el-descriptions-item>
-          <el-descriptions-item :label="$t('ticket.applicator')">
-            {{ ticketDetail?.applicator || $t('common.none') }}
-          </el-descriptions-item>
-          <el-descriptions-item :label="$t('ticket.operator')">
-            {{ ticketDetail?.operator || $t('common.none') }}
+            {{ TimeUtils.formatTime(ticketDetail?.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
           </el-descriptions-item>
         </el-descriptions>
       </div>
@@ -397,11 +400,13 @@ import { useRoute, useRouter } from 'vue-router'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { Refresh, CopyDocument, Check } from '@element-plus/icons-vue'
 import { getTicketById, updateTicket } from '@/api/ticket'
-import {getSubscribedContainers, publishConfig, rollbackConfig} from '@/api/config'
+import {getSubscribedContainers, publishConfig, rollbackConfig, getConfigById} from '@/api/config'
 import type { Ticket } from '@/types/ticket'
 import type { MachineInstance } from '@/types/machine'
 import { TicketPhase } from '@/types/ticket'
 import { useI18n } from 'vue-i18n'
+import {TimeUtils} from "@/utils/time.ts";
+import type {ConfigItem} from "@/types/config.ts";
 
 const route = useRoute()
 const router = useRouter()
@@ -411,6 +416,7 @@ const { t } = useI18n()
 const ticketDetail = ref<Ticket | null>(null)
 const loading = ref(false)
 const isEncrypted = ref(false)
+const configInfo = ref<{ groupName?: string; configKey?: string } | null>(null)
 
 // 弹窗相关数据
 const grayPublishDialogVisible = ref(false)
@@ -543,6 +549,9 @@ const loadTicketDetail = async () => {
       console.log('加载的工单详情:', ticketDetail.value)
       console.log('工单状态:', ticketDetail.value?.phase)
       console.log('状态类型:', typeof ticketDetail.value?.phase)
+      
+      // 加载配置信息
+      await loadConfigInfo()
     } else {
       ElMessage.error(response.message || t('ticket.detail.messages.loadFailed'))
     }
@@ -554,6 +563,24 @@ const loadTicketDetail = async () => {
   }
 }
 
+const loadConfigInfo = async () => {
+  if (!ticketDetail.value?.dataId) {
+    return
+  }
+
+  try {
+    const response = await getConfigById(ticketDetail.value.dataId)
+    if (response.success && response.data) {
+      configInfo.value = {
+        groupName: response.data.groupName,
+        configKey: response.data.configKey
+      }
+    }
+  } catch (error) {
+    console.error('加载配置信息失败:', error)
+  }
+}
+
 const goBack = () => {
   router.back()
 }
@@ -561,6 +588,7 @@ const goBack = () => {
 const refreshData = () => {
   loadTicketDetail()
 }
+
 
 const getPhaseTagType = (phase?: string) => {
   switch (phase) {
@@ -626,6 +654,12 @@ const copyNewData = () => {
   if (ticketDetail.value?.newData) {
     navigator.clipboard.writeText(ticketDetail.value.newData)
     ElMessage.success(t('common.copySuccess'))
+  }
+}
+
+const handleConfigKeyClick = () => {
+  if (ticketDetail.value?.dataId) {
+    router.push(`/config/detail/${ticketDetail.value.dataId}`)
   }
 }
 
@@ -1708,6 +1742,17 @@ const completeGrayPublish = async () => {
         stroke: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       }
     }
+  }
+}
+
+.config-key-link {
+  color: #409eff;
+  font-weight: 500;
+  cursor: pointer;
+  
+  &:hover {
+    color: #66b1ff;
+    text-decoration: underline;
   }
 }
 </style> 

@@ -99,9 +99,9 @@
             </el-form-item>
             <el-form-item :label="$t('config.dataType')" prop="dataType">
               <el-select v-model="configForm.dataType" :placeholder="$t('config.dataType')">
-                <el-option :label="$t('config.dataTypes.STRING')" value="STRING" />
-                <el-option :label="$t('config.dataTypes.JSON')" value="JSON" />
-                <el-option :label="$t('config.dataTypes.YAML')" value="YAML" />
+                <el-option :label="$t('config.dataTypes.String')" value="String" />
+                <el-option :label="$t('config.dataTypes.Json')" value="Json" />
+                <el-option :label="$t('config.dataTypes.Yaml')" value="Yaml" />
               </el-select>
             </el-form-item>
           </div>
@@ -226,20 +226,14 @@ const loadEnums = async () => {
 
 const getStatusTagType = (status: string) => {
   switch (status) {
-    case 'ONLINE': return 'success'
-    case 'OFFLINE': return 'info'
-    case 'INIT': return 'info'
+    case 'Online': return 'success'
+    case 'Offline': return 'info'
+    case 'Init': return 'info'
     default: return 'info'
   }
 }
 
-const getStatusText = (status: string) => {
-  if (enumsData.value?.ConfigStatusEnum) {
-    return enumsData.value.ConfigStatusEnum[status] || status
-  }
-  // 使用国际化文本
-  return t(`config.statuses.${status}`) || status
-}
+
 
 // 加载配置列表
 const loadConfigList = async () => {
