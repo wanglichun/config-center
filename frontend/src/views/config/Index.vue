@@ -310,14 +310,14 @@ const handlePublish = async (row: ConfigItem) => {
   console.log(t('config.messages.publishConfigInfo'), row)
   
   try {
-    // 跳转到配置发布详情页面
+    // 跳转到配置详情页面
     await router.push({
-      name: 'ConfigPublishDetail',
+      name: 'ConfigDetail',
       params: { id: row.id }
     })
   } catch (error) {
-    console.error('跳转到发布详情页面失败:', error)
-    ElMessage.error(t('config.messages.navigateToPublishFailed'))
+    console.error('跳转到详情页面失败:', error)
+    ElMessage.error(t('config.messages.navigateToDetailFailed'))
   }
 }
 

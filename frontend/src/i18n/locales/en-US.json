@@ -464,7 +464,7 @@
     "detail": {
       "title": "Ticket Detail",
       "basicInfo": "Basic Information",
-      "dataComparison": "Data Comparison",
+      "dataComparison": "Data Diff",
       "oldData": "Old Data",
       "newData": "New Data",
       "noOldData": "No old data",

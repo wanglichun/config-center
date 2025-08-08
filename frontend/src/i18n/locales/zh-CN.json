@@ -490,6 +490,8 @@
       "newData": "新数据",
       "noOldData": "无旧数据",
       "noNewData": "无新数据",
+      "copyOldData": "复制变更前数据",
+      "copyNewData": "复制变更后数据",
       "operationHistory": "操作记录",
       "operator": "操作人",
       "statusProgress": "状态进度",
