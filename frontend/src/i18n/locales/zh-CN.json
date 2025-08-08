@@ -109,10 +109,18 @@
       "saveConfigFailed": "保存配置失败",
       "processingTicketFound": "发现进行中的工单",
       "processingTicketConfirm": "配置 \"{key}\" 有进行中的工单，是否查看工单详情？",
-      "checkProcessingTicketFailed": "检查进行中工单失败"
+      "checkProcessingTicketFailed": "检查进行中工单失败",
+      "toggleStatusConfirm": "确定要{action}配置 \"{key}\" 吗？",
+      "toggleStatusSuccess": "{action}成功",
+      "toggleStatusFailed": "状态切换失败",
+      "cannotDeleteOnline": "Online状态的配置不可以直接删除，需要先下线再删除"
     },
     "detail": {
       "viewTicket": "查看工单"
+    },
+    "actions": {
+      "online": "上线",
+      "offline": "下线"
     },
     "publish": {
       "title": "发布配置",

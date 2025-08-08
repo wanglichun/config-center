@@ -100,6 +100,13 @@ export function getConfigHistory(id: number, params?: { pageNum?: number; pageSi
 }
 
 /**
+ * 切换配置状态
+ */
+export function toggleConfigStatus(configId: number, status: string): Promise<ApiResult<boolean>> {
+  return request.put(`/config/${configId}/status`, { status })
+}
+
+/**
  * 验证配置格式
  */
 export function validateConfig(configValue: string, dataType: string): Promise<ApiResult<boolean>> {

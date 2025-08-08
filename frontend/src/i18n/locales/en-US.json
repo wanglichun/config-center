@@ -14,6 +14,7 @@
     "ticket": "Ticket Management"
   },
   "common": {
+    "noData": "No Data",
     "search": "Search",
     "reset": "Reset",
     "add": "Add",
@@ -69,10 +70,12 @@
       "prod": "Production"
     },
     "dataTypes": {
-      "STRING": "String",
-      "NUMBER": "Number",
-      "BOOLEAN": "Boolean",
-      "JSON": "JSON"
+      "Yaml": "Yaml",
+      "Json": "Json"
+    },
+    "actions": {
+      "online": "Online",
+      "offline": "Offline"
     },
     "statuses": {
       "PUBLISHED": "Published",
@@ -114,7 +117,9 @@
       "navigateToPublishFailed": "Navigate to publish detail page failed",
       "loadConfigListFailed": "Load configuration list failed",
       "deleteConfigFailed": "Delete configuration failed",
-      "saveConfigFailed": "Save configuration failed"
+      "saveConfigFailed": "Save configuration failed",
+      "cannotDeleteOnline": "The configuration in the online. You need to offline first and then delete it."
+
     },
     "publish": {
       "title": "Publish Configuration",

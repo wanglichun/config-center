@@ -52,12 +52,12 @@ public class ConfigServiceImpl implements ConfigService {
     TicketService ticketService;
 
     @Override
-    @Cacheable(value = "config", key = "#groupName + ':' + #configKey")
+    @Cacheable(value = "config", key = "#id")
     public ConfigItem getConfig(Long id) {
         try {
             return configItemMapper.findById(id);
         } catch (Exception e) {
-            log.error("获取配置失败: id={}, configKey={}", id, e);
+            log.error("获取配置失败: id={}", id, e);
             return null;
         }
     }
@@ -83,6 +83,7 @@ public class ConfigServiceImpl implements ConfigService {
             configItem.setConfigValue(configCreateReq.getConfigValue());
             configItem.setDescription(configCreateReq.getDescription());
             configItem.setDataType(configCreateReq.getDataType());
+            configItem.setEncrypted(configCreateReq.isEncrypted());
 
             // 生成ZK路径
             String zkPath = buildZkPath(configCreateReq.getGroupName(), configCreateReq.getConfigKey());

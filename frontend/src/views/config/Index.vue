@@ -36,7 +36,18 @@
 
       <el-table :data="configList" v-loading="loading" style="width: 100%">
         <el-table-column prop="groupName" :label="$t('config.groupName')" />
-        <el-table-column prop="configKey" :label="$t('config.configKey')" />
+        <el-table-column prop="configKey" :label="$t('config.configKey')">
+          <template #default="scope">
+            <el-link
+                type="primary"
+                :underline="false"
+                @click="handleViewDetail(scope.row)"
+                class="title-link"
+            >
+              {{ scope.row.configKey }}
+            </el-link>
+          </template>
+        </el-table-column>
         <el-table-column prop="configValue" :label="$t('config.configValue')" show-overflow-tooltip />
         <el-table-column prop="description" :label="$t('config.description')" show-overflow-tooltip />
         <el-table-column prop="status" :label="$t('config.status')" width="100">
@@ -56,16 +67,48 @@
             {{ TimeUtils.formatTime(scope.row.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
           </template>
         </el-table-column>
-        <el-table-column :label="$t('config.operation')" width="220" fixed="right">
+        <el-table-column :label="$t('config.operation')" width="280" fixed="right">
           <template #default="scope">
             <div class="operation-buttons">
-              <el-button size="small" type="info" @click="handleViewDetail(scope.row)">
-                {{ $t('common.view') }}
-              </el-button>
               <el-button size="small" type="primary" @click="handleEdit(scope.row)">
                 {{ $t('common.edit') }}
               </el-button>
-              <el-button size="small" type="danger" @click="handleDelete(scope.row)">
+              <el-button 
+                v-if="scope.row.status === 'Init' || scope.row.status === 'Offline'"
+                size="small" 
+                type="success" 
+                @click="handleToggleStatus(scope.row, 'Online')"
+              >
+                {{ $t('config.actions.online') }}
+              </el-button>
+              <el-button 
+                v-if="scope.row.status === 'Online'"
+                size="small" 
+                type="warning" 
+                @click="handleToggleStatus(scope.row, 'Offline')"
+              >
+                {{ $t('config.actions.offline') }}
+              </el-button>
+              <el-tooltip 
+                v-if="scope.row.status === 'Online'" 
+                :content="$t('config.messages.cannotDeleteOnline')" 
+                placement="top"
+              >
+                <el-button 
+                  size="small" 
+                  type="danger" 
+                  disabled
+                  @click="handleDelete(scope.row)"
+                >
+                  {{ $t('common.delete') }}
+                </el-button>
+              </el-tooltip>
+              <el-button 
+                v-else
+                size="small" 
+                type="danger" 
+                @click="handleDelete(scope.row)"
+              >
                 {{ $t('common.delete') }}
               </el-button>
             </div>
@@ -99,7 +142,6 @@
             </el-form-item>
             <el-form-item :label="$t('config.dataType')" prop="dataType">
               <el-select v-model="configForm.dataType" :placeholder="$t('config.dataType')">
-                <el-option :label="$t('config.dataTypes.String')" value="String" />
                 <el-option :label="$t('config.dataTypes.Json')" value="Json" />
                 <el-option :label="$t('config.dataTypes.Yaml')" value="Yaml" />
               </el-select>
@@ -148,7 +190,7 @@ import { ElMessage, ElMessageBox } from 'element-plus'
 import { Plus, Search } from '@element-plus/icons-vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import { getConfigPage, createConfig, updateConfig, deleteConfig, publishConfig, getConfigById } from '@/api/config'
+import { getConfigPage, createConfig, updateConfig, deleteConfig, publishConfig, getConfigById, toggleConfigStatus } from '@/api/config'
 import { getAllEnum, enumToOptions } from '@/api/enum'
 import { getProcessingTicket } from '@/api/ticket'
 
@@ -173,7 +215,7 @@ const configForm = reactive<ConfigForm>({
   groupName: '',
   configKey: '',
   configValue: '',
-  dataType: 'STRING',
+  dataType: '',
   description: '',
   encrypted: false
 })
@@ -312,7 +354,7 @@ const handleEdit = async (row: ConfigItem) => {
       groupName: row.groupName,
       configKey: row.configKey,
       configValue: row.configValue,
-      dataType: row.dataType || 'STRING',
+      dataType: row.dataType,
       description: row.description || '',
       encrypted: row.encrypted || false,
       tags: row.tags || '',
@@ -344,6 +386,12 @@ const handlePublish = async (row: ConfigItem) => {
 }
 
 const handleDelete = async (row: ConfigItem) => {
+  // 检查是否为Online状态
+  if (row.status === 'Online') {
+    ElMessage.warning(t('config.messages.cannotDeleteOnline'))
+    return
+  }
+
   try {
     await ElMessageBox.confirm(t('config.messages.deleteConfirm', { key: row.configKey }), t('common.confirm'), {
       confirmButtonText: t('common.confirm'),
@@ -362,6 +410,37 @@ const handleDelete = async (row: ConfigItem) => {
     if (error !== 'cancel') {
       console.error(t('config.messages.deleteConfigFailed'), error)
       ElMessage.error(t('config.messages.deleteFailed'))
+    }
+  }
+}
+
+const handleToggleStatus = async (row: ConfigItem, newStatus: string) => {
+  try {
+    const actionText = newStatus === 'Online' ? t('config.actions.online') : t('config.actions.offline')
+    await ElMessageBox.confirm(
+      t('config.messages.toggleStatusConfirm', { 
+        key: row.configKey, 
+        action: actionText 
+      }), 
+      t('common.confirm'), 
+      {
+        confirmButtonText: t('common.confirm'),
+        cancelButtonText: t('common.cancel'),
+        type: 'warning'
+      }
+    )
+
+    const response = await toggleConfigStatus(row.id, newStatus)
+    if (response.success) {
+      ElMessage.success(t('config.messages.toggleStatusSuccess', { action: actionText }))
+      loadConfigList()
+    } else {
+      ElMessage.error(response.message || t('config.messages.toggleStatusFailed'))
+    }
+  } catch (error) {
+    if (error !== 'cancel') {
+      console.error(t('config.messages.toggleStatusFailed'), error)
+      ElMessage.error(t('config.messages.toggleStatusFailed'))
     }
   }
 }
@@ -456,7 +535,7 @@ const resetForm = () => {
     groupName: '',
     configKey: '',
     configValue: '',
-    dataType: 'STRING',
+    dataType: '',
     description: '',
     encrypted: false
   })
@@ -804,6 +883,22 @@ onMounted(() => {
         grid-template-columns: 1fr;
         gap: 16px;
       }
+    }
+  }
+}
+
+// Online状态下的delete按钮样式
+.operation-buttons {
+  .el-button.el-button--danger:disabled {
+    background-color: #c0c4cc !important;
+    border-color: #c0c4cc !important;
+    color: #909399 !important;
+    cursor: not-allowed !important;
+    
+    &:hover {
+      background-color: #c0c4cc !important;
+      border-color: #c0c4cc !important;
+      color: #909399 !important;
     }
   }
 }

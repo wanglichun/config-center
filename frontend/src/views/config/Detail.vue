@@ -47,10 +47,10 @@
           {{ configDetail?.owner }}
         </el-descriptions-item>
           <el-descriptions-item :label="$t('CreateTime')">
-            {{ formatTime(configDetail?.createTime, 'yyyy-MM-dd HH:mm:ss') }}
+            {{ TimeUtils.formatTime(configDetail?.createTime, 'yyyy-MM-dd HH:mm:ss') }}
           </el-descriptions-item>
           <el-descriptions-item :label="$t('UpdateTime')">
-            {{ formatTime(configDetail?.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
+            {{ TimeUtils.formatTime(configDetail?.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
           </el-descriptions-item>
           <el-descriptions-item :label="$t('config.description')" :span="2">
             {{ configDetail?.description || $t('common.none') }}
@@ -344,57 +344,6 @@ const getStatusTagType = (status?: string) => {
     case 'Init': return 'danger'
     default: return undefined
   }
-}
-
-const formatTime = (
-    time?: string | number | Date,
-    format?: string,
-    locale: string = 'zh-CN'
-) => {
-  if (!time) return '-'
-
-  // 尝试将输入转换为Date对象
-  let date: Date | null = null
-  if (time instanceof Date) {
-    date = time
-  } else {
-    // 处理时间戳（支持秒级和毫秒级）
-    if (typeof time === 'number') {
-      // 如果是秒级时间戳（位数小于13位），转换为毫秒级
-      if (time.toString().length < 13) {
-        time *= 1000
-      }
-      date = new Date(time)
-    } else if (typeof time === 'string') {
-      date = new Date(time)
-    }
-  }
-
-  // 检查是否为有效日期
-  if (!date || isNaN(date.getTime())) {
-    return '-'
-  }
-
-  // 如果指定了格式，使用自定义格式化
-  if (format) {
-    const year = date.getFullYear()
-    const month = String(date.getMonth() + 1).padStart(2, '0')
-    const day = String(date.getDate()).padStart(2, '0')
-    const hours = String(date.getHours()).padStart(2, '0')
-    const minutes = String(date.getMinutes()).padStart(2, '0')
-    const seconds = String(date.getSeconds()).padStart(2, '0')
-
-    return format
-        .replace('yyyy', year.toString())
-        .replace('MM', month)
-        .replace('dd', day)
-        .replace('HH', hours)
-        .replace('mm', minutes)
-        .replace('ss', seconds)
-  }
-
-  // 否则使用本地化格式
-  return date.toLocaleString(locale)
 }
 
 // 生命周期

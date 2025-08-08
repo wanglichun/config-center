@@ -28,4 +28,6 @@ public class ConfigCreateReq {
      * 配置描述
      */
     private String description;
+
+    private boolean encrypted;
 }
