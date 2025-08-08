@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1625340a-b1de-4f9a-a29d-4a3030cc26bf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1625340a-b1de-4f9a-a29d-4a3030cc26bf.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/i18n/locales/en-US.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/i18n/locales/en-US.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/views/ticket/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/ticket/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/config-center.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/config-center.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/ConfigItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/entity/ConfigItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ConfigServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ConfigItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ConfigItemMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/TicketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/dto/TicketQueryRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/dto/TicketQueryRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/mapper/TicketMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/mapper/TicketMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/TicketService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/TicketService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/TicketServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/TicketServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/TicketMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/TicketMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +56,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.ConfigCenterApplication (1).executor": "Debug",
-    "Spring Boot.ConfigCenterApplication (2).executor": "Debug",
+    "Spring Boot.ConfigCenterApplication (2).executor": "Run",
     "Spring Boot.ConfigCenterApplication.executor": "Run",
     "git-widget-placeholder": "config-center-dev",
     "kotlin-language-version-configured": "true",
@@ -161,7 +165,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/frontend/src/views/config/Detail.vue</url>
-          <line>100</line>
+          <line>102</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>

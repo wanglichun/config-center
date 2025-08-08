@@ -59,7 +59,7 @@
             </if>
         </where>
         ORDER BY create_time DESC
-        LIMIT #{offset}, #{pageSize}
+        LIMIT #{pageNum}, #{pageSize}
     </select>
 
 

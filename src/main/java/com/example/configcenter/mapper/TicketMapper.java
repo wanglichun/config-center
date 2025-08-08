@@ -1,6 +1,8 @@
 package com.example.configcenter.mapper;
 
+import com.example.configcenter.dto.TicketQueryRequest;
 import com.example.configcenter.entity.Ticket;
+import com.example.configcenter.enums.TicketPhaseEnum;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,20 +17,12 @@ public interface TicketMapper {
     /**
      * 分页查询工单列表
      */
-    List<Ticket> findByPage(@Param("offset") int offset,
-                            @Param("pageSize") int pageSize,
-                            @Param("title") String title,
-                            @Param("phase") String phase,
-                            @Param("applicator") String applicator,
-                            @Param("configId") Long configId);
+    List<Ticket> findByPage(TicketQueryRequest ticketQueryRequest);
 
     /**
      * 统计工单总数
      */
-    int count(@Param("title") String title,
-              @Param("phase") String phase,
-              @Param("applicator") String applicator,
-              @Param("configId") Long configId);
+    int count(TicketQueryRequest ticketQueryRequest);
 
     /**
      * 根据ID获取工单

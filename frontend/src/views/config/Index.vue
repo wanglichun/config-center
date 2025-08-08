@@ -389,10 +389,36 @@ const handleSave = async () => {
 
       if (response.success) {
         ElMessage.success(isEdit.value ? t('config.messages.updateSuccess') : t('config.messages.createSuccess'))
+        console.log('配置保存响应:', response)
+        console.log('isEdit.value:', isEdit.value)
+        console.log('configForm.id:', configForm.id)
+        
+        const isEditMode = isEdit.value && configForm.id
+        console.log('条件判断结果:', isEditMode)
+        
         showAddDialog.value = false
         resetForm()
-        const ticket = response.data as Ticket
-        router.push(`/ticket/detail/${ticket.id}`)
+        
+        if (isEditMode) {
+          // 编辑配置成功后，检查是否返回了ticket信息
+          console.log('编辑模式，检查返回数据:', response.data)
+          console.log('数据类型:', typeof response.data)
+          console.log('是否有id属性:', 'id' in response.data)
+          
+          if (response.data && typeof response.data === 'object' && 'id' in response.data) {
+            const ticket = response.data as Ticket
+            console.log('跳转到ticket详情页面:', ticket.id)
+            router.push(`/ticket/detail/${ticket.id}`)
+          } else {
+            // 如果没有返回ticket信息，刷新配置列表
+            console.log('刷新配置列表')
+            loadConfigList()
+          }
+        } else {
+          // 新增配置成功后，刷新配置列表
+          console.log('刷新配置列表')
+          loadConfigList()
+        }
       } else {
         ElMessage.error(response.message || t('config.messages.saveFailed'))
       }

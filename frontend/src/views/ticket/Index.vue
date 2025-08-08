@@ -3,7 +3,7 @@
     <el-card>
       <template #header>
         <div class="card-header">
-          <span class="title">{{ $t('ticket.title') }}</span>
+          <span class="title">{{ $t('ticket.management') }}</span>
           <div class="actions">
             <el-button type="primary" @click="handleAdd" icon="Plus">
               {{ $t('ticket.add') }}
@@ -76,17 +76,17 @@
         </el-table-column>
         <el-table-column prop="applicator" :label="$t('ticket.applicator')" width="200" />
         <el-table-column prop="operator" :label="$t('ticket.operator')" width="200" />
-        <el-table-column prop="createTime" :label="$t('ticket.createTime')" width="160">
+        <el-table-column prop="createTime" :label="$t('ticket.createTime')" width="200">
           <template #default="scope">
-            {{ formatTime(scope.row.createTime) }}
+            {{ TimeUtils.formatTime(scope.row.createTime, 'yyyy-MM-dd HH:mm:ss') }}
           </template>
         </el-table-column>
-        <el-table-column prop="updateTime" :label="$t('ticket.updateTime')" width="160">
+        <el-table-column prop="updateTime" :label="$t('ticket.updateTime')" width="200">
           <template #default="scope">
-            {{ formatTime(scope.row.updateTime) }}
+            {{ TimeUtils.formatTime(scope.row.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
           </template>
         </el-table-column>
-        <el-table-column :label="$t('common.actions')" width="300" fixed="right">
+        <el-table-column :label="$t('common.actions')" width="200" fixed="right">
           <template #default="scope">
             <el-button
               size="small"
@@ -94,22 +94,6 @@
               icon="View"
             >
               {{ $t('common.view') }}
-            </el-button>
-            <el-button
-              size="small"
-              type="primary"
-              @click="handleEdit(scope.row)"
-              icon="Edit"
-            >
-              {{ $t('common.edit') }}
-            </el-button>
-            <el-button
-              size="small"
-              type="danger"
-              @click="handleDelete(scope.row)"
-              icon="Delete"
-            >
-              {{ $t('common.delete') }}
             </el-button>
           </template>
         </el-table-column>
@@ -139,6 +123,7 @@ import { getTicketPage, deleteTicket } from '@/api/ticket'
 import type { Ticket, TicketQueryRequest } from '@/types/ticket'
 import { TicketPhase } from '@/types/ticket'
 import { useI18n } from 'vue-i18n'
+import {TimeUtils} from "@/utils/time.ts";
 
 const router = useRouter()
 const { t } = useI18n()

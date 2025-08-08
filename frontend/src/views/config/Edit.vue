@@ -197,12 +197,16 @@ const handleSubmit = async () => {
     
     if (response.success) {
       ElMessage.success(t('config.messages.updateSuccess'))
+      console.log('更新配置响应:', response)
+      
       // 如果返回了ticket对象，跳转到ticket详情页面
       if (response.data && typeof response.data === 'object' && 'id' in response.data) {
         const ticket = response.data as Ticket
+        console.log('跳转到ticket详情页面:', ticket.id)
         router.push(`/ticket/detail/${ticket.id}`)
       } else {
         // 如果没有返回ticket，返回配置列表
+        console.log('返回配置列表')
         router.push('/config')
       }
     } else {

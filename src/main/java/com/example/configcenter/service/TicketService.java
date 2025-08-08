@@ -34,4 +34,9 @@ public interface TicketService {
      * 删除工单
      */
     boolean deleteTicket(Long id);
+
+    /**
+     * 获取配置为结束的工单
+     */
+    Ticket getTicketByConfigId(Long id);
 }

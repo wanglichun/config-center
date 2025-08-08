@@ -73,4 +73,12 @@ public class TicketController {
     public ApiResult<Ticket> updateTicket(@PathVariable Long id, @RequestBody TicketUpdateRequest req) {
         return ApiResult.success(ticketService.updateTicket(id, req));
     }
+
+    /**
+     * 更新工单
+     */
+    @GetMapping("/{id}/get_processing_ticket")
+    public ApiResult<Ticket> getProcessTicket(@PathVariable Long id) {
+        return ApiResult.success(ticketService.getTicketByConfigId(id));
+    }
 }

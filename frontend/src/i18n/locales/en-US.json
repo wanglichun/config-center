@@ -423,7 +423,8 @@
     "maxLength": "Length cannot exceed {max} characters"
   },
   "ticket": {
-    "title": "Ticket Management",
+    "management" : "Ticket Management",
+    "title": "Ticket Title",
     "add": "Add Ticket",
     "phase": "Ticket Phase",
     "applicator": "Applicator",

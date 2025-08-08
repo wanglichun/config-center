@@ -38,14 +38,14 @@ export function getConfigs(appName: string, environment: string): Promise<ApiRes
 /**
  * 创建配置
  */
-export function createConfig(data: ConfigForm): Promise<ApiResult<boolean>> {
+export function createConfig(data: ConfigForm): Promise<ApiResult<any>> {
   return request.post('/config', data)
 }
 
 /**
  * 更新配置
  */
-export function updateConfig(id: number, data: ConfigForm): Promise<ApiResult<boolean>> {
+export function updateConfig(id: number, data: ConfigForm): Promise<ApiResult<any>> {
   return request.put(`/config/${id}`, data)
 }
 
