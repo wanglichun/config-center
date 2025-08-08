@@ -462,6 +462,9 @@
       "errorMessage": "Operation failed"
     },
     "detail": {
+      "viewTicket": "Ok",
+      "processingTicketFound" : "Found an ongoing work ticket",
+      "processingTicketConfirm" : "There is an ongoing work ticket for configuration \"{key}\". Do you want to view the work ticket details?",
       "title": "Ticket Detail",
       "basicInfo": "Basic Information",
       "dataComparison": "Data Diff",

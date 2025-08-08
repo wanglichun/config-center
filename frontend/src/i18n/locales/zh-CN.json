@@ -106,7 +106,13 @@
       "navigateToPublishFailed": "跳转到发布详情页面失败",
       "loadConfigListFailed": "加载配置列表失败",
       "deleteConfigFailed": "删除配置失败",
-      "saveConfigFailed": "保存配置失败"
+      "saveConfigFailed": "保存配置失败",
+      "processingTicketFound": "发现进行中的工单",
+      "processingTicketConfirm": "配置 \"{key}\" 有进行中的工单，是否查看工单详情？",
+      "checkProcessingTicketFailed": "检查进行中工单失败"
+    },
+    "detail": {
+      "viewTicket": "查看工单"
     },
     "publish": {
       "title": "发布配置",

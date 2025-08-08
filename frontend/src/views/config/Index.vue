@@ -150,6 +150,8 @@ import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { getConfigPage, createConfig, updateConfig, deleteConfig, publishConfig, getConfigById } from '@/api/config'
 import { getAllEnum, enumToOptions } from '@/api/enum'
+import { getProcessingTicket } from '@/api/ticket'
+
 import type { ConfigItem, ConfigQuery, ConfigForm } from '@/types/config'
 import type { PageResult } from '@/types/common'
 import type { AllEnums } from '@/api/enum'
@@ -282,22 +284,48 @@ const handleViewDetail = (row: ConfigItem) => {
   })
 }
 
-const handleEdit = (row: ConfigItem) => {
-  isEdit.value = true
-  // 复制配置数据到表单
-  Object.assign(configForm, {
-    id: row.id,
-    groupName: row.groupName,
-    configKey: row.configKey,
-    configValue: row.configValue,
-    dataType: row.dataType || 'STRING',
-    description: row.description || '',
-    encrypted: row.encrypted || false,
-    tags: row.tags || '',
-    remark: row.remark || ''
-  })
-  // 显示编辑对话框
-  showAddDialog.value = true
+const handleEdit = async (row: ConfigItem) => {
+  try {
+    // 检查是否有进行中的ticket
+    const ticketResponse = await getProcessingTicket(row.id)
+    if (ticketResponse.success && ticketResponse.data) {
+      // 有进行中的ticket，显示确认对话框
+      await ElMessageBox.confirm(
+        t('ticket.detail.processingTicketConfirm', { key: row.configKey }),
+        t('ticket.detail.processingTicketFound'),
+        {
+          confirmButtonText: t('ticket.detail.viewTicket'),
+          cancelButtonText: t('common.cancel'),
+          type: 'warning'
+        }
+      )
+      // 用户确认查看工单，跳转到ticket详情页
+      router.push(`/ticket/detail/${ticketResponse.data.id}`)
+      return
+    }
+    
+    // 没有进行中的ticket，正常编辑流程
+    isEdit.value = true
+    // 复制配置数据到表单
+    Object.assign(configForm, {
+      id: row.id,
+      groupName: row.groupName,
+      configKey: row.configKey,
+      configValue: row.configValue,
+      dataType: row.dataType || 'STRING',
+      description: row.description || '',
+      encrypted: row.encrypted || false,
+      tags: row.tags || '',
+      remark: row.remark || ''
+    })
+    // 显示编辑对话框
+    showAddDialog.value = true
+  } catch (error) {
+    if (error !== 'cancel') {
+      console.error(t('config.messages.checkProcessingTicketFailed'), error)
+      ElMessage.error(t('config.messages.checkProcessingTicketFailed'))
+    }
+  }
 }
 
 const handlePublish = async (row: ConfigItem) => {

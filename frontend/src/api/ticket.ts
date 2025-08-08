@@ -22,6 +22,13 @@ export function createTicket(data: TicketCreateRequest): Promise<ApiResult<numbe
   })
 }
 
+/**
+ * 获取配置的进行中ticket
+ */
+export function getProcessingTicket(configId: number): Promise<ApiResult<any>> {
+  return request.get(`/ticket/${configId}/get_processing_ticket`)
+}
+
 // 更新工单
 export function updateTicket(id: number, data: TicketUpdateRequest): Promise<ApiResult<boolean>> {
   return request.put(`/ticket/${id}`, data)
