@@ -26,7 +26,7 @@
           <el-select
             v-model="queryForm.phase"
             :placeholder="$t('ticket.placeholders.phase')"
-            clearable
+            clearable style="width: 200px;"
           >
             <el-option
               v-for="phase in phaseOptions"
@@ -142,11 +142,13 @@ const pagination = reactive({
 
 // 工单阶段选项
 const phaseOptions = [
-  { value: TicketPhase.PENDING, label: t('ticket.phases.pending') },
-  { value: TicketPhase.PROCESSING, label: t('ticket.phases.processing') },
-  { value: TicketPhase.APPROVED, label: t('ticket.phases.approved') },
-  { value: TicketPhase.REJECTED, label: t('ticket.phases.rejected') },
-  { value: TicketPhase.COMPLETED, label: t('ticket.phases.completed') }
+  { value: TicketPhase.Submit, label: t('ticket.phases.submit') },
+  { value: TicketPhase.Reviewing, label: t('ticket.phases.reviewing') },
+  { value: TicketPhase.Cancelled, label: t('ticket.phases.cancelled') },
+  { value: TicketPhase.GrayPublish, label: t('ticket.phases.grayPublish') },
+  { value: TicketPhase.Success, label: t('ticket.phases.success') },
+  { value: TicketPhase.Rejected, label: t('ticket.phases.rejected') }
+
 ]
 
 // 方法

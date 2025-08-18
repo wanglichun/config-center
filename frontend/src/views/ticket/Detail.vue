@@ -85,70 +85,40 @@
 
       <!-- 数据对比 -->
       <div class="data-comparison">
-        <h3>{{ $t('ticket.detail.dataComparison') }}</h3>
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <el-card class="data-card">
-              <template #header>
-                <div class="data-header">
-                  <span>{{ $t('ticket.detail.oldData') }}</span>
-                  <el-button 
-                    v-if="ticketDetail?.oldData" 
-                    @click="copyOldData" 
-                    size="small" 
-                    icon="CopyDocument"
+          <h3>{{ $t('ticket.detail.dataComparison') }}</h3>
+          <div class="diff-container" v-if="hasDataToCompare">
+            <div class="diff-content">
+              <div class="diff-scroll-container">
+                <div class="diff-left">
+                  <div 
+                    v-for="(line, index) in oldLines" 
+                    :key="`old-${index}`"
+                    class="diff-line"
+                    :class="getLineClass(line, 'old')"
                   >
-                    {{ $t('common.copy') }}
-                  </el-button>
+                    <span class="line-number">{{ index + 1 }}</span>
+                    <span class="line-content" :class="getLineClass(line, 'old')">{{ line }}</span>
+                  </div>
                 </div>
-              </template>
-              <div class="data-content">
-                <el-input
-                  v-if="ticketDetail?.oldData"
-                  :model-value="ticketDetail.oldData"
-                  type="textarea"
-                  :rows="8"
-                  readonly
-                  :show-password="isEncrypted"
-                />
-                <div v-else class="no-data">
-                  {{ $t('ticket.detail.noOldData') }}
+                <div class="diff-right">
+                  <div 
+                    v-for="(line, index) in newLines" 
+                    :key="`new-${index}`"
+                    class="diff-line"
+                    :class="getLineClass(line, 'new')"
+                  >
+                    <span class="line-number">{{ index + 1 }}</span>
+                    <span class="line-content" :class="getLineClass(line, 'new')">{{ line }}</span>
+                  </div>
                 </div>
               </div>
-            </el-card>
-          </el-col>
-          <el-col :span="12">
-            <el-card class="data-card">
-              <template #header>
-                <div class="data-header">
-                  <span>{{ $t('ticket.detail.newData') }}</span>
-                  <el-button 
-                    v-if="ticketDetail?.newData" 
-                    @click="copyNewData" 
-                    size="small" 
-                    icon="CopyDocument"
-                  >
-                    {{ $t('common.copy') }}
-                  </el-button>
-                </div>
-              </template>
-              <div class="data-content">
-                <el-input
-                  v-if="ticketDetail?.newData"
-                  :model-value="ticketDetail.newData"
-                  type="textarea"
-                  :rows="8"
-                  readonly
-                  :show-password="isEncrypted"
-                />
-                <div v-else class="no-data">
-                  {{ $t('ticket.detail.noNewData') }}
-                </div>
-              </div>
-            </el-card>
-          </el-col>
-        </el-row>
-      </div>
+            </div>
+          </div>
+          
+          <div v-else class="no-data-message">
+            <el-empty :description="$t('ticket.detail.noDataToCompare')" />
+          </div>
+        </div>
 
       <!-- 操作记录 -->
       <div class="operation-history">
@@ -622,6 +592,67 @@ const getOperationType = (type: string) => {
     default:
       return 'info'
   }
+}
+
+// Diff相关计算属性
+const hasDataToCompare = computed(() => {
+  return ticketDetail.value?.oldData || ticketDetail.value?.newData
+})
+
+const oldLines = computed(() => {
+  if (!ticketDetail.value?.oldData) return []
+  try {
+    const parsed = JSON.parse(ticketDetail.value.oldData)
+    return JSON.stringify(parsed, null, 2).split('\n')
+  } catch {
+    return ticketDetail.value.oldData.split('\n')
+  }
+})
+
+const newLines = computed(() => {
+  if (!ticketDetail.value?.newData) return []
+  try {
+    const parsed = JSON.parse(ticketDetail.value.newData)
+    return JSON.stringify(parsed, null, 2).split('\n')
+  } catch {
+    return ticketDetail.value.newData.split('\n')
+  }
+})
+
+// Diff相关方法
+const getLineClass = (line: string, side: 'old' | 'new') => {
+  const trimmedLine = line.trim()
+  if (!trimmedLine) return ''
+  
+  // 更准确的diff逻辑：逐行比较
+  const oldLinesArray = oldLines.value
+  const newLinesArray = newLines.value
+  const maxLines = Math.max(oldLinesArray.length, newLinesArray.length)
+  
+  // 找到当前行在数组中的索引
+  let lineIndex = -1
+  if (side === 'old') {
+    lineIndex = oldLinesArray.indexOf(line)
+  } else {
+    lineIndex = newLinesArray.indexOf(line)
+  }
+  
+  if (lineIndex === -1) return ''
+  
+  // 获取对应行的内容
+  const oldLine = oldLinesArray[lineIndex] || ''
+  const newLine = newLinesArray[lineIndex] || ''
+  
+  // 比较内容
+  if (oldLine === newLine) {
+    return 'unchanged'
+  } else if (side === 'old' && oldLine !== newLine) {
+    return 'removed'
+  } else if (side === 'new' && oldLine !== newLine) {
+    return 'added'
+  }
+  
+  return ''
 }
 
 const copyOldData = () => {
@@ -1148,6 +1179,165 @@ const completeGrayPublish = async () => {
     color: #303133;
     font-size: 16px;
     font-weight: 600;
+  }
+}
+
+.data-comparison {
+  .diff-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    
+    .copy-actions {
+      display: flex;
+      gap: 8px;
+    }
+  }
+  
+      .diff-container {
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+      
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      
+      .diff-header {
+        padding: 8px 16px;
+        background: #f6f8fa;
+        border-bottom: 1px solid #e1e4e8;
+        font-weight: 500;
+        color: #24292e;
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        .file-name {
+          font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+          color: #24292e;
+        }
+        
+        .file-status {
+          color: #6a737d;
+          font-size: 11px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+      }
+      
+      .diff-content {
+        height: 400px;
+        overflow: hidden;
+        
+        .diff-scroll-container {
+          display: flex;
+          height: 100%;
+          overflow-y: auto;
+          font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+          font-size: 13px;
+          line-height: 1.5;
+          
+          .diff-left,
+          .diff-right {
+            flex: 1;
+            min-width: 50%;
+            
+            .diff-line {
+              display: flex;
+              min-height: 20px;
+              align-items: center;
+              
+              &:hover {
+                background-color: #f6f8fa;
+              }
+              
+              .line-number {
+                width: 50px;
+                padding: 4px 8px;
+                background-color: #f6f8fa;
+                color: #6a737d;
+                font-size: 12px;
+                text-align: right;
+                border-right: 1px solid #e1e4e8;
+                user-select: none;
+                flex-shrink: 0;
+              }
+              
+              .line-content {
+                flex: 1;
+                padding: 4px 12px;
+                white-space: pre-wrap;
+                word-break: break-word;
+                font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+                font-size: 13px;
+                line-height: 1.5;
+                
+                &.unchanged {
+                  color: #24292e;
+                  background-color: transparent;
+                }
+                
+                &.removed {
+                  background-color: #ffeef0;
+                  color: #cb2431;
+                  text-decoration: none;
+                }
+                
+                &.added {
+                  background-color: #f0fff4;
+                  color: #22863a;
+                  text-decoration: none;
+                }
+              }
+            }
+          }
+          
+          .diff-left {
+            border-right: 1px solid #e1e4e8;
+            background-color: #f6f8fa;
+          }
+          
+          .diff-right {
+            background-color: #ffffff;
+          }
+        }
+      }
+    
+          // 自定义滚动条样式
+      .diff-scroll-container::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      
+      .diff-scroll-container::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+      }
+      
+      .diff-scroll-container::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px;
+        
+        &:hover {
+          background: #a8a8a8;
+        }
+      }
+  }
+  
+  .no-data-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #6a737d;
   }
 }
 

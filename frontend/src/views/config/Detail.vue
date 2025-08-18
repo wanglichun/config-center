@@ -121,6 +121,20 @@
                 {{ TimeUtils.formatTime(row.updateTime, 'yyyy-MM-dd HH:mm:ss') }}
               </template>
             </el-table-column>
+            <el-table-column :label="$t('config.operation')" width="150" fixed="right">
+              <template #default="scope">
+                <div class="operation-buttons">
+                  <el-button 
+                    size="small" 
+                    type="primary" 
+                    :disabled="scope.row.phase !== 'Success'"
+                    @click="handleRollback(scope.row)"
+                  >
+                    {{ $t('common.rollback') }}
+                  </el-button>
+                </div>
+              </template>
+            </el-table-column>
           </el-table>
           
           <!-- 分页 -->
@@ -322,7 +336,7 @@ const copyToClipboard = async (text: string) => {
 }
 
 // 显示容器详情
-const showContainerDetail = (container) => {
+const showContainerDetail = (container: any) => {
   selectedContainerDetail.value = container
   showContainerDetailDialog.value = true
 }
@@ -335,6 +349,29 @@ const handleEdit = () => {
   if (configDetail.value) {
     router.push({ name: 'EditConfig', params: { id: configDetail.value.id } })
   }
+}
+
+// 处理回滚操作
+const handleRollback = (ticket: Ticket) => {
+  if (ticket.phase !== 'Success') {
+    ElMessage.warning(t('config.detail.messages.onlySuccessTicketCanRollback'))
+    return
+  }
+  
+  ElMessageBox.confirm(
+    t('config.detail.messages.confirmRollback', { title: ticket.title }),
+    t('config.detail.messages.rollbackConfirm'),
+    {
+      confirmButtonText: t('common.confirm'),
+      cancelButtonText: t('common.cancel'),
+      type: 'warning'
+    }
+  ).then(() => {
+    // TODO: 调用回滚API
+    ElMessage.success(t('config.detail.messages.rollbackSuccess'))
+  }).catch(() => {
+    // 用户取消
+  })
 }
 
 const getStatusTagType = (status?: string) => {
@@ -494,5 +531,21 @@ onMounted(() => {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+}
+
+// Rollback按钮样式
+.operation-buttons {
+  .el-button.el-button--primary:disabled {
+    background-color: #c0c4cc !important;
+    border-color: #c0c4cc !important;
+    color: #909399 !important;
+    cursor: not-allowed !important;
+    
+    &:hover {
+      background-color: #c0c4cc !important;
+      border-color: #c0c4cc !important;
+      color: #909399 !important;
+    }
+  }
 }
 </style> 

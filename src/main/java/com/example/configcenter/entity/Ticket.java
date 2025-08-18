@@ -1,5 +1,6 @@
 package com.example.configcenter.entity;
 
+import com.example.configcenter.enums.OperateTypeEnum;
 import com.example.configcenter.enums.TicketActionEnum;
 import com.example.configcenter.enums.TicketPhaseEnum;
 import lombok.Data;

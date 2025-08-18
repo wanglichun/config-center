@@ -18,6 +18,11 @@ export default defineConfig({
       dts: true
     })
   ],
+  define: {
+    'process.env': {},
+    'process.platform': '"browser"',
+    'process.version': '"v16.0.0"'
+  },
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')
