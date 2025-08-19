@@ -11,7 +11,6 @@ import com.example.configcenter.enums.TicketActionEnum;
 import com.example.configcenter.enums.TicketPhaseEnum;
 import com.example.configcenter.mapper.ConfigItemMapper;
 import com.example.configcenter.mapper.TicketMapper;
-import com.example.configcenter.service.ConfigService;
 import com.example.configcenter.service.TicketService;
 import com.example.configcenter.service.ZooKeeperService;
 import com.example.configcenter.utils.JsonUtil;
@@ -21,7 +20,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -95,10 +93,10 @@ public class TicketServiceImpl implements TicketService {
         ticketMapper.update(ticket);
 
         String newData = ticket.getNewData();
-        ConfigItem configItem = JsonUtil.jsonToObject(newData, ConfigItem.class);
 
         switch (ticketUpdateRequest.getAction()) {
             case Complete: {
+                ConfigItem configItem = JsonUtil.jsonToObject(newData, ConfigItem.class);
                 // 根据mysql配置数据
                 configItemMapper.update(configItem);
                 // 更新zk存储数据

@@ -710,33 +710,33 @@ const getStepStatus = (index: number) => {
 
 const getCurrentSteps = () => {
   const currentPhase = ticketDetail.value?.phase
-  console.log('Current phase:', currentPhase)
-  console.log('Status steps:', statusSteps.value)
   
   if (!currentPhase) {
-    console.log('No current phase, returning empty array')
     return []
   }
 
-  // 特殊处理GrayPublish状态
-  if (currentPhase === 'GrayPublish') {
-    console.log('Found GrayPublish, returning first 4 steps')
-    return statusSteps.value.slice(0, 4)
+  // 定义状态顺序映射
+  const phaseOrder = {
+    'Submit': 0,
+    'Reviewing': 1,
+    'GrayPublish': 2,
+    'Success': 3,
+    'Rejected': 1, // Rejected状态显示到Reviewing
+    'Cancelled': 0  // Cancelled状态只显示Submit
   }
 
-  // 处理其他状态的大小写不匹配问题
-  const normalizedPhase = currentPhase.toUpperCase()
-  console.log('Normalized phase:', normalizedPhase)
-  
-  const currentStepIndex = statusSteps.value.findIndex(step => {
-    console.log('Comparing step.phase:', step.phase, 'with normalizedPhase:', normalizedPhase)
-    return step.phase === normalizedPhase
-  })
-  console.log('Current step index:', currentStepIndex)
-  
-  const result = statusSteps.value.slice(0, currentStepIndex + 1)
-  console.log('Current steps to show:', result)
-  return result
+  const currentPhaseKey = currentPhase as keyof typeof phaseOrder
+  const currentIndex = phaseOrder[currentPhaseKey]
+
+  // 对于特殊状态，显示对应的步骤
+  if (currentPhase === 'Rejected') {
+    return statusSteps.value.slice(0, 2) // Submit -> Reviewing
+  } else if (currentPhase === 'Cancelled') {
+    return statusSteps.value.slice(0, 1) // 只显示Submit
+  }
+
+  // 正常状态：显示到当前状态
+  return statusSteps.value.slice(0, currentIndex + 1)
 }
 
 // Action按钮相关方法
@@ -1139,6 +1139,18 @@ const completeGrayPublish = async () => {
 </script>
 
 <style scoped lang="scss">
+// 全局强制覆盖Element Plus步骤组件连接线样式
+:global(.el-steps .el-step .el-step__line),
+:global(.el-steps .el-step .el-step__line-inner),
+:global(.el-steps .el-step.is-finish .el-step__line),
+:global(.el-steps .el-step.is-finish .el-step__line-inner),
+:global(.el-steps .el-step.is-process .el-step__line),
+:global(.el-steps .el-step.is-process .el-step__line-inner),
+:global(.el-steps .el-step.is-wait .el-step__line),
+:global(.el-steps .el-step.is-wait .el-step__line-inner) {
+  background-color: #409eff !important;
+  background: #409eff !important;
+}
 .ticket-detail {
   padding: 20px;
 }
@@ -1407,6 +1419,51 @@ const completeGrayPublish = async () => {
 .status-progress {
   margin-bottom: 30px;
   
+  // 全局覆盖Element Plus步骤组件样式
+  :deep(.el-steps) {
+    .el-step {
+      .el-step__title {
+        color: #409eff !important;
+      }
+      
+      .el-step__description {
+        color: #409eff !important;
+      }
+      
+      .el-step__icon {
+        color: #409eff !important;
+        border-color: #409eff !important;
+      }
+      
+      // 强制所有连接线为蓝色 - 使用更具体的选择器
+      .el-step__line,
+      .el-step__line-inner,
+      .el-step__line .el-step__line-inner {
+        background-color: #409eff !important;
+        background: #409eff !important;
+      }
+      
+      // 处理所有可能的状态
+      &.is-finish,
+      &.is-process,
+      &.is-wait {
+        .el-step__line,
+        .el-step__line-inner,
+        .el-step__line .el-step__line-inner {
+          background-color: #409eff !important;
+          background: #409eff !important;
+        }
+      }
+    }
+    
+    // 直接针对所有连接线
+    .el-step__line,
+    .el-step__line-inner {
+      background-color: #409eff !important;
+      background: #409eff !important;
+    }
+  }
+  
   .progress-header {
     display: flex;
     justify-content: space-between;
@@ -1434,12 +1491,69 @@ const completeGrayPublish = async () => {
     .el-steps {
       .el-step {
         .el-step__title {
-          font-weight: 600;
+          font-weight: 600 !important;
+          color: #409eff !important;
         }
         
         .el-step__description {
-          font-size: 12px;
-          color: #909399;
+          font-size: 12px !important;
+          color: #409eff !important;
+        }
+        
+        .el-step__icon {
+          &.is-text {
+            color: #409eff !important;
+            border-color: #409eff !important;
+          }
+        }
+        
+        // 强制所有连接线为蓝色
+        .el-step__line,
+        .el-step__line-inner,
+        .el-step__line .el-step__line-inner {
+          background-color: #409eff !important;
+          background: #409eff !important;
+        }
+        
+        &.is-process {
+          .el-step__icon {
+            background-color: #409eff !important;
+            border-color: #409eff !important;
+            color: #ffffff !important;
+          }
+          .el-step__line,
+          .el-step__line-inner,
+          .el-step__line .el-step__line-inner {
+            background-color: #409eff !important;
+            background: #409eff !important;
+          }
+        }
+        
+        &.is-finish {
+          .el-step__icon {
+            background-color: #409eff !important;
+            border-color: #409eff !important;
+            color: #ffffff !important;
+          }
+          .el-step__line,
+          .el-step__line-inner,
+          .el-step__line .el-step__line-inner {
+            background-color: #409eff !important;
+            background: #409eff !important;
+          }
+        }
+        
+        &.is-wait {
+          .el-step__icon {
+            color: #409eff !important;
+            border-color: #409eff !important;
+          }
+          .el-step__line,
+          .el-step__line-inner,
+          .el-step__line .el-step__line-inner {
+            background-color: #409eff !important;
+            background: #409eff !important;
+          }
         }
       }
     }
