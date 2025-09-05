@@ -1,0 +1,116 @@
+version: '3.8'
+
+services:
+  # 机器001
+  machine-001:
+    image: alpine:latest
+    container_name: config-center-machine-001
+    hostname: machine-001
+    restart: always
+    environment:
+      MACHINE_ID: machine-001
+      MACHINE_IP: 172.20.0.10
+      CONFIG_SERVER_URL: http://host.docker.internal:8080
+      GROUP_NAME: default
+      CONFIG_KEYS: app.database.url,app.redis.host,app.log.level
+    volumes:
+      - ./machine-configs/machine-001:/app/config
+      - machine_001_logs:/app/logs
+    networks:
+      machines_network:
+        ipv4_address: 172.20.0.10
+    command: |
+      sh -c "
+        echo '机器001启动中...'
+        apk add --no-cache curl
+        echo 'MACHINE_ID: machine-001' > /app/config/machine.conf
+        echo 'STATUS: running' >> /app/config/machine.conf
+        echo 'START_TIME: '$(date) >> /app/config/machine.conf
+        echo '机器001启动完成，保持运行状态...'
+        tail -f /dev/null
+      "
+    healthcheck:
+      test: ["CMD", "echo", "machine-001 is healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 机器002
+  machine-002:
+    image: alpine:latest
+    container_name: config-center-machine-002
+    hostname: machine-002
+    restart: always
+    environment:
+      MACHINE_ID: machine-002
+      MACHINE_IP: 172.20.0.11
+      CONFIG_SERVER_URL: http://host.docker.internal:8080
+      GROUP_NAME: default
+      CONFIG_KEYS: app.database.url,app.cache.enabled,app.security.jwt
+    volumes:
+      - ./machine-configs/machine-002:/app/config
+      - machine_002_logs:/app/logs
+    networks:
+      machines_network:
+        ipv4_address: 172.20.0.11
+    command: |
+      sh -c "
+        echo '机器002启动中...'
+        apk add --no-cache curl
+        echo 'MACHINE_ID: machine-002' > /app/config/machine.conf
+        echo 'STATUS: running' >> /app/config/machine.conf
+        echo 'START_TIME: '$(date) >> /app/config/machine.conf
+        echo '机器002启动完成，保持运行状态...'
+        tail -f /dev/null
+      "
+    healthcheck:
+      test: ["CMD", "echo", "machine-002 is healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 机器003
+  machine-003:
+    image: alpine:latest
+    container_name: config-center-machine-003
+    hostname: machine-003
+    restart: always
+    environment:
+      MACHINE_ID: machine-003
+      MACHINE_IP: 172.20.0.12
+      CONFIG_SERVER_URL: http://host.docker.internal:8080
+      GROUP_NAME: default
+      CONFIG_KEYS: app.elasticsearch.host,app.kafka.brokers,app.monitoring.enabled
+    volumes:
+      - ./machine-configs/machine-003:/app/config
+      - machine_003_logs:/app/logs
+    networks:
+      machines_network:
+        ipv4_address: 172.20.0.12
+    command: |
+      sh -c "
+        echo '机器003启动中...'
+        apk add --no-cache curl
+        echo 'MACHINE_ID: machine-003' > /app/config/machine.conf
+        echo 'STATUS: running' >> /app/config/machine.conf
+        echo 'START_TIME: '$(date) >> /app/config/machine.conf
+        echo '机器003启动完成，保持运行状态...'
+        tail -f /dev/null
+      "
+    healthcheck:
+      test: ["CMD", "echo", "machine-003 is healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  machine_001_logs:
+  machine_002_logs:
+  machine_003_logs:
+
+networks:
+  machines_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

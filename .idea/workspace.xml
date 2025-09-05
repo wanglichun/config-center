@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/GeneratePassword.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1625340a-b1de-4f9a-a29d-4a3030cc26bf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1625340a-b1de-4f9a-a29d-4a3030cc26bf.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/dto/ConfigSubscriberDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/dto/PasswordChangeRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/dto/TicketCreateDto.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +59,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.ConfigCenterApplication (1).executor": "Debug",
     "Spring Boot.ConfigCenterApplication (2).executor": "Run",
-    "Spring Boot.ConfigCenterApplication.executor": "Debug",
+    "Spring Boot.ConfigCenterApplication.executor": "Run",
     "git-widget-placeholder": "config-center-dev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/lichun.wang/Git/config-center/frontend/src/api/common",
@@ -167,11 +172,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/utils/JsonUtil.java</url>
           <line>49</line>
           <option name="timeStamp" value="112" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/controller/ConfigController.java</url>
-          <line>96</line>
-          <option name="timeStamp" value="151" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
