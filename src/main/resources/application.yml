@@ -9,6 +9,13 @@ spring:
   profiles:
     active: dev
   
+  # 禁用Elasticsearch自动配置
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchDataAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchRepositoriesAutoConfiguration
+      - org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientAutoConfiguration
+  
   # 数据库配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -16,7 +23,7 @@ spring:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/config_center?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
       username: root
-      password:
+      password: root123
       initial-size: 10
       max-active: 100
       min-idle: 10
@@ -110,11 +117,11 @@ management:
       linger-ms: 1
       buffer-memory: 33554432
 
-# Elasticsearch配置
-elasticsearch:
-  host: localhost
-  port: 9200
-  index-prefix: logs
+# Elasticsearch配置 (已禁用 - 解决连接失败问题)
+# elasticsearch:
+#   host: localhost
+#   port: 9200
+#   index-prefix: logs
 
 
 # 日志配置

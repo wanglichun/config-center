@@ -56,17 +56,17 @@ public class MysqlInterceptor {
             int rowsAffected = getRowsAffected(result);
             
             // 发送MySQL操作日志
-            logSenderService.sendMysqlLog(
-                context.getTraceId(),
-                spanId,
-                parentSpanId,
-                methodName,
-                sql,
-                result,
-                duration,
-                rowsAffected,
-                null
-            );
+//            logSenderService.sendMysqlLog(
+//                context.getTraceId(),
+//                spanId,
+//                parentSpanId,
+//                methodName,
+//                sql,
+//                result,
+//                duration,
+//                rowsAffected,
+//                null
+//            );
             
             log.debug("MySQL操作完成: method={}, duration={}ms, rowsAffected={}", 
                      methodName, duration, rowsAffected);
@@ -79,17 +79,17 @@ public class MysqlInterceptor {
             errorMessage = e.getMessage();
             
             // 发送错误日志
-            logSenderService.sendMysqlLog(
-                context.getTraceId(),
-                spanId,
-                parentSpanId,
-                methodName,
-                buildSqlInfo(methodName, args),
-                null,
-                duration,
-                0,
-                errorMessage
-            );
+//            logSenderService.sendMysqlLog(
+//                context.getTraceId(),
+//                spanId,
+//                parentSpanId,
+//                methodName,
+//                buildSqlInfo(methodName, args),
+//                null,
+//                duration,
+//                0,
+//                errorMessage
+//            );
             
             log.error("MySQL操作失败: method={}, duration={}ms, error={}", 
                      methodName, duration, errorMessage, e);
