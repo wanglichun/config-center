@@ -15,9 +15,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Kafka配置类
+ * Kafka配置类 (已禁用 - 解决连接失败问题)
  */
-@Configuration
+// @Configuration
 public class KafkaConfig {
     
     @Value("${spring.kafka.bootstrap-servers:localhost:9092}")

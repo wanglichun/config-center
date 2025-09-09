@@ -1,6 +1,7 @@
 package com.example.configcenter.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.example.configcenter.entity.ConfigItem;
 import com.example.configcenter.entity.MachineInstance;
 import com.example.configcenter.exception.ConfigException;
 import com.example.configcenter.service.MachineService;
@@ -71,10 +72,17 @@ public class MachineConfigSubscriptionServiceImpl implements MachineService {
         List<String> instanceList = zooKeeperService.getChildren(configPath);
         for (String instance : instanceList) {
             String config = zooKeeperService.getConfig(configPath + "/" + instance);
-            MachineInstance machineInstance = JsonUtil.jsonToObject(config, MachineInstance.class);
-            machineInstanceList.add(machineInstance);
+            ConfigItem configItem = JsonUtil.jsonToObject(config, ConfigItem.class);
+            machineInstanceList.add(buildMachineInfo(configItem, instance));
         }
         return machineInstanceList;
+    }
+
+    private MachineInstance buildMachineInfo(ConfigItem configItem, String instanceIp) {
+        MachineInstance machineInstance = new MachineInstance();
+        machineInstance.setIp(instanceIp);
+        machineInstance.setVersion(configItem.getVersion());
+        return machineInstance;
     }
 
     @Override
@@ -126,7 +134,7 @@ public class MachineConfigSubscriptionServiceImpl implements MachineService {
      * 构建容器上报配置路径
      */
     private String buildInstanceReportInfo(String groupName, String configKey) {
-        return String.format("/container-status/%s/%s", groupName, configKey);
+        return String.format("/machine/%s/%s", groupName, configKey);
     }
 
     /**

@@ -56,16 +56,16 @@ public class ZooKeeperInterceptor {
             Object data = extractData(args);
             
             // 发送ZooKeeper操作日志
-            logSenderService.sendZkLog(
-                context.getTraceId(),
-                spanId,
-                parentSpanId,
-                methodName,
-                path,
-                data,
-                duration,
-                null
-            );
+//            logSenderService.sendZkLog(
+//                context.getTraceId(),
+//                spanId,
+//                parentSpanId,
+//                methodName,
+//                path,
+//                data,
+//                duration,
+//                null
+//            );
             
             log.debug("ZooKeeper操作完成: method={}, path={}, duration={}ms", 
                      methodName, path, duration);
@@ -82,17 +82,17 @@ public class ZooKeeperInterceptor {
             Object data = extractData(args);
             
             // 发送错误日志
-            logSenderService.sendZkLog(
-                context.getTraceId(),
-                spanId,
-                parentSpanId,
-                methodName,
-                path,
-                data,
-                duration,
-                errorMessage
-            );
-            
+//            logSenderService.sendZkLog(
+//                context.getTraceId(),
+//                spanId,
+//                parentSpanId,
+//                methodName,
+//                path,
+//                data,
+//                duration,
+//                errorMessage
+//            );
+//
             log.error("ZooKeeper操作失败: method={}, path={}, duration={}ms, error={}", 
                      methodName, path, duration, errorMessage, e);
             

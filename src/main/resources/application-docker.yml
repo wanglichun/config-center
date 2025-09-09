@@ -42,7 +42,6 @@ spring:
 
 # ZooKeeper配置 (在容器环境中可选)
 zookeeper:
-  enabled: false
   connect-string: zookeeper:2181
   session-timeout: 30000
   connection-timeout: 10000

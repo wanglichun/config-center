@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="2c6c8316-b04e-4ad0-a9c0-44d735d5a1ec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_reporter.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/machine-configs/machine-001/subscribed/test/test_key_1" beforeDir="false" afterPath="$PROJECT_DIR$/machine-configs/machine-001/subscribed/test/test_key_1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/machine-configs/machine-002/subscribed/test/test_key_1" beforeDir="false" afterPath="$PROJECT_DIR$/machine-configs/machine-002/subscribed/test/test_key_1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/machine-configs/machine-003/subscribed/test/test_key_1" beforeDir="false" afterPath="$PROJECT_DIR$/machine-configs/machine-003/subscribed/test/test_key_1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/interceptor/ZooKeeperInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/interceptor/ZooKeeperInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/MachineConfigSubscriptionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +60,10 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHELLCHECK.PATH": "/Users/wanglichun/Library/Application Support/JetBrains/IntelliJIdea2025.2/plugins/Shell Script/shellcheck",
     "Spring Boot.ConfigCenterApplication (1).executor": "Debug",
     "Spring Boot.ConfigCenterApplication (2).executor": "Run",
-    "Spring Boot.ConfigCenterApplication.executor": "Run",
+    "Spring Boot.ConfigCenterApplication.executor": "Debug",
     "git-widget-placeholder": "config-center-dev",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/lichun.wang/Git/config-center/frontend/src/api/common",
@@ -169,6 +177,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/utils/JsonUtil.java</url>
           <line>49</line>
           <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ZooKeeperServiceImpl.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="175" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/configcenter/service/impl/ZooKeeperServiceImpl.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="176" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

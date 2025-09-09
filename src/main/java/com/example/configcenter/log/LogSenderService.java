@@ -3,6 +3,7 @@ package com.example.configcenter.log;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ import java.util.concurrent.CompletableFuture;
 @Service
 public class LogSenderService {
     
-    @Autowired
+    @Autowired(required = false)
     private KafkaTemplate<String, String> kafkaTemplate;
     
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -205,6 +206,11 @@ public class LogSenderService {
      */
     @Async("logSenderExecutor")
     public void sendToKafkaAsyncVoid(String topic, LogRecord logRecord) {
+        if (kafkaTemplate == null) {
+            log.debug("Kafka未配置，跳过日志发送: topic={}, traceId={}", topic, logRecord.getTraceId());
+            return;
+        }
+        
         try {
             String message = JSON.toJSONString(logRecord);
             kafkaTemplate.send(topic, message);

@@ -9,12 +9,13 @@ spring:
   profiles:
     active: dev
   
-  # 禁用Elasticsearch自动配置
+  # 禁用不需要的自动配置
   autoconfigure:
     exclude:
       - org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchDataAutoConfiguration
       - org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchRepositoriesAutoConfiguration
       - org.springframework.boot.autoconfigure.elasticsearch.ElasticsearchRestClientAutoConfiguration
+      - org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration
   
   # 数据库配置
   datasource:
@@ -106,16 +107,17 @@ management:
       exposure:
         include: health,info,metrics,prometheus
 
-  kafka:
-    bootstrap-servers: localhost:9092
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      acks: 1
-      retries: 3
-      batch-size: 16384
-      linger-ms: 1
-      buffer-memory: 33554432
+# Kafka配置 (已禁用 - 解决连接失败问题)
+# kafka:
+#   bootstrap-servers: localhost:9092
+#   producer:
+#     key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#     value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#     acks: 1
+#     retries: 3
+#     batch-size: 16384
+#     linger-ms: 1
+#     buffer-memory: 33554432
 
 # Elasticsearch配置 (已禁用 - 解决连接失败问题)
 # elasticsearch:
